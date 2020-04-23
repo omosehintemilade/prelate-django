@@ -1,0 +1,81 @@
+{% load static %}
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h4 class="footer-links-header">Services</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="">Reservations</a>
+          </li>
+          <li>
+            <a href="{% url 'travel-help' %}">Travel Help</a>
+          </li>
+          <li>
+            <a href="{% url 'travel-insurance' %}">Travel Insurance</a>
+          </li>
+          <li>
+            <a href="{% url 'visa-assistance' %}">Visa</a>
+          </li>
+          <li>
+            <a href="{% url 'tour' %}">Tour</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h4 class="footer-links-header">Partners</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="{% url 'become-affiliate' %}">Become an Affiliate</a>
+          </li>
+          <li>
+            <a href="{% url 'business-travel' %}">Business Travels</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h4 class="footer-links-header">Partners</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="/contact-us">Contact Us</a>
+          </li>
+          <li>
+            <a href="/faq">FAQ</a>
+          </li>
+        </ul>
+      </div>
+      <div class="offset-md-2 col-md-4">
+        <h4 class="footer-links-header">Joinn our newsletter</h4>
+        <form action="">
+          <div class="input-group">
+            <input type="text" class="join-newsletter-input" placeholder="Enter your full name" />
+          </div>
+          <div class="input-group">
+            <input type="email" class="join-newsletter-input join-newsletter-email" placeholder="Enter your email" />
+            <button class="join-newsletter-button">Join</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-4">
+        <ul class="social-links">
+          <li>
+            <a href=""><img src="{% static 'images/facebook.png' %}" /></a>
+          </li>
+          <li>
+            <a href=""><img src="{% static 'images/twitter.png' %}" /></a>
+          </li>
+          <li>
+            <a href=""><img src="{% static 'images/instagram.png' %}" /></a>
+          </li>
+          <li>
+            <a href=""><img src="{% static 'images/linkedin.png' %}" /></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="footer-end">Copyright &copy; 2020 Prelate Travels. All rights reserved.</div>

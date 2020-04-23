@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %} {% include "partials/_head.html" with add_title="Visa Assistance | Prelate Travels & Tours" %}
+    <link rel="stylesheet" href="{% static 'stylesheets/select2.min.css' %}" />
+  </head>
+  <body>
+    {% include "partials/components/_header.html" %}
+    <section class="visa-where-would">
+      <div class="container d-block">
+        <p>
+          Where would you like to travel to?
+        </p>
+        <div class="row mt-4">
+          <select required class="form-control select-country select-country-meta">
+            {% if main_country %}
+            <option selected value="{{ main_country.country_name }}">★ {{ main_country.country_name }}</option>
+            {% else %}
+            <option value="">--Select Country--</option>
+            {% endif %} {% for country in countries %}
+            <option value="{{ country.country_name }}">{{ country.country_name }}</option>
+            {% endfor %}
+          </select>
+          <!--
+          <div class="col-sm-2">
+            <button class="btn btn-primary" style="display: block; width: 100%;">Search</button>
+          </div>
+          -->
+        </div>
+      </div>
+    </section>
+    <section class="visa-assist-form">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="flex-center-content">
+              <div>
+                <h3 class="visa-assist-form-heading mb-4">
+                  Visa Assistance
+                </h3>
+                <p class="visa-assist-form-body mb-4">
+                  If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always more than happy to help you achieve your desire
+                  destination.
+                </p>
+                <p class="visa-assist-form-body mb-4">
+                  Here you will find the perfect starting point for booking any continental travel journey. Whether you are a novice or a more experienced traveller, research on
+                  your destination is always an essential part of planning your trip.So that is why Prelate Travel is here to hold your hand through the process of finding a
+                  perfect country to travel to.
+                </p>
+                <p class="visa-assist-form-body">
+                  Simply fill the form provided below with the required details, in other for Prelate Travel to help you get to your interested destination.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="offset-md-1 col-md-6">
+            <form class="generic-form">
+              <div class="generic-form--header">Get Visa Assistance</div>
+              <div class="generic-form--body">
+                <div class="form-group">
+                  <label for="">Country of Origin</label>
+                  <select id="origin" required class="form-control select-country">
+                    <option value="">--Select Country--</option>
+                    {% for country in countries %}
+                    <option value="{{ country.country_name }}">{{ country.country_name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">Country of Destination</label>
+                  <select id="destination" required class="form-control select-country">
+                    {% if main_country %}
+                    <option selected value="{{main_country.country_name}}">★ {{ main_country.country_name }}</option>
+                    {% else %}
+                    <option value="">--Select Country--</option>
+                    {% endif %} {% for country in countries %}
+                    <option value="{{ country.country_name }}">{{ country.country_name }}</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">Full Name</label>
+                  <input type="text" class="form-control" placeholder="Full Name" />
+                </div>
+                <div class="form-group">
+                  <label for="">Date of Birth</label>
+                  <input type="text" class="form-control" placeholder="Date of Birth" />
+                </div>
+                <div class="form-group">
+                  <label for="">Phone Number</label>
+                  <input type="text" class="form-control" placeholder="Phone number" />
+                </div>
+                <div class="form-group">
+                  <label for="">Address</label>
+                  <textarea class="form-control" placeholder="Address"></textarea>
+                </div>
+
+                <div class="form-group mb-4">
+                  <label for="">Upload Document</label>
+                  <div class="row">
+                    <div class="col-12">
+                      <input type="file" class="form-control" />
+                    </div>
+                    <!-- <div class="col-2">
+                                        <button class="btn btn-primary"> Add</button>
+                                    </div> -->
+                  </div>
+                </div>
+                <div class="form-group mt-2">
+                  <button class="btn btn-primary d-block w-100">
+                    Submit Form
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
+    <br />
+    {% include 'partials/_bottom.html' %}
+
+    <script src="{% static 'javascripts/select2.full.min.js' %}"></script>
+    <script>
+      $(function () {
+        $(".select-country").select2();
+      });
+    </script>
+    <script>
+      $(".select-country-meta").change(function () {
+        window.location = "?country=" + $(this).val();
+      });
+    </script>
+  </body>
+</html>
