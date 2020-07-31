@@ -1,13 +1,24 @@
-from django.shortcuts import render
-from .models import CoveredCountry, TravelInformation, TravelInsurace, TourDeal
+import os
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from .models import CoveredCountry, TravelInformation, TravelInsurace, TourDeal, TravelAssistance
 from django.http import JsonResponse
+from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
+from django.contrib.auth.decorators import login_required
+from acctmang.forms import EditProfileInformation
+import datetime
+import calendar
+import decimal
+from django.db.models import Sum, Q
+import requests
 
-# Create your views here.
+
 def home(request):
     return render(
         request,
         "index.html"
     )
+
 
 def travel_help(request):
     if request.method == "GET":
@@ -44,7 +55,7 @@ def travel_help(request):
     elif request.method == "POST" and request.is_ajax:
         form_type = request.POST.get("type")
         if form_type == "travelInfo":
-            origin =  request.POST.get("origin")
+            origin = request.POST.get("origin")
             destination = request.POST.get("destination")
             name = request.POST.get("name")
             phone_number = request.POST.get("phoneNumber")
@@ -53,19 +64,20 @@ def travel_help(request):
 
             # Create Record in Table
             TravelInformation.objects.create(
-                country_of_origin=CoveredCountry.objects.get(country_name=origin),
-                country_of_destination=CoveredCountry.objects.get(country_name=destination),
+                country_of_origin=CoveredCountry.objects.get(
+                    country_name=origin),
+                country_of_destination=CoveredCountry.objects.get(
+                    country_name=destination),
                 fullname=name,
                 phonenumber=phone_number,
                 email=email,
                 enquiry=message
-                )
+            )
 
-            return JsonResponse({"status" : "success"}, safe=False)
+            return JsonResponse({"status": "success"}, safe=False)
 
-            
         elif form_type == "travelAssist":
-            origin =  request.POST.get("origin")
+            origin = request.POST.get("origin")
             destination = request.POST.get("destination")
             name = request.POST.get("name")
             dob = request.POST.get("dob")
@@ -74,9 +86,23 @@ def travel_help(request):
             message = request.POST.get("message")
             document = request.FILES
 
-            print(origin, destination, name, dob, phone_number, email, message, document)
+            print("gg", origin, destination)
 
+            # Create Record
+            TravelAssistance.objects.create(
+                country_of_origin=CoveredCountry.objects.get(
+                    country_name=origin),
+                country_of_destination=CoveredCountry.objects.get(
+                    country_name=destination),
+                fullname=name,
+                phonenumber=phone_number,
+                email=email,
+                enquiry=message,
+                dob=dob,
+                document=document
+            )
 
+            return JsonResponse({"status": "success"}, safe=False)
 
 
 def travel_insurance(request):
@@ -91,7 +117,7 @@ def travel_insurance(request):
         )
 
     if request.method == "POST":
-        origin =  request.POST.get("origin")
+        origin = request.POST.get("origin")
         destination = request.POST.get("destination")
         name = request.POST.get("name")
         dob = request.POST.get("dob")
@@ -103,7 +129,8 @@ def travel_insurance(request):
         # Create Record in Table
         TravelInsurace.objects.create(
             country_of_origin=CoveredCountry.objects.get(country_name=origin),
-            country_of_destination=CoveredCountry.objects.get(country_name=destination),
+            country_of_destination=CoveredCountry.objects.get(
+                country_name=destination),
             fullname=name,
             dob=dob,
             phonenumber=phone_number,
@@ -112,10 +139,7 @@ def travel_insurance(request):
             address=address
         )
 
-        return JsonResponse({"status" : "success"}, safe=False)
-
-
-
+        return JsonResponse({"status": "success"}, safe=False)
 
 
 def visa_assistance(request):
@@ -150,15 +174,17 @@ def visa_assistance(request):
                     }
                 )
 
+
 def tour(request):
     return render(
         request,
         "tour.html",
-        context= {
+        context={
             "deals": TourDeal.objects.all()
 
         }
     )
+
 
 def tour_deal(request, pk, slug):
     package = TourDeal.objects.filter(id=pk, slug=slug).first()
@@ -170,11 +196,13 @@ def tour_deal(request, pk, slug):
         }
     )
 
+
 def customize_tour(request):
     return render(
         request,
         "tour-package-customize.html"
     )
+
 
 def business_travel(request):
     return render(
@@ -182,11 +210,13 @@ def business_travel(request):
         "business-travel.html"
     )
 
+
 def become_affiliate(request):
     return render(
         request,
         "become-affiliate.html"
     )
+
 
 def contact_us(request):
     return render(
@@ -194,8 +224,202 @@ def contact_us(request):
         "contact-us.html"
     )
 
+
 def faq(request):
     return render(
         request,
         "faq.html"
     )
+
+##########################################
+
+
+def affliate_dashboard(request):
+    if request.user.is_authenticated:
+        user = request.user
+
+        date_in_view = datetime.datetime.now()
+
+        month_query_start_date = datetime.datetime(
+            date_in_view.year,
+            date_in_view.month,
+            1
+        )
+
+        month_query_end_date = datetime.datetime(
+            date_in_view.year,
+            date_in_view.month,
+            calendar.monthrange(
+                date_in_view.year,
+                date_in_view.month
+            )[1]
+        ).replace(hour=23, minute=59, second=59)
+
+        year_query_start_date = datetime.datetime(
+            date_in_view.year, 1, 1)  # First day of the current year
+
+        year_query_end_date = datetime.datetime(
+            date_in_view.year,
+            12,
+            31
+        ).replace(hour=23, minute=59, second=59)
+
+        # YEARLY GRAPH
+        months_in_a_year = [
+            'JAN',
+            'FEB',
+            'MAR',
+            'APR',
+            'MAY',
+            'JUN',
+            'JUL',
+            'AUG',
+            'SEP',
+            'OCT',
+            'NOV',
+            'DEC'
+        ]
+
+        graph_data = []
+        # Iterate through up to the current month of the year
+        for (index, month) in enumerate(months_in_a_year[:date_in_view.month]):
+
+            graph_month_query_start_date = datetime.datetime(
+                date_in_view.year,
+                index + 1,  # current month = Index + 1
+                1  # First day of the month
+            )
+
+            graph_month_query_end_date = datetime.datetime(
+                date_in_view.year,
+                index + 1,
+                calendar.monthrange(
+                    date_in_view.year,
+                    index + 1
+                )[1]
+            ).replace(hour=23, minute=59, second=59)
+
+            user_earnings_this_month = UserEarnings.objects.filter(
+                Q(datetime__gte=graph_month_query_start_date) & Q(
+                    datetime__lte=graph_month_query_end_date),
+                user=user
+            ).aggregate(Sum('amount_earned'))["amount_earned__sum"] or 0,
+
+            # Update graph Data
+
+            graph_data.append([
+                months_in_a_year[index], float(user_earnings_this_month[0])])
+
+        return render(
+            request,
+            "affiliate/home.html",
+            {
+                "user": user,
+                "month_earnings": UserEarnings.objects.filter(
+                    Q(datetime__gte=month_query_start_date) & Q(
+                        datetime__lte=month_query_end_date),
+                    user=user
+                ).aggregate(Sum('amount_earned'))["amount_earned__sum"],
+                "year_earnings": UserEarnings.objects.filter(
+                    Q(datetime__gte=year_query_start_date) & Q(
+                        datetime__lte=year_query_end_date),
+                    user=user
+                ).aggregate(Sum('amount_earned'))["amount_earned__sum"],
+                "number_of_referrals": len(UserEarnings.objects.filter(user=user)),
+                "graph_data": graph_data
+            }
+        )
+    else:
+        return redirect("/affiliate/accounts/login")
+
+
+@login_required
+def affiliate_profile(request):
+    user = request.user
+    if request.method == "GET":
+        return render(
+            request,
+            "affiliate/profile.html",
+            {
+                'profile_form': EditProfileInformation(initial={
+                    'phone_number': user.profile.phone_number,
+                    'full_name': user.profile.full_name,
+                    'account_type': user.profile.account_type
+                })
+            }
+        )
+    elif request.method == "POST":
+        form = EditProfileInformation(request.POST)
+        if form.is_valid():
+            profile_update_form = form.save(commit=False)
+            affiliate_account = Profile.objects.get(user=request.user)
+            affiliate_account.phone_number = profile_update_form.phone_number
+            affiliate_account.full_name = profile_update_form.full_name
+            affiliate_account.account_type = profile_update_form.account_type
+
+            affiliate_account.save(update_fields=[
+                "phone_number",
+                "full_name",
+                "account_type"
+            ])
+            return redirect('affiliate-profile')
+
+
+@login_required
+def affiliate_transactions(request):
+    user = request.user
+    return render(
+        request,
+        "affiliate/account.html",
+        {
+            "transactions": UserTransactionRecord.objects.filter(user=user).order_by("-id")
+        }
+    )
+
+
+@login_required
+def vetropay_verify_account(request):
+    if request.method == "GET" and request.is_ajax:
+        mobile_uid = request.GET.get("userUID")
+
+        resolve_account_response = requests.post("https://api.vetropay.com/v1/tunnel/transferfund", json={
+            "publicKey": os.environ["VETROPAY_PUBLIC_KEY"],
+            "privateKey": os.environ["VETROPAY_PRIVATE_KEY"],
+            "mobileUID": mobile_uid,
+            "amount": "10",  # test value
+            "details": "Prelate Travel Ltd to {}".format(mobile_uid),
+            "transferType": "standard"
+        })
+
+        return JsonResponse(resolve_account_response.json(), safe=False)
+
+
+@login_required
+def vetropay_fund_transfer(request):
+    if request.method == "GET" and request.is_ajax:
+        mobile_uid = request.GET.get("userUID")
+        amount = request.GET.get("amount")
+
+        resolve_account_response = requests.post("https://api.vetropay.com/v1/tunnel/transferfund", json={
+            "publicKey": os.environ["VETROPAY_PUBLIC_KEY"],
+            "privateKey": os.environ["VETROPAY_PRIVATE_KEY"],
+            "mobileUID": mobile_uid,
+            "amount": amount,
+            "details": "Prelate Travel Ltd to {}".format(mobile_uid),
+            "transferType": "autocall"
+        })
+
+        response = resolve_account_response.json()
+        if response["status"] == "success":
+            user = request.user
+            user.balance = user.balance - decimal.Decimal(amount)
+            user.save(update_fields=["balance", ])
+
+            UserTransactionRecord.objects.create(
+                user=user,
+                transaction_type="DR",
+                amount=amount,
+                metadata="Prelate Travel Ltd to {}".format(mobile_uid)
+            )
+
+        return JsonResponse(resolve_account_response.json(), safe=False)

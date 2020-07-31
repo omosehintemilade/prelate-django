@@ -1,0 +1,32 @@
+{% extends 'affiliate/base.html' %} {% load widget_tweaks %}{% block content %}
+<div class="container-fluid">
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Transaction History</h1>
+  </div>
+</div>
+<div class="container">
+  {% for transaction in transactions %}
+  <div class="card card-body shadow mt-3">
+    <div style="display: flex; justify-content: space-between;">
+      <div>
+        Transaction Date: {{ transaction.datetime }} <br />
+        {% if transaction.transaction_type == 'CR' %} Transaction Type: <span class="badge badge-pill badge-success">CREDIT</span><br />
+        {% else %} Transaction Type:
+        <span class="badge badge-pill badge-danger">DEBIT</span>
+        {% endif %}
+      </div>
+      <div>Amount: <b>NGN {{ transaction.amount }}</b></div>
+    </div>
+  </div>
+
+  {% empty %}
+
+  <div class="card card-body shadow">
+    You do not have any earnings or withdrawals at the moment
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock %}

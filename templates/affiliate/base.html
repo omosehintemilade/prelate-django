@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Prelate Travel Affiliate</title>
+
+    <!-- Custom fonts for this template-->
+    {% load static %}{% load humanize %}
+
+    <link href="{% static 'affiliate/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <!-- Custom styles for this template-->
+    <link href="{% static 'affiliate/css/sb-admin-2.min.css' %}" rel="stylesheet" />
+  </head>
+
+  <body id="page-top">
+    <!-- Withdraw Fund Modal-->
+    <div class="modal fade" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="withdrawTitle" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="withdrawTitle">
+              Withdraw Fund
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form onsubmit="event.preventDefault(); withdrawToAccount()">
+              <p>Withdrawal requires a Vetropay Account</p>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-dark"  for="uname">VetroPay UID <span style="color: red;">*</span></label><br/>
+                    <input class="form-control" id="vetropayAccount" type="text" />
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-dark" for="uname">Account Name <span style="color: red;">*</span></label><br/>
+                    <input readonly type="text" id="vetropayAccountName" class="form-control" />
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-group">
+                    <label class="text-dark" for="uname">Amount <span style="color: red;">*</span></label><br/>
+                    <input required type="number" id="amount" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="col-lg-12 text-center">
+                  <button id="withdrawButton" disabled type="submit" class="btn btn-block btn-dark">Withdraw</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a href="https://play.google.com/store/apps/details?id=com.anclatechs.vetropaymobile">Don't have a VetroPay Account? Click here to create</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Withdraw Fund-->
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <!-- Sidebar -->
+      <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{% url 'affliate_dashboard' %}">
+          <div class="sidebar-brand-icon rotate-n-15">
+            <!--<i class="fas fa-laugh-wink"></i> LOGO HERE-->
+          </div>
+          <div class="sidebar-brand-text mx-3">PRELATE TRAVEL</div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0" />
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'affliate_dashboard' %}">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a
+          >
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'account_logout' %}">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Logout</span></a
+          >
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider" />
+
+
+      </ul>
+      <!-- End of Sidebar -->
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <!-- Topbar -->
+          <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <!-- Topbar Search -->
+            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+              <div class="input-group">
+                <p>PRELATE TRAVEL AFFLIATE DASHBOARD</p>
+              </div>
+            </form>
+
+
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ user.account_number }}</span>
+                  <img class="img-profile rounded-circle" src="{% static 'images/defaultprofile.png' %}" />
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    USER: <b>{{ user.account_number }}</b>
+                  </a>
+                  <a class="dropdown-item" href="{% url 'affiliate-transactions' %}">
+                    <i class="fas fa-dollar-sign fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Account Balance: <b>NGN {{ user.balance|intcomma }}</b>
+                  </a>
+                  <a class="dropdown-item" href="{% url 'affiliate-profile' %}">
+                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                    View Profile
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">
+                    <button type="button" href="javascript:void(0)" data-toggle="modal" data-target="#withdrawModal" class="btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Withdraw Funds</button>
+
+                  </a>
+                  <a class="dropdown-item" href="{% url 'account_logout' %}">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
+          {% block content %}
+          {% endblock %}
+       
+          <!-- /.container-fluid -->
+        </div>
+        <!-- End of Main Content -->
+
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>Copyright &copy; PrelateTravel.com 2020</span>
+            </div>
+          </div>
+        </footer>
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static 'affiliate/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'affiliate/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'affiliate/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'affiliate/js/sb-admin-2.min.js' %}"></script>
+
+    <script>
+      $("#vetropayAccount").keyup(function(){
+        let vetropayAccount = $("#vetropayAccount").val();
+        if(vetropayAccount.length === 12 && Number(vetropayAccount) !== NaN){
+          validateAccount()
+        }
+      })
+
+      function validateAccount(){
+        $("#vetropayAccount").attr("disabled", true)
+        $("#withdrawButton").html(`<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>`);
+        $.get(
+          "/vetropay-verify-account",
+          {
+            userUID: $("#vetropayAccount").val()
+          },
+          function(data){
+            if(data["status"] =="success"){
+              $("#vetropayAccountName").val(data["data"]["name"])
+              $("#withdrawButton").html('Withdraw')
+              $("#withdrawButton").removeAttr("disabled")
+            }
+          }
+        )
+      }
+
+      function withdrawToAccount(){
+        const amount = $('#amount').val()
+        if(amount >= 10){
+          $("#withdrawButton").html(`<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>`);
+          $.get("/vetropay-mobile-transfer",{
+            userUID: $("#vetropayAccount").val(),
+            amount: amount
+          }, function(data){
+            if(data["status"] =="success"){
+              window.location.reload()
+            }
+          })
+        }
+      }
+    </script>
+  </body>
+</html>

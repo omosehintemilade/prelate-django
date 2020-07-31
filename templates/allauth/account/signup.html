@@ -1,0 +1,25 @@
+{% extends 'allauth/account/base.html' %} {% load bootstrap4 %} {% load i18n %} {% block head_title %}{% trans "Signup" %}{% endblock %} {% block content %}
+<div class="row">
+  <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+  <div class="col-lg-6">
+    <div class="p-5">
+      <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4">Sign up</h1>
+      </div>
+      <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+
+      <form class="signup user" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %} {% bootstrap_form form %} {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <input type="submit" class="btn btn-primary btn-user btn-block" value="{% trans 'Sign Up' %}" />
+      </form>
+      <hr />
+      <div class="copyright text-center my-auto">
+        <span>Copyright &copy; PrelateTravel.com 2020</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
