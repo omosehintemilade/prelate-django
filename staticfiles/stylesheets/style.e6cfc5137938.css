@@ -126,7 +126,7 @@ button {
 .homepage-hero {
   width: 100%;
   min-height: calc(100vh - 78px);
-  background-image: url("/static/images/aero.jpeg");
+  background-image: url("/static/images/aero.c568b9568d58.jpeg");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -247,7 +247,7 @@ button {
   min-height: 435px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-image: linear-gradient(to bottom, rgba(44, 89, 156, 0.5), rgba(44, 89, 156, 0.5)), url("/static/images/home_info.png");
+  background-image: linear-gradient(to bottom, rgba(44, 89, 156, 0.5), rgba(44, 89, 156, 0.5)), url("/static/images/home_info.edf74b8c0710.png");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -413,7 +413,7 @@ footer {
 .visa-where-would {
   width: 100%;
   min-height: calc(80vh - 78px);
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("/static/images/where-would-you.png");
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("/static/images/where-would-you.46ba45319470.png");
   background-position: center;
   background-size: cover;
   display: flex;

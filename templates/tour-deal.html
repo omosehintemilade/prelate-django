@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    {% include "partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
+    {% load widget_tweaks %} {% include "partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
   </head>
   <body>
     {% include "partials/components/_header.html" %}
@@ -21,32 +21,39 @@
         <h1 class="text-center our-services-heading mb-5">Tour Deals > {{ package.deal_name }}</h1>
         <div class="row">
           <div class="col-sm-6">
-            <img src="/{{ package.deal_image }}" alt="" class="" />
+            <img style="max-width: 300px;" src="/{{ package.deal_image }}" alt="" class="" />
           </div>
           <div class="col-sm-6">
             <div class="card card-body">
               <p class="text-center" style="font-weight: 700; font-size: 20px;">Deal information</p>
-              <p>Country/City:</p>
-              <p>Price:</p>
-              <p>Amount:</p>
-              <p>Other information:</p>
+              <p><b>Country/City:</b> {{ package.country }}</p>
+              <p><b>Price:</b> {{ package.currency }} {{ package.amount }}</p>
+              <p><b>Other information:</b> {{ package.information|safe }}</p>
               <br />
               <hr />
-              <form>
+              <form method="POST" action="">
+                {% csrf_token %}
+                <div hidden class="from-group">
+                  {% render_field form.deal class="form-control" %}
+                </div>
                 <div class="from-group">
                   <label>Full name</label>
-                  <input type="text" class="form-control" />
+                  {% render_field form.fullname class="form-control" %}
                 </div>
                 <div class="from-group">
                   <label>Email</label>
-                  <input type="email" class="form-control" />
+                  {% render_field form.email class="form-control" %}
+                </div>
+                <div class="from-group">
+                  <label>Phone Number</label>
+                  {% render_field form.phonenumber class="form-control" %}
                 </div>
                 <div class="from-group">
                   <label>No of travellers</label>
-                  <input type="email" class="form-control" />
+                  {% render_field form.number_of_travellers class="form-control" %}
                 </div>
                 <div style="margin-top: 20px;">
-                  <button class="btn btn-primary w-100 text-white">Buy Deal</button>
+                  <button type="submit" class="btn btn-primary w-100 text-white">Buy Deal</button>
                 </div>
               </form>
             </div>
@@ -57,5 +64,17 @@
     {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
     <br />
     {% include 'partials/_bottom.html' %}
+    <!--Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--End Sweet Alert-->
+    <script>
+      const url = window.location.href;
+      const splittedUrl = url.split("#");
+      if (splittedUrl[1] == "submitted") {
+        Swal.fire({
+          html: "<h5>Your Tour Deal request has been submitted successfully!. <br/><b>We will reach out to you soonest.</b></h5>",
+        });
+      }
+    </script>
   </body>
 </html>

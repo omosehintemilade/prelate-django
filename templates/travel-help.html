@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  {% load static %}
-
-    {% include "partials/_head.html" with add_title="Travel Help | Prelate Travels & Tours" %}
+    {% load static %} {% load widget_tweaks %} {% include "partials/_head.html" with add_title="Travel Help | Prelate Travels & Tours" %}
 
     <link rel="stylesheet" href="{% static 'stylesheets/select2.min.css' %}" />
     <style>
@@ -23,7 +21,6 @@
         justify-content: center;
         align-items: baseline;
       }
-
     </style>
   </head>
   <body>
@@ -95,45 +92,33 @@
                   </div>
                 </div>
 
-                <form onsubmit="event.preventDefault(); submitTravelInfo()" class="generic-form submit-travel-info-form">
+                <form method="POST" action="{% url 'travel-info' %}" class="generic-form submit-travel-info-form">
+                  {% csrf_token %}
                   <div class="generic-form--header">Travel Info Form</div>
                   <div class="generic-form--body">
                     <div class="form-group">
                       <label for="">Country of Origin</label>
-                      <select id="origin" required class="form-control select-country">
-                        <option value="">--Select Country--</option>
-                        {% for country in countries %}
-                        <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-                        {% endfor %}
-                      </select>
+                      {% render_field travel_info_form.country_of_origin class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Country of Destination</label>
-                      <select id="destination" required class="form-control select-country">
-                        {% if main_country %}
-                        <option selected value="{{main_country.country_name}}">★ {{ main_country.country_name }}</option>
-                        {% else %}
-                        <option value="">--Select Country--</option>
-                        {% endif %} {% for country in countries %}
-                        <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-                        {% endfor %}
-                      </select>
+                      {% render_field travel_info_form.country_of_destination class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Full Name</label>
-                      <input id="name" required type="text" class="form-control" placeholder="Full Name" />
+                      {% render_field travel_info_form.fullname class="form-control" placeholder="Full Name" %}
                     </div>
                     <div class="form-group">
                       <label for="">Phone Number</label>
-                      <input id="phoneNumber" required type="text" class="form-control" placeholder="Phone number" />
+                      {% render_field travel_info_form.phonenumber class="form-control" placeholder="Phone Number" %}
                     </div>
                     <div class="form-group">
                       <label for="">Email</label>
-                      <input id="email" required type="email" class="form-control" placeholder="Email" />
+                      {% render_field travel_info_form.email class="form-control" placeholder="Email" type="email" %}
                     </div>
                     <div class="form-group">
                       <label for="">Enquiry</label>
-                      <textarea id="message" required class="form-control"></textarea>
+                      {% render_field travel_info_form.enquiry class="form-control" placeholder="Write about your Enquiry here" %}
                     </div>
                     <div class="form-group mt-2">
                       <button class="btn btn-primary d-block w-100">
@@ -142,14 +127,6 @@
                     </div>
                   </div>
                 </form>
-                <!--Submit Successful-->
-                <form class="generic-form submit-travel-info-response">
-                  <div class="generic-form--header">Travel Info Form</div>
-                  <div class="generic-form--body">
-                    <p>Your Travel Info Inquiry has been successfully submitted</p>
-                  </div>
-                </form>
-                <!--End Submit-->
               </div>
             </div>
             <div class="tab-pane" id="travel-budget-" role="tabpanel" aria-labelledby="travel-budget">
@@ -165,75 +142,58 @@
                   </div>
                 </div>
 
-                <form onsubmit="event.preventDefault(); submitTravelAssist()" class="generic-form submit-travel-assist-form">
+                <form method="POST" action="{% url 'travel_budget' %}" class="generic-form submit-travel-assist-form">
+                  {% csrf_token %}
                   <div class="generic-form--header">Travel Budget</div>
                   <div class="generic-form--body">
                     <div class="form-group">
                       <label for="">Country of Origin</label>
-                      <select required id="origin" class="form-control select-country">
-                        <option value="">--Select Country--</option>
-                        {% for country in countries %}
-                        <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-                        {% endfor %}
-                      </select>
+                      {% render_field travel_budget_form.country_of_origin class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Country of Destination</label>
-                      <select required id="destination" class="form-control select-country">
-                        {% if main_country %}
-                        <option selected value="{{ main_country.country_name }}">★ {{ main_country.country_name }}</option>
-                        {% else %}
-                        <option value="">--Select Country--</option>
-                        {% endif %} {% for country in countries %}
-                        <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-                        {% endfor %}
-                      </select>
+                      {% render_field travel_budget_form.country_of_destination class="form-control" %}
+                    </div>
+                    <div class="form-group">
+                      <label for="">Full Name</label>
+                      {% render_field travel_budget_form.fullname class="form-control" placeholder="Full Name" %}
+                    </div>
+                    <div class="form-group">
+                      <label for="">Email</label>
+                      {% render_field travel_budget_form.email class="form-control" placeholder="Email" %}
                     </div>
                     <div class="form-group">
                       <label for="">One way/ Return ticket</label>
-                      <select class="form-control">
-                        <option>One way</option>
-                        <option>Return ticket</option>
-
-                      </select>
+                      {% render_field travel_budget_form.ticket_type class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Ticket class</label>
-                      <select class="form-control">
-                        <option>--Select--</option>
-                        <option>First Class</option>
-                        <option>Business Class</option>
-                        <option>Economy Class</option>
-                      </select>
+                      {% render_field travel_budget_form.ticket_class class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">No. of travellers</label>
-                      <input required id="dob" type="number" class="form-control" placeholder="No. of travellers" />
+                      {% render_field travel_budget_form.no_of_travellers class="form-control" placeholder="No. of travellers e.g 1 Adult 2 Children" %}
                     </div>
                     <div class="form-group">
                       <label for="">Airport Pickup</label>
-                      <select class="form-control">
-                        <option>--Select--</option>
-                        <option>Yes</option>
-                        <option>No</option>
-                      </select>
+                      {% render_field travel_budget_form.airport_pickup class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Hotel Reservation</label>
-                      <select class="form-control">
-                        <option>--Select--</option>
-                        <option>Yes</option>
-                        <option>No</option>
-                      </select>
+                      {% render_field travel_budget_form.hotel_reservation class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Duration of stay</label>
-                      <input type="text" required class="form-control" placeholder="Duration"></input>
+                      {% render_field travel_budget_form.duration_of_stay class="form-control" placeholder="e.g 2 Weeks, 90 days, 1 year" %}
                     </div>
 
                     <div class="form-group">
-                      <label for="">Your estimated budget ($- USD)</label>
-                      <input required id="email" class="form-control" placeholder="Budget (USD)"></input>
+                      <label for="">Budget currency (USD/NGN)</label>
+                      {% render_field travel_budget_form.estimated_budget_currency class="form-control" %}
+                    </div>
+                    <div class="form-group">
+                      <label for="">Your estimated budget amount</label>
+                      {% render_field travel_budget_form.estimated_budget_value class="form-control" type="number" %}
                     </div>
 
                     <div class="form-group mt-2">
@@ -244,10 +204,9 @@
                   </div>
                 </form>
                 <!--Submit Successful-->
-                
+
                 <!--End Submit-->
               </div>
-
             </div>
             <div class="tab-pane" id="travel-assist-" role="tabpanel" aria-labelledby="travel-assit">
               <div class="travel-assist-tab">
@@ -262,52 +221,40 @@
                   </div>
                 </div>
 
-                <form onsubmit="event.preventDefault(); submitTravelAssist()" class="generic-form submit-travel-assist-form">
+                <form method="POST" action="{% url 'travel-assistance' %}" class="generic-form submit-travel-assist-form">
+                  {% csrf_token %}
                   <div class="generic-form--header">Travel Assisance Form</div>
                   <div class="generic-form--body">
                     <div class="form-group">
                       <label for="">Country of Origin</label>
-                      <select required id="Corigin" class="form-control select-country">
-                        <option value="">--Select Country--</option>
-                        {% for country in countries %}
-                        <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-                        {% endfor %}
-                      </select>
+                      {% render_field travel_assistance_form.country_of_origin class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Country of Destination</label>
-                      <select required id="Cdestination" class="form-control select-country">
-                        {% if main_country %}
-                        <option selected value="{{ main_country.country_name }}">★ {{ main_country.country_name }}</option>
-                        {% else %}
-                        <option value="">--Select Country--</option>
-                        {% endif %} {% for country in countries %}
-                        <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-                        {% endfor %}
-                      </select>
+                      {% render_field travel_assistance_form.country_of_destination class="form-control" %}
                     </div>
                     <div class="form-group">
                       <label for="">Full Name</label>
-                      <input required id="Cname" type="text" class="form-control" placeholder="Full Name" />
+                      {% render_field travel_assistance_form.fullname class="form-control" placeholder="Full Name" %}
                     </div>
                     <div class="form-group">
                       <label for="">Date of Birth</label>
-                      <input required id="Cdob" type="date" class="form-control" placeholder="Date of Birth" />
+                      {% render_field travel_assistance_form.dob class="form-control" type="date" %}
                     </div>
                     <div class="form-group">
                       <label for="">Phone Number</label>
-                      <input required id="CphoneNumber" type="text" class="form-control" placeholder="Phone number" />
+                      {% render_field travel_assistance_form.phonenumber class="form-control" placeholder="Phone Number" %}
                     </div>
                     <div class="form-group">
                       <label for="">Email Address</label>
-                      <input required id="Cemail" class="form-control" placeholder="Email Address"></input>
+                      {% render_field travel_assistance_form.email class="form-control" placeholder="Email" type="email" %}
                     </div>
 
                     <div class="form-group mb-4">
                       <label for="">How can we assist you?</label>
                       <div class="row">
                         <div class="col-12">
-                          <textarea required id="Cmessage" class="form-control"></textarea>
+                          {% render_field travel_assistance_form.enquiry class="form-control" %}
                         </div>
                       </div>
                     </div>
@@ -316,7 +263,7 @@
                       <label for="">Upload Document</label>
                       <div class="row">
                         <div class="col-12">
-                          <input required id="uploadDocument" type="file" name="" id="" class="form-control" />
+                          {% render_field travel_assistance_form.document class="form-control" %}
                         </div>
                       </div>
                     </div>
@@ -327,38 +274,29 @@
                     </div>
                   </div>
                 </form>
-                <!--Submit Successful-->
-                <form class="generic-form submit-travel-assist-response">
-                  <div class="generic-form--header">Travel Assistance Form</div>
-                  <div class="generic-form--body">
-                    <p>Your Travel Assistance Information has been successfully submitted</p>
-                  </div>
-                </form>
-                <!--End Submit-->
               </div>
             </div>
           </div>
           <!--Country Information-->
           <div class="col-lg-4">
             <div class="row">
-            <div class="card card-body">
-              <h4>Info-section</h4>
-              <hr />
-              <span>Country: <b>{{ main_country.country_name }}</b> </span><br />
-              <span>Capital city: <b>{{ main_country.capital_city }}</b></span
-              ><br />
-              <span>Currency: <b>{{ main_country.currency }}</b></span
-              ><br />
-              <span>Temp: <b>{{ main_country.temperature }}</b></span
-              ><br />
-              <img style="max-width: 300px;" src="{{  main_country.image_url }}" alt="" />
-              <br />
-              Other info: {{ main_country.information|safe }}
+              <div class="card card-body">
+                <h4>Info-section</h4>
+                <hr />
+                <span>Country: <b>{{ main_country.country_name }}</b> </span><br />
+                <span>Capital city: <b>{{ main_country.capital_city }}</b></span
+                ><br />
+                <span>Currency: <b>{{ main_country.currency }}</b></span
+                ><br />
+                <span>Temp: <b>{{ main_country.temperature }}</b></span
+                ><br />
+                <img style="max-width: 300px;" src="{{  main_country.image_url }}" alt="" />
+                <br />
+                Other info: {{ main_country.information|safe }}
+              </div>
             </div>
           </div>
-          </div>
           <!--End Country Information-->
-          
         </div>
       </div>
     </section>
@@ -368,6 +306,9 @@
     {% include 'partials/_bottom.html' %}
 
     <script src="{% static 'javascripts/select2.full.min.js' %}"></script>
+    <!--Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--End Sweet Alert-->
     <script>
       $(function () {
         $(".select-country").select2();
@@ -380,62 +321,12 @@
     </script>
 
     <script>
-      $(".submit-travel-info-response").toggle();
-      $(".submit-travel-assist-response").toggle()
-
-
-      //Travel Info
-      function submitTravelInfo() {
-        $(".submit-travel-info-form").toggle();
-        $(".submit-travel-info-response").toggle();
-        const body = {
-          type: "travelInfo",
-          origin: $(".submit-travel-info-form #origin").children("option:selected").val(),
-          destination: $(".submit-travel-info-form #destination").children("option:selected").val(),
-          name: $(".submit-travel-info-form #name").val(),
-          phoneNumber: $(".submit-travel-info-form #phoneNumber").val(),
-          email: $(".submit-travel-info-form #email").val(),
-          message: $(".submit-travel-info-form #message").val(),
-        };
-        $.post("", body, function (data) {
-          console.log(data);
+      const url = window.location.href;
+      const splittedUrl = url.split("#");
+      if (splittedUrl[1] == "submitted") {
+        Swal.fire({
+          html: "<h5>Your Enquriry has been submitted successfully!. <br/><b>We will reach out to you as soonest.</b></h5>",
         });
-      }
-
-      // Travel Assistance
-      function submitTravelAssist(){
-        $(".submit-travel-assist-form").toggle();
-        $(".submit-travel-assist-response").toggle();
-
-        const body = {
-          type: "travelAssist",
-          origin: $(".submit-travel-assist-form #Corigin").children("option:selected").val(),
-          destination: $(".submit-travel-assist-form #Cdestination").children("option:selected").val(),
-          name: $(".submit-travel-assist-form #Cname").val(),
-          dob: $(".submit-travel-assist-form #Cdob").val(),
-          phoneNumber: $(".submit-travel-assist-form #CphoneNumber").val(),
-          email: $(".submit-travel-assist-form #Cemail").val(),
-          message: $(".submit-travel-assist-form #Cmessage").val(),
-          //uploadDocument: $(".submit-travel-assist-form #uploadDocument").prop('files')[0],
-        };
-
-        // $.ajax({
-        //   url: "",
-        //   type: "POST",
-        //   data: body,
-        //   cache: false,
-        //   contentType: 'application/json',
-        //   processData: false,
-        //   success: function(data){
-        //     console.log(data)
-        //   }
-        // })
-
-        $.post("", body,  function(data){
-          console.log(data)
-        })
-
-       
       }
     </script>
   </body>

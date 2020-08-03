@@ -11,6 +11,8 @@ import calendar
 import decimal
 from django.db.models import Sum, Q
 import requests
+from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm
+from .forms import UsersCustomTourRequestForm, TourDealInterestForm
 
 
 def home(request):
@@ -30,7 +32,10 @@ def travel_help(request):
                 request,
                 "travel-help.html",
                 context={
-                    "countries": countries
+                    "countries": countries,
+                    "travel_info_form": TravelInformationForm(),
+                    "travel_assistance_form": TravelAssistanceForm(),
+                    "travel_budget_form": TravelBudgetForm()
                 }
             )
         else:
@@ -41,7 +46,10 @@ def travel_help(request):
                     "travel-help.html",
                     context={
                         "countries": countries,
-                        "main_country": CoveredCountry.objects.get(country_name=country_requested)
+                        "main_country": CoveredCountry.objects.get(country_name=country_requested),
+                        "travel_info_form": TravelInformationForm(),
+                        "travel_assistance_form": TravelAssistanceForm(),
+                        "travel_budget_form": TravelBudgetForm()
                     }
                 )
             else:
@@ -49,60 +57,39 @@ def travel_help(request):
                     request,
                     "travel-help.html",
                     context={
-                        "countries": countries
+                        "countries": countries,
+                        "travel_info_form": TravelInformationForm(),
+                        "travel_assistance_form": TravelAssistanceForm(),
+                        "travel_budget_form": TravelBudgetForm()
                     }
                 )
-    elif request.method == "POST" and request.is_ajax:
-        form_type = request.POST.get("type")
-        if form_type == "travelInfo":
-            origin = request.POST.get("origin")
-            destination = request.POST.get("destination")
-            name = request.POST.get("name")
-            phone_number = request.POST.get("phoneNumber")
-            email = request.POST.get("email")
-            message = request.POST.get("message")
 
-            # Create Record in Table
-            TravelInformation.objects.create(
-                country_of_origin=CoveredCountry.objects.get(
-                    country_name=origin),
-                country_of_destination=CoveredCountry.objects.get(
-                    country_name=destination),
-                fullname=name,
-                phonenumber=phone_number,
-                email=email,
-                enquiry=message
-            )
 
-            return JsonResponse({"status": "success"}, safe=False)
+def travel_info(request):
+    if request.method == "POST":
+        form = TravelInformationForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
 
-        elif form_type == "travelAssist":
-            origin = request.POST.get("origin")
-            destination = request.POST.get("destination")
-            name = request.POST.get("name")
-            dob = request.POST.get("dob")
-            phone_number = request.POST.get("phoneNumber")
-            email = request.POST.get("email")
-            message = request.POST.get("message")
-            document = request.FILES
+            return redirect("/travel-help#submitted")
 
-            print("gg", origin, destination)
 
-            # Create Record
-            TravelAssistance.objects.create(
-                country_of_origin=CoveredCountry.objects.get(
-                    country_name=origin),
-                country_of_destination=CoveredCountry.objects.get(
-                    country_name=destination),
-                fullname=name,
-                phonenumber=phone_number,
-                email=email,
-                enquiry=message,
-                dob=dob,
-                document=document
-            )
+def travel_assistance(request):
+    if request.method == "POST":
+        form = TravelAssistanceForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
 
-            return JsonResponse({"status": "success"}, safe=False)
+            return redirect("/travel-help#submitted")
+
+
+def travel_budget(request):
+    if request.method == "POST":
+        form = TravelBudgetForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+
+            return redirect("/travel-help#submitted")
 
 
 def travel_insurance(request):
@@ -152,7 +139,9 @@ def visa_assistance(request):
                 request,
                 "visa-assistance.html",
                 context={
-                    "countries": countries
+                    "countries": countries,
+                    "travel_assistance_form": TravelAssistanceForm(),
+
                 }
             )
         else:
@@ -162,7 +151,9 @@ def visa_assistance(request):
                     "visa-assistance.html",
                     context={
                         "countries": countries,
-                        "main_country": CoveredCountry.objects.get(country_name=country_requested)
+                        "main_country": CoveredCountry.objects.get(country_name=country_requested),
+                        "travel_assistance_form": TravelAssistanceForm(),
+
                     }
                 )
             else:
@@ -170,7 +161,9 @@ def visa_assistance(request):
                     request,
                     "visa-assistance.html",
                     context={
-                        "countries": countries
+                        "countries": countries,
+                        "travel_assistance_form": TravelAssistanceForm(),
+
                     }
                 )
 
@@ -188,20 +181,42 @@ def tour(request):
 
 def tour_deal(request, pk, slug):
     package = TourDeal.objects.filter(id=pk, slug=slug).first()
-    return render(
-        request,
-        "tour-deal.html",
-        context={
-            "package": package
-        }
-    )
+
+    if request.method == "GET":
+        return render(
+            request,
+            "tour-deal.html",
+            context={
+                "package": package,
+                "form": TourDealInterestForm(initial={
+                    'deal': package
+                })
+            }
+        )
+    elif request.method == "POST":
+        form = TourDealInterestForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+
+        redirect_link = "/tour/{}/{}#submitted".format(pk, slug)
+        return redirect(redirect_link)
 
 
 def customize_tour(request):
-    return render(
-        request,
-        "tour-package-customize.html"
-    )
+    if request.method == "GET":
+        return render(
+            request,
+            "tour-package-customize.html",
+            {
+                "form": UsersCustomTourRequestForm()
+            }
+        )
+    elif request.method == "POST":
+        form = UsersCustomTourRequestForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+
+        return redirect("/tour-package-customize#submitted")
 
 
 def business_travel(request):
@@ -397,29 +412,32 @@ def vetropay_verify_account(request):
 @login_required
 def vetropay_fund_transfer(request):
     if request.method == "GET" and request.is_ajax:
+        user = request.user
         mobile_uid = request.GET.get("userUID")
         amount = request.GET.get("amount")
 
-        resolve_account_response = requests.post("https://api.vetropay.com/v1/tunnel/transferfund", json={
-            "publicKey": os.environ["VETROPAY_PUBLIC_KEY"],
-            "privateKey": os.environ["VETROPAY_PRIVATE_KEY"],
-            "mobileUID": mobile_uid,
-            "amount": amount,
-            "details": "Prelate Travel Ltd to {}".format(mobile_uid),
-            "transferType": "autocall"
-        })
+        if amount <= user.balance:
+            resolve_account_response = requests.post("https://api.vetropay.com/v1/tunnel/transferfund", json={
+                "publicKey": os.environ["VETROPAY_PUBLIC_KEY"],
+                "privateKey": os.environ["VETROPAY_PRIVATE_KEY"],
+                "mobileUID": mobile_uid,
+                "amount": amount,
+                "details": "Prelate Travel Ltd to {}".format(mobile_uid),
+                "transferType": "autocall"
+            })
 
-        response = resolve_account_response.json()
-        if response["status"] == "success":
-            user = request.user
-            user.balance = user.balance - decimal.Decimal(amount)
-            user.save(update_fields=["balance", ])
+            response = resolve_account_response.json()
+            if response["status"] == "success":
+                user.balance = user.balance - decimal.Decimal(amount)
+                user.save(update_fields=["balance", ])
 
-            UserTransactionRecord.objects.create(
-                user=user,
-                transaction_type="DR",
-                amount=amount,
-                metadata="Prelate Travel Ltd to {}".format(mobile_uid)
-            )
+                UserTransactionRecord.objects.create(
+                    user=user,
+                    transaction_type="DR",
+                    amount=amount,
+                    metadata="Prelate Travel Ltd to {}".format(mobile_uid)
+                )
 
-        return JsonResponse(resolve_account_response.json(), safe=False)
+            return JsonResponse(resolve_account_response.json(), safe=False)
+        else:
+            return JsonResponse({"status": "failed",  "message": "Affiliate User Account Balance is insufficient"})

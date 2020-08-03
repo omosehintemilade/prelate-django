@@ -9,7 +9,19 @@
     <div class="float-right">
       <ul class="nav-links">
         <li><a href="/" class="nav-link">Reservations</a></li>
-        <li><a href="{% url 'travel-help' %}" class="nav-link">Travel Help</a></li>
+        <li>
+          <div href="{% url 'travel-help' %}" class="nav-link dropbtn-service">
+              Travel Help
+              <div class="service-dropdown-content">
+                <p>
+                  <a href="{% url 'travel-help' %}">Travel Info</a>
+                  <a href="{% url 'travel-help' %}">Travel Budget</a>
+                  <a href="{% url 'travel-help' %}">Travel Assist</a>
+                </p>
+            </div>
+            </div>
+          </a>
+        </li>
         <li><a href="{% url 'travel-insurance' %}" class="nav-link">Travel Insurance</a></li>
         <li><a href="{% url 'visa-assistance' %}" class="nav-link">Visa</a></li>
         <li><a href="{% url 'tour' %}" class="nav-link">Tour</a></li>
