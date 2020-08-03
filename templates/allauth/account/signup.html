@@ -12,6 +12,8 @@
         {% csrf_token %} {% bootstrap_form form %} {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
         {% endif %}
+        <input type="checkbox" onclick="revealPassword()" /> Show Password <br />
+        <br />
         <input type="submit" class="btn btn-primary btn-user btn-block" value="{% trans 'Sign Up' %}" />
       </form>
       <hr />
@@ -21,5 +23,16 @@
     </div>
   </div>
 </div>
+
+<script>
+  function revealPassword() {
+    let passW = document.getElementById("id_password1");
+    if (passW.type === "password") {
+      passW.type = "text";
+    } else {
+      passW.type = "password";
+    }
+  }
+</script>
 
 {% endblock %}
