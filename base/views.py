@@ -76,10 +76,9 @@ def travel_info(request):
 
 def travel_assistance(request):
     if request.method == "POST":
-        form = TravelAssistanceForm(request.POST)
+        form = TravelAssistanceForm(request.POST, request.FILES)
         if form.is_valid():
             form.save(commit=True)
-
             return redirect("/travel-help#submitted")
 
 
@@ -166,6 +165,23 @@ def visa_assistance(request):
 
                     }
                 )
+    elif request.method == "POST":
+        countries = CoveredCountry.objects.all()
+        form = TravelAssistanceForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form)
+            form.save(commit=True)
+            return redirect("/visa-assistance#submitted")
+        else:
+            return render(
+                request,
+                "visa-assistance.html",
+                context={
+                    "countries": countries,
+                    "travel_assistance_form": TravelAssistanceForm(),
+
+                }
+            )
 
 
 def tour(request):

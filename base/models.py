@@ -55,7 +55,8 @@ class TravelAssistance(models.Model):
     phonenumber = models.CharField(max_length=100)
     email = models.EmailField()
     enquiry = models.TextField()
-    document = models.ImageField(upload_to="static/uploads/travels")
+    document = models.ImageField(
+        upload_to="static/uploads/travels", null=True, blank=True)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

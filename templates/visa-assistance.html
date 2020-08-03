@@ -54,8 +54,8 @@
             </div>
           </div>
           <div class="offset-md-1 col-md-6">
-            <form method="POST" action="{% url 'travel-assistance' %}" class="generic-form submit-travel-assist-form">
-              {% csrf_token %}
+            <form method="POST" action="" class="generic-form submit-travel-assist-form" enctype="multipart/form-data">
+              {% csrf_token %} {{ form.errors }} {{ form.non_field_errors }}
               <div class="generic-form--header">Visa Assisance Form</div>
               <div class="generic-form--body">
                 <div class="form-group">
@@ -85,7 +85,7 @@
 
                 <div class="form-group mb-4">
                   <label for="">How can we assist you?</label>
-                  <small><span style="color: red">*</span>Indicate Visa category in your enquiry.</small>
+                  <small><span style="color: red;">*</span>Indicate Visa category in your enquiry.</small>
                   <div class="row">
                     <div class="col-12">
                       {% render_field travel_assistance_form.enquiry class="form-control" placeholder="Kindly Inidicate the Visa category for your Application, to enable us assist you properly." %}

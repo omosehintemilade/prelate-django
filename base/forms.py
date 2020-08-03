@@ -14,6 +14,10 @@ class TravelAssistanceForm(forms.ModelForm):
         model = TravelAssistance
         fields = "__all__"
 
+    def __init__(self, *args, **kwargs):
+        super(TravelAssistanceForm, self).__init__(*args, **kwargs)
+        self.fields['document'].required = False
+
 
 class TravelBudgetForm(forms.ModelForm):
     class Meta:
