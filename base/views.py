@@ -16,10 +16,12 @@ from .forms import UsersCustomTourRequestForm, TourDealInterestForm
 
 
 def home(request):
-    return render(
-        request,
-        "index.html"
-    )
+    # return render(
+    #     request,
+    #     "index.html"
+    # )
+
+    return redirect("https://flights.prelatetravel.com/index.php")
 
 
 def travel_help(request):
