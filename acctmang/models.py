@@ -86,6 +86,8 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     phone_number = models.CharField(max_length=30, blank=True)
     full_name = models.CharField(max_length=50, blank=True)
+    country = models.CharField(max_length=100, blank=True)
+    dob = models.DateField(blank=True)
     account_type = models.CharField(
         max_length=10, choices=PROFILE_TYPE, default="01")
 

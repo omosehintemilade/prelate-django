@@ -158,12 +158,12 @@ MEDIA_URL = '/media/'
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST = "smtp.zoho.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "prelatetravelnotif@gmail.com"
-DEFAULT_FROM_EMAIL = "prelatetravelnotif@gmail.com"
-EMAIL_HOST_PASSWORD = "Stop@now"
+EMAIL_HOST_USER = "sales@prelatetravel.com"
+DEFAULT_FROM_EMAIL = "sales@prelatetravel.com"
+EMAIL_HOST_PASSWORD = "Stop@now1"
 
 SITE_ID = 1
 # django-allauth registraion settings
@@ -196,5 +196,6 @@ ACCOUNT_USER_MODEL_EMAIL_FIELD = 'email'
 ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+#ACCOUNT_FORMS = {'signup': 'base.forms.MyCustomSignupForm'}
 
 django_heroku.settings(locals())

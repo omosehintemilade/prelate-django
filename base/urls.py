@@ -29,5 +29,9 @@ urlpatterns = [
     path('vetropay-mobile-transfer',
          views.vetropay_fund_transfer, name='transfer-fund'),
 
+     #
+     path('term-of-service', views.term_of_service, name="term-of-service"),
+     path('privacy-policy', views.privacy_policy, name="privacy-policy")
+
 
 ]

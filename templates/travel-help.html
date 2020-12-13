@@ -28,11 +28,9 @@
 
     <section class="visa-where-would">
       <div class="container d-block">
-        <p>
-          Where would you like to travel to?
-        </p>
+        <p>Where would you like to travel to?</p>
         <div class="row mt-4 search-container">
-          <div style="margin-bottom: 10px;" class="col-sm-10">
+          <div style="margin-bottom: 10px" class="col-sm-10">
             <select required class="form-control select-country select-country-meta">
               {% if main_country %}
               <option selected value="{{ main_country.country_name }}">★ {{ main_country.country_name }}</option>
@@ -74,9 +72,7 @@
               <div class="travel-info-tab">
                 <div class="mb-4 text-center">
                   <div>
-                    <h3 class="visa-assist-form-heading mb-4 text-center">
-                      Travel Info
-                    </h3>
+                    <h3 class="visa-assist-form-heading mb-4 text-center">Travel Info</h3>
                     <p class="visa-assist-form-body mb-4">
                       If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always more than happy to help you achieve your
                       desire destination.
@@ -121,9 +117,7 @@
                       {% render_field travel_info_form.enquiry class="form-control" placeholder="Write about your Enquiry here" %}
                     </div>
                     <div class="form-group mt-2">
-                      <button class="btn btn-primary d-block w-100">
-                        Submit Form
-                      </button>
+                      <button class="btn btn-primary d-block w-100">Submit Form</button>
                     </div>
                   </div>
                 </form>
@@ -133,12 +127,8 @@
               <div class="travel-assist-tab">
                 <div class="mb-4 text-center">
                   <div>
-                    <h3 class="visa-assist-form-heading mb-4 text-center">
-                      Travel Budget Form
-                    </h3>
-                    <p class="visa-assist-form-body mb-4">
-                      Simply fill the form provided below with the required details.
-                    </p>
+                    <h3 class="visa-assist-form-heading mb-4 text-center">Travel Budget Form</h3>
+                    <p class="visa-assist-form-body mb-4">Simply fill the form provided below with the required details.</p>
                   </div>
                 </div>
 
@@ -197,9 +187,7 @@
                     </div>
 
                     <div class="form-group mt-2">
-                      <button type="submit" class="btn btn-primary d-block w-100">
-                        Submit Form
-                      </button>
+                      <button type="submit" class="btn btn-primary d-block w-100">Submit Form</button>
                     </div>
                   </div>
                 </form>
@@ -212,12 +200,8 @@
               <div class="travel-assist-tab">
                 <div class="mb-4 text-center">
                   <div>
-                    <h3 class="visa-assist-form-heading mb-4 text-center">
-                      Travel Assist Form
-                    </h3>
-                    <p class="visa-assist-form-body mb-4">
-                      Simply fill the form provided below with the required details.
-                    </p>
+                    <h3 class="visa-assist-form-heading mb-4 text-center">Travel Assist Form</h3>
+                    <p class="visa-assist-form-body mb-4">Simply fill the form provided below with the required details.</p>
                   </div>
                 </div>
 
@@ -253,24 +237,18 @@
                     <div class="form-group mb-4">
                       <label for="">How can we assist you?</label>
                       <div class="row">
-                        <div class="col-12">
-                          {% render_field travel_assistance_form.enquiry class="form-control" %}
-                        </div>
+                        <div class="col-12">{% render_field travel_assistance_form.enquiry class="form-control" %}</div>
                       </div>
                     </div>
 
                     <div class="form-group mb-4">
-                      <label for="">Upload Document</label>
+                      <label for="">Upload Travel Document</label>
                       <div class="row">
-                        <div class="col-12">
-                          {% render_field travel_assistance_form.document class="form-control" %}
-                        </div>
+                        <div class="col-12">{% render_field travel_assistance_form.document class="form-control" %}</div>
                       </div>
                     </div>
                     <div class="form-group mt-2">
-                      <button type="submit" class="btn btn-primary d-block w-100">
-                        Submit Form
-                      </button>
+                      <button type="submit" class="btn btn-primary d-block w-100">Submit Form</button>
                     </div>
                   </div>
                 </form>
@@ -290,7 +268,7 @@
                 ><br />
                 <span>Temp: <b>{{ main_country.temperature }}</b></span
                 ><br />
-                <img style="max-width: 300px;" src="{{  main_country.image_url }}" alt="" />
+                <img style="max-width: 300px" src="{{  main_country.image_url }}" alt="" />
                 <br />
                 Other info: {{ main_country.information|safe }}
               </div>

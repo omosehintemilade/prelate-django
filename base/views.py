@@ -377,6 +377,8 @@ def affiliate_profile(request):
                 'profile_form': EditProfileInformation(initial={
                     'phone_number': user.profile.phone_number,
                     'full_name': user.profile.full_name,
+                    'country': user.profile.country,
+                    'dob': user.profile.dob,
                     'account_type': user.profile.account_type
                 })
             }
@@ -388,11 +390,15 @@ def affiliate_profile(request):
             affiliate_account = Profile.objects.get(user=request.user)
             affiliate_account.phone_number = profile_update_form.phone_number
             affiliate_account.full_name = profile_update_form.full_name
+            affiliate_account.country = profile_update_form.country
+            affiliate_account.dob = profile_update_form.dob
             affiliate_account.account_type = profile_update_form.account_type
 
             affiliate_account.save(update_fields=[
                 "phone_number",
                 "full_name",
+                "country",
+                "dob",
                 "account_type"
             ])
             return redirect('affiliate-profile')
@@ -459,3 +465,16 @@ def vetropay_fund_transfer(request):
             return JsonResponse(resolve_account_response.json(), safe=False)
         else:
             return JsonResponse({"status": "failed",  "message": "Affiliate User Account Balance is insufficient"})
+
+
+def term_of_service(request):
+    return render(
+        request,
+        "term_of_service.html"
+    )
+
+def privacy_policy(request):
+    return render(
+        request,
+        "privacy_policy.html"
+    )
