@@ -87,7 +87,7 @@ class Profile(models.Model):
     phone_number = models.CharField(max_length=30, blank=True)
     full_name = models.CharField(max_length=50, blank=True)
     country = models.CharField(max_length=100, blank=True)
-    dob = models.DateField(blank=True)
+    dob = models.DateField(blank=True, null=True)
     account_type = models.CharField(
         max_length=10, choices=PROFILE_TYPE, default="01")
 

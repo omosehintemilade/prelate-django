@@ -3,21 +3,29 @@ from .models import TravelInformation, TravelAssistance, TravelBudget
 from .models import UsersCustomTourRequest, TourDealInterest
 from allauth.account.forms import SignupForm
 
+PROFILE_TYPE = (
+    ('01', 'INIDIVDUAL'),
+    ('02', 'BUSINESS')
+    )
+
 
 class MyCustomSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super(MyCustomSignupForm, self).__init__(*args, **kwargs)
-        self.fields['full_name'] = forms.CharField(required=True)
-        self.fields['country'] = forms.CharField(required=True)
-        self.fields['dob'] = forms.DateField(required=True)
-        self.fields['phone_number'] = forms.CharField(required=True)
+        self.fields['account_type'] = forms.ChoiceField(choices=PROFILE_TYPE)
 
 
 
 
     def save(self, request):
         user = super(MyCustomSignupForm, self).save(request)
-        full_name = self.cleaned_data.pop('full_name')
+        account_type = self.cleaned_data.pop('account_type')
+
+        # Update profile Information
+        user.profile.account_type = account_type
+        user.profile.save(update_fields = ["account_type"])
+
+        return user
 
 
 class TravelInformationForm(forms.ModelForm):
