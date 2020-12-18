@@ -32,7 +32,8 @@ urlpatterns = [
 
      #
      path('term-of-service', views.term_of_service, name="term-of-service"),
-     path('privacy-policy', views.privacy_policy, name="privacy-policy")
+     path('privacy-policy', views.privacy_policy, name="privacy-policy"),
+     path('referrals', views.referral, name="referral")
 
 
 ]

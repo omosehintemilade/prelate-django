@@ -201,3 +201,11 @@ class RequestChange(models.Model):
 
     
 
+class CustomerReferralRecord(models.Model):
+    fullname = models.CharField(max_length=100)
+    email = models.EmailField()
+    affiliate_id = models.CharField(max_length=100)
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} : {}".format(self.fullname, self.affiliate_id)

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %} {% include "partials/_head.html" with add_title="Referral Form | Prelate Travels & Tours" %}
+    <link rel="stylesheet" href="{% static 'stylesheets/select2.min.css' %}" />
+  </head>
+  <body>
+    {% include "partials/components/_header.html" %}
+    <section class="visa-assist-form flex-center-content">
+      <div class="container">
+        <div class="row">
+          <div class="offset-2 col-8">
+            <div class="mb-4 text-center">
+              <div>
+                <h3 class="visa-assist-form-heading mb-4 text-center">Affiliate & Referral Form</h3>
+                <p class="visa-assist-form-body mb-4">
+                  Did you get reffered to our website by an Affiliate/Agent? Kindly fill our Refferal-form to enable us reward our Affiliates and Agents.
+                </p>
+              </div>
+            </div>
+
+            <form onsubmit="event.preventDefault(); submitTravelInsurance()" class="generic-form submit-travel-insurance-form">
+              <div class="generic-form--header">Customer Form</div>
+              <div class="generic-form--body">
+                <div class="form-group">
+                  <label for="">Customer Full Name</label>
+                  <input required id="fullname" class="form-control" placeholder="Enter name on Purchases/Ticket" />
+                </div>
+                <div class="form-group">
+                  <label for="">Email</label>
+                  <input required id="email" type="email" class="form-control" placeholder="Email" />
+                </div>
+                <div class="form-group">
+                  <label for="">Affiliate ID</label>
+                  <input required id="referralID" class="form-control" placeholder="Enter Affiliate/Refferal ID" />
+                </div>
+
+                <div class="form-group mt-2">
+                  <button type="submit" class="btn btn-primary d-block w-100">Submit Form</button>
+                </div>
+              </div>
+            </form>
+            <!--Submit Successful-->
+            <form class="generic-form submit-travel-insurance-response">
+              <div class="generic-form--header">Customer Form</div>
+              <div class="generic-form--body">
+                <p>Your Form has been successfully submitted. Thank you</p>
+              </div>
+            </form>
+            <!--End Submit-->
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
+    <br />
+    {% include 'partials/_bottom.html' %}
+    <script src="{% static 'javascripts/select2.full.min.js' %}"></script>
+    <script>
+      $(function () {
+        $(".select-country").select2();
+      });
+    </script>
+    <script>
+      $(".submit-travel-insurance-response").toggle();
+
+      function submitTravelInsurance() {
+        $(".submit-travel-insurance-form").toggle();
+        $(".submit-travel-insurance-response").toggle();
+
+        const body = {
+          name: $(".submit-travel-insurance-form #fullname").val(),
+          email: $(".submit-travel-insurance-form #email").val(),
+          referralID: $(".submit-travel-insurance-form #referralID").val(),
+        };
+
+        $.post("", body, function (data) {
+          console.log(data);
+        });
+      }
+    </script>
+  </body>
+</html>

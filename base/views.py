@@ -2,6 +2,7 @@ import os
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TravelInsurace, TourDeal, TravelAssistance
+from .models import CustomerReferralRecord
 from django.http import JsonResponse
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
@@ -490,4 +491,19 @@ def privacy_policy(request):
     return render(
         request,
         "privacy_policy.html"
+    )
+
+def referral(request):
+    if request.method == "POST":
+        name = request.POST.get("name")
+        email = request.POST.get("email")
+        referralID = request.POST.get("referralID")
+
+        CustomerReferralRecord.objects.create(fullname=name, email=email, affiliate_id=referralID) 
+        
+        return JsonResponse({"status": "success"}, safe=False)
+
+    return render(
+        request,
+        "referral-form.html"
     )
