@@ -187,3 +187,17 @@ class UsersCustomTourRequest(models.Model):
 
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+
+class RequestChange(models.Model):
+    fullname = models.CharField(max_length=100)
+    email = models.EmailField()
+    phonenumber = models.CharField(max_length=100)
+    request_info = models.TextField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+    
+

@@ -1,6 +1,6 @@
 from django import forms
 from .models import TravelInformation, TravelAssistance, TravelBudget
-from .models import UsersCustomTourRequest, TourDealInterest
+from .models import UsersCustomTourRequest, TourDealInterest, RequestChange
 from allauth.account.forms import SignupForm
 
 PROFILE_TYPE = (
@@ -59,4 +59,10 @@ class UsersCustomTourRequestForm(forms.ModelForm):
 class TourDealInterestForm(forms.ModelForm):
     class Meta:
         model = TourDealInterest
+        fields = "__all__"
+
+
+class RequestChangeForm(forms.ModelForm):
+    class Meta:
+        model = RequestChange
         fields = "__all__"

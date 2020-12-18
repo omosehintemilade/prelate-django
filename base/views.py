@@ -12,7 +12,7 @@ import decimal
 from django.db.models import Sum, Q
 import requests
 from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm
-from .forms import UsersCustomTourRequestForm, TourDealInterestForm
+from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm
 
 
 def home(request):
@@ -37,7 +37,8 @@ def travel_help(request):
                     "countries": countries,
                     "travel_info_form": TravelInformationForm(),
                     "travel_assistance_form": TravelAssistanceForm(),
-                    "travel_budget_form": TravelBudgetForm()
+                    "travel_budget_form": TravelBudgetForm(),
+                    "request_change_form": RequestChangeForm()
                 }
             )
         else:
@@ -51,7 +52,9 @@ def travel_help(request):
                         "main_country": CoveredCountry.objects.get(country_name=country_requested),
                         "travel_info_form": TravelInformationForm(),
                         "travel_assistance_form": TravelAssistanceForm(),
-                        "travel_budget_form": TravelBudgetForm()
+                        "travel_budget_form": TravelBudgetForm(),
+                        "request_change_form": RequestChangeForm()
+
                     }
                 )
             else:
@@ -62,7 +65,9 @@ def travel_help(request):
                         "countries": countries,
                         "travel_info_form": TravelInformationForm(),
                         "travel_assistance_form": TravelAssistanceForm(),
-                        "travel_budget_form": TravelBudgetForm()
+                        "travel_budget_form": TravelBudgetForm(),
+                        "request_change_form": RequestChangeForm()
+
                     }
                 )
 
@@ -87,6 +92,14 @@ def travel_assistance(request):
 def travel_budget(request):
     if request.method == "POST":
         form = TravelBudgetForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+
+            return redirect("/travel-help#submitted")
+
+def request_change(request):
+    if request.method == "POST":
+        form = RequestChangeForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
 

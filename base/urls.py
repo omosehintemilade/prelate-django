@@ -7,6 +7,7 @@ urlpatterns = [
     path('travel-help', views.travel_help, name="travel-help"),
     path('travel-info', views.travel_info, name="travel-info"),
     path('travel_assistance', views.travel_assistance, name="travel-assistance"),
+    path('request_change', views.request_change, name="request_change"),
     path('travel_budget', views.travel_budget, name="travel_budget"),
     path('travel-insurance', views.travel_insurance, name="travel-insurance"),
     path('visa-assistance', views.visa_assistance, name="visa-assistance"),

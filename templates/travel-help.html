@@ -59,10 +59,15 @@
             <a class="nav-link nav-link-tab active" id="travel-info" href="#travel-info-" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">Travel Info</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-tab" id="travel-budget" data-toggle="tab" href="#travel-budget-" role="tab" aria-controls="profile" aria-selected="false">Travel Budget</a>
+            <a class="nav-link nav-link-tab" id="travel-budget" data-toggle="tab" href="#travel-budget-" role="tab" aria-controls="budget" aria-selected="false">Travel Budget</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-tab" id="travel-assist" data-toggle="tab" href="#travel-assist-" role="tab" aria-controls="messages" aria-selected="false">Travel Assist</a>
+            <a class="nav-link nav-link-tab" id="travel-assist" data-toggle="tab" href="#travel-assist-" role="tab" aria-controls="assist" aria-selected="false">Travel Assist</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-tab" id="change-request" data-toggle="tab" href="#change-request-" role="tab" aria-controls="change" aria-selected="false"
+              >Change Request</a
+            >
           </li>
         </ul>
         <br />
@@ -254,7 +259,48 @@
                 </form>
               </div>
             </div>
+            <div class="tab-pane" id="change-request-" role="tabpanel" aria-labelledby="change-request">
+              <div class="travel-assist-ta">
+                <div class="mb-4 text-center">
+                  <div>
+                    <h3 class="visa-assist-form-heading mb-4 text-center">Request Change Form</h3>
+                    <p class="visa-assist-form-body mb-4">
+                      Is there any mistake you noticed in the services we've offered you, please reach out to us for corrections. Please always make sure to reach out to us earlier
+                      at least 72hrs before your travel date.
+                    </p>
+                  </div>
+                </div>
+
+                <form method="POST" action="{% url 'request_change' %}" class="generic-form submit-travel-assist-form">
+                  {% csrf_token %}
+                  <div class="generic-form--header">Request Change Form</div>
+                  <div class="generic-form--body">
+                    <div class="form-group">
+                      <label for="">Full Name</label>
+                      {% render_field request_change_form.fullname class="form-control" placeholder="Full Name" %}
+                    </div>
+                    <div class="form-group">
+                      <label for="">Phone Number</label>
+                      {% render_field request_change_form.phonenumber class="form-control" placeholder="Phone Number" %}
+                    </div>
+                    <div class="form-group">
+                      <label for="">Email Address</label>
+                      {% render_field request_change_form.email class="form-control" placeholder="Email" type="email" %}
+                    </div>
+
+                    <div class="form-group">
+                      <label for="">Request Information</label>
+                      {% render_field request_change_form.request_info class="form-control" placeholder="Enter detailed Request information" %}
+                    </div>
+
+                    <div class="form-group mt-2">
+                      <button type="submit" class="btn btn-primary d-block w-100">Submit Form</button>
+                    </div>
+                </form>
+              </div>
+            </div>
           </div>
+        </div>
           <!--Country Information-->
           <div class="col-lg-4">
             <div class="row">
@@ -306,6 +352,18 @@
           html: "<h5>Your Enquriry has been submitted successfully!. <br/><b>We will reach out to you as soonest.</b></h5>",
         });
       }
+    </script>
+
+    <script>
+      var hash = document.location.hash;
+      if (hash) {
+          $('.nav-tabs a[href="'+hash+'"]').tab('show');
+      } 
+
+      // Change hash for page-reload
+      $('.nav-tabs a').on('shown', function (e) {
+          window.location.hash = e.target.hash.replace("#", "#");
+      });
     </script>
   </body>
 </html>
