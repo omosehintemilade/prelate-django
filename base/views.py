@@ -27,7 +27,7 @@ def home(request):
 
 def travel_help(request):
     if request.method == "GET":
-        countries = CoveredCountry.objects.all()
+        countries = CoveredCountry.objects.all().order_by("country_name")
         country_requested = request.GET.get("country")
 
         if not country_requested:
@@ -109,7 +109,7 @@ def request_change(request):
 
 def travel_insurance(request):
     if request.method == "GET":
-        countries = CoveredCountry.objects.all()
+        countries = CoveredCountry.objects.all().order_by("country_name")
         return render(
             request,
             "travel-insurance.html",
@@ -146,7 +146,7 @@ def travel_insurance(request):
 
 def visa_assistance(request):
     if request.method == "GET":
-        countries = CoveredCountry.objects.all()
+        countries = CoveredCountry.objects.all().order_by("country_name")
         country_requested = request.GET.get("country")
 
         if not country_requested:
@@ -182,7 +182,7 @@ def visa_assistance(request):
                     }
                 )
     elif request.method == "POST":
-        countries = CoveredCountry.objects.all()
+        countries = CoveredCountry.objects.all().order_by("country_name")
         form = TravelAssistanceForm(request.POST, request.FILES)
         if form.is_valid():
             print(form)
