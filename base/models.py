@@ -9,6 +9,7 @@ class CoveredCountry(models.Model):
     class Meta:
         verbose_name = "Covered Country"
         verbose_name_plural = "Covered Countries"
+        ordering = ["country_name"]
 
     country_name = models.CharField(max_length=100)
     image_url = models.ImageField(
