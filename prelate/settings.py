@@ -112,6 +112,8 @@ LOGOUT_REDIRECT_URL = "/affiliate/accounts/login"
 
 AUTH_USER_MODEL = 'acctmang.User'
 
+SESSION_COOKIE_SECURE = False
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
