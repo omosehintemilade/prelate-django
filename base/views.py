@@ -17,12 +17,23 @@ from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChan
 
 
 def home(request):
-    # return render(
-    #     request,
-    #     "index.html"
-    # )
+    return render(
+        request,
+        "index.html"
+    )
+    # return redirect("https://flights.prelatetravel.com/index.php")
 
-    return redirect("https://flights.prelatetravel.com/index.php")
+def homeOld(request):
+    return render(
+        request,
+        "index-old.html"
+    )
+
+def reservations(request):
+    return render(
+        request,
+        "reservations.html"
+    )
 
 
 def travel_help(request):

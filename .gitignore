@@ -133,3 +133,7 @@ static/
 
 #media
 media/
+
+# pyenv
+install-pyenv-win.ps1
+node_modules
