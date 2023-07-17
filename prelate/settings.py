@@ -21,10 +21,10 @@ env = environ.Env(
 )
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
+print("ENV: ", env("ENV"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -34,7 +34,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if env('ENV').lower() != 'production':
-    DEBUG = True
+    DEBUG = False
+    # DEBUG = True
 else:
     DEBUG = False
 
@@ -99,24 +100,37 @@ WSGI_APPLICATION = 'prelate.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-print(env('ENV').lower() != 'production')
-if env('ENV').lower() != 'production':
-    print("using dev database")
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'prelate',
-            'USER': 'postgres',
-            'PASSWORD': 'password',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-    }
-else:
-   print("using prod database")
-   DATABASES ={
-       'default': dj_database_url.parse(env("DATABASE_URL"))
-   }
+# if env('ENV').lower() != 'production':
+#     print("connecting to dev database...")
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'prelate',
+#             'USER': 'postgres',
+#             'PASSWORD': 'password',
+#             'HOST': '127.0.0.1',
+#             'PORT': '5432',
+#         }
+#     }
+# else:
+#    print("connecting to prod database...")
+#    DATABASES ={
+#        'default': dj_database_url.parse(env('DATABASE_URL'))
+#    }
+
+DATABASES ={
+       'default': dj_database_url.parse(env('DATABASE_URL'))
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+# db_from_env = dj_database_url.config()
+# DATABASES['default'].update(db_from_env)
 
 
 
@@ -172,18 +186,23 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
-)
+]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 
-COMPRESS_ROOT = BASE_DIR / 'static'
 
+print(STATIC_ROOT, STATICFILES_DIRS, STATIC_URL)
+COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 COMPRESS_ENABLED = True
 
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -196,7 +215,7 @@ DEFAULT_FROM_EMAIL = "sales@prelatetravel.com"
 EMAIL_HOST_PASSWORD = "Stop@now1"
 
 SITE_ID = 1
-# django-allauth registraion settings
+# django-allauth registration settings
 ACCOUNT_ADAPTER = 'allauth.account.adapter.DefaultAccountAdapter'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = True
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
@@ -229,3 +248,45 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_FORMS = {'signup': 'base.forms.MyCustomSignupForm'}
 
 django_heroku.settings(locals())
+
+
+# LOGGER
+if DEBUG:
+    LOGGER_FILE = "local.log"
+else:
+    LOGGER_FILE = "production.log"
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
+            'style': '{',
+        },
+        'simple': {
+            'format': '{levelname} {asctime} - {message}',
+            'style': '{',
+        },
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+    },
+    'handlers': {
+        # Log to a text file
+        'console': {
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': LOGGER_FILE,
+            'formatter': 'simple',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console'],
+            'level': 'DEBUG', # Or maybe INFO or WARNING
+            'propagate': False
+        },
+    }
+}
