@@ -1,0 +1,51 @@
+{% load static %}
+
+  <!-- HEADER -->
+  <header class="lg:px-20 w-full">
+    <div class="flex justify-between w-full">
+      <a href="{% url 'home' %}">
+        <img
+        src="{% static 'images/logo.png' %}"
+        alt="Prelate Travels Logo" />
+      </a>
+
+      <div class="flex justify-between">
+        <nav class="">
+          <ul class="menu-desktop w-full">
+            <li><a href="{% url 'reservations' %}">Reservations</a></li>
+            <li><a href="{% url 'travel-help' %}">Travel Help</a></li>
+            <li><a href="{% url 'travel-insurance' %}">Travel Insurance</a></li>
+            <li><a href="{% url 'visa-assistance' %}">Visa</a></li>
+            <li><a href="{% url 'tour' %}">Tour</a></li>
+          </ul>
+
+          <ul class="menu-mobile">
+            <li><i class="fa fa-bars" aria-hidden="true"></i></li>
+          </ul>
+        </nav>
+        <button class="menu-desktop">
+          <a href="{% url 'become-affiliate' %}" class="button w-full"
+            >Become an Affiliate</a
+          >
+        </button>
+      </div>
+    </div>
+    <!-- HTML structure for the side drawer component -->
+  </header>
+
+  <!-- HTML structure for the side drawer component -->
+  <div id="side-drawer" class="side-drawer">
+    <div class="drawer-content">
+      <!-- Place your content here -->
+      <i class="fa fa-bars" aria-hidden="true"></i>
+
+      <ul>
+        <li><a href="./reservations.html">Reservations</a></li>
+        <li><a href="./travel-help.html">Travel Help</a></li>
+        <li><a href="./travel-insurance.html">Travel Insurance</a></li>
+        <li><a href="./travel-visa.html">Visa</a></li>
+        <li><a href="./Tour-deals.html">Tour</a></li>
+      </ul>
+    </div>
+  </div>
+  <!-- HEADER -->

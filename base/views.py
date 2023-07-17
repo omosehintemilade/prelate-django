@@ -35,6 +35,60 @@ def reservations(request):
         "reservations.html"
     )
 
+def postArrivalServices(request):
+    return render(
+        request,
+        "post-arrival-services.html"
+    )
+
+
+
+def travel_helpOld(request):
+    if request.method == "GET":
+        countries = CoveredCountry.objects.all().order_by("country_name")
+        country_requested = request.GET.get("country")
+
+        if not country_requested:
+            return render(
+                request,
+                "travel-help-old.html",
+                context={
+                    "countries": countries,
+                    "travel_info_form": TravelInformationForm(),
+                    "travel_assistance_form": TravelAssistanceForm(),
+                    "travel_budget_form": TravelBudgetForm(),
+                    "request_change_form": RequestChangeForm()
+                }
+            )
+        else:
+            if country_requested != "":
+                print(country_requested)
+                return render(
+                    request,
+                    "travel-help-old.html",
+                    context={
+                        "countries": countries,
+                        "main_country": CoveredCountry.objects.get(country_name=country_requested),
+                        "travel_info_form": TravelInformationForm(),
+                        "travel_assistance_form": TravelAssistanceForm(),
+                        "travel_budget_form": TravelBudgetForm(),
+                        "request_change_form": RequestChangeForm()
+
+                    }
+                )
+            else:
+                return render(
+                    request,
+                    "travel-help-old.html",
+                    context={
+                        "countries": countries,
+                        "travel_info_form": TravelInformationForm(),
+                        "travel_assistance_form": TravelAssistanceForm(),
+                        "travel_budget_form": TravelBudgetForm(),
+                        "request_change_form": RequestChangeForm()
+
+                    }
+                )
 
 def travel_help(request):
     if request.method == "GET":
@@ -79,7 +133,6 @@ def travel_help(request):
                         "travel_assistance_form": TravelAssistanceForm(),
                         "travel_budget_form": TravelBudgetForm(),
                         "request_change_form": RequestChangeForm()
-
                     }
                 )
 
@@ -155,6 +208,43 @@ def travel_insurance(request):
         return JsonResponse({"status": "success"}, safe=False)
 
 
+def travel_insuranceOld(request):
+    if request.method == "GET":
+        countries = CoveredCountry.objects.all().order_by("country_name")
+        return render(
+            request,
+            "travel-insurance-old.html",
+            context={
+                "countries": countries,
+            }
+        )
+
+    if request.method == "POST":
+        origin = request.POST.get("origin")
+        destination = request.POST.get("destination")
+        name = request.POST.get("name")
+        dob = request.POST.get("dob")
+        phone_number = request.POST.get("phoneNumber")
+        email = request.POST.get("email")
+        address = request.POST.get("address")
+        insurance_type = request.POST.get("insuranceType")
+
+        # Create Record in Table
+        TravelInsurace.objects.create(
+            country_of_origin=CoveredCountry.objects.get(country_name=origin),
+            country_of_destination=CoveredCountry.objects.get(
+                country_name=destination),
+            fullname=name,
+            dob=dob,
+            phonenumber=phone_number,
+            email=email,
+            insurance_type=insurance_type,
+            address=address
+        )
+
+        return JsonResponse({"status": "success"}, safe=False)
+
+
 def visa_assistance(request):
     if request.method == "GET":
         countries = CoveredCountry.objects.all().order_by("country_name")
@@ -175,6 +265,62 @@ def visa_assistance(request):
                 return render(
                     request,
                     "visa-assistance.html",
+                    context={
+                        "countries": countries,
+                        "main_country": CoveredCountry.objects.get(country_name=country_requested),
+                        "travel_assistance_form": TravelAssistanceForm(),
+
+                    }
+                )
+            else:
+                return render(
+                    request,
+                    "visa-assistance.html",
+                    context={
+                        "countries": countries,
+                        "travel_assistance_form": TravelAssistanceForm(),
+
+                    }
+                )
+    elif request.method == "POST":
+        countries = CoveredCountry.objects.all().order_by("country_name")
+        form = TravelAssistanceForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form)
+            form.save(commit=True)
+            return redirect("/visa-assistance#submitted")
+        else:
+            return render(
+                request,
+                "visa-assistance.html",
+                context={
+                    "countries": countries,
+                    "travel_assistance_form": TravelAssistanceForm(),
+
+                }
+            )
+
+
+def visa_assistance_old(request):
+    if request.method == "GET":
+        countries = CoveredCountry.objects.all().order_by("country_name")
+        country_requested = request.GET.get("country")
+
+        if not country_requested:
+            return render(
+                request,
+                "visa-assistance-old.html",
+                context={
+                    "countries": countries,
+                    "travel_assistance_form": TravelAssistanceForm(),
+
+                }
+            )
+        else:
+            if country_requested != "":
+                return render(
+                    request,
+                    "visa-assistance-old.html",
                     context={
                         "countries": countries,
                         "main_country": CoveredCountry.objects.get(country_name=country_requested),

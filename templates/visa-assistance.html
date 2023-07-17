@@ -1,144 +1,203 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    {% load static %}{% load widget_tweaks %} {% include "partials/_head.html" with add_title="Visa Assistance | Prelate Travels & Tours" %}
-    <link rel="stylesheet" href="{% static 'stylesheets/select2.min.css' %}" />
+    {% load static %}
+    {% load widget_tweaks %}
+    {% include "latest/partials/_head.html" with add_title="Travel Help | Prelate Travels & Tours" %}
   </head>
   <body>
-    {% include "partials/components/_header.html" %}
-    <section class="visa-where-would">
-      <div class="container d-block">
-        <p>
-          Where would you like to travel to?
-        </p>
-        <div class="row mt-4">
-          <select required class="form-control select-country select-country-meta">
-            {% if main_country %}
-            <option selected value="{{ main_country.country_name }}">★ {{ main_country.country_name }}</option>
-            {% else %}
-            <option value="">--Select Country--</option>
-            {% endif %} {% for country in countries %}
-            <option value="{{ country.country_name }}">{{ country.country_name }}</option>
-            {% endfor %}
-          </select>
-          <!--
-          <div class="col-sm-2">
-            <button class="btn btn-primary" style="display: block; width: 100%;">Search</button>
-          </div>
-          -->
+    {% include "latest/components/_header.html" %}
+    <!-- HERO SECTION MOBILE -->
+    <section class="mobile-slider">
+      <div id="carouselExampleCaptions"
+           class="relative mb-2"
+           data-te-carousel-init
+           data-te-carousel-slide>
+        <!--Carousel indicators-->
+        <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb- flex list-none justify-center p-0"
+             data-te-carousel-indicators>
+          <button type="button"
+                  data-te-target="#carouselExampleCaptions"
+                  data-te-slide-to="0"
+                  data-te-carousel-active
+                  class="mx-[3px] box-content h-[3px] w-[10px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-current="true"
+                  aria-label="Slide 1"></button>
+          <button type="button"
+                  data-te-target="#carouselExampleCaptions"
+                  data-te-slide-to="1"
+                  class="mx-[3px] box-content h-[3px] w-[10px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-label="Slide 2"></button>
+          <button type="button"
+                  data-te-target="#carouselExampleCaptions"
+                  data-te-slide-to="2"
+                  class="mx-[3px] box-content h-[3px] w-[10px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-label="Slide 3"></button>
+          <button type="button"
+                  data-te-target="#carouselExampleCaptions"
+                  data-te-slide-to="3"
+                  class="mx-[3px] box-content h-[3px] w-[10px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
+                  aria-label="Slide 4"></button>
         </div>
-      </div>
-    </section>
-    <section class="visa-assist-form">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-5">
-            <div class="flex-center-content">
-              <div>
-                <h3 class="visa-assist-form-heading mb-4">
-                  Visa Assistance
-                </h3>
-                <p class="visa-assist-form-body mb-4">
-                  If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always more than happy to help you achieve your desire
-                  destination.
-                </p>
-                <p class="visa-assist-form-body mb-4">
-                  Here you will find the perfect starting point for booking any continental travel journey. Whether you are a novice or a more experienced traveller, research on
-                  your destination is always an essential part of planning your trip.So that is why Prelate Travel is here to hold your hand through the process of finding a
-                  perfect country to travel to.
-                </p>
-                <p class="visa-assist-form-body">
-                  Simply fill the form provided below with the required details, in other for Prelate Travel to help you get to your interested destination.
-                </p>
-              </div>
+        <!--Carousel items-->
+        <div class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+          <!--First item-->
+          <div class="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+               data-te-carousel-active
+               data-te-carousel-item
+               style="backface-visibility: hidden">
+            <img src="/images/mobile slider 5.png" class="block w-full" alt="..." />
+            <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+              <h5 class="text-xl">First slide label</h5>
+              <p>Some representative placeholder content for the first slide.</p>
             </div>
           </div>
-          <div class="offset-md-1 col-md-6">
-            <form method="POST" action="" class="generic-form submit-travel-assist-form" enctype="multipart/form-data">
-              {% csrf_token %} {{ form.errors }} {{ form.non_field_errors }}
-              <div class="generic-form--header">Visa Assisance Form</div>
-              <div class="generic-form--body">
-                <div class="form-group">
-                  <label for="">Country of Origin</label>
-                  {% render_field travel_assistance_form.country_of_origin class="form-control" %}
-                </div>
-                <div class="form-group">
-                  <label for="">Country of Destination</label>
-                  {% render_field travel_assistance_form.country_of_destination class="form-control" %}
-                </div>
-                <div class="form-group">
-                  <label for="">Full Name</label>
-                  {% render_field travel_assistance_form.fullname class="form-control" placeholder="Full Name" %}
-                </div>
-                <div class="form-group">
-                  <label for="">Date of Birth</label>
-                  {% render_field travel_assistance_form.dob class="form-control" type="date" %}
-                </div>
-                <div class="form-group">
-                  <label for="">Phone Number</label>
-                  {% render_field travel_assistance_form.phonenumber class="form-control" placeholder="Phone Number" %}
-                </div>
-                <div class="form-group">
-                  <label for="">Email Address</label>
-                  {% render_field travel_assistance_form.email class="form-control" placeholder="Email" type="email" %}
-                </div>
-
-                <div class="form-group mb-4">
-                  <label for="">How can we assist you?</label>
-                  <small><span style="color: red;">*</span>Indicate Visa category in your enquiry.</small>
-                  <div class="row">
-                    <div class="col-12">
-                      {% render_field travel_assistance_form.enquiry class="form-control" placeholder="Kindly Inidicate the Visa category for your Application, to enable us assist you properly." %}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="form-group mb-4">
-                  <label for="">Upload Document</label>
-                  <div class="row">
-                    <div class="col-12">
-                      {% render_field travel_assistance_form.document class="form-control" %}
-                    </div>
-                  </div>
-                </div>
-                <div class="form-group mt-2">
-                  <button type="submit" class="btn btn-primary d-block w-100">
-                    Submit Form
-                  </button>
-                </div>
-              </div>
-            </form>
+          <!--Second item-->
+          <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+               data-te-carousel-item
+               style="backface-visibility: hidden">
+            <img src="/images/mobile slider 6.png" class="block w-full " alt="..." />
+            <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+              <h5 class="text-xl">Second slide label</h5>
+              <p>Some representative placeholder content for the second slide.</p>
+            </div>
+          </div>
+          <!--Third item-->
+          <div class="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+               data-te-carousel-item
+               style="backface-visibility: hidden">
+            <img src="/images/mobile slider 3.png" class="block w-full" alt="..." />
+            <div class="absolute inset-x-[15%] bottom-5 hidden py-5 text-center text-white md:block">
+              <h5 class="text-xl">Third slide label</h5>
+              <p>Some representative placeholder content for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <!--Carousel controls - prev item-->
+        <button class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                type="button"
+                data-te-target="#carouselExampleCaptions"
+                data-te-slide="prev">
+          <span class="inline-block h-8 w-8">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </span>
+          <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+        </button>
+        <!--Carousel controls - next item-->
+        <button class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                type="button"
+                data-te-target="#carouselExampleCaptions"
+                data-te-slide="next">
+          <span class="inline-block h-8 w-8">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 fill="none"
+                 viewBox="0 0 24 24"
+                 stroke-width="1.5"
+                 stroke="currentColor"
+                 class="h-6 w-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </span>
+          <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+        </button>
+      </div>
+    </section>
+    <!-- HERO SECTION MOBILE -->
+    <!-- HERO SECTION DESKTOP -->
+    <section class="visa-hero">
+      <div class="flex items-end h-full">
+        <div class="h-[70%] flex items-end gradient-blue w-full">
+          <div class="w-4/5 mx-auto">
+            <h2 class="text-[40px] mb-5 font-bold text-[#FFC702] block">Visa Assistance</h2>
           </div>
         </div>
       </div>
+      <div class="pt-28 px-10 tour-hero-mobile">
+        <h3 class="text-[17px] leading-[26px] font-semibold text-[#F6F6F6]">Visa Assistance</h3>
+      </div>
     </section>
-    {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
-    <br />
-    {% include 'partials/_bottom.html' %}
-
-    <script src="{% static 'javascripts/select2.full.min.js' %}"></script>
-    <!--Sweet Alert-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <!--End Sweet Alert-->
-    <script>
-      $(function () {
-        $(".select-country").select2();
-      });
-    </script>
-    <script>
-      $(".select-country-meta").change(function () {
-        window.location = "?country=" + $(this).val();
-      });
-    </script>
-
-    <script>
-      const url = window.location.href;
-      const splittedUrl = url.split("#");
-      if (splittedUrl[1] == "submitted") {
-        Swal.fire({
-          html: "<h5>Your Enquriry has been submitted successfully!. <br/><b>We will reach out to you soonest.</b></h5>",
-        });
-      }
-    </script>
+    <!-- HERO SECTION DESKTOP -->
+    <!-- Travel insurance form -->
+    <section class="lg:px-44 travel-form pb-16">
+      <div class="lg:my-10 travel-form-content">
+        <h2 class="font-bold text-[30px] text-[#1C2E6A] lg:mb-5">Visa Assistance</h2>
+        <p class="text-[#6A6A6A] text-[14px] leading-[27px] max-w-[774px] ">
+          If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always
+          more than happy to help you achieve your desire destination.
+          Here you will find the perfect starting point for booking any continental travel journey. Whether you are a
+          novice or a more experienced traveller, research on your destination is always an essential part of planning
+          your trip.So that is why Prelate Travel is here to hold your hand through the process of finding a perfect
+          country to travel to.
+          Simply fill the form provided below with the required details, in other for Prelate Travel to help you get to
+          your interested destination.
+        </p>
+        <span>If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are
+        always more than happy to help you achieve your desire destination.</span>
+      </div>
+      <div class="visa-form-title p-3">Visa Assistance Form</div>
+      <form class="text-[#1C2E6A] w-full max-w-[775px] pt-10">
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label flex justify-between">
+            Country of origin
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="w-[10.39px] h-[9.75px]"
+                 alt="" />
+          </label>
+          {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label flex justify-between">
+            Country of Destination
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="w-[10.39px] h-[9.75px]"
+                 alt="" />
+          </label>
+          {% render_field travel_assistance_form.country_of_destination class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Full Name</label>
+          {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Date of Birth</label>
+          <div class="relative w-full">
+            <div class="calendar">
+              <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Phone Number</label>
+            {% render_field travel_assistance_form.phonenumber class="input-style" placeholder="----------" type="email" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Email Address</label>
+            {% render_field travel_assistance_form.email class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">How can we assist you? Indicate visa category in your enquiry</label>
+            {% render_field travel_assistance_form.enquiry class="text-area" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Upload Document</label>
+            {% render_field travel_assistance_form.document class="input-style" %}
+          </div>
+          <button class="py-3 px-2 bg-[#FFC702] rounded-[7px] mt-8 w-[155px]">Submit Form</button>
+        </div>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    {% include "latest/components/_footer.html" %}
+    <!-- FOOTER -->
+    <!-- SCRIPTS -->
+    {% include "latest/partials/_scripts.html" %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/datepicker.min.js"></script>
   </body>
 </html>
