@@ -6,7 +6,7 @@
 
 @layer utilities {
   .input-style {
-    @apply border border-x-0 border-t-0 border-[#1C2E6A] p-3 pb-1 text-[#6A6A6A] text-sm;
+    @apply border border-x-0 border-t-0 border-primary p-3 pb-1 text-[#6A6A6A] text-sm;
   }
 
   .input-label {
@@ -14,7 +14,7 @@
   }
 
   .text-area {
-    @apply border border-[#1C2E6A] p-3 pb-1 text-[#6A6A6A] text-sm;
+    @apply border border-primary mt-3 p-3 pb-1 text-[#6A6A6A] text-sm;
   }
 
   .calendar {

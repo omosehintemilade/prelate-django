@@ -1,94 +1,112 @@
 {% load static %}
-  
-  <!-- FOOTER -->
-  <section>
-    <div class="custom_container affiliates_container">
-      <div class="inner_wrapper">
-        <div class="imgs_container tp_sa_ta_am">
-          <img  src="{% static "/images/travelport.png" %}" alt="Travelport logo" />
-          <img  src="{% static "/images/sabre.png" %}" alt="Sabre logo" />
-          <img  src="{% static "/images/tripadvisor.png" %}" alt="Tripadvisor logo" />
-          <img  src="{% static "/images/amadeus.png" %}" alt="Amadeus logo" />
-        </div>
-
-        <div class="imgs_container tp_sa_ta_am">
-          <img src="{% static "/images/visalogo.png" %}" alt="visa logo" />
-          <img src="{% static "/images/rupay.png" %}" alt="rupay logo" />
-          <img src="{% static "/images/flutterwave.png" %}" alt="flutterwave logo" />
-          <img src="{% static "/images/interswitch.png" %}" alt="interswitch logo" />
-        </div>
+<!-- FOOTER -->
+<section class="mt-16">
+  <div class="custom_container affiliates_container">
+    <div class="inner_wrapper">
+      <div class="imgs_container tp_sa_ta_am">
+        <img src="{% static "/images/travelport.png" %}" alt="Travelport logo" />
+        <img src="{% static "/images/sabre.png" %}" alt="Sabre logo" />
+        <img src="{% static "/images/tripadvisor.png" %}" alt="Tripadvisor logo" />
+        <img src="{% static "/images/amadeus.png" %}" alt="Amadeus logo" />
+      </div>
+      <div class="imgs_container tp_sa_ta_am">
+        <img src="{% static "/images/visalogo.png" %}" alt="visa logo" />
+        <img src="{% static "/images/rupay.png" %}" alt="rupay logo" />
+        <img src="{% static "/images/flutterwave.png" %}" alt="flutterwave logo" />
+        <img src="{% static "/images/interswitch.png" %}" alt="interswitch logo" />
       </div>
     </div>
-  </section>
-
-  <section class="section-footer_banner">
-    <div class="custom_container footer_banner-container">
-      <img
-        src="{% static "/images/mobile.png" %}"
-        alt="Prelate Travels mobile app image"
-      />
-
-      <div class="text">
-        <h1 class="footer_banner-pr_tr_ap">Prelate Travels App</h1>
-        <h3 class="footer_banner-co_so">Coming soon...</h3>
-        <img 
-        src="{% static "/images/store.png" %}" alt="App Store Image" />
-      </div>
+  </div>
+</section>
+<section class="section-footer_banner">
+  <div class="custom_container footer_banner-container">
+    <img src="{% static "/images/mobile.png" %}" alt="Prelate Travels mobile app image" />
+    <div class="text">
+      <h1 class="footer_banner-pr_tr_ap">Prelate Travels App</h1>
+      <h3 class="footer_banner-co_so">Coming soon...</h3>
+      <img src="{% static "/images/store.png" %}" alt="App Store Image" />
     </div>
-  </section>
-
-  <footer>
-    <nav class="f-links">
-      <div class="f-links_wrapper">
-        <ul class="">
-          <h6>Service</h6>
-          <li><a href="{% url 'reservations' %}">Reservation</a></li>
-          <li><a href="{% url 'travel-help' %}">Travel help</a></li>
-          <li><a href="{% url 'travel-insurance' %}">Travel Insurance</a></li>
-          <li><a href="{% url 'visa-assistance' %}">Visa</a></li>
-          <li><a href="{% url 'tour' %}">Tour</a></li>
-        </ul>
-        <ul class="">
-          <h6>Partners</h6>
-          <li><a href="#">Become an Affiliate</a></li>
-          <li><a href="#">Business travels</a></li>
-        </ul>
-
-        <ul class="">
-          <h6>Others</h6>
-          <li><a href="#">Term of service</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Contact us</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="f-form_wrapper">
-        <ul class="f-form">
-          <h6>Join our News letter</h6>
-          <div class="newsletter-input_wr">
-            <input type="text" placeholder="Enter your full name" class="input" />
-            <input type="text" placeholder="Enter your email" class="input" />
-          </div>
-          <button class="button">Join</button>
-        </ul>
-      </div>
-    </nav>
-
-    <hr class="f-border" />
-
-    <ul class="icons_container">
-      <li>
-        <a href="#"><img src="{% static "/images/facebook.png" %}" alt="Facebook Icon" /></a>
-      </li>
-      <li>
-        <a href="#"><img src="{% static "/images/instagram.png" %}" alt="Instagram Icon" /></a>
-      </li>
-      <li>
-        <a href="#"><img src="{% static "/images/twitter.png" %}" alt="Twitter Icon" /></a>
-      </li>
-      <li>
-        <a href="#"><img src="{% static "/images/linkedin.png" %}" alt="LinkedIn Icon" /></a>
-      </li>
-    </ul>
-  </footer>
-  <!-- FOOTER -->
+  </div>
+</section>
+<footer>
+  <nav class="f-links">
+    <div class="f-links_wrapper">
+      <ul class="">
+        <h6>Service</h6>
+        <li>
+          <a href="{% url 'reservations' %}">Reservation</a>
+        </li>
+        <li>
+          <a href="{% url 'travel-help' %}">Travel help</a>
+        </li>
+        <li>
+          <a href="{% url 'travel-insurance' %}">Travel Insurance</a>
+        </li>
+        <li>
+          <a href="{% url 'visa-assistance' %}">Visa</a>
+        </li>
+        <li>
+          <a href="{% url 'tour' %}">Tour</a>
+        </li>
+      </ul>
+      <ul class="">
+        <h6>Partners</h6>
+        <li>
+          <a href="#">Become an Affiliate</a>
+        </li>
+        <li>
+          <a href="#">Business travels</a>
+        </li>
+      </ul>
+      <ul class="">
+        <h6>Others</h6>
+        <li>
+          <a href="#">Term of service</a>
+        </li>
+        <li>
+          <a href="#">Privacy Policy</a>
+        </li>
+        <li>
+          <a href="#">Contact us</a>
+        </li>
+        <li>
+          <a href="#">FAQ</a>
+        </li>
+      </ul>
+    </div>
+    <div class="f-form_wrapper">
+      <ul class="f-form">
+        <h6>Join our News letter</h6>
+        <div class="newsletter-input_wr">
+          <input type="text" placeholder="Enter your full name" class="input" />
+          <input type="text" placeholder="Enter your email" class="input" />
+        </div>
+        <button class="button">Join</button>
+      </ul>
+    </div>
+  </nav>
+  <hr class="f-border" />
+  <ul class="icons_container">
+    <li>
+      <a href="#">
+        <img src="{% static "/images/facebook.png" %}" alt="Facebook Icon" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="{% static "/images/instagram.png" %}" alt="Instagram Icon" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="{% static "/images/twitter.png" %}" alt="Twitter Icon" />
+      </a>
+    </li>
+    <li>
+      <a href="#">
+        <img src="{% static "/images/linkedin.png" %}" alt="LinkedIn Icon" />
+      </a>
+    </li>
+  </ul>
+</footer>
+<!-- FOOTER -->

@@ -1,156 +1,101 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    {% load widget_tweaks %} {% include "partials/_head.html" with add_title="Customsize Your Tour Package | Prelate Travels & Tours" %}
+    {% load static %}
+    {% load widget_tweaks %}
+    {% include "latest/partials/_head.html" with add_title="Customize Your Tour Package | Prelate Travels & Tours" %}
   </head>
   <body>
-    {% include "partials/components/_header.html" %}
-    <section class="customize-tour-package">
-      <div class="container">
-        <h1 class="customize-tour-package--header">Prelate Travel Package</h1>
-        <div class="row mt-4">
-          <div class="col-md-8">
-            <div class="customize-your-own-package">
-              <h2>Customize your own package</h2>
-              <form method="POST" action="" class="mt-4 col-12 w-100 pl-0 ml-0">
-                <div class="row pl-0 ml-0">
-                  <div class="col-md-6 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> First Name: <span class="required">*</span> </label>
-                      {% render_field form.first_name class="form-control" placeholder="First Name" %}
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> Last Name: <span class="required">*</span> </label>
-                      {% render_field form.last_name class="form-control" placeholder="Last Name" %}
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> Email Address: <span class="required">*</span> </label>
-                      {% render_field form.email class="form-control" placeholder="Email" %}
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> Phone Number: <span class="required">*</span> </label>
-                      {% render_field form.phonenumber class="form-control" placeholder="Phone/Mobile Number" %}
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for="">Origin (Country): <span class="required">*</span> </label>
-                      {% render_field form.country_of_origin class="form-control" placeholder="e.g NGN 15000, USD 5000" %}
-                    </div>
-                  </div>
-                  <div class="col-md-6 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> Destination Country: <span class="required">*</span> </label>
-                      {% render_field form.country_of_destination class="form-control" placeholder="e.g NGN 15000, USD 5000" %}
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> Category: <span class="required">*</span> </label>
-                      {% render_field form.tour_category class="form-control" %}
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for=""> Budget: <span class="required">*</span> </label>
-                      {% render_field form.budget class="form-control" placeholder="e.g NGN 15000, USD 5000" %}
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 pl-0 ml-0">
-                    <div class="form-group">
-                      <label for="">
-                        Message:
-                      </label>
-                      {% render_field form.message class="form-control" placeholder="Personal message" %}
-                    </div>
-                  </div>
-
-                  <div class="col-md-12 pl-0 ml-0 mt-3">
-                    <div class="form-group">
-                      <button type="submit" class="btn btn-primary d-block w-100">Submit Form</button>
-                    </div>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="col md-4">
-            <div class="d-block">
-              <div
-                class="card"
-                style="padding: 15px; background: #ffffff; border: 0.25px solid rgba(41, 124, 222, 0.5); box-sizing: border-box; box-shadow: 0px 4px 16px rgba(41, 124, 222, 0.15);"
-              >
-                <h4 class="text-center">Contact US</h4>
-                <p class="text-center" style="color: #4f4f4f; font-size: 14px;">
-                  Feel free to call, send us an email, Tweet us or simply complete the enquiry form.
-                </p>
-                <div class="row mt-3 ml-0 pl-0">
-                  <div class="col-2">
-                    <img src="/images/phone.png" alt="" />
-                  </div>
-                  <div class="col-10" style="color: #4f4f4f; font-size: 15px;">
-                    08021134543, 09087651238
-                  </div>
-                </div>
-                <div class="row mt-2 ml-0 pd-0">
-                  <div class="col-2">
-                    <img src="/images/mail.png" alt="" />
-                  </div>
-                  <div class="col-10" style="color: #4f4f4f; font-size: 15px;">
-                    tour@prelatetravel.com
-                  </div>
-                </div>
-                <div class="row mt-2 ml-0 pd-0">
-                  <div class="col-2">
-                    <img src="/images/twitter_vector.png" alt="" />
-                  </div>
-                  <div class="col-10" style="color: #4f4f4f; font-size: 15px;">
-                    @prelatetravel
-                  </div>
-                </div>
-                <div class="row mt-2 ml-0 pd-0">
-                  <div class="col-2">
-                    <img src="/images/facebook_vector.png" alt="" />
-                  </div>
-                  <div class="col-10" style="color: #4f4f4f; font-size: 15px;">
-                    www.facebook.com/prelatetravel
-                  </div>
-                </div>
-                <div class="row mt-2 ml-0 pd-0">
-                  <div class="col-2">
-                    <img src="/images/instagram_vector.png" alt="" />
-                  </div>
-                  <div class="col-10" style="color: #4f4f4f; font-size: 15px;">
-                    @prelatetravel
-                  </div>
-                </div>
-              </div>
-            </div>
+    <!-- HEADER -->
+    {% include "latest/components/_header.html" %}
+    <!-- HERO SECTION DESKTOP -->
+    <section class="customize-tour-deals-hero">
+      <div class="flex items-end h-full">
+        <div class="h-[70%] flex items-end shadow w-full">
+          <div class="w-4/5 mx-auto">
+            <h2 class="text-[40px] mb-5 font-bold text-[#FFC702] block">Customize Tour Deals</h2>
           </div>
         </div>
       </div>
     </section>
+    <!-- HERO SECTION DESKTOP -->
+    <section class="lg:px-44 py-10">
+      <!-- CUSTOMIZE TOUR DEAL FORM -->
+      <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5">Prelate Travel Package</h2>
+      <p class="text-[#6A6A6A] text-sm text-justify leading-[27px]">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+        Unde reiciendis fugit distinctio molestiae ipsum autem,
+        atque nisi voluptatem recusandae officia nesciunt dolores itaque quis?
+        Quaerat enim cupiditate consequatur consequuntur quia.
+      </p>
+      <div class="lg:mt-10">
+        <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
+          Customize Tour Deal Form
+        </div>
+        <form class="text-primary w-full max-w-[775px] pt-10"
+              method="post"
+              action="{% url 'travel-info' %}">
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">First Name</label>
+            {% render_field form.first_name class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Last Name</label>
+            {% render_field form.last_name class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Email Address</label>
+            {% render_field form.email class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Phone Number</label>
+            {% render_field form.phonenumber class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Origin (Country)</label>
+            {% render_field form.country_of_origin class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Destination Country</label>
+            {% render_field form.country_of_destination class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label flex justify-between">
+              Category
+              <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                   class="w-[10.39px] h-[9.75px]"
+                   alt="" />
+            </label>
+            {% render_field form.tour_category class="input-style" placeholder="----------" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Budget</label>
+            {% render_field form.budget class="input-style" placeholder="e.g NGN 15000, USD 5000" %}
+          </div>
+          <div class="flex flex-col mb-5">
+            <label for="" class="input-label">Message</label>
+            {% render_field form.message class="text-area" placeholder="Write your extra messages here" %}
+          </div>
+          <button class="py-3 px-2 bg-[#FFC702] rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+        </form>
+      </div>
+    </section>
+    <!-- CUSTOMIZE TOUR DEAL FORM -->
     <hr />
-    {% include 'partials/components/_footer.html' %} {% include 'partials/_bottom.html' %}
+    <!-- FOOTER -->
+    {% include "latest/components/_footer.html" %}
+    <!-- FOOTER -->
+    <!-- SCRIPTS -->
+    {% include "latest/partials/_scripts.html" %}
     <!--Sweet Alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--End Sweet Alert-->
-
     <script>
       const url = window.location.href;
       const splittedUrl = url.split("#");
       if (splittedUrl[1] == "submitted") {
         Swal.fire({
-          html: "<h5>Your Custom Tour Request has been submitted successfully!. <br/><b>We will reach out to you soonest.</b></h5>",
+          html: "<h5>Your Custom Tour Request has been submitted successfully!. <br /><b>We will reach out to you soonest.</b></h5>",
         });
       }
     </script>

@@ -100,41 +100,27 @@ WSGI_APPLICATION = 'prelate.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-# if env('ENV').lower() != 'production':
-#     print("connecting to dev database...")
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': 'prelate',
-#             'USER': 'postgres',
-#             'PASSWORD': 'password',
-#             'HOST': '127.0.0.1',
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-#    print("connecting to prod database...")
-#    DATABASES ={
-#        'default': dj_database_url.parse(env('DATABASE_URL'))
-#    }
+if env('ENV').lower() != 'production':
+    print("connecting to dev database...")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'prelate',
+            'USER': 'postgres',
+            'PASSWORD': 'password',
+            'HOST': '127.0.0.1',
+            'PORT': '5432',
+        }
+    }
+else:
+   print("connecting to prod database...")
+   DATABASES ={
+       'default': dj_database_url.parse(env('DATABASE_URL'))
+   }
 
 DATABASES ={
        'default': dj_database_url.parse(env('DATABASE_URL'))
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-
-# db_from_env = dj_database_url.config()
-# DATABASES['default'].update(db_from_env)
-
-
-
-
 
 AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',

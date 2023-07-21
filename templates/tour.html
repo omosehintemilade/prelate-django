@@ -1,45 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    {% include "partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
+    {% load static %}
+    {% include "latest/partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
   </head>
   <body>
-    {% include "partials/components/_header.html" %}
-
-    <section
-      class="visa-where-would"
-      style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('/static/images/tour-deals.png');"
-    >
-      <div class="container d-block">
-        <p>
-          Tour Deals
-        </p>
+    <!-- HEADER -->
+    {% include "latest/components/_header.html" %}
+    <!-- Hero Section -->
+    <section class="tour-hero">
+      <div class="flex items-end h-full">
+        <div class="h-2/4 flex items-end gradient-blue w-full">
+          <div class="w-4/5 mx-auto">
+            <h3 class="text-[40px] leading-[84px] font-bold text-[#FFC702]">Tour Deals</h3>
+          </div>
+        </div>
+      </div>
+      <div class="pt-28 px-10 tour-hero-mobile">
+        <div>
+          <h3 class="text-[17px] leading-[26px] font-semibold text-[#F6F6F6]">Tour</h3>
+        </div>
       </div>
     </section>
-    <section class="tour-amazing-deals">
-      <div class="container">
-        <h1 class="text-center our-services-heading mb-5">Amazing Tour Deals</h1>
-        <div class="row">
-          {% for deal in deals %}
-          <div class="col-md-3 col-sm-6">
-            <div class="tour-package">
-              <img src="{{ deal.deal_image }}" alt="" class="tour-package-image" />
-              <a href="{{ deal.get_absolute_url }}" class="tour-package-name">{{ deal.deal_name }}</a>
+    <section class="px-20">
+    </section>
+    <!--  Tour card Section Bgig Screen-->
+    <section class="px-48 tour-card-main">
+      <div class="mt-20">
+        <div class="grid grid-cols-4 gap-x-10 gap-y-5">
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
             </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
           </div>
-          {% endfor %}
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
+          <div class="cursor-pointer">
+            <div class="card__tour flex items-end rounded-t-[4px]">
+              <div class="h-2/3 flex items-end w-full shadow">
+                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              </div>
+            </div>
+            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
+          </div>
         </div>
-        <div class="row">
-          <div class="offset-md-3 col-sm-6">
-            <a href="{% url 'customize-tour' %}" class="btn btn-primary w-100 text-white">
-              Click here to customize your tour package
-            </a>
-          </div>
+        <div class="mt-10 text-base">
+          <span class="text-primary font-semibold">Can't find a suitable deal?</span> <a href="{% url 'customize-tour' %}"
+    class="!underline text-[#007bff] font-normal">Customize one for yourself</a>
         </div>
       </div>
     </section>
-    {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
-    <br />
-    {% include 'partials/_bottom.html' %}
+    <!-- Tour card mobile -->
+    <section class="tour-card-mobile">
+      <img src="../images/tour-mobile 1.png" class="" alt="" />
+      <img src="../images/tour-mobile 2.png" class="" alt="" />
+      <img src="../images/Group 45 (2).png" class="" alt="" />
+      <img src="../images/tour-mobile 4.png" class="" alt="" />
+      <img src="../images/tour-mobile 5.png" class="" alt="" />
+      <img src="../images/Group 48 (1).png" class="" alt="" />
+    </section>
+    <!-- Footer segments starts from here -->
+    <!-- FOOTER -->
+    {% include "latest/components/_footer.html" %}
+    <!-- FOOTER -->
+    <!-- SCRIPTS -->
+    {% include "latest/partials/_scripts.html" %}
   </body>
 </html>

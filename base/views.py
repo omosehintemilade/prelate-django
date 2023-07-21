@@ -23,11 +23,13 @@ def home(request):
     )
     # return redirect("https://flights.prelatetravel.com/index.php")
 
+
 def homeOld(request):
     return render(
         request,
         "index-old.html"
     )
+
 
 def reservations(request):
     return render(
@@ -35,12 +37,12 @@ def reservations(request):
         "reservations.html"
     )
 
+
 def postArrivalServices(request):
     return render(
         request,
         "post-arrival-services.html"
     )
-
 
 
 def travel_helpOld(request):
@@ -89,6 +91,7 @@ def travel_helpOld(request):
 
                     }
                 )
+
 
 def travel_help(request):
     if request.method == "GET":
@@ -161,6 +164,7 @@ def travel_budget(request):
             form.save(commit=True)
 
             return redirect("/travel-help#submitted")
+
 
 def request_change(request):
     if request.method == "POST":
@@ -363,6 +367,16 @@ def tour(request):
         "tour.html",
         context={
             "deals": TourDeal.objects.all()
+        }
+    )
+
+
+def tourOld(request):
+    return render(
+        request,
+        "tour-old.html",
+        context={
+            "deals": TourDeal.objects.all()
 
         }
     )
@@ -396,6 +410,23 @@ def customize_tour(request):
         return render(
             request,
             "tour-package-customize.html",
+            {
+                "form": UsersCustomTourRequestForm()
+            }
+        )
+    elif request.method == "POST":
+        form = UsersCustomTourRequestForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+
+        return redirect("/tour-package-customize#submitted")
+
+
+def customize_tourOld(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "tour-package-customize-old.html",
             {
                 "form": UsersCustomTourRequestForm()
             }
@@ -644,11 +675,13 @@ def term_of_service(request):
         "term_of_service.html"
     )
 
+
 def privacy_policy(request):
     return render(
         request,
         "privacy_policy.html"
     )
+
 
 def referral(request):
     if request.method == "POST":
@@ -656,8 +689,9 @@ def referral(request):
         email = request.POST.get("email")
         referralID = request.POST.get("referralID")
 
-        CustomerReferralRecord.objects.create(fullname=name, email=email, affiliate_id=referralID) 
-        
+        CustomerReferralRecord.objects.create(
+            fullname=name, email=email, affiliate_id=referralID)
+
         return JsonResponse({"status": "success"}, safe=False)
 
     return render(

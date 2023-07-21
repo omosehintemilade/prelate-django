@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% include "partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
+  </head>
+  <body>
+    {% include "partials/components/_header.html" %}
+
+    <section
+      class="visa-where-would"
+      style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('/static/images/tour-deals.png');"
+    >
+      <div class="container d-block">
+        <p>
+          Tour Deals
+        </p>
+      </div>
+    </section>
+    <section class="tour-amazing-deals">
+      <div class="container">
+        <h1 class="text-center our-services-heading mb-5">Amazing Tour Deals</h1>
+        <div class="row">
+          {% for deal in deals %}
+          <div class="col-md-3 col-sm-6">
+            <div class="tour-package">
+              <img src="{{ deal.deal_image }}" alt="" class="tour-package-image" />
+              <a href="{{ deal.get_absolute_url }}" class="tour-package-name">{{ deal.deal_name }}</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="row">
+          <div class="offset-md-3 col-sm-6">
+            <a href="{% url 'customize-tour' %}" class="btn btn-primary w-100 text-white">
+              Click here to customize your tour package
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
+    <br />
+    {% include 'partials/_bottom.html' %}
+  </body>
+</html>

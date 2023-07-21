@@ -431,8 +431,7 @@ hr.f-border {
   background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
 }
 .slider-2 {
-  background: linear-gradient(180deg, #1c2e6a 0%, rgba(0, 0, 0, 0) 100%),
-    url(/static/images/slider-2.png);
+  background: url(/static/images/slider-2.png);
 }
 
 @media screen and (max-width: 768px) {
@@ -467,22 +466,30 @@ hr.f-border {
 .travel-info-hero {
   width: 100%;
   height: 70vh;
-  background: linear-gradient(180deg, #1c2e6a 0%, rgba(0, 0, 0, 0) 100%),
-    url(/static/images/slider-3.png);
+  background: url(/static/images/slider-3.png);
   background-repeat: no-repeat;
 }
 .travel-insurance-hero {
   width: 100%;
   height: 50vh;
-  background: linear-gradient(180deg, #1c2e6a 0%, rgba(0, 0, 0, 0) 100%),
-    url(/static/images/insurance-hero.png);
+  background: url(/static/images/insurance-hero.png);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: left bottom;
 }
 
 .visa-hero {
   width: 100%;
   background-image: url(/static/images/visa-hero.png);
+  background-repeat: no-repeat;
+  height: 60vh;
+  background-size: cover;
+  background-position: bottom;
+}
+
+.customize-tour-deals-hero {
+  width: 100%;
+  background-image: url(/static/images/tour-deals.png);
   background-repeat: no-repeat;
   height: 60vh;
   background-size: cover;
@@ -587,13 +594,18 @@ hr.f-border {
   }
 }
 .tour-hero {
-  width: 100%;
-  height: 309px;
-  /* background here */
+  height: 290px;
+  background: url(/static/images/tour-hero.png);
   background-repeat: no-repeat;
 }
 .tour-hero-header {
   display: block;
+}
+
+.card__tour {
+  background: url(/static/images/tour-deal.png);
+  height: 300px;
+  width: 200px;
 }
 @media screen and (max-width: 768px) {
   .tour-hero-header {
