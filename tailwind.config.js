@@ -4,7 +4,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#1C2E6A"
+        primary: "#1C2E6A",
+        textPrimary: "#6A6A6A"
+      },
+      listStyleType: {
+        disclosureClosed: "disclosure-closed"
       }
     }
   },

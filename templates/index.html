@@ -154,7 +154,7 @@
     <section class="w-full">
       <div class="py-10 template">
         <div class="bg-[#B2D4EF] custom_container h-[250px] rounded-[7px] px-5 py-10">
-          <div class="flex gap-5 pb-5">
+          <div class="flex gap-5 pb-5 text-base">
             <div class="relative" data-te-dropdown-ref>
               <button class="flex items-center whitespace-nowrap rounded-[7px] bg-white px-6 pb-2 pt-2.5 text-15px font-bold leading-normal text-primary shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
                       type="button"
@@ -270,7 +270,7 @@
               </ul>
             </div>
           </div>
-          <div class="flex">
+          <div class="flex text-base">
             <div class="card bg-[#fff] w-[220.79px] text-[#A9A9A9] px-3 py-5 rounded-[7px]">
               <p class="text-[13px]">Departure?</p>
               <h3 class="text-[20px]">City or Airport</h3>
@@ -303,19 +303,19 @@
             <button class="py-3 px-8 pr-10 bg-primary text-white rounded-[7px]">Book Flight</button>
             <button class="py-3 px-8 pr-10 bg-[#ffff] text-primary rounded-[7px] ml-2">Visa</button>
           </div>
-          <nav class="flight-menu uppercase flex gap-5 text-primary text-[14px] font-medium mt-8">
+          <nav class="flight-menu uppercase flex gap-5 text-primary text-sm font-medium mt-8">
             <li class="border border-x-0 border-t-0 border-primary border-b-2 font-semibold list-none">Rounded Trip</li>
             <li class="list-none">One Way</li>
             <li class="list-none">Multi-City</li>
           </nav>
-          <div class="my-5 text-primary text-[14px] font-medium">
+          <div class="my-5 text-primary text-sm font-medium">
             <div class="bg-white px-5 py-5 w-full flex flex-col mb-3 rounded-[7px]">
               <span class="text-[#A9A9A9] text-[9px]">Depature</span>
               <span class="">Nnamdi Azikiwa Airport</span>
             </div>
             <div class="bg-white px-5 py-5 w-full flex flex-col mb-3 rounded-[7px]">
               <span class="text-[#A9A9A9] text-[9px]">Depature</span>
-              <span class="text-[14px]">Nnamdi Azikiwa Airport</span>
+              <span class="text-sm">Nnamdi Azikiwa Airport</span>
             </div>
             <div class="bg-white px-5 py-5 w-full grid grid-cols-2 mb-3 rounded-[7px]">
               <div class="flex flex-col">
@@ -405,7 +405,7 @@
                 </ul>
               </div>
             </div>
-            <button class="bg-[#CA0000] mt-10 text-[#ffff] text-[14px] rounded-[7px] px-5 py-5">Book now!</button>
+            <button class="bg-[#CA0000] mt-10 text-[#ffff] text-sm rounded-[7px] px-5 py-5">Book now!</button>
           </div>
         </div>
         <div class="py-8 px-5 border border-x-0 border-t-0 border-[#D8D8D8]">
@@ -417,7 +417,7 @@
         </div>
         <div class="px-5 py-5">
           <h3 class="font-semibold text-[18px] leading-10">Study Abroad</h3>
-          <p class="text-[#6A6A6A] text-[12px]">Apply to study in any country of your choice</p>
+          <p class="text-textPrimary text-[12px]">Apply to study in any country of your choice</p>
         </div>
         <div class="py-5 px-5">
           <div class="study-card-1 px-5">
@@ -441,7 +441,7 @@
           <div class="border border-x-0 border-b-0">
             <div class="mt-6">
               <h3 class="text-primary text-[15px] leading-[22.5px] font-medium">Cheap, affordable Flights & Incredible Hotels</h3>
-              <p class="text-[#6A6A6A] text-[11px] leading-[20.5px]">
+              <p class="text-textPrimary text-[11px] leading-[20.5px]">
                 We are one-stop travel and tourism tech shop. At Prelate Travel,
                 we work with experienced travel experts to provide our clients
                 with essential travel information, assist and guide them through
@@ -463,10 +463,9 @@
                 <h3 class="font-bold text-[20px] leading-[30px] text-primary">Reservation</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
-              <p class="text-[#6A6A6A]">
+              <p class="text-textPrimary">
                 The process of procuring a visa could pose to be tiring and
-                frustrating most times, our visa experts can relieve you of such
-                stress.
+                frustrating most times, Our visa experts can guide you through the procedures of each step correctly.
               </p>
             </div>
             <div class="w-[33%] swiper-slide cursor-grab">
@@ -474,8 +473,9 @@
                 <h3 class="font-bold text-[20px] leading-[30px] text-primary">Visa Assistance</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
-              <p class="text-[#6A6A6A]">
-                The process of procuring a visa could pose to be tiring and frustrating most times, our visa experts can relieve you of such stress.
+              <p class="text-textPrimary">
+                The process of procuring a visa could pose to be tiring and
+                frustrating most times, Our visa experts can guide you through the procedures of each step correctly.
               </p>
             </div>
             <div class="w-[33%] swiper-slide cursor-grab">
@@ -483,8 +483,8 @@
                 <h3 class="font-bold text-[20px] leading-[30px] text-primary">Tour</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
-              <p class="text-[#6A6A6A]">
-                we offer several top notch affordable tour packages ranging from recreational, luxury, cultural, adventure, religious tours that meets and satisfy our client’s demands.
+              <p class="text-textPrimary">
+                We offer several top notch affordable tour packages ranging from recreational, luxury, cultural, adventure, religious tours that meets and satisfy our client’s demands.
               </p>
             </div>
             <div class="w-[33%] swiper-slide cursor-grab">
@@ -492,7 +492,7 @@
                 <h3 class="font-bold text-[20px] leading-[30px] text-primary">Reservation</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
-              <p class="text-[#6A6A6A]">
+              <p class="text-textPrimary">
                 The process of procuring a visa could pose to be tiring and
                 frustrating most times, our visa experts can relieve you of such
                 stress.
@@ -508,7 +508,7 @@
       <div class="custom_container">
         <div class="flex justify-between">
           <h2 class="text-[34px] text-primary font-bold">Study Services</h2>
-          <p class="text-[#6A6A6A] text-base">Apply to study in any country of your choice</p>
+          <p class="text-textPrimary text-base">Apply to study in any country of your choice</p>
         </div>
         <div class="grid grid-cols-4 gap-5 my-10 w-full">
           <div class="cursor-pointer">
@@ -545,7 +545,7 @@
           Prelate Travel:
           <span class="font-normal text-[26px]">Cheap, affordable Flights and Incredible Hotels</span>
         </h2>
-        <p class="text-[#6A6A6A] text-[14px] w-full max-w-[964px] leading-[34px]">
+        <p class="text-textPrimary text-sm w-full max-w-[964px] leading-[34px]">
           We are one-stop travel and tourism tech shop. At Prelate Travel, we
           work with experienced travel experts to provide our clients with
           essential travel information, assist and guide them through their

@@ -128,7 +128,7 @@
     <section class="lg:px-44 travel-form pb-16">
       <div class="lg:my-10 travel-form-content">
         <h2 class="font-bold text-[30px] text-primary lg:mb-5">Visa Assistance</h2>
-        <p class="text-[#6A6A6A] text-[14px] leading-[27px] max-w-[774px] ">
+        <p class="text-[#6A6A6A] text-sm leading-[27px] max-w-[774px] ">
           If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always
           more than happy to help you achieve your desire destination.
           Here you will find the perfect starting point for booking any continental travel journey. Whether you are a
@@ -175,11 +175,11 @@
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">Phone Number</label>
-            {% render_field travel_assistance_form.phonenumber class="input-style" placeholder="----------" type="email" %}
+            {% render_field travel_assistance_form.phonenumber class="input-style" placeholder="----------" %}
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">Email Address</label>
-            {% render_field travel_assistance_form.email class="input-style" placeholder="----------" %}
+            {% render_field travel_assistance_form.email class="input-style" placeholder="----------"  type="email" %}
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">How can we assist you? Indicate visa category in your enquiry</label>

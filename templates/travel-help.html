@@ -40,7 +40,6 @@
         <ul class="flex">
           <li class="tab active">Travel Info</li>
           <li class="tab">Travel Budget</li>
-          <li class="tab">Travel Assist</li>
           <li class="tab">Change Request</li>
         </ul>
       </nav>
@@ -83,9 +82,7 @@
           </p>
         </div>
         <div class="lg:mt-20">
-          <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
-            Travel Info
-          </div>
+          <div class="">Travel Info</div>
           <form class="text-primary w-full max-w-[775px] pt-10"
                 method="POST"
                 action="{% url 'travel-info' %}">
@@ -116,7 +113,7 @@
               {% render_field travel_info_form.phonenumber class="input-style" placeholder="----------" %}
             </div>
             <div class="flex flex-col mb-5">
-              <label for="" class="mb-2 pl-5 text-[14px] leading-[27px]">Email</label>
+              <label for="" class="mb-2 pl-5 text-sm leading-[27px]">Email</label>
               {% render_field travel_info_form.email class="input-style" placeholder="----------" type="email" %}
             </div>
             <div class="flex flex-col mb-5">
@@ -204,67 +201,6 @@
         </form>
       </div>
       <!-- TRAVEL BUDGET FORM -->
-      <!-- TRAVEL ASSIST FORM -->
-      <div class="tab-pane hidden">
-        <div class="travel-info-content">
-          <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5">Travel Assist</h2>
-          <p class="text-[#6A6A6A] text-sm text-justify leading-[27px]">
-            Simply fill the form provided below with the required details.
-          </p>
-        </div>
-        <div class="lg:mt-20">
-          <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
-            Travel Assist
-          </div>
-          <form class="text-primary w-full max-w-[775px] pt-10">
-            <div class="flex flex-col mb-5">
-              <label for="" class="input-label flex justify-between">
-                Country of origin
-                <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="w-[10.39px] h-[9.75px]"
-                     alt="" />
-              </label>
-              {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-            </div>
-            <div class="flex flex-col mb-5">
-              <label for="" class="input-label flex justify-between">
-                Country of Destination
-                <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="w-[10.39px] h-[9.75px]"
-                     alt="" />
-              </label>
-              {% render_field travel_assistance_form.country_of_destination class="input-style" placeholder="----------" %}
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Full Name</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
-              </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Birth</label>
-                <div class="relative w-full">
-                  <div class="absolute inset-y-0 top-3 right-2.5 flex items-center pl-3.5 pointer-events-none">
-                    <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
-                  </div>
-                  {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
-                </div>
-              </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Email Address</label>
-                {% render_field travel_assistance_form.email class="input-style" placeholder="----------" type="email" %}
-              </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">How can we assist you?</label>
-                {% render_field travel_assistance_form.enquiry class="text-area" %}
-              </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Upload Travel Document</label>
-                {% render_field travel_assistance_form.document class="input-style" %}
-              </div>
-              <button class="py-3 px-2 bg-[#FFC702] rounded-[7px] mt-5 w-[155px]">Submit Form</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <!-- TRAVEL ASSIST FORM -->
       <!-- REQUEST CHANGE FORM -->
       <div class="tab-pane hidden">
         <div class="travel-info-content">
@@ -289,7 +225,7 @@
               {% render_field travel_info_form.phonenumber class="input-style" placeholder="----------" %}
             </div>
             <div class="flex flex-col mb-5">
-              <label for="" class="mb-2 pl-5 text-[14px] leading-[27px]">Email</label>
+              <label for="" class="input-label">Email</label>
               {% render_field travel_info_form.email class="input-style" placeholder="----------" type="email" %}
             </div>
             <div class="flex flex-col mb-5">

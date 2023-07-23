@@ -676,6 +676,20 @@ def term_of_service(request):
     )
 
 
+def term_of_service_old(request):
+    return render(
+        request,
+        "term_of_service_old.html"
+    )
+
+
+def about_us(request):
+    return render(
+        request,
+        "about-us.html"
+    )
+
+
 def privacy_policy(request):
     return render(
         request,

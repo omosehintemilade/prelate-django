@@ -43,6 +43,9 @@ urlpatterns = [
          views.vetropay_fund_transfer, name='transfer-fund'),
 
     #
+    path('term-of-service-old', views.term_of_service_old,
+         name="term-of-service-old"),
+    path('about-us', views.about_us, name="about-us"),
     path('term-of-service', views.term_of_service, name="term-of-service"),
     path('privacy-policy', views.privacy_policy, name="privacy-policy"),
     path('referrals', views.referral, name="referral")

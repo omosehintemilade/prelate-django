@@ -8,7 +8,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: 16px;
   font-family: "Poppins", sans-serif;
 }
 body::-webkit-scrollbar-track {
@@ -217,10 +216,12 @@ header .button {
 
 .footer_banner-pr_tr_ap {
   font-size: 42px;
+  font-weight: 700;
 }
 
 .footer_banner-co_so {
   font-size: 30px;
+  font-weight: 700;
   color: #ffc702;
   line-height: 22px;
   margin-bottom: 24px;
@@ -871,12 +872,7 @@ hr.f-border {
 .tour-card-mobile {
   display: none;
 }
-.visa-form-title {
-  background: #1c2e6a;
-  color: white;
-  border-radius: 7px;
-  max-width: 775px;
-}
+
 .travel-form-content h2 {
   display: block;
 }
