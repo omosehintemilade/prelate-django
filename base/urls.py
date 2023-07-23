@@ -22,7 +22,6 @@ urlpatterns = [
          name="post-arrival-services"),
     path('tour', views.tour, name="tour"),
     path('tour-old', views.tourOld, name="tour-old"),
-
     path('tour/<int:pk>/<slug:slug>', views.tour_deal, name="tour-deal"),
     path('tour/customize-old', views.customize_tourOld, name="customize-tour-old"),
     path('tour/customize', views.customize_tour, name="customize-tour"),
@@ -30,25 +29,23 @@ urlpatterns = [
     path('become-affiliate', views.become_affiliate, name="become-affiliate"),
     path("contact-us", views.contact_us, name="contact-us"),
     path("faq", views.faq, name="faq"),
+    path("faq-old", views.faq_old, name="faq-old"),
     path("affiliate/dashboard", views.affliate_dashboard,
          name="affliate_dashboard"),
     path("affiliate/accounts/", include('allauth.urls')),
     path("affiliate/profile", views.affiliate_profile, name="affiliate-profile"),
     path("affiliate/transactions", views.affiliate_transactions,
          name="affiliate-transactions"),
-
     path('vetropay-verify-account',
          views.vetropay_verify_account, name='verify-account'),
     path('vetropay-mobile-transfer',
          views.vetropay_fund_transfer, name='transfer-fund'),
-
     #
     path('term-of-service-old', views.term_of_service_old,
          name="term-of-service-old"),
     path('about-us', views.about_us, name="about-us"),
     path('term-of-service', views.term_of_service, name="term-of-service"),
     path('privacy-policy', views.privacy_policy, name="privacy-policy"),
+    path('privacy-policy-old', views.privacy_policy_old, name="privacy-policy-old"),
     path('referrals', views.referral, name="referral")
-
-
 ]

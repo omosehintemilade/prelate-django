@@ -466,6 +466,13 @@ def faq(request):
         "faq.html"
     )
 
+
+def faq_old(request):
+    return render(
+        request,
+        "faq-old.html"
+    )
+
 ##########################################
 
 
@@ -691,6 +698,13 @@ def about_us(request):
 
 
 def privacy_policy(request):
+    return render(
+        request,
+        "privacy_policy.html"
+    )
+
+
+def privacy_policy_old(request):
     return render(
         request,
         "privacy_policy.html"
