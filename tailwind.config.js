@@ -5,7 +5,8 @@ module.exports = {
     extend: {
       colors: {
         primary: "#1C2E6A",
-        textPrimary: "#6A6A6A"
+        textPrimary: "#6A6A6A",
+        buttonPrimary: "#FFC702"
       },
       listStyleType: {
         disclosureClosed: "disclosure-closed"

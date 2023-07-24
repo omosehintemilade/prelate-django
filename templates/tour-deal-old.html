@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load widget_tweaks %} {% include "partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
+  </head>
+  <body>
+    {% include "partials/components/_header.html" %}
+
+    <section
+      class="visa-where-would"
+      style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url('/static/images/tour-deals.png');"
+    >
+      <div class="container d-block">
+        <p>
+          Tour Deals
+        </p>
+      </div>
+    </section>
+    <section class="tour-amazing-deals">
+      <div class="container">
+        <h1 class="text-center our-services-heading mb-5">Tour Deals > {{ package.deal_name }}</h1>
+        <div class="row">
+          <div class="col-sm-6">
+            <img style="max-width: 300px;" src="/{{ package.deal_image }}" alt="" class="" />
+          </div>
+          <div class="col-sm-6">
+            <div class="card card-body">
+              <p class="text-center" style="font-weight: 700; font-size: 20px;">Deal information</p>
+              <p><b>Country/City:</b> {{ package.country }}</p>
+              <p><b>Price:</b> {{ package.currency }} {{ package.amount }}</p>
+              <p><b>Other information:</b> {{ package.information|safe }}</p>
+              <br />
+              <hr />
+              <form method="POST" action="">
+                {% csrf_token %}
+                <div hidden class="from-group">
+                  {% render_field form.deal class="form-control" %}
+                </div>
+                <div class="from-group">
+                  <label>Full name</label>
+                  {% render_field form.fullname class="form-control" %}
+                </div>
+                <div class="from-group">
+                  <label>Email</label>
+                  {% render_field form.email class="form-control" %}
+                </div>
+                <div class="from-group">
+                  <label>Phone Number</label>
+                  {% render_field form.phonenumber class="form-control" %}
+                </div>
+                <div class="from-group">
+                  <label>No of travellers</label>
+                  {% render_field form.number_of_travellers class="form-control" %}
+                </div>
+                <div style="margin-top: 20px;">
+                  <button type="submit" class="btn btn-primary w-100 text-white">Buy Deal</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'partials/components/_partners.html' %} {% include 'partials/components/_download.html' %} {% include 'partials/components/_footer.html' %}
+    <br />
+    {% include 'partials/_bottom.html' %}
+    <!--Sweet Alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <!--End Sweet Alert-->
+    <script>
+      const url = window.location.href;
+      const splittedUrl = url.split("#");
+      if (splittedUrl[1] == "submitted") {
+        Swal.fire({
+          html: "<h5>Your Tour Deal request has been submitted successfully!. <br/><b>We will reach out to you soonest.</b></h5>",
+        });
+      }
+    </script>
+  </body>
+</html>

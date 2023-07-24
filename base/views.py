@@ -382,6 +382,29 @@ def tourOld(request):
     )
 
 
+def tour_deal_old(request, pk, slug):
+    package = TourDeal.objects.filter(id=pk, slug=slug).first()
+
+    if request.method == "GET":
+        return render(
+            request,
+            "tour-deal-old.html",
+            context={
+                "package": package,
+                "form": TourDealInterestForm(initial={
+                    'deal': package
+                })
+            }
+        )
+    elif request.method == "POST":
+        form = TourDealInterestForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+
+        redirect_link = "/tour/{}/{}#submitted".format(pk, slug)
+        return redirect(redirect_link)
+
+
 def tour_deal(request, pk, slug):
     package = TourDeal.objects.filter(id=pk, slug=slug).first()
 
@@ -457,6 +480,13 @@ def contact_us(request):
     return render(
         request,
         "contact-us.html"
+    )
+
+
+def contact_us_old(request):
+    return render(
+        request,
+        "contact-us-old.html"
     )
 
 

@@ -20,7 +20,7 @@
         <div class="h-2/4 flex justify-center flex-col items-center gradient-blue w-full">
           <h3 class="text-[40px] leading-[84px] font-bold text-[#fff]">
             Where would you like
-            <span class="text-[40px] leading-[84px] text-[#FFC702]">to travel to?</span>
+            <span class="text-[40px] leading-[84px] text-buttonPrimary">to travel to?</span>
           </h3>
           <button data-dropdown-toggle="dropdown"
                   class="text-primary bg-white flex w-[965px] shadow-sm justify-between rounded-[7px] p-3 text-15px font-bold"
@@ -82,7 +82,9 @@
           </p>
         </div>
         <div class="lg:mt-20">
-          <div class="">Travel Info</div>
+          <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
+            Travel Info
+          </div>
           <form class="text-primary w-full max-w-[775px] pt-10"
                 method="POST"
                 action="{% url 'travel-info' %}">
@@ -120,7 +122,7 @@
               <label for="" class="input-label">Enquiry</label>
               {% render_field travel_info_form.enquiry class="text-area" placeholder="Write your detailed enquiry here" %}
             </div>
-            <button class="py-3 px-2 bg-[#FFC702] rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+            <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
           </div>
         </form>
       </div>
@@ -196,7 +198,7 @@
               <label for="" class="input-label">Your estimated budget amount</label>
               {% render_field travel_budget_form.estimated_budget_value class="input-style" placeholder="2,000" type="number" %}
             </div>
-            <button class="py-3 px-2 bg-[#FFC702] rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+            <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
           </div>
         </form>
       </div>
@@ -232,7 +234,7 @@
               <label for="" class="input-label">Enquiry</label>
               {% render_field travel_info_form.enquiry class="text-area" placeholder="Write your detailed request information here" %}
             </div>
-            <button class="py-3 px-2 bg-[#FFC702] rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+            <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
           </div>
         </form>
       </div>

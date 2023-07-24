@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>{% include "partials/_head.html" with add_title="Contact Us | Prelate Travels & Tours" %}</head>
+  <body>
+    {% include "partials/components/_header.html" %}
+    <div class="faq-header">
+      <div class="container">Contact Us</div>
+    </div>
+    <div class="faq-main">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="offset-md-2 col-md-8">
+            <div class="faq-container">
+              <div class="faq-data">
+                <div class="faq-container-header">
+                  <div class="row">
+                    <div class="offset-1 col-2 faq-question">
+                      <img src="https://res.cloudinary.com/prelatetravel/image/upload/v1607834136/address-book_sceswx.png"
+                           alt="" />
+                    </div>
+                    <div class="col-9 faq-question">
+                      <p>Office Address</p>
+                      <p style="font-weight: normal">
+                        <a href="https://goo.gl/maps/RuvFpMrQLNAscLpv6" target="_blank">26, Orere-owu street opp first bank okeyinmi Ado-Ekiti</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-data">
+                <div class="faq-container-header">
+                  <div class="row">
+                    <div class="offset-1 col-2 faq-question">
+                      <img src="https://res.cloudinary.com/prelatetravel/image/upload/v1607834175/mail_2_f6qfno.png"
+                           alt="" />
+                    </div>
+                    <div class="col-9 faq-question">
+                      <p>Email</p>
+                      <p style="font-weight: normal">
+                        <a href="mailto:sales@prelatetravel.com" target="_blank">sales@prelatetravel.com</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-data">
+                <div class="faq-container-header">
+                  <div class="row">
+                    <div class="offset-1 col-2 faq-question">
+                      <img src="https://res.cloudinary.com/prelatetravel/image/upload/v1607834212/telephone_dnqvyr.png"
+                           alt="" />
+                    </div>
+                    <div class="col-9 faq-question">
+                      <p>Phone</p>
+                      <p style="font-weight: normal">
+                        <a href="tel:+2348101257394">08101257394</a>
+                      </p>
+                      <p style="font-weight: normal">080xxxxx2691</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="faq-data">
+                <div class="faq-container-header">
+                  <div class="row">
+                    <div class="offset-1 col-2 faq-question">
+                      <img src="https://res.cloudinary.com/prelatetravel/image/upload/v1607834246/whatsapp_alltus.png"
+                           alt="" />
+                    </div>
+                    <div class="col-9 faq-question">
+                      <p>WhatsApp</p>
+                      <p style="font-weight: normal">
+                        <a href="https://wa.me/2348101257394">08101257394</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d-block mt-5"
+                 style="padding: 20px;
+                        box-shadow: 0px 4px 8px rgba(41, 124, 222, 0.15)">
+              <form action="">
+                <h2 class="text-center mb-3">Send us a message</h2>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">First Name</label>
+                      <input required type="text" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Last Name</label>
+                      <input required type="text" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Phone Number</label>
+                      <input required type="text" class="form-control" />
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label for="">Email Address</label>
+                      <input required type="text" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label for="">Message</label>
+                      <textarea required class="form-control"></textarea>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="d-block w-100 btn btn-primary">Submit Form</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    {% include 'partials/components/_footer.html' %}
+    {% include 'partials/_bottom.html' %}
+    <script>
+      $(document).ready(function () {
+        $(".toggle-faq").on("click", function () {
+          var isToggled = $(this).attr("data-toggled");
+          var questionNode = $(this).attr("data-answer-node");
+          var answer = $('.faq-answer[data-answer-node="' + questionNode + '"]');
+          if (isToggled === "false") {
+            $(this).attr("data-toggled", "true");
+            $($($(this).find("img")[0])[0]).attr("src", $(this).attr("data-hide-image"));
+            answer.slideDown();
+          } else {
+            $(this).attr("data-toggled", "false");
+            $($($(this).find("img")[0])[0]).attr("src", $(this).attr("data-show-image"));
+            answer.slideUp();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

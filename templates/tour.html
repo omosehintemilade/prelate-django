@@ -12,7 +12,7 @@
       <div class="flex items-end h-full">
         <div class="h-2/4 flex items-end gradient-blue w-full">
           <div class="w-4/5 mx-auto">
-            <h3 class="text-[40px] leading-[84px] font-bold text-[#FFC702]">Tour Deals</h3>
+            <h3 class="text-[40px] leading-[84px] font-bold text-buttonPrimary">Tour Deals</h3>
           </div>
         </div>
       </div>
@@ -22,20 +22,18 @@
         </div>
       </div>
     </section>
-    <section class="px-20">
-    </section>
     <!--  Tour card Section Bgig Screen-->
     <section class="px-48 tour-card-main">
       <div class="mt-20">
         <div class="grid grid-cols-4 gap-x-10 gap-y-5">
-          <div class="cursor-pointer">
+          <a href="{% url 'tour-deal' %}">
             <div class="card__tour flex items-end rounded-t-[4px]">
               <div class="h-2/3 flex items-end w-full shadow">
                 <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
               </div>
             </div>
             <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
+          </a>
           <div class="cursor-pointer">
             <div class="card__tour flex items-end rounded-t-[4px]">
               <div class="h-2/3 flex items-end w-full shadow">
