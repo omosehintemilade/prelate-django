@@ -1,0 +1,5 @@
+Dear Developer! I'll try to leave all heads up that I can find in this project here
+
+
+
+The Tailwind Setup in this project is using desktop first setup. 

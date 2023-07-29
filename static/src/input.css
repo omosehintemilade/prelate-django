@@ -5,16 +5,20 @@
 @tailwind utilities;
 
 @layer utilities {
+  .container__inner_layout {
+    @apply px-44 py-5 tablet:px-5 tablet:py-0;
+  }
+
   .input-style {
-    @apply border border-x-0 border-t-0 border-primary p-3 pb-1 text-[#6A6A6A] text-sm;
+    @apply border border-x-0 border-t-0 border-primary p-3 pb-1 text-textPrimary text-sm mobile:text-xs mobile:p-0;
   }
 
   .input-label {
-    @apply mb-2 pt-5 pl-5 text-sm leading-[27px] font-semibold;
+    @apply mb-2 pt-5 pl-5 text-sm leading-[27px] font-semibold mobile:leading-normal mobile:pt-0 mobile:pl-0 mobile:text-xs;
   }
 
   .text-area {
-    @apply border border-primary mt-3 p-3 pb-1 text-[#6A6A6A] text-sm;
+    @apply border border-primary mt-3 p-3 pb-1 text-textPrimary text-sm mobile:text-xs mobile:pl-1.5 mobile:h-24;
   }
 
   .calendar {
@@ -22,6 +26,13 @@
   }
 
   .form-title {
-    @apply bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white;
+    @apply block bg-primary rounded-[7px] w-full p-3 text-white tablet:hidden;
+  }
+
+  .shaded-down-arrow {
+    @apply w-3.5 mr-10 mt-2 mobile:hidden;
+  }
+  .submit-btn {
+    @apply py-3 px-2 bg-buttonPrimary rounded-lg mt-5 w-[155px] mobile:text-sm mobile:w-[130px] mobile:px-2.5 mobile:py-3 mobile:mt-0 mobile:font-medium;
   }
 }

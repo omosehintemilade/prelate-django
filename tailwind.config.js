@@ -2,6 +2,13 @@
 module.exports = {
   content: ["./templates/**/*.html", "./node_modules/flowbite/**/*.js"],
   theme: {
+    screens: {
+      mobile: { max: "500px" },
+      tablet: { max: "768px" },
+      laptop: { max: "1024px" },
+      desktop: { max: "1280px" },
+      xtraLarge: { min: "1281px" }
+    },
     extend: {
       colors: {
         primary: "#1C2E6A",
@@ -10,6 +17,9 @@ module.exports = {
       },
       listStyleType: {
         disclosureClosed: "disclosure-closed"
+      },
+      fontSize: {
+        xxs: "10px"
       }
     }
   },

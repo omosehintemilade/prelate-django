@@ -154,7 +154,7 @@ def travel_assistance(request):
         form = TravelAssistanceForm(request.POST, request.FILES)
         if form.is_valid():
             form.save(commit=True)
-            return redirect("/travel-help#submitted")
+            return redirect("/travel-help#submitted?redirect=travel-info")
 
 
 def travel_budget(request):
@@ -163,7 +163,7 @@ def travel_budget(request):
         if form.is_valid():
             form.save(commit=True)
 
-            return redirect("/travel-help#submitted")
+            return redirect("/travel-help#submitted?redirect=travel-budget")
 
 
 def request_change(request):
@@ -172,7 +172,7 @@ def request_change(request):
         if form.is_valid():
             form.save(commit=True)
 
-            return redirect("/travel-help#submitted")
+            return redirect("/travel-help#submitted?redirect=request-changes")
 
 
 def travel_insurance(request):

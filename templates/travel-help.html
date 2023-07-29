@@ -7,35 +7,34 @@
   </head>
   <body>
     {% include "latest/components/_header.html" %}
-    <!-- HERO SECTION MOBILE -->
-    <!-- mobile sub header slider -->
-    <div class="travel-info-mobile-slider"></div>
-    <!-- mobile hero slider -->
-    <section class="travel-help-mobile-slider">
-    </section>
-    <!-- HERO SECTION MOBILE -->
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE -->
     <!-- HERO SECTION DESKTOP -->
-    <section class="travel-info-hero template p-0">
+    <section class="travel-info-hero bg-no-repeat w-full  h-[70vh] p-0 mobile:h-[40vh] mobile:bg-cover">
       <div class="flex items-end h-full">
-        <div class="h-2/4 flex justify-center flex-col items-center gradient-blue w-full">
-          <h3 class="text-[40px] leading-[84px] font-bold text-[#fff]">
+        <div class="h-2/4 flex justify-center flex-col items-center gradient-blue w-full mobile:justify-end mobile:items-start mobile:p-5">
+          <h3 class="text-[40px] leading-[84px] font-bold text-white mobile:text-lg mobile:leading-normal mobile:font-semibold mobile:mb-1.5">
             Where would you like
-            <span class="text-[40px] leading-[84px] text-buttonPrimary">to travel to?</span>
+            <span class="text-buttonPrimary mobile:text-white">to travel to?</span>
           </h3>
-          <button data-dropdown-toggle="dropdown"
-                  class="text-primary bg-white flex w-[965px] shadow-sm justify-between rounded-[7px] p-3 text-15px font-bold"
-                  type="button">
-            Select Country
+          <div class="flex items-center rounded-lg bg-white w-[965px] shadow-md mobile:rounded-sm mobile:w-11/12">
+            <select id="countries"
+                    class="flex-1 rounded-l-lg text-xl p-3 font-bold border-none text-textPrimary mobile:px-2 mobile:py-1.5 mobile:text-xs mobile:font-medium mobile:rounded-sm">
+              <option selected
+                      class="text-base text-textPrimary px-3 py-2.5 mobile:text-xxs mobile:p-0">Select Country</option>
+              <option class="text-base text-textPrimary px-3 py-2.5 mobile:text-xxs mobile:p-0">Select Country</option>
+            </select>
             <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                 class="w-[15px] mr-10 mt-2"
+                 class="shaded-down-arrow"
                  alt="icon" />
-          </button>
+          </div>
         </div>
       </div>
     </section>
-    <!-- HERO SECTION DESKTOP -->
+    <!-- HERO SECTION DESKTOP END -->
     <!-- DESKTOP TRAVEL NAVIGATION -->
-    <section class="lg:px-44 py-5 travel-info-nav">
+    <section class="container__inner_layout pt-8 pb-5 tablet:hidden">
       <nav class="travel-info">
         <ul class="flex">
           <li class="tab active">Travel Info</li>
@@ -44,55 +43,45 @@
         </ul>
       </nav>
     </section>
-    <!-- DESKTOP TRAVEL NAVIGATION -->
+    <!-- DESKTOP TRAVEL NAVIGATION END-->
     <!-- MOBILE TRAVEL NAVIGATION -->
-    <section class="travel-info-nav-mobile w-full px-5">
-      <nav class="my-5">
-        <ul class="flex gap-3 text-[11px]">
-          <li class="border border-x-0 border-t-0  border-primary">Travel Info</li>
-          <li>Travel Budget</li>
-          <li>Travel Assist</li>
+    <section class="hidden w-full px-5 tablet:block">
+      <nav class="my-5 travel-mobile-nav">
+        <ul class="flex gap-3 text-sm text-primary font-bold">
+          <li class="tablet:pr-4 tablet:pb-1.5 tab active">Travel Info</li>
+          <li class="tablet:pr-4 tablet:pb-1.5 tab">Travel Budget</li>
+          <li class="tablet:pr-4 tablet:pb-1.5 tab">Travel Assist</li>
         </ul>
       </nav>
-      <div>
-        <p class="text-[#6A6A6A] text-[9px]">
-          If you're are looking to travel internationally but do not know where
-          to begin, we at Prelate Travel are always more than happy to help you
-          achieve your desire destination.
-        </p>
-      </div>
     </section>
-    <!-- MOBILE TRAVEL NAVIGATION -->
-    <section class="lg:px-44 py-5 travel-form">
+    <!-- MOBILE TRAVEL NAVIGATION END -->
+    <section class="container__inner_layout">
       <!-- TRAVEL INFO FORM -->
       <div class="tab-pane active">
-        <div class="travel-info-content">
-          <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5">Travel Info</h2>
-          <p class="text-[#6A6A6A] text-sm text-justify leading-[27px]">
-            If you're are looking to travel internationally but do not know where
-            to begin, we at Prelate Travel are always more than happy to help you
-            achieve your desire destination. Here you will find the perfect
-            starting point for booking any continental travel journey. Whether you
-            are a novice or a more experienced traveller, research on your
-            destination is always an essential part of planning your trip. So that
-            is why Prelate Travel is here to hold your hand through the process of
-            finding a perfect country to travel to. Simply fill the form provided
-            below with the required details, in other for Prelate Travel to help
-            you get to your interested destination.
-          </p>
-        </div>
-        <div class="lg:mt-20">
-          <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
-            Travel Info
-          </div>
-          <form class="text-primary w-full max-w-[775px] pt-10"
+        <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5 block tablet:hidden">Travel Info</h2>
+        <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
+          If you're are looking to travel internationally but do not know where
+          to begin, we at Prelate Travel are always more than happy to help you
+          achieve your desire destination. Here you will find the perfect
+          starting point for booking any continental travel journey. Whether you
+          are a novice or a more experienced traveller, research on your
+          destination is always an essential part of planning your trip. So that
+          is why Prelate Travel is here to hold your hand through the process of
+          finding a perfect country to travel to. Simply fill the form provided
+          below with the required details, in other for Prelate Travel to help
+          you get to your interested destination.
+        </p>
+        <div class="mt-20 tablet:mt-0">
+          <div class="form-title">Travel Info</div>
+          <form class="text-primary w-full pt-10 tablet:pt-6"
                 method="POST"
                 action="{% url 'travel-info' %}">
+            {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label for="" class="input-label flex justify-between">
                 Country of origin
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="w-[10.39px] h-[9.75px]"
+                     class="shaded-down-arrow"
                      alt="" />
               </label>
               {% render_field travel_info_form.country_of_origin class="input-style" placeholder="----------" %}
@@ -101,7 +90,7 @@
               <label for="" class="input-label flex justify-between">
                 Country of Destination
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="w-[10.39px] h-[9.75px]"
+                     class="shaded-down-arrow"
                      alt="" />
               </label>
               {% render_field travel_info_form.country_of_destination class="input-style" placeholder="----------" %}
@@ -115,36 +104,35 @@
               {% render_field travel_info_form.phonenumber class="input-style" placeholder="----------" %}
             </div>
             <div class="flex flex-col mb-5">
-              <label for="" class="mb-2 pl-5 text-sm leading-[27px]">Email</label>
+              <label for="" class="input-label">Email</label>
               {% render_field travel_info_form.email class="input-style" placeholder="----------" type="email" %}
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Enquiry</label>
               {% render_field travel_info_form.enquiry class="text-area" placeholder="Write your detailed enquiry here" %}
             </div>
-            <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+            <button class="submit-btn">Submit Form</button>
           </div>
         </form>
       </div>
       <!-- TRAVEL INFO FORM -->
       <!-- TRAVEL BUDGET FORM -->
       <div class="tab-pane hidden">
-        <div class="travel-info-content">
-          <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5">Travel Budget</h2>
-          <p class="text-[#6A6A6A] text-sm text-justify leading-[27px]">
-            Simply fill the form provided below with the required details.
-          </p>
-        </div>
-        <div class="lg:mt-20">
-          <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
-            Travel Budget
-          </div>
-          <form class="text-primary w-full max-w-[775px] pt-10">
+        <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5 block tablet:hidden">Travel Budget</h2>
+        <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
+          Simply fill the form provided below with the required details.
+        </p>
+        <div class="mt-20 tablet:mt-0">
+          <div class="form-title">Travel Budget</div>
+          <form class="text-primary w-full pt-10 tablet:pt-6"
+                method="POST"
+                action="{% url 'travel_budget' %}">
+            {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label for="" class="input-label flex justify-between">
                 Country of origin
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="w-[10.39px] h-[9.75px]"
+                     class="shaded-down-arrow"
                      alt="" />
               </label>
               {% render_field travel_budget_form.country_of_origin class="input-style" placeholder="----------" %}
@@ -153,7 +141,7 @@
               <label for="" class="input-label flex justify-between">
                 Country of Destination
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="w-[10.39px] h-[9.75px]"
+                     class="shaded-down-arrow"
                      alt="" />
               </label>
               {% render_field travel_budget_form.country_of_destination class="input-style" placeholder="----------" %}
@@ -196,49 +184,46 @@
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Your estimated budget amount</label>
-              {% render_field travel_budget_form.estimated_budget_value class="input-style" placeholder="2,000" type="number" %}
+              {% render_field travel_budget_form.estimated_budget_value class="input-style" placeholder="e.g 2000" type="number" %}
             </div>
-            <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+            <button class="submit-btn">Submit Form</button>
           </div>
         </form>
       </div>
-      <!-- TRAVEL BUDGET FORM -->
+      <!-- TRAVEL BUDGET FORM END -->
       <!-- REQUEST CHANGE FORM -->
       <div class="tab-pane hidden">
-        <div class="travel-info-content">
-          <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5">Request Changes</h2>
-          <p class="text-[#6A6A6A] text-sm text-justify leading-[27px]">
-            Is there any mistake you noticed in the services we've offered you? please reach out to us for corrections. Please always make sure to reach out to us earlier at least 72hrs before your travel date.
-          </p>
-        </div>
-        <div class="lg:mt-20">
-          <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
-            Request Changes
-          </div>
-          <form class="text-primary w-full max-w-[775px] pt-10"
+        <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5 block tablet:hidden">Request Changes</h2>
+        <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
+          Is there any mistake you noticed in the services we've offered you? please reach out to us for corrections. Please always make sure to reach out to us earlier at least 72hrs before your travel date.
+        </p>
+        <div class="mt-20 tablet:mt-0">
+          <div class="form-title">Request Changes</div>
+          <form class="text-primary w-full pt-10 tablet:pt-6"
                 method="POST"
-                action="{% url 'travel-info' %}">
+                action="{% url 'request-change' %}">
+            {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Full Name</label>
-              {% render_field travel_info_form.fullname class="input-style" placeholder="----------" %}
+              {% render_field request_change_form.fullname class="input-style" placeholder="----------" %}
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Phone Number</label>
-              {% render_field travel_info_form.phonenumber class="input-style" placeholder="----------" %}
+              {% render_field request_change_form.phonenumber class="input-style" placeholder="----------" %}
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Email</label>
-              {% render_field travel_info_form.email class="input-style" placeholder="----------" type="email" %}
+              {% render_field request_change_form.email class="input-style" placeholder="----------" type="email" %}
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Enquiry</label>
-              {% render_field travel_info_form.enquiry class="text-area" placeholder="Write your detailed request information here" %}
+              {% render_field request_change_form.request_info class="text-area" placeholder="Write your detailed request information here" %}
             </div>
-            <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+            <button class="submit-btn">Submit Form</button>
           </div>
         </form>
       </div>
-      <!-- REQUEST CHANGE FORM -->
+      <!-- REQUEST CHANGE FORM END -->
     </section>
     <!-- FOOTER -->
     {% include "latest/components/_footer.html" %}
@@ -250,15 +235,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <!--End Sweet Alert-->
     <script src="{% static 'javascripts/travelHelp.js' %}"></script>
-    <script>
-    const url = window.location.href;
-    const splittedUrl = url.split("#");
-    if (splittedUrl[1] == "submitted") {
-      Swal.fire({
-        html: "<h5>Your Enquriry has been submitted successfully!. <br /><b>We will reach out to you as soonest.</b></h5>",
-      });
-    }
-    </script>
     <!-- SCRIPTS -->
   </body>
 </html>

@@ -138,10 +138,20 @@ header .button {
   border-top: 0px;
 }
 
-.drawer-content ul li a {
+.drawer-content ul li a,
+.drawer-content ul li p {
   color: #fff;
   font-size: 14px;
   font-weight: 300;
+}
+
+.sub-menu-first {
+  padding-left: 20px !important;
+}
+
+.sub-menu-last {
+  margin-left: 20px;
+  width: 120px !important;
 }
 
 .drawer-open {
@@ -153,8 +163,6 @@ header .button {
 @media screen and (max-width: 768px) {
   header {
     width: 100%;
-    padding-left: 10px;
-    padding-right: 20px;
   }
   header img {
     width: 50%;
@@ -253,6 +261,7 @@ footer nav {
   flex: 30%;
   display: flex;
   justify-content: flex-end;
+  overflow: hidden;
 }
 
 footer h6 {
@@ -331,12 +340,15 @@ hr.f-border {
     font-weight: 400;
     margin-bottom: 12px;
   }
+  .footer_banner-container .text {
+    margin-left: 10px;
+  }
 
   footer {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
   footer nav {
-    width: 95%;
+    width: 100%;
     flex-direction: column-reverse;
   }
   footer h6 {
@@ -351,13 +363,13 @@ hr.f-border {
   .f-links_wrapper {
     width: 100%;
     background-color: #f1f1f1;
-    padding: 40px 2.5% 70px 2.5%;
+    padding: 40px 20px 120px 20px;
   }
 
   .f-form_wrapper {
     width: 100%;
     justify-content: flex-start;
-    padding: 28px 2.5% 32px 2.5%;
+    padding: 28px 20px 32px 20px;
   }
 
   .f-form {
@@ -373,11 +385,13 @@ hr.f-border {
     gap: 5px;
   }
 
-  footer input {
-    font-size: 10px;
-    padding: 10px 7.5px;
-    flex: 1;
-    width: 100%;
+  footer input.input {
+    width: 50%;
+    padding: 10px 8px 4px;
+    font-size: 12px;
+    height: 50px;
+    font-weight: 500;
+    margin-bottom: 0px;
   }
 
   footer button {
@@ -425,15 +439,52 @@ hr.f-border {
 .indicator[aria-current="true"] {
   background: #ffc702 !important;
 }
+
+/* SLIDERS */
 .slider-1 {
   background: url(/static/images/slider-1.png);
 }
-.shadow {
-  background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
-}
+
 .slider-2 {
   background: url(/static/images/slider-2.png);
 }
+
+.mobile-slider-1 {
+  background: url(/static/images/mobile-slider-1.png);
+}
+.mobile-slider-2 {
+  background: url(/static/images/mobile-slider-2.png);
+}
+.mobile-slider-3 {
+  background: url(/static/images/mobile-slider-3.png);
+}
+.mobile-slider-4 {
+  background: url(/static/images/mobile-slider-4.png);
+}
+.mobile-slider-5 {
+  background: url(/static/images/mobile-slider-5.png);
+}
+.mobile-slider-6 {
+  background: url(/static/images/mobile-slider-6.png);
+}
+/* SLIDERS */
+
+/* CUSTOM GRADIENTS */
+.gradient-blue-mobile {
+  background: linear-gradient(
+    -90.47deg,
+    #1c2e6a 2.95%,
+    rgba(28, 46, 106, 0) 100.04%
+  );
+}
+
+.gradient-black {
+  background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+}
+.gradient-blue {
+  background: linear-gradient(0deg, #1c2e6a 0%, rgba(0, 0, 0, 0) 100%);
+}
+/* CUSTOM GRADIENTS */
 
 @media screen and (max-width: 768px) {
   .template {
@@ -465,11 +516,9 @@ hr.f-border {
 }
 
 .travel-info-hero {
-  width: 100%;
-  height: 70vh;
   background: url(/static/images/slider-3.png);
-  background-repeat: no-repeat;
 }
+
 .travel-insurance-hero {
   width: 100%;
   height: 50vh;
@@ -495,10 +544,6 @@ hr.f-border {
   height: 60vh;
   background-size: cover;
   background-position: bottom;
-}
-
-.gradient-blue {
-  background: linear-gradient(0deg, #1c2e6a 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .travel-help-mobile-slider {
@@ -766,6 +811,11 @@ hr.f-border {
   border-radius: 7px;
   color: #ffffff;
 }
+
+.travel-mobile-nav li.active {
+  border-bottom: 1px solid #1c2e6a;
+}
+
 .tour-abroad-content {
   width: 932px;
   padding: 0 220px;
@@ -792,9 +842,7 @@ hr.f-border {
   z-index: 1;
   top: 50px;
 }
-.travel-info-content {
-  display: block;
-}
+
 .travel-insurance p {
   margin-top: 0;
 }
@@ -805,12 +853,6 @@ hr.f-border {
   }
   .travel-insurance form {
     width: 330px;
-  }
-  .travel-form {
-    padding: 0 20px;
-  }
-  .travel-info-content {
-    display: none;
   }
 }
 
