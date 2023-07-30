@@ -252,40 +252,15 @@ def travel_insuranceOld(request):
 def visa_assistance(request):
     if request.method == "GET":
         countries = CoveredCountry.objects.all().order_by("country_name")
-        country_requested = request.GET.get("country")
+        return render(
+            request,
+            "visa-assistance.html",
+            context={
+                "countries": countries,
+                "travel_assistance_form": TravelAssistanceForm(),
 
-        if not country_requested:
-            return render(
-                request,
-                "visa-assistance.html",
-                context={
-                    "countries": countries,
-                    "travel_assistance_form": TravelAssistanceForm(),
-
-                }
-            )
-        else:
-            if country_requested != "":
-                return render(
-                    request,
-                    "visa-assistance.html",
-                    context={
-                        "countries": countries,
-                        "main_country": CoveredCountry.objects.get(country_name=country_requested),
-                        "travel_assistance_form": TravelAssistanceForm(),
-
-                    }
-                )
-            else:
-                return render(
-                    request,
-                    "visa-assistance.html",
-                    context={
-                        "countries": countries,
-                        "travel_assistance_form": TravelAssistanceForm(),
-
-                    }
-                )
+            }
+        )
     elif request.method == "POST":
         countries = CoveredCountry.objects.all().order_by("country_name")
         form = TravelAssistanceForm(request.POST, request.FILES)

@@ -41,8 +41,13 @@
           your interested destination.</span>
         </p>
       </div>
-      <div class="font-bold text-[11px] uppercase text-primary w-full p-3 mobile:p-0">Visa Assistance Form</div>
-      <form class="w-full pt-10 mobile:pt-6">
+      <div class="form-title mobile:!block mobile:!p-0 mobile:!text-sm">Visa Assistance Form</div>
+      <form class="w-full pt-10 mobile:pt-6"
+            method="POST"
+            action=""
+            enctype="multipart/form-data">
+        {{ form.errors }} {{ form.non_field_errors }}
+        {% csrf_token %}
         <div class="flex flex-col mb-5">
           <label for="" class="input-label flex justify-between">
             Country of origin
@@ -88,7 +93,7 @@
         </div>
         <div class="flex flex-col mb-5">
           <label for="" class="input-label">Upload Document</label>
-          {% render_field travel_assistance_form.document class="input-style !border rounded-md" %}
+          {% render_field travel_assistance_form.document class="input-style mobile:!border mobile:rounded-md" %}
         </div>
         <button class="submit-btn">Submit Form</button>
       </div>
@@ -98,6 +103,8 @@
     <!-- FOOTER -->
     <!-- SCRIPTS -->
     {% include "latest/partials/_scripts.html" %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/datepicker.min.js"></script>
+    <script src="{% static 'javascripts/datepicker.js' %}"></script>
+    <script src="{% static 'javascripts/sweetAlert.js' %}"></script>
+    <script src="{% static 'javascripts/notification.js' %}"></script>
   </body>
 </html>

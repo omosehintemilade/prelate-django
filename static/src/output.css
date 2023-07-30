@@ -3188,6 +3188,10 @@ input:checked + .toggle-bg {
     margin-top: 1.25rem;
   }
 
+  .mobile\:\!block {
+    display: block !important;
+  }
+
   .mobile\:hidden {
     display: none;
   }
@@ -3220,6 +3224,14 @@ input:checked + .toggle-bg {
     border-radius: 0.125rem;
   }
 
+  .mobile\:rounded-md {
+    border-radius: 0.375rem;
+  }
+
+  .mobile\:\!border {
+    border-width: 1px !important;
+  }
+
   .mobile\:bg-cover {
     background-size: cover;
   }
@@ -3230,6 +3242,10 @@ input:checked + .toggle-bg {
 
   .mobile\:p-5 {
     padding: 1.25rem;
+  }
+
+  .mobile\:\!p-0 {
+    padding: 0px !important;
   }
 
   .mobile\:px-2 {
@@ -3264,6 +3280,20 @@ input:checked + .toggle-bg {
   .mobile\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
+  }
+
+  .mobile\:text-\[11px\] {
+    font-size: 11px;
+  }
+
+  .mobile\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .mobile\:\!text-sm {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
   }
 
   .mobile\:font-medium {
