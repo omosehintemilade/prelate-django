@@ -34,7 +34,7 @@ mobileTabs?.forEach((tab, index) =>
 const splittedUrl = url.split("#");
 if (splittedUrl[1]?.includes("submitted")) {
   Swal.fire({
-    html: "<h5>Your Enquiry has been submitted successfully!. <br /><b>We will reach out to you as soonest.</b></h5>"
+    html: "<h5 class='text-sm'>Your Enquiry has been submitted successfully!. <br /><b>We will reach out to you as soonest.</b></h5>"
   });
 }
 
@@ -67,3 +67,8 @@ function activateTab(currentTabIndex) {
     else pane.style.display = "none";
   });
 }
+
+// Select Dropdown
+document.querySelector("#countries")?.addEventListener("change", (e) => {
+  window.location = `${url.split("?")[0]}?country=${e.target.value}`;
+});

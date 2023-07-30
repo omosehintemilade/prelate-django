@@ -21,9 +21,14 @@
           <div class="flex items-center rounded-lg bg-white w-[965px] shadow-md mobile:rounded-sm mobile:w-11/12">
             <select id="countries"
                     class="flex-1 rounded-l-lg text-xl p-3 font-bold border-none text-textPrimary mobile:px-2 mobile:py-1.5 mobile:text-xs mobile:font-medium mobile:rounded-sm">
-              <option selected
-                      class="text-base text-textPrimary px-3 py-2.5 mobile:text-xxs mobile:p-0">Select Country</option>
-              <option class="text-base text-textPrimary px-3 py-2.5 mobile:text-xxs mobile:p-0">Select Country</option>
+              {% if main_country %}
+                <option selected value="{{ main_country.country_name }}">★ {{ main_country.country_name }}</option>
+              {% else %}
+                <option value="">Select Country</option>
+              {% endif %}
+              {% for country in countries %}
+                <option value="{{ country.country_name }}">{{ country.country_name }}</option>
+              {% endfor %}
             </select>
             <img src="{% static 'images/shaded-down-arrow.svg' %}"
                  class="shaded-down-arrow"
@@ -48,9 +53,9 @@
     <section class="hidden w-full px-5 tablet:block">
       <nav class="my-5 travel-mobile-nav">
         <ul class="flex gap-3 text-sm text-primary font-bold">
-          <li class="tablet:pr-4 tablet:pb-1.5 tab active">Travel Info</li>
-          <li class="tablet:pr-4 tablet:pb-1.5 tab">Travel Budget</li>
-          <li class="tablet:pr-4 tablet:pb-1.5 tab">Travel Assist</li>
+          <li class="tablet:pb-1.5 tab active">Travel Info</li>
+          <li class="tablet:pb-1.5 tab">Travel Budget</li>
+          <li class="tablet:pb-1.5 tab">Travel Assist</li>
         </ul>
       </nav>
     </section>

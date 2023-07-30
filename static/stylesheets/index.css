@@ -814,6 +814,7 @@ hr.f-border {
 
 .travel-mobile-nav li.active {
   border-bottom: 1px solid #1c2e6a;
+  padding-right: 10px;
 }
 
 .tour-abroad-content {
@@ -1000,4 +1001,18 @@ hr.f-border {
 
 .card {
   display: inline-block;
+}
+
+/* SWET ALERT */
+/* MOBILE */
+@media screen and (max-width: 500px) {
+  button.swal2-confirm.swal2-styled {
+    font-size: 12px;
+  }
+  .swal2-content {
+    padding: 0px;
+  }
+  .swal2-actions {
+    margin-top: 10px;
+  }
 }

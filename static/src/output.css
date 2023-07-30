@@ -3237,20 +3237,8 @@ input:checked + .toggle-bg {
 }
 
 @media (max-width: 768px) {
-  .tablet\:mt-5 {
-    margin-top: 1.25rem;
-  }
-
-  .tablet\:mt-3 {
-    margin-top: 0.75rem;
-  }
-
   .tablet\:mt-0 {
     margin-top: 0px;
-  }
-
-  .tablet\:mt-6 {
-    margin-top: 1.5rem;
   }
 
   .tablet\:block {
@@ -3261,20 +3249,6 @@ input:checked + .toggle-bg {
     display: none;
   }
 
-  .tablet\:p-0 {
-    padding: 0px;
-  }
-
-  .tablet\:px-0 {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .tablet\:px-5 {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
-  }
-
   .tablet\:pb-1 {
     padding-bottom: 0.25rem;
   }
@@ -3283,20 +3257,20 @@ input:checked + .toggle-bg {
     padding-bottom: 0.375rem;
   }
 
-  .tablet\:pr-4 {
-    padding-right: 1rem;
-  }
-
-  .tablet\:pt-6 {
-    padding-top: 1.5rem;
-  }
-
   .tablet\:pl-4 {
     padding-left: 1rem;
   }
 
+  .tablet\:pr-4 {
+    padding-right: 1rem;
+  }
+
   .tablet\:pr-5 {
     padding-right: 1.25rem;
+  }
+
+  .tablet\:pt-6 {
+    padding-top: 1.5rem;
   }
 
   .tablet\:text-xs {
@@ -3329,11 +3303,6 @@ input:checked + .toggle-bg {
 
   .desktop\:mt-36 {
     margin-top: 9rem;
-  }
-
-  .desktop\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 
   .desktop\:px-20 {
