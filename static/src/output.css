@@ -1459,6 +1459,10 @@ input:checked + .toggle-bg {
   height: 50%;
 }
 
+.h-\[60vh\] {
+  height: 60vh;
+}
+
 .h-\[70\%\] {
   height: 70%;
 }
@@ -1890,6 +1894,10 @@ input:checked + .toggle-bg {
   border-top-right-radius: 0.75rem;
 }
 
+.\!border {
+  border-width: 1px !important;
+}
+
 .\!border-0 {
   border-width: 0px !important;
 }
@@ -2070,6 +2078,10 @@ input:checked + .toggle-bg {
 
 .bg-clip-padding {
   background-clip: padding-box;
+}
+
+.bg-bottom {
+  background-position: bottom;
 }
 
 .bg-no-repeat {
@@ -2732,6 +2744,8 @@ input:checked + .toggle-bg {
   line-height: 1.25rem;
   font-weight: 600;
   line-height: 27px;
+  --tw-text-opacity: 1;
+  color: rgb(28 46 106 / var(--tw-text-opacity));
 }
 
 @media (max-width: 500px) {
@@ -2740,6 +2754,7 @@ input:checked + .toggle-bg {
     padding-left: 0px;
     font-size: 0.75rem;
     line-height: 1rem;
+    font-weight: 500;
     line-height: 1.5;
   }
 }
@@ -2776,6 +2791,12 @@ input:checked + .toggle-bg {
   display: flex;
   align-items: center;
   padding-left: 0.875rem;
+}
+
+@media (max-width: 500px) {
+  .calendar {
+    top: 0px;
+  }
 }
 
 .form-title {
@@ -2830,6 +2851,8 @@ input:checked + .toggle-bg {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 500;
+    --tw-text-opacity: 1;
+    color: rgb(28 46 106 / var(--tw-text-opacity));
   }
 }
 
@@ -3157,12 +3180,32 @@ input:checked + .toggle-bg {
     margin-bottom: 0.375rem;
   }
 
+  .mobile\:mb-6 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mobile\:mt-5 {
+    margin-top: 1.25rem;
+  }
+
+  .mobile\:hidden {
+    display: none;
+  }
+
+  .mobile\:h-2\/4 {
+    height: 50%;
+  }
+
   .mobile\:h-\[40vh\] {
     height: 40vh;
   }
 
   .mobile\:w-11\/12 {
     width: 91.666667%;
+  }
+
+  .mobile\:w-full {
+    width: 100%;
   }
 
   .mobile\:items-start {
@@ -3194,6 +3237,11 @@ input:checked + .toggle-bg {
     padding-right: 0.5rem;
   }
 
+  .mobile\:px-5 {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
   .mobile\:py-1 {
     padding-top: 0.25rem;
     padding-bottom: 0.25rem;
@@ -3204,6 +3252,10 @@ input:checked + .toggle-bg {
     padding-bottom: 0.375rem;
   }
 
+  .mobile\:pt-6 {
+    padding-top: 1.5rem;
+  }
+
   .mobile\:text-lg {
     font-size: 1.125rem;
     line-height: 1.75rem;
@@ -3212,10 +3264,6 @@ input:checked + .toggle-bg {
   .mobile\:text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
-  }
-
-  .mobile\:text-xxs {
-    font-size: 10px;
   }
 
   .mobile\:font-medium {
@@ -3249,6 +3297,20 @@ input:checked + .toggle-bg {
     display: none;
   }
 
+  .tablet\:h-\[30vh\] {
+    height: 30vh;
+  }
+
+  .tablet\:py-2 {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .tablet\:py-2\.5 {
+    padding-top: 0.625rem;
+    padding-bottom: 0.625rem;
+  }
+
   .tablet\:pb-1 {
     padding-bottom: 0.25rem;
   }
@@ -3259,10 +3321,6 @@ input:checked + .toggle-bg {
 
   .tablet\:pl-4 {
     padding-left: 1rem;
-  }
-
-  .tablet\:pr-4 {
-    padding-right: 1rem;
   }
 
   .tablet\:pr-5 {
@@ -3287,10 +3345,6 @@ input:checked + .toggle-bg {
   .desktop\:my-10 {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
-  }
-
-  .desktop\:mb-5 {
-    margin-bottom: 1.25rem;
   }
 
   .desktop\:mt-10 {
