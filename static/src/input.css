@@ -10,11 +10,11 @@
   }
 
   .input-style {
-    @apply border border-x-0 border-t-0 border-primary p-3 pb-1 text-textPrimary text-sm mobile:text-xs mobile:p-0;
+    @apply border border-x-0 border-t-0 border-primary pt-3 pb-1 px-0 text-textPrimary text-sm mobile:text-xs mobile:p-0;
   }
 
   .input-label {
-    @apply text-primary mb-2 pt-5 pl-5 text-sm leading-[27px] font-semibold mobile:leading-normal mobile:pt-0 mobile:pl-0 mobile:text-xs mobile:font-medium;
+    @apply text-primary mb-2 pt-5 text-sm leading-[27px] font-semibold mobile:leading-normal mobile:pt-0 mobile:pl-0 mobile:text-xs mobile:font-medium;
   }
 
   .text-area {
@@ -22,17 +22,21 @@
   }
 
   .calendar {
-    @apply absolute inset-y-0 top-3 right-2.5 flex items-center pl-3.5 pointer-events-none mobile:top-0;
+    @apply absolute inset-y-0 top-3 right-0 flex items-center pl-3.5 pointer-events-none mobile:top-0;
   }
 
   .form-title {
-    @apply block bg-primary rounded-[7px] w-full p-3 text-white tablet:hidden;
+    @apply block bg-primary rounded-[7px] w-full p-3 text-white tablet:p-1 tablet:text-xs tablet:rounded-sm tablet:uppercase;
   }
 
   .shaded-down-arrow {
-    @apply w-3.5 mr-10 mt-2 mobile:hidden;
+    @apply w-3 mt-2 mobile:hidden;
   }
   .submit-btn {
     @apply py-3 px-2 bg-buttonPrimary rounded-lg mt-5 w-[155px] mobile:text-sm mobile:w-[130px] mobile:px-2.5 mobile:py-3 mobile:mt-0 mobile:font-medium mobile:text-primary;
+  }
+
+  .page-title {
+    @apply text-[40px] mb-5 font-bold text-buttonPrimary mobile:text-white mobile:text-lg mobile:leading-normal mobile:font-semibold;
   }
 }

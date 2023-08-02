@@ -100,26 +100,26 @@ WSGI_APPLICATION = 'prelate.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-if env('ENV').lower() != 'production':
-    print("connecting to dev database...")
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'prelate',
-            'USER': 'postgres',
-            'PASSWORD': 'password',
-            'HOST': '127.0.0.1',
-            'PORT': '5432',
-        }
-    }
-else:
-   print("connecting to prod database...")
-   DATABASES ={
-       'default': dj_database_url.parse(env('DATABASE_URL'))
-   }
+# if env('ENV').lower() != 'production':
+#     print("connecting to dev database...")
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql',
+#             'NAME': 'prelate',
+#             'USER': 'postgres',
+#             'PASSWORD': 'password',
+#             'HOST': '127.0.0.1',
+#             'PORT': '5432',
+#         }
+#     }
+# else:
+#    print("connecting to prod database...")
+#    DATABASES ={
+#        'default': dj_database_url.parse(env('DATABASE_URL'))
+#    }
 
-DATABASES ={
-       'default': dj_database_url.parse(env('DATABASE_URL'))
+DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
 }
 
 AUTHENTICATION_BACKENDS = [
@@ -190,7 +190,7 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 EMAIL_HOST = "smtp.zoho.com"
@@ -271,7 +271,7 @@ LOGGING = {
     'loggers': {
         '': {
             'handlers': ['console'],
-            'level': 'DEBUG', # Or maybe INFO or WARNING
+            'level': 'DEBUG',  # Or maybe INFO or WARNING
             'propagate': False
         },
     }

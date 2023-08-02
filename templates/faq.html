@@ -5,22 +5,25 @@
   </head>
   <body>
     {% include "latest/components/_header.html" %}
-    <section class="tour-hero">
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
+    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
       <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end gradient-blue w-full">
-          <div class="w-4/5 mx-auto">
-            <h2 class="text-[40px] mb-5 font-bold text-buttonPrimary block">Frequently Asked Questions</h2>
+        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
+          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
+            <h2 class="page-title">Frequently Asked Questions</h2>
           </div>
         </div>
       </div>
     </section>
     <!-- FAQ -->
-    <section class="container__inner_layout travel-form text-[#6A6A6A] text-sm leading-[27px] text-justify">
-      <div class="max-w-[774px] py-12">
+    <section class="container__inner_layout text-textPrimary text-sm leading-7 text-justify tablet:text-xs tablet:leading-6">
+      <div class="py-12">
         <div id="accordion-collapse" data-accordion="collapse">
           <h2 id="accordion-collapse-heading-1">
             <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200"
+                    class="flex items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200"
                     data-accordion-target="#accordion-collapse-body-1"
                     aria-expanded="true"
                     aria-controls="accordion-collapse-body-1">
@@ -39,14 +42,14 @@
                class="hidden"
                aria-labelledby="accordion-collapse-heading-1">
             <div class="p-5 border border-b-0 border-gray-200">
-              <p class="mb-2 text-gray-500">
+              <p class="mb-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet provident est aliquam modi veniam porro quam ratione facilis impedit ullam.
               </p>
             </div>
           </div>
           <h2 id="accordion-collapse-heading-2">
             <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
+                    class="flex items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"
                     data-accordion-target="#accordion-collapse-body-2"
                     aria-expanded="false"
                     aria-controls="accordion-collapse-body-2">
@@ -65,12 +68,12 @@
                class="hidden"
                aria-labelledby="accordion-collapse-heading-2">
             <div class="p-5 border border-b-0 border-gray-200 ">
-              <p class="mb-2 text-gray-500">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, velit.</p>
+              <p class="mb-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure, velit.</p>
             </div>
           </div>
           <h2 id="accordion-collapse-heading-3">
             <button type="button"
-                    class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-gray-200 focus:ring-4 focus:ring-gray-200"
+                    class="flex items-center justify-between w-full p-5 font-medium text-left border border-gray-200 focus:ring-4 focus:ring-gray-200"
                     data-accordion-target="#accordion-collapse-body-3"
                     aria-expanded="false"
                     aria-controls="accordion-collapse-body-3">
@@ -89,7 +92,7 @@
                class="hidden"
                aria-labelledby="accordion-collapse-heading-3">
             <div class="p-5 border border-t-0 border-gray-200 dark:border-gray-700">
-              <p class="mb-2 text-gray-500 dark:text-gray-400">
+              <p class="mb-2 dark:text-gray-400">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quisquam consectetur aspernatur ipsum, quos tempore labore blanditiis magnam excepturi facilis!
               </p>
             </div>

@@ -12,7 +12,7 @@ import calendar
 import decimal
 from django.db.models import Sum, Q
 import requests
-from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm
+from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
 from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm
 
 
@@ -35,13 +35,6 @@ def reservations(request):
     return render(
         request,
         "reservations.html"
-    )
-
-
-def postArrivalServices(request):
-    return render(
-        request,
-        "post-arrival-services.html"
     )
 
 
@@ -336,6 +329,23 @@ def visa_assistance_old(request):
             )
 
 
+def post_arrival_services(request):
+    if request.method == "POST":
+        form = PostArrivalServiceForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form)
+            form.save(commit=True)
+            return redirect("/post-arrival-services#submitted")
+    else:
+        return render(
+            request,
+            "post-arrival-services.html",
+            context={
+                "form": PostArrivalServiceForm()
+            }
+        )
+
+
 def tour(request):
     return render(
         request,
@@ -452,10 +462,19 @@ def become_affiliate(request):
 
 
 def contact_us(request):
-    return render(
-        request,
-        "contact-us.html"
-    )
+    if request.method == "POST":
+        form = CustomerServiceForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect("/contact-us#submitted")
+    else:
+        return render(
+            request,
+            "contact-us.html",
+            context={
+                "form": CustomerServiceForm()
+            }
+        )
 
 
 def contact_us_old(request):

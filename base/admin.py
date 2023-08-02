@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CoveredCountry, TravelInformation, TravelAssistance, TravelInsurace
+from .models import CoveredCountry, TravelInformation, TravelAssistance, TravelInsurace, PostArrivalService, CustomerService
 from .models import TourDeal, TravelBudget, UsersCustomTourRequest, TourDealInterest
 from .models import RequestChange, CustomerReferralRecord
 
@@ -13,4 +13,5 @@ admin.site.register(UsersCustomTourRequest)
 admin.site.register(TourDealInterest)
 admin.site.register(RequestChange)
 admin.site.register(CustomerReferralRecord)
-
+admin.site.register(PostArrivalService)
+admin.site.register(CustomerService)

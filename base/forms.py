@@ -1,12 +1,12 @@
 from django import forms
-from .models import TravelInformation, TravelAssistance, TravelBudget
+from .models import TravelInformation, TravelAssistance, TravelBudget, PostArrivalService, CustomerService
 from .models import UsersCustomTourRequest, TourDealInterest, RequestChange
 from allauth.account.forms import SignupForm
 
 PROFILE_TYPE = (
     ('01', 'INIDIVDUAL'),
     ('02', 'BUSINESS')
-    )
+)
 
 
 class MyCustomSignupForm(SignupForm):
@@ -14,16 +14,13 @@ class MyCustomSignupForm(SignupForm):
         super(MyCustomSignupForm, self).__init__(*args, **kwargs)
         self.fields['account_type'] = forms.ChoiceField(choices=PROFILE_TYPE)
 
-
-
-
     def save(self, request):
         user = super(MyCustomSignupForm, self).save(request)
         account_type = self.cleaned_data.pop('account_type')
 
         # Update profile Information
         user.profile.account_type = account_type
-        user.profile.save(update_fields = ["account_type"])
+        user.profile.save(update_fields=["account_type"])
 
         return user
 
@@ -42,6 +39,24 @@ class TravelAssistanceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TravelAssistanceForm, self).__init__(*args, **kwargs)
         self.fields['document'].required = False
+
+
+class PostArrivalServiceForm(forms.ModelForm):
+    class Meta:
+        model = PostArrivalService
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super(PostArrivalServiceForm, self).__init__(*args, **kwargs)
+
+
+class CustomerServiceForm(forms.ModelForm):
+    class Meta:
+        model = CustomerService
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super(CustomerServiceForm, self).__init__(*args, **kwargs)
 
 
 class TravelBudgetForm(forms.ModelForm):

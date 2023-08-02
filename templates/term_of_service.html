@@ -3,29 +3,31 @@
   <head>{% include "latest/partials/_head.html" with add_title="Terms Of Service | Prelate Travels & Tours" %}</head>
   <body>
     {% include "latest/components/_header.html" %}
-    <section class="tour-hero">
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
+    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
       <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end gradient-blue w-full">
-          <div class="w-4/5 mx-auto">
-            <h2 class="text-[40px] mb-5 font-bold text-buttonPrimary block">Terms Of Service</h2>
+        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
+          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
+            <h2 class="page-title">Term Of Service</h2>
           </div>
         </div>
       </div>
     </section>
     <!-- HERO SECTION DESKTOP -->
-    <!-- Travel insurance form -->
-    <section class="container__inner_layout travel-form text-[#6A6A6A] text-sm leading-[27px] text-justify">
-      <div class="desktop:my-10">
-        <p class="max-w-[774px] ">
+    <section class="container__inner_layout travel-form text-textPrimary text-sm leading-7 text-justify tablet:text-xs tablet:leading-6">
+      <div class="my-10 mobile:mt-5 mobile:mb-6">
+        <p>
           It’s nice to have you visit our website. Prelatetravel website gives our customers access and assistance with travel information, to aid their travel preparations. It
           also assists our customers to determine the availability of travel-related goods and services. We make legitimate reservations and transact business with travel
           suppliers, bearing in mind that the information provided to us on this platform are for no other purposes. We provide our customers with these services or acting on
           behalf of Principals engaged in or associated with the travel or accommodation industries, such as airlines, hotels and other service providers or suppliers.
         </p>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">2. THIRD PARTY SERVICE PROVIDER</div>
-        <p class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">2. THIRD PARTY SERVICE PROVIDER</div>
+        <p>
           Prelatetravel.com is a travel search engine that represents the Principal as agents only. We do not provide our own or control any of the travel services and products
           that you can access through Our Website, such as flights, accommodations, rental cars, packages, or travel insurance. The Travel products are owned, controlled or made
           available by third parties (Travel Providers) either directly by airlines e.t.c. The Travel providers are responsible for the Travel Products and therefore we
@@ -37,9 +39,9 @@
           confirmation of the Client’s booking, provide to the Client the identity of the Principal and itineraries.
         </p>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">3. THE CONSENT OF CLIENTS</div>
-        <p class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">3. THE CONSENT OF CLIENTS</div>
+        <p>
           Any of our clients who desires to utilize our services, consent to the acceptance of these terms and conditions by proceeding with the booking on the passenger
           information page, prior to the conclusion of any transaction with Prelatetravel. Upon doing so, such person is deemed to have read, understood and accepted these Terms
           and Conditions and has agreed to be bound by the agreement by accessing or using this Website in any manner. Please do not continue the bookings if you do not accept
@@ -47,9 +49,9 @@
           Please note that we reserve the right at any time based on our discretion to revise the terms and conditions without prior notification.
         </p>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">4. RESTRICTIONS</div>
-        <div class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">4. RESTRICTIONS</div>
+        <div>
           <p class="">
             There are terms and conditions set apart for the purchase of travel related products as well as reservations as you are bound by terms and condition of any and all
             suppliers.
@@ -74,9 +76,9 @@
           </p>
         </div>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">5. INFORMATION SUBMITTED</div>
-        <div class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">5. INFORMATION SUBMITTED</div>
+        <div>
           <p>
             In relation to all information you submit to us, you hereby agree and warrant that such material
             or information is not confidential or proprietary and Prelatetravel shall be free to use any such
@@ -116,9 +118,9 @@
           </p>
         </div>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">6. BOOKING ENQUIRIES & RESERVATIONS</div>
-        <div class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">6. BOOKING ENQUIRIES & RESERVATIONS</div>
+        <div>
           <ul class="pl-7 list-disclosureClosed">
             <li>
               (i)To initiate an enquiry regarding a particular destination, trip, tour, mode of travel,
@@ -152,9 +154,9 @@
           </p>
         </div>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">7. DESTINATION SELECTION</div>
-        <p class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">7. DESTINATION SELECTION</div>
+        <p>
           The Client acknowledges that he/she has selected the itinerary and destination(s) constituting the
           Booking based on information gleaned from the internet. Also acknowledges that the internet
           Booking has been compiled and is managed and updated by the Principal and that Prelatetravel
@@ -166,9 +168,9 @@
           seats selected are not available.
         </p>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">8. PAYMENT AND PAYMENT TERMS</div>
-        <p class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">8. PAYMENT AND PAYMENT TERMS</div>
+        <p>
           Our customers are advised to make due payments immediately through any of these means by
           Visa, Master, American Express or Diners Credit Card, Electronic Funds Transfer, Cash Deposit
           at a bank, or if a Kiosk booking, cash payment to the Kiosk teller, whichever could be of
@@ -192,9 +194,9 @@
           Booking.
         </p>
       </div>
-      <div class="mb-10">
-        <div class="form-title mb-5">9. QUOTES/ FARE</div>
-        <p class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">9. QUOTES/ FARE</div>
+        <p>
           Each service quotes/Fare is made available at the ruling daily exchange rate. Only on exception
           when Prelatetravel has received Payment for a service, we reserve the right to amend any
           Quote/Fare. On cases the Quote is increased as a result of an exchange rate fluctuation, the client
@@ -210,344 +212,342 @@
           Prelatetravel will be entitled to retain any service fees charged. Prelatetravel accepts no liability
           for bookings that have been cancelled because no payment has been forthcoming.
         </p>
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">10. SERVICE FEE</div>
-      <div class="max-w-[774px]">
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">10. SERVICE FEE</div>
+        <div>
+          <p>
+            Service fees cover the costs incurred by prelatetravel in booking and servicing your travel
+            reservation and demands. We also reserve the right to charge an additional service fee for any
+            additional services rendered, such as cancellation requests, additional requests or changes to your
+            booking.
+          </p>
+          <p class="mt-3">Please take note that service fees and products are non-refundable in case of a cancellation.</p>
+        </div>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">11. AMENDMENT FEES</div>
         <p>
-          Service fees cover the costs incurred by prelatetravel in booking and servicing your travel
-          reservation and demands. We also reserve the right to charge an additional service fee for any
-          additional services rendered, such as cancellation requests, additional requests or changes to your
-          booking.
+          Amendment fee may be levied per Booking for any changes to a confirmed itinerary or ticket.
+          The Travel Agent’s amendment fee is charged in addition to any amendment fees which may be
+          charged by the relevant Principal.
         </p>
-        <p class="mt-3">Please take note that service fees and products are non-refundable in case of a cancellation.</p>
       </div>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">11. AMENDMENT FEES</div>
-      <p class="max-w-[774px]">
-        Amendment fee may be levied per Booking for any changes to a confirmed itinerary or ticket.
-        The Travel Agent’s amendment fee is charged in addition to any amendment fees which may be
-        charged by the relevant Principal.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">12. INSURANCE</div>
-      <p class="max-w-[774px]">
-        It is recommended that all clients obtain adequate insurance policy that would cover them of
-        instances such as cancellation due to illness or injury, personal accident and personal liability,
-        loss of or damage to baggage and sports equipment as Prelatetravel would not be held
-        accountable nor be liable for any of these incidence if occurred.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">13. TRAVEL DESTINATION</div>
-      <p class="max-w-[774px]">
-        It is our concern that you are aware about the degrees of travel risks to each country which may
-        vary and that natural disasters could coincide with your travel itinerary. Therefore you’re advised to take all necessary precautions and measures as well as heed to the announcements from
-        various relevant authorities. Prelatetravel will not be held responsible for the injuries suffered,
-        nor loss or damage that may arise from your travel to places of risk. Prelatetravel will not be held
-        accountable for acts of government or authority that might impede your travel itinerary.
-        Prelatetravel and its affiliates would on no account be held liable for erroneous and fraudulent
-        mails sent through its websites, servers and pages. We maintain and ensure that our sites are free
-        from viruses, and well secured. Prelatetravel disengages itself from damage of properties,
-        injuries incurred, acts and omissions, breaches, errors or deaths arising from the acts of
-        independent contractors, hotel suppliers who are not agents of Prelatetravel and its affiliates or in
-        cases of delay. You are therefore prohibited from bringing actions against Prelatetravel where
-        you fail to access or use our website.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">14. TRAVEL DOCUMENTS</div>
-      <p class="max-w-[774px]">
-        Our client’s travel documents such as visas, booking confirmations and itineraries. Would only
-        be prepared and delivered to the Client upon receipt of their Payment.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">15. CHANGE REQUEST</div>
-      <p class="max-w-[774px]">
-        Change request such as name change on travel documents and itineraries most times is time
-        consuming and stressful to effect, could cost you some additional fees to rectify and as well
-        affect your travel plans. Therefore it’s advised that upon confirmation of your bookings check
-        the spelling of your name and ensures that it corresponds as per your passport or identity
-        document. Should the spelling of your name not correspond with your passport or identity
-        document, the airline may not permit you to board the plane or should you require a name
-        change, airline penalties may apply. Please take note that some airlines do not allow name
-        changes for any reason whatsoever and this may require that you to buy a completely new ticket.
-        Prelatetravel would accept no liability to this regard.
-        And should you require any change on your travel document such as date, name e.t.c endeavor to
-        contact our helpline 72 hours or more before your travel date for effective measures.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">16. CAUTION ON TRAVEL REQUIREMENTS</div>
-      <p class="max-w-[774px]">
-        It is entirely all clients’ responsibility to ensure that all passports, visas and health vaccinations
-        are current, valid, and obtained on time. Ensure that you have sufficient blank pages on your
-        passport and should be valid for at least six months after return to their home country. Any
-        vaccinations, inoculations, prophylactic (e.g. for malaria e.t.c) where required is obtained. All
-        Clients’ are strongly advised to check out the relevant requirements for their travel destinations
-        and any transit countries before travelling. Prelatetravel will endeavor to assist the Client if
-        consulted. Such assistance will be at Prelatetravel’s discretion (since this service falls within the
-        scope of a freewill to assist travelers) and the Client acknowledges that in doing so, Prelatetravel is not assuming any obligation or liability and the client indemnifies prelatetravel against any
-        consequences of the Client’s failure to comply with any of the requirements. It is the client’s duty
-        to familiarize him or herself with the inherent dangers, mental or physical condition required for
-        the proposed travel arrangements.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">17. CANCELLATION</div>
-      <div class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">12. INSURANCE</div>
         <p>
-          On occasions where clients cancels their bookings, Prelatetravel shall have the right to either
-          claim the amount, or retain the amount of the Payment for reasonable damages suffered by
-          Prelatetravel . Where the client is unable to honor any bookings or reservation due to the death or
-          hospitalization of the Client, the Principals may reserve the right to cancel any services prior to
-          the departure, in which the Payment unless Prelatetravel’s service fee will be refunded by the
-          Principal to the Client without any further obligation on the part of Prelatetravel.
-        </p>
-        <p class="mt-3">
-          Prelatetravel will charge a fee for processing the request for refund. Clients should refer to the
-          “Refunds” section of these Conditions, as well as the cancellation provisions contained in the
-          Principal’s Conditions or the Sites. Principals may charge cancellation fees over and above the
-          cancellation fees charged by Prelatetravel in terms of this Condition.
-        </p>
-        <p class="mt-3">
-          Please take note that should you have booked a ticket with more than one flight e.g: LOS - DXB
-          - TYO you may only use your tickets in the sequence they were booked. If you do not check in
-          for your first flight the Airline reserves the right to cancel all of the remaining flights on that Ticket and your ticket will become invalid. You will not get any money refunded for parts of the
-          tickets not used.
+          It is recommended that all clients obtain adequate insurance policy that would cover them of
+          instances such as cancellation due to illness or injury, personal accident and personal liability,
+          loss of or damage to baggage and sports equipment as Prelatetravel would not be held
+          accountable nor be liable for any of these incidence if occurred.
         </p>
       </div>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">18. UNSCHEDULED EXTENSIONS</div>
-      <p class="max-w-[774px]">
-        In situations where there are unlikely event of an unscheduled extension for the final itinerary
-        caused by flight re-scheduling, flight delays, bad weather, strikes or any other cause which is
-        beyond the control of Prelatetravel, its agents or the Principal, any expenses relating to such
-        unscheduled extensions, hotel accommodation etc. will be for the client’s account. The Client
-        should confirm whether any of these expenses may be covered by travel insurance, should this be
-        applicable.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">19. SPECIAL REQUESTS</div>
-      <p class="max-w-[774px]">
-        Our client’s travel documents such as visas, booking confirmations and itineraries. Would only
-        be prepared and delivered to the Client upon receipt of their Payment.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">20. HACKER FARE</div>
-      <p class="max-w-[774px]">
-        In the case of a Hacker fare, our website displays search results for a combination of Travel
-        Products (e.g., separate flight and hotel results, or two one-way flights, instead of a round trip). If
-        you use these search results, you will make two different bookings with different rules and
-        policies (for example, for baggage fees, change fees, and refunds). Any changes made to one of
-        your bookings will not affect the other booking (for example, if your initial flight is cancelled by
-        either you or the airline, the other airline with which you booked your return flight is not
-        obligated to issue a refund or change your itinerary). If you are travelling internationally, you
-        may need to provide proof that you have a return flight at check-in and at immigration.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">21. REFUNDS</div>
-      <p class="max-w-[774px]">
-        Refunds will not be considered in any circumstances whatsoever by Prelatetravel if the Client
-        has not purchased the services. Refunds will be made by the Principals which will be subject to
-        their respective terms and conditions. Prelatetravel will charge a fee for processing a request for
-        refund. Principals may charge fees for refund of the above stated here.
-        Once the possible refund you are entitled to have been finalized, we will request it with the
-        airline or hotel on your behalf. For flight bookings the refund will be made by the airline directly
-        to the account the booking was originally paid with. This can take up to 6 to 8 weeks atimes
-        depending on the airline. For hotel bookings it usually takes approximately 4 weeks.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">22. CONFIRMATION OF TRAVEL ARRANGEMENTS</div>
-      <p class="max-w-[774px]">
-        It is advised that every client confirms all onward travel arrangements such as local, international
-        and on return to domestic connecting flights be 72 (seventy-two) hours prior to departure with
-        the airline.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">23. NO UNLAWFUL OR PROHIBITED USE</div>
-      <p class="max-w-[774px]">
-        There is no Client warranted unconditionally to use this site for any purpose that is unlawful or
-        prohibited by the online terms and Conditions.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">24. LINKS TO OTHER WEBSITES</div>
-      <p class="max-w-[774px]">
-        There are links published on this site that allows a Client to visit the sites of third parties. Neither
-        of these sites nor the companies to whom they belong to are controlled by Prelatetravel and it
-        makes no representations and warranties concerning the information provided or made available
-        on such sites nor the quality or acceptability of the products or services offered by any persons or
-        entities referenced in any such sites. Prelatetravel’s inclusion of hyperlinks to such websites does
-        not imply any endorsement of the material on such websites or any association with its operators.
-        Prelatetravel has not tested and makes no representations regarding the correctness, performance
-        or quality of any software found at any such sites. The client should research and assess the risks
-        which maybe involved in accessing and using any software on the internet before using it. The
-        client indemnifies Prelatetravel against any claims for loss or damage arising from the Client’s
-        use of information gained from or from accessing any such linked sites.
-      </p>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">25. NOTIFY US OF INFRINGERS</div>
-      <div class="max-w-[774px]">
-        <p class="">
-          Of any occasion that you believe any of the services on our website violates your copyright;
-          Please notify our copyright agent in writing. The contact information for our copyright agent is at
-          the bottom of this section.
-        </p>
-        <p class="mt-3">
-          In making any payments and abiding by the regulations and caveats in connection with availability, use of products and fares, you are bound by the terms and conditions
-          of usage. We bring to your notice that certain service providers offering certain services may require that you append to their liability waiver before requesting,
-          subscribing, or purchasing those services.
-        </p>
-        <p class="mt-3">
-          You may view, download and copy information and materials available on this website solely for your personal, non-commercial use. You may also use such material within
-          your organization in connection with the support of Prelatetravel's products. As a condition of use, you agree not to modify or revise any of the material in any
-          manner, and to retain all copyright and other proprietary notices as contained in the original materials on any copies of the materials. No other use of the materials
-          or information is authorized. Any violation of the foregoing may result in civil and criminal liabilities.
-        </p>
-        <p class="mt-3">
-          In order for us to take action, you must do the following in your notice:
-          <ul class="pl-7 list-disclosureClosed">
-            <li>(a) Provide your physical or electronic signature;</li>
-            <li>(b) Identify the copyrighted work that you believe is being infringed;</li>
-            <li>
-              (c) Identify the item that you think is infringing your work and include sufficient information
-              about where the material is located so that we can find it;
-            </li>
-            <li>(d) Provide us with a way to contact you, such as your address, telephone number, or email;</li>
-            <li>
-              (e) Provide a statement that you believe in good faith that the item you have identified as
-              infringing is not authorized by the copyright owner, its agent, or the law to be used in
-              connection with the services; and
-            </li>
-            <li>
-              (f) Provide us a statement that the information you provide in your notice is accurate, and
-              that (under penalty of perjury) you are authorized to act on behalf of the copyright owner
-              of those work is being fringed.
-            </li>
-          </ul>
-        </p>
-        <p class="mt-3">Here is the contact information for our copyright agent:</p>
-        <p class="mt-2 font-bold">
-          Legal Team, Copyright Enforcement
-          <br />
-          PrelateTravel.com
-          <br />
-          No 26, orere-owu street opposite First Bank of Nigeria plc,
-          <br />
-          Okeyinmi street, Ado-Ekiti,
-          <br />
-          Ekiti-State
-          <br />
-          Prelatetravel@gmail.com
-          <br />
-          <br />
-        </p>
-        <p>Again, we cannot take action unless you give us all the required information</p>
-      </div>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">25. NOTIFY US OF INFRINGERS</div>
-      <div class="max-w-[774px]">
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">13. TRAVEL DESTINATION</div>
         <p>
-          The internet team of Prelatetravel strives to provide all clients with useful, accurate, and timely
-          information on this website. Accordingly, Prelatetravel always attempts to provide accurate
-          information and materials on this website but assumes no responsibility for the quality, accuracy,
-          efficacy, completeness, performance, fitness for a particular purpose of this page, the Site or any
-          of its contents, including (but not limited) to any price quotes or non-fraudulent representations
-          contained within the Site and the completeness of that information or materials.
-          Prelatetravel will not be liable for any damages (including, without limitation, damages for any
-          consequential loss or loss of business opportunities or projects, or loss of profits) howsoever
-          arising and whether in contract, tort or otherwise from the use of or inability to use the Site, or
-          any of its contents and materials, or from any action or omission taken as a result of using the
-          Site or any such contents.
-        </p>
-        <p class="mt-3">
-          This Site contains material in the form of information, price quotes or representations submitted
-          by third parties and we accept no responsibility for the content or accuracy of such material nor
-          do we make any representations by virtue of the contents of this Site in respect of the guaranteed
-          availability of any services advertised.
-        </p>
-        <p class="mt-3">
-          The currency rates pasted on this site if any, are for reference purposes and should not be acted
-          on notes of finality because of unstable currency rates. You are advised to make further
-          verification on the accuracy of currency rates from professional experts whose duties are
-          incidental to currency rates conversion. You must not distribute the rates herein referenced to for
-          commercial activities.
-        </p>
-        <p class="mt-3">
-          Prelatetravel may change the content of any information or materials available at this website, or
-          to the products described in them, at any time without notice to you. However, Prelatetravel
-          makes no commitment to update the information or materials on this website which, as a result,
-          may be out of date. Information and opinions expressed in bulletin boards or other forums are
-          not necessarily those of Prelatetravel. Neither Prelatetravel, nor its officers, directors, employees,
-          agents, distributors, or affiliates are responsible or liable for any loss damage (including, but not
-          limited to, actual, consequential, or punitive), liability, claim, or other injury or cause related to
-          or resulting from any information posted on Prelatetravel's website. Prelatetravel reserves the
-          right to revise these terms and legal restrictions at any time. You are responsible for reviewing
-          this page from time to time to ensure compliance with the then-current terms and legal
-          restrictions because they will be binding on you. Certain provisions of these terms and legal
-          restrictions may be superseded by expressly designated legal notices or terms located on particular pages of this website.
-          We make no warranty that the contents of the Site are free from infection by viruses or anything
-          else, which has contaminating, or destructive properties and shall have no liability in respect
-          thereof as we do not have control over the contents of such websites.
-        </p>
-        <p class="mt-3">
-          To this end: ALL INFORMATION AND MATERIALS AVAILABLE ON THIS WEBSITE
-          ARE PROVIDED "AS IS" WITHOUT ANY WARRANTIES OF ANY KIND, EITHER
-          EXPRESS OR IMPLIED, AND PRELATETRAVEL DISCLAIMS AND EXCLUDES ALL
-          WARRANTIES AND LIABILITIES OF ANY KIND TO THE FULLEST EXTENT
-          PERMITTED BY APPLICABLE LAW, EITHER EXPRESS OR IMPLIED, INCLUDING
-          WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
-          NON-INFRINGEMENT OF INTELLECTUAL PROPERTY OR ARISING FROM A COURSE
-          OF DEALING, USAGE OR TRADE PRACTICE. IN NO EVENT SHALL PRELATETRAVEL
-          BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT
-          LIMITATION, INDIRECT, SPECIAL, CONSEQUENTIAL OR INCIDENTAL DAMAGES OR
-          THOSE RESULTING FROM LOST PROFITS, LOST DATA OR BUSINESS
-          INTERRUPTION) ARISING OUT OF THE USE, INABILITY TO USE, OR THE RESULTS
-          OF USE OF THIS WEBSITE, ANY WEBSITES LINKED TO THIS WEBSITE, OR THE
-          MATERIALS OR INFORMATION CONTAINED AT ANY OR ALL SUCH WEBSITES,
-          WHETHER BASED ON WARRANTY, CONTRACT, TORT OR ANY OTHER LEGAL
-          THEORY AND WHETHER OR NOT ADVISED OF THE POSSIBILITY OF SUCH
-          DAMAGES. IF YOUR USE OF THE MATERIALS OR INFORMATION ON THIS WEBSITE
-          RESULTS IN THE NEED FOR SERVICING, REPAIR OR CORRECTION OF EQUIPMENT
-          OR DATA, YOU ASSUME ALL COSTS THEREOF.
+          It is our concern that you are aware about the degrees of travel risks to each country which may
+          vary and that natural disasters could coincide with your travel itinerary. Therefore you’re advised to take all necessary precautions and measures as well as heed to the announcements from
+          various relevant authorities. Prelatetravel will not be held responsible for the injuries suffered,
+          nor loss or damage that may arise from your travel to places of risk. Prelatetravel will not be held
+          accountable for acts of government or authority that might impede your travel itinerary.
+          Prelatetravel and its affiliates would on no account be held liable for erroneous and fraudulent
+          mails sent through its websites, servers and pages. We maintain and ensure that our sites are free
+          from viruses, and well secured. Prelatetravel disengages itself from damage of properties,
+          injuries incurred, acts and omissions, breaches, errors or deaths arising from the acts of
+          independent contractors, hotel suppliers who are not agents of Prelatetravel and its affiliates or in
+          cases of delay. You are therefore prohibited from bringing actions against Prelatetravel where
+          you fail to access or use our website.
         </p>
       </div>
-    </div>
-    <div class="mb-10">
-      <div class="form-title mb-5">27. TERMINATION OF USE</div>
-      <p class="max-w-[774px]">
-        Prelatetravel reserve the right to terminate or suspend any client’s access to all part of
-        Prelatetravel website based on its sole discretion, which includes but not limited to any bulletin
-        boards on its site, for any reason, including without limitation, breach of this agreement. In the
-        event this agreement is terminated, the restrictions regarding materials appearing on the site and
-        the representations and warranties, indemnities, and limitation of liabilities set forth in this
-        agreement shall survive any such termination.
-      </p>
-    </div>
-    <div>
-      <div class="form-title mb-5">28. COMMUNICATION FROM SITES</div>
-      <p class="max-w-[774px]">
-        By finalizing a booking on any Prelatetravel platform, the client is assumed to have agreed to
-        receive transactional and promotional news letters from the site. The client may decide to opt out
-        of these newsletter communications at any time they wish.
-      </p>
-    </div>
-  </div>
-</section>
-{% include 'latest/components/_footer.html' %}
-{% include 'latest/partials/_scripts.html' %}
-</body>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">14. TRAVEL DOCUMENTS</div>
+        <p>
+          Our client’s travel documents such as visas, booking confirmations and itineraries. Would only
+          be prepared and delivered to the Client upon receipt of their Payment.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">15. CHANGE REQUEST</div>
+        <p>
+          Change request such as name change on travel documents and itineraries most times is time
+          consuming and stressful to effect, could cost you some additional fees to rectify and as well
+          affect your travel plans. Therefore it’s advised that upon confirmation of your bookings check
+          the spelling of your name and ensures that it corresponds as per your passport or identity
+          document. Should the spelling of your name not correspond with your passport or identity
+          document, the airline may not permit you to board the plane or should you require a name
+          change, airline penalties may apply. Please take note that some airlines do not allow name
+          changes for any reason whatsoever and this may require that you to buy a completely new ticket.
+          Prelatetravel would accept no liability to this regard.
+          And should you require any change on your travel document such as date, name e.t.c endeavor to
+          contact our helpline 72 hours or more before your travel date for effective measures.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">16. CAUTION ON TRAVEL REQUIREMENTS</div>
+        <p>
+          It is entirely all clients’ responsibility to ensure that all passports, visas and health vaccinations
+          are current, valid, and obtained on time. Ensure that you have sufficient blank pages on your
+          passport and should be valid for at least six months after return to their home country. Any
+          vaccinations, inoculations, prophylactic (e.g. for malaria e.t.c) where required is obtained. All
+          Clients’ are strongly advised to check out the relevant requirements for their travel destinations
+          and any transit countries before travelling. Prelatetravel will endeavor to assist the Client if
+          consulted. Such assistance will be at Prelatetravel’s discretion (since this service falls within the
+          scope of a freewill to assist travelers) and the Client acknowledges that in doing so, Prelatetravel is not assuming any obligation or liability and the client indemnifies prelatetravel against any
+          consequences of the Client’s failure to comply with any of the requirements. It is the client’s duty
+          to familiarize him or herself with the inherent dangers, mental or physical condition required for
+          the proposed travel arrangements.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">17. CANCELLATION</div>
+        <div>
+          <p>
+            On occasions where clients cancels their bookings, Prelatetravel shall have the right to either
+            claim the amount, or retain the amount of the Payment for reasonable damages suffered by
+            Prelatetravel . Where the client is unable to honor any bookings or reservation due to the death or
+            hospitalization of the Client, the Principals may reserve the right to cancel any services prior to
+            the departure, in which the Payment unless Prelatetravel’s service fee will be refunded by the
+            Principal to the Client without any further obligation on the part of Prelatetravel.
+          </p>
+          <p class="mt-3">
+            Prelatetravel will charge a fee for processing the request for refund. Clients should refer to the
+            “Refunds” section of these Conditions, as well as the cancellation provisions contained in the
+            Principal’s Conditions or the Sites. Principals may charge cancellation fees over and above the
+            cancellation fees charged by Prelatetravel in terms of this Condition.
+          </p>
+          <p class="mt-3">
+            Please take note that should you have booked a ticket with more than one flight e.g: LOS - DXB
+            - TYO you may only use your tickets in the sequence they were booked. If you do not check in
+            for your first flight the Airline reserves the right to cancel all of the remaining flights on that Ticket and your ticket will become invalid. You will not get any money refunded for parts of the
+            tickets not used.
+          </p>
+        </div>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">18. UNSCHEDULED EXTENSIONS</div>
+        <p>
+          In situations where there are unlikely event of an unscheduled extension for the final itinerary
+          caused by flight re-scheduling, flight delays, bad weather, strikes or any other cause which is
+          beyond the control of Prelatetravel, its agents or the Principal, any expenses relating to such
+          unscheduled extensions, hotel accommodation etc. will be for the client’s account. The Client
+          should confirm whether any of these expenses may be covered by travel insurance, should this be
+          applicable.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">19. SPECIAL REQUESTS</div>
+        <p>
+          Our client’s travel documents such as visas, booking confirmations and itineraries. Would only
+          be prepared and delivered to the Client upon receipt of their Payment.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">20. HACKER FARE</div>
+        <p>
+          In the case of a Hacker fare, our website displays search results for a combination of Travel
+          Products (e.g., separate flight and hotel results, or two one-way flights, instead of a round trip). If
+          you use these search results, you will make two different bookings with different rules and
+          policies (for example, for baggage fees, change fees, and refunds). Any changes made to one of
+          your bookings will not affect the other booking (for example, if your initial flight is cancelled by
+          either you or the airline, the other airline with which you booked your return flight is not
+          obligated to issue a refund or change your itinerary). If you are travelling internationally, you
+          may need to provide proof that you have a return flight at check-in and at immigration.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">21. REFUNDS</div>
+        <p>
+          Refunds will not be considered in any circumstances whatsoever by Prelatetravel if the Client
+          has not purchased the services. Refunds will be made by the Principals which will be subject to
+          their respective terms and conditions. Prelatetravel will charge a fee for processing a request for
+          refund. Principals may charge fees for refund of the above stated here.
+          Once the possible refund you are entitled to have been finalized, we will request it with the
+          airline or hotel on your behalf. For flight bookings the refund will be made by the airline directly
+          to the account the booking was originally paid with. This can take up to 6 to 8 weeks atimes
+          depending on the airline. For hotel bookings it usually takes approximately 4 weeks.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">22. CONFIRMATION OF TRAVEL ARRANGEMENTS</div>
+        <p>
+          It is advised that every client confirms all onward travel arrangements such as local, international
+          and on return to domestic connecting flights be 72 (seventy-two) hours prior to departure with
+          the airline.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">23. NO UNLAWFUL OR PROHIBITED USE</div>
+        <p>
+          There is no Client warranted unconditionally to use this site for any purpose that is unlawful or
+          prohibited by the online terms and Conditions.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">24. LINKS TO OTHER WEBSITES</div>
+        <p>
+          There are links published on this site that allows a Client to visit the sites of third parties. Neither
+          of these sites nor the companies to whom they belong to are controlled by Prelatetravel and it
+          makes no representations and warranties concerning the information provided or made available
+          on such sites nor the quality or acceptability of the products or services offered by any persons or
+          entities referenced in any such sites. Prelatetravel’s inclusion of hyperlinks to such websites does
+          not imply any endorsement of the material on such websites or any association with its operators.
+          Prelatetravel has not tested and makes no representations regarding the correctness, performance
+          or quality of any software found at any such sites. The client should research and assess the risks
+          which maybe involved in accessing and using any software on the internet before using it. The
+          client indemnifies Prelatetravel against any claims for loss or damage arising from the Client’s
+          use of information gained from or from accessing any such linked sites.
+        </p>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">25. NOTIFY US OF INFRINGERS</div>
+        <div>
+          <p class="">
+            Of any occasion that you believe any of the services on our website violates your copyright;
+            Please notify our copyright agent in writing. The contact information for our copyright agent is at
+            the bottom of this section.
+          </p>
+          <p class="mt-3">
+            In making any payments and abiding by the regulations and caveats in connection with availability, use of products and fares, you are bound by the terms and conditions
+            of usage. We bring to your notice that certain service providers offering certain services may require that you append to their liability waiver before requesting,
+            subscribing, or purchasing those services.
+          </p>
+          <p class="mt-3">
+            You may view, download and copy information and materials available on this website solely for your personal, non-commercial use. You may also use such material within
+            your organization in connection with the support of Prelatetravel's products. As a condition of use, you agree not to modify or revise any of the material in any
+            manner, and to retain all copyright and other proprietary notices as contained in the original materials on any copies of the materials. No other use of the materials
+            or information is authorized. Any violation of the foregoing may result in civil and criminal liabilities.
+          </p>
+          <p class="mt-3">
+            In order for us to take action, you must do the following in your notice:
+            <ul class="pl-7 list-disclosureClosed">
+              <li>(a) Provide your physical or electronic signature;</li>
+              <li>(b) Identify the copyrighted work that you believe is being infringed;</li>
+              <li>
+                (c) Identify the item that you think is infringing your work and include sufficient information
+                about where the material is located so that we can find it;
+              </li>
+              <li>(d) Provide us with a way to contact you, such as your address, telephone number, or email;</li>
+              <li>
+                (e) Provide a statement that you believe in good faith that the item you have identified as
+                infringing is not authorized by the copyright owner, its agent, or the law to be used in
+                connection with the services; and
+              </li>
+              <li>
+                (f) Provide us a statement that the information you provide in your notice is accurate, and
+                that (under penalty of perjury) you are authorized to act on behalf of the copyright owner
+                of those work is being fringed.
+              </li>
+            </ul>
+          </p>
+          <p class="mt-3">Here is the contact information for our copyright agent:</p>
+          <p class="mt-2 font-bold">
+            Legal Team, Copyright Enforcement
+            <br />
+            PrelateTravel.com
+            <br />
+            No 26, orere-owu street opposite First Bank of Nigeria plc,
+            <br />
+            Okeyinmi street, Ado-Ekiti,
+            <br />
+            Ekiti-State
+            <br />
+            Prelatetravel@gmail.com
+            <br />
+            <br />
+          </p>
+          <p>Again, we cannot take action unless you give us all the required information</p>
+        </div>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">25. NOTIFY US OF INFRINGERS</div>
+        <div>
+          <p>
+            The internet team of Prelatetravel strives to provide all clients with useful, accurate, and timely
+            information on this website. Accordingly, Prelatetravel always attempts to provide accurate
+            information and materials on this website but assumes no responsibility for the quality, accuracy,
+            efficacy, completeness, performance, fitness for a particular purpose of this page, the Site or any
+            of its contents, including (but not limited) to any price quotes or non-fraudulent representations
+            contained within the Site and the completeness of that information or materials.
+            Prelatetravel will not be liable for any damages (including, without limitation, damages for any
+            consequential loss or loss of business opportunities or projects, or loss of profits) howsoever
+            arising and whether in contract, tort or otherwise from the use of or inability to use the Site, or
+            any of its contents and materials, or from any action or omission taken as a result of using the
+            Site or any such contents.
+          </p>
+          <p class="mt-3">
+            This Site contains material in the form of information, price quotes or representations submitted
+            by third parties and we accept no responsibility for the content or accuracy of such material nor
+            do we make any representations by virtue of the contents of this Site in respect of the guaranteed
+            availability of any services advertised.
+          </p>
+          <p class="mt-3">
+            The currency rates pasted on this site if any, are for reference purposes and should not be acted
+            on notes of finality because of unstable currency rates. You are advised to make further
+            verification on the accuracy of currency rates from professional experts whose duties are
+            incidental to currency rates conversion. You must not distribute the rates herein referenced to for
+            commercial activities.
+          </p>
+          <p class="mt-3">
+            Prelatetravel may change the content of any information or materials available at this website, or
+            to the products described in them, at any time without notice to you. However, Prelatetravel
+            makes no commitment to update the information or materials on this website which, as a result,
+            may be out of date. Information and opinions expressed in bulletin boards or other forums are
+            not necessarily those of Prelatetravel. Neither Prelatetravel, nor its officers, directors, employees,
+            agents, distributors, or affiliates are responsible or liable for any loss damage (including, but not
+            limited to, actual, consequential, or punitive), liability, claim, or other injury or cause related to
+            or resulting from any information posted on Prelatetravel's website. Prelatetravel reserves the
+            right to revise these terms and legal restrictions at any time. You are responsible for reviewing
+            this page from time to time to ensure compliance with the then-current terms and legal
+            restrictions because they will be binding on you. Certain provisions of these terms and legal
+            restrictions may be superseded by expressly designated legal notices or terms located on particular pages of this website.
+            We make no warranty that the contents of the Site are free from infection by viruses or anything
+            else, which has contaminating, or destructive properties and shall have no liability in respect
+            thereof as we do not have control over the contents of such websites.
+          </p>
+          <p class="mt-3">
+            To this end: ALL INFORMATION AND MATERIALS AVAILABLE ON THIS WEBSITE
+            ARE PROVIDED "AS IS" WITHOUT ANY WARRANTIES OF ANY KIND, EITHER
+            EXPRESS OR IMPLIED, AND PRELATETRAVEL DISCLAIMS AND EXCLUDES ALL
+            WARRANTIES AND LIABILITIES OF ANY KIND TO THE FULLEST EXTENT
+            PERMITTED BY APPLICABLE LAW, EITHER EXPRESS OR IMPLIED, INCLUDING
+            WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE,
+            NON-INFRINGEMENT OF INTELLECTUAL PROPERTY OR ARISING FROM A COURSE
+            OF DEALING, USAGE OR TRADE PRACTICE. IN NO EVENT SHALL PRELATETRAVEL
+            BE LIABLE FOR ANY DAMAGES WHATSOEVER (INCLUDING, WITHOUT
+            LIMITATION, INDIRECT, SPECIAL, CONSEQUENTIAL OR INCIDENTAL DAMAGES OR
+            THOSE RESULTING FROM LOST PROFITS, LOST DATA OR BUSINESS
+            INTERRUPTION) ARISING OUT OF THE USE, INABILITY TO USE, OR THE RESULTS
+            OF USE OF THIS WEBSITE, ANY WEBSITES LINKED TO THIS WEBSITE, OR THE
+            MATERIALS OR INFORMATION CONTAINED AT ANY OR ALL SUCH WEBSITES,
+            WHETHER BASED ON WARRANTY, CONTRACT, TORT OR ANY OTHER LEGAL
+            THEORY AND WHETHER OR NOT ADVISED OF THE POSSIBILITY OF SUCH
+            DAMAGES. IF YOUR USE OF THE MATERIALS OR INFORMATION ON THIS WEBSITE
+            RESULTS IN THE NEED FOR SERVICING, REPAIR OR CORRECTION OF EQUIPMENT
+            OR DATA, YOU ASSUME ALL COSTS THEREOF.
+          </p>
+        </div>
+      </div>
+      <div class="mb-10 mobile:mb-6">
+        <div class="form-title mb-5 tablet:mb-3">27. TERMINATION OF USE</div>
+        <p>
+          Prelatetravel reserve the right to terminate or suspend any client’s access to all part of
+          Prelatetravel website based on its sole discretion, which includes but not limited to any bulletin
+          boards on its site, for any reason, including without limitation, breach of this agreement. In the
+          event this agreement is terminated, the restrictions regarding materials appearing on the site and
+          the representations and warranties, indemnities, and limitation of liabilities set forth in this
+          agreement shall survive any such termination.
+        </p>
+      </div>
+      <div>
+        <div class="form-title mb-5 tablet:mb-3">28. COMMUNICATION FROM SITES</div>
+        <p>
+          By finalizing a booking on any Prelatetravel platform, the client is assumed to have agreed to
+          receive transactional and promotional news letters from the site. The client may decide to opt out
+          of these newsletter communications at any time they wish.
+        </p>
+      </div>
+    </section>
+    {% include 'latest/components/_footer.html' %}
+    {% include 'latest/partials/_scripts.html' %}
+  </body>
 </html>

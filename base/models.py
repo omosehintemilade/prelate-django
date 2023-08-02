@@ -42,6 +42,22 @@ class TravelInformation(models.Model):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
 
 
+class CustomerService(models.Model):
+    class Meta:
+        verbose_name = "Customer Service"
+        verbose_name_plural = "Customer Services"
+
+    firstname = models.CharField(max_length=200)
+    lastname = models.CharField(max_length=200)
+    phonenumber = models.CharField(max_length=100)
+    email = models.EmailField()
+    enquiry = models.TextField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+
 class TravelAssistance(models.Model):
     class Meta:
         verbose_name = "Travel Assistance"
@@ -59,6 +75,43 @@ class TravelAssistance(models.Model):
     document = models.ImageField(
         upload_to="static/uploads/travels", null=True, blank=True)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+
+VISA_TYPE = (
+    ("VISA ONE", "VISA ONE"),
+    ("VISA TWO", "VISA TWO"),
+    ("VISA THREE", "VISA THREE"),
+    ("VISA FOUR", "VISA FOUR")
+)
+
+ACCOMODATION_TYPE = (
+    ("ACCOMODATION ONE", "ACCOMODATION ONE"),
+    ("ACCOMODATION TWO", "ACCOMODATION TWO"),
+    ("ACCOMODATION THREE", "ACCOMODATION THREE"),
+    ("ACCOMODATION FOUR", "ACCOMODATION FOUR")
+)
+
+
+class PostArrivalService(models.Model):
+    class Meta:
+        verbose_name = "Post Arrival Service"
+        verbose_name_plural = "Post Arrival Services"
+
+    fullname = models.CharField(max_length=200)
+    phonenumber = models.CharField(max_length=100)
+    email = models.EmailField()
+    approved_visa_type = models.CharField(max_length=200, choices=VISA_TYPE)
+    document = models.ImageField(
+        upload_to="static/uploads/post-arrival-services", null=True, blank=True)
+    arrival_date = models.DateField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+    final_destination = models.ForeignKey(
+        CoveredCountry, on_delete=models.PROTECT, related_name="post_arrival_services_destination")
+    accomodation_type = models.CharField(
+        max_length=200, choices=ACCOMODATION_TYPE)
 
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
@@ -200,7 +253,6 @@ class RequestChange(models.Model):
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
 
-    
 
 class CustomerReferralRecord(models.Model):
     fullname = models.CharField(max_length=100)

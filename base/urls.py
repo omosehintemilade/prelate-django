@@ -18,7 +18,7 @@ urlpatterns = [
     path('visa-assistance', views.visa_assistance, name="visa-assistance"),
     path('visa-assistance-old', views.visa_assistance_old,
          name="visa-assistance-old"),
-    path('post-arrival-services', views.postArrivalServices,
+    path('post-arrival-services', views.post_arrival_services,
          name="post-arrival-services"),
     path('tour', views.tour, name="tour"),
     path('tour-old', views.tourOld, name="tour-old"),

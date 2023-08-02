@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
+  {% load static %}
+  {% load widget_tweaks %}
   <head>{% include "latest/partials/_head.html" with add_title="Contact Us | Prelate Travels & Tours" %}</head>
   <body>
     {% include "latest/components/_header.html" %}
-    <section class="tour-hero">
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
+    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
       <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end shadow w-full">
-          <div class="w-4/5 mx-auto">
-            <h2 class="text-[40px] mb-5 font-bold text-buttonPrimary block">Contact Us</h2>
+        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
+          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
+            <h2 class="page-title">Contact Us</h2>
           </div>
         </div>
       </div>
     </section>
-    <section class="desktop:px-40 py-10">
-      <div class="shadow-xl max-w-[774px] mb-20">
+    <section class="px-40 py-10 tablet:px-5 tablet:mt-5">
+      <div class="shadow-xl mb-20 tablet:mb-10">
         <div class="border-b border-[#0000001a] border-solid text-textPrimary text-sm flex items-center px-8 py-5">
           <img src="https://res.cloudinary.com/prelatetravel/image/upload/v1607834136/address-book_sceswx.png"
                alt=""
@@ -63,35 +68,33 @@
           </div>
         </div>
       </div>
-      <div class="shadow-xl px-5 py-8 max-w-[774px]">
+      <div class="shadow-xl px-5 py-8">
         <h2 class="font-semibold text-2xl text-primary mb-3">Send us a message</h2>
         <form class="text-primary w-full"
               method="post"
-              action="{% url 'travel-info' %}">
+              action="{% url 'contact-us' %}">
+          {% csrf_token %}
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">First Name</label>
-            <input type="text" class="input-style" placeholder="----------">
+            {% render_field form.firstname class="input-style" placeholder="----------" %}
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">Last Name</label>
-            <input type="text" class="input-style" placeholder="----------">
+            {% render_field form.lastname class="input-style" placeholder="----------" %}
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">Phone Number</label>
-            <input type="text" class="input-style" placeholder="----------">
+            {% render_field form.phonenumber class="input-style" placeholder="----------" %}
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">Email Address</label>
-            <input type="email" class="input-style" placeholder="----------">
+            {% render_field form.email class="input-style" placeholder="----------" %}
           </div>
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">Message</label>
-            <textarea cols="40"
-                      rows="10"
-                      class="text-area"
-                      placeholder="Write your message ..."></textarea>
+            {% render_field form.enquiry class="text-area" placeholder="Write your message ..." %}
           </div>
-          <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Send Message</button>
+          <button class="submit-btn">Send Message</button>
         </form>
       </div>
     </section>
@@ -100,6 +103,8 @@
     <!-- FOOTER -->
     <!-- SCRIPTS -->
     {% include "latest/partials/_scripts.html" %}
+    <script src="{% static 'javascripts/sweetAlert.js' %}"></script>
+    <script src="{% static 'javascripts/notification.js' %}"></script>
     <!-- SCRIPTS -->
   </body>
 </html>

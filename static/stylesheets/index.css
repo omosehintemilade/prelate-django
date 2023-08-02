@@ -600,11 +600,7 @@ hr.f-border {
   display: block;
 }
 .post-arrival-hero {
-  width: 100%;
-  height: 60vh;
   background: url(/static/images/post-arrival-hero.png);
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 768px) {
@@ -618,28 +614,23 @@ hr.f-border {
   .post-arrival-hero {
     height: 196px;
     width: 100%;
-    /* background here */
-    background-repeat: no-repeat;
   }
-  .post-arrival-hero h2 {
-    padding: 0 40px;
-  }
+
   .post-arrival-hero img {
     width: 308px;
     height: 142px;
-    top: 50px;
-    left: 8px;
-    position: relative;
+    top: 85px;
+    right: 20px;
   }
+
   .travel-insurance-hero h2 {
     display: none;
   }
 }
-.tour-hero {
-  height: 290px;
+.tour-hero-bg {
   background: url(/static/images/tour-hero.png);
-  background-repeat: no-repeat;
 }
+
 .tour-hero-header {
   display: block;
 }
@@ -649,18 +640,13 @@ hr.f-border {
   height: 300px;
   width: 200px;
 }
+
 @media screen and (max-width: 768px) {
+  .tour-hero-bg {
+    background: url(/static/images/tour-hero-mobile.png);
+  }
   .tour-hero-header {
     display: none;
-  }
-}
-@media screen and (max-width: 768px) {
-  .tour-hero {
-    width: 100%;
-    height: 160px;
-    /* background here */
-
-    background-repeat: no-repeat;
   }
 }
 .about-travels-hero {
