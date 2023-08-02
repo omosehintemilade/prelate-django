@@ -611,16 +611,13 @@ hr.f-border {
     background-repeat: no-repeat;
     margin-bottom: 10px;
   }
-  .post-arrival-hero {
-    height: 196px;
-    width: 100%;
-  }
 
   .post-arrival-hero img {
     width: 308px;
     height: 142px;
-    top: 85px;
+    top: unset;
     right: 20px;
+    bottom: -50px;
   }
 
   .travel-insurance-hero h2 {
@@ -842,38 +839,13 @@ hr.f-border {
 .travel-insurance p {
   margin-top: 20px;
 }
-.postal-book {
-  background: #1c2e6a;
-  border-radius: 7px;
-  width: 100%;
-  max-width: 775px;
-  color: #ffffff;
-}
+
 .travel-insurance h3 {
   display: block;
 }
 @media screen and (max-width: 768px) {
   .travel-insurance h3 {
     display: none;
-  }
-  .postal-book {
-    font-weight: 700;
-    font-size: 11px;
-    line-height: 16px;
-    text-transform: uppercase;
-    color: #1c2e6a;
-    background: none;
-  }
-  .book-payment {
-    background: #9b0000;
-    border-radius: 7px;
-    width: 295px;
-    height: 29px;
-    font-weight: 600;
-    font-size: 10px;
-    line-height: 27px;
-    color: #ffffff;
-    padding: 0px 5px;
   }
 }
 .arrival-btn {
