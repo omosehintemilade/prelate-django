@@ -596,9 +596,7 @@ hr.f-border {
     display: block;
   }
 }
-.travel-insurance-hero h2 {
-  display: block;
-}
+
 .post-arrival-hero {
   background: url(/static/images/post-arrival-hero.png);
 }
@@ -618,10 +616,6 @@ hr.f-border {
     top: unset;
     right: 20px;
     bottom: -50px;
-  }
-
-  .travel-insurance-hero h2 {
-    display: none;
   }
 }
 .tour-hero-bg {

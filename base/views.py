@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from .models import CoveredCountry, TravelInformation, TravelInsurace, TourDeal, TravelAssistance
+from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance
 from .models import CustomerReferralRecord
 from django.http import JsonResponse
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
@@ -13,7 +13,7 @@ import decimal
 from django.db.models import Sum, Q
 import requests
 from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
-from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm
+from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm
 
 
 def home(request):
@@ -170,39 +170,20 @@ def request_change(request):
 
 def travel_insurance(request):
     if request.method == "GET":
-        countries = CoveredCountry.objects.all().order_by("country_name")
         return render(
             request,
             "travel-insurance.html",
             context={
-                "countries": countries,
+                "form": TravelInsuranceForm()
             }
         )
-
     if request.method == "POST":
-        origin = request.POST.get("origin")
-        destination = request.POST.get("destination")
-        name = request.POST.get("name")
-        dob = request.POST.get("dob")
-        phone_number = request.POST.get("phoneNumber")
-        email = request.POST.get("email")
-        address = request.POST.get("address")
-        insurance_type = request.POST.get("insuranceType")
-
-        # Create Record in Table
-        TravelInsurace.objects.create(
-            country_of_origin=CoveredCountry.objects.get(country_name=origin),
-            country_of_destination=CoveredCountry.objects.get(
-                country_name=destination),
-            fullname=name,
-            dob=dob,
-            phonenumber=phone_number,
-            email=email,
-            insurance_type=insurance_type,
-            address=address
-        )
-
-        return JsonResponse({"status": "success"}, safe=False)
+        form = TravelInsuranceForm(request.POST)
+        print("vaild from", form.is_valid())
+        if form.is_valid():
+            form.save(commit=True)
+            print("to redirect.....")
+            return redirect("/travel-insurance#submitted")
 
 
 def travel_insuranceOld(request):
@@ -251,7 +232,6 @@ def visa_assistance(request):
             context={
                 "countries": countries,
                 "travel_assistance_form": TravelAssistanceForm(),
-
             }
         )
     elif request.method == "POST":

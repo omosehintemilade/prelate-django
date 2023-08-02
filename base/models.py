@@ -171,7 +171,7 @@ class TravelBudget(models.Model):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
 
 
-class TravelInsurace(models.Model):
+class TravelInsurance(models.Model):
     class Meta:
         verbose_name = "Travel Insurance"
         verbose_name_plural = "Travel Insurance"
@@ -185,7 +185,7 @@ class TravelInsurace(models.Model):
     phonenumber = models.CharField(max_length=100)
     email = models.EmailField()
     insurance_type = models.CharField(max_length=200)
-    address = models.TextField()
+    address = models.CharField(max_length=200)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
