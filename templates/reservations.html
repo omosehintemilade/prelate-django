@@ -49,76 +49,7 @@
       </div>
     </section>
     <!-- SLIDER SECTION -->
-    <section class="w-full container__inner_layout ">
-      <!-- MOBILE -->
-      <div class="hidden tablet:block text-xs">
-        <div class="bg-[#b2d4ef] w-full px-5 py-5 mt-5 text-primary">
-          <div class="p-3 bg-primary text-white rounded-sm text-sm">Booking/Reservations</div>
-          <nav class="flight-menu uppercase flex gap-5  font-medium mt-8">
-            <li class="border border-x-0 border-t-0 border-primary border-b-2 font-semibold list-none">Rounded Trip</li>
-            <li class="list-none">One Way</li>
-            <li class="list-none">Multi-City</li>
-          </nav>
-          <div class="relative">
-            <div class="my-5 font-medium">
-              <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
-                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
-                <span class="text-sm">Nnamdi Azikiwa Airport</span>
-              </div>
-              <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
-                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
-                <span class="text-sm">Nnamdi Azikiwa Airport</span>
-              </div>
-              <div class="absolute bg-[#b2d4ef] rounded-full grid place-content-center w-12 h-12 top-8 right-0">
-                <div class=" bg-primary rounded-full w-8 h-8 grid place-content-center">
-                  <img src="{% static 'images/arrow-vertical.png' %}">
-                </div>
-              </div>
-            </div>
-            <div class="bg-white px-3 py-2.5 w-full grid grid-cols-2 mb-3 rounded-sm font-medium">
-              <div class="flex flex-col">
-                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
-                <span class="text-sm">Jan 2, 2023</span>
-              </div>
-              <div class="flex-col flex">
-                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
-                <span class="text-sm">Jan 2, 2023</span>
-              </div>
-            </div>
-            <div class="grid grid-cols-2 gap-3">
-              <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
-                <select class="w-full rounded-sm text-sm font-medium h-full pl-4 border-none">
-                  <option value="Round Trip">1 Passenger</option>
-                  <option value="BAR">BAR</option>
-                  <option value="THREE">THREE</option>
-                  <option value="FOUR">FOUR</option>
-                </select>
-                <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%] tablet:!block"
-                     alt="" />
-              </div>
-              <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
-                <select class="w-full rounded-sm h-full text-sm font-medium pl-4 border-none">
-                  <option value="Round Trip">Economy</option>
-                  <option value="BAR">BAR</option>
-                  <option value="THREE">THREE</option>
-                  <option value="FOUR">FOUR</option>
-                </select>
-                <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%] tablet:!block"
-                     alt="" />
-              </div>
-            </div>
-            <button class="bg-[#CA0000] mt-6 text-[#ffff] text-sm rounded-sm px-8 py-4">Book now!</button>
-          </div>
-        </div>
-        <div class="pt-5">
-          <p class="text-textPrimary">
-            Book available flights to any destination around the world, hotel reservation. Request airport pick-up at any destination of the world.
-          </p>
-        </div>
-      </div>
-      <!-- MOBILE END-->
+    <section class="w-full container__inner_layout">
       <!-- DESKTOP -->
       <div class="py-10 text-primary block tablet:hidden">
         <h3 class="font-semibold text-[46px] mb-8 ">Book Flight</h3>
@@ -195,6 +126,75 @@
       </div>
     </section>
     <!-- DESKTOP -->
+    <!-- MOBILE -->
+    <div class="w-full hidden tablet:block text-xs">
+      <div class="bg-[#b2d4ef] w-full p-5 mt-0 text-primary">
+        <div class="p-3 bg-primary text-white rounded-sm text-sm">Booking/Reservations</div>
+        <nav class="flight-menu uppercase flex gap-5  font-medium mt-8">
+          <li class="border border-x-0 border-t-0 border-primary border-b-2 font-semibold list-none">Rounded Trip</li>
+          <li class="list-none">One Way</li>
+          <li class="list-none">Multi-City</li>
+        </nav>
+        <div class="relative">
+          <div class="my-5 font-medium">
+            <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
+              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
+              <span class="text-sm">Nnamdi Azikiwa Airport</span>
+            </div>
+            <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
+              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
+              <span class="text-sm">Nnamdi Azikiwa Airport</span>
+            </div>
+            <div class="absolute bg-[#b2d4ef] rounded-full grid place-content-center w-12 h-12 top-8 right-0">
+              <div class=" bg-primary rounded-full w-8 h-8 grid place-content-center">
+                <img src="{% static 'images/arrow-vertical.png' %}">
+              </div>
+            </div>
+          </div>
+          <div class="bg-white px-3 py-2.5 w-full grid grid-cols-2 mb-3 rounded-sm font-medium">
+            <div class="flex flex-col">
+              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
+              <span class="text-sm">Jan 2, 2023</span>
+            </div>
+            <div class="flex-col flex">
+              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
+              <span class="text-sm">Jan 2, 2023</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
+              <select class="w-full rounded-sm text-sm font-medium h-full pl-4 border-none">
+                <option value="Round Trip">1 Passenger</option>
+                <option value="BAR">BAR</option>
+                <option value="THREE">THREE</option>
+                <option value="FOUR">FOUR</option>
+              </select>
+              <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                   class="shaded-down-arrow absolute !m-0 right-4 top-[40%] tablet:!block"
+                   alt="" />
+            </div>
+            <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
+              <select class="w-full rounded-sm h-full text-sm font-medium pl-4 border-none">
+                <option value="Round Trip">Economy</option>
+                <option value="BAR">BAR</option>
+                <option value="THREE">THREE</option>
+                <option value="FOUR">FOUR</option>
+              </select>
+              <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                   class="shaded-down-arrow absolute !m-0 right-4 top-[40%] tablet:!block"
+                   alt="" />
+            </div>
+          </div>
+          <button class="bg-[#CA0000] mt-6 text-[#ffff] text-sm rounded-sm px-8 py-4">Book now!</button>
+        </div>
+      </div>
+      <div class="container__inner_layout">
+        <p class="pt-5 text-textPrimary leading-6">
+          Book available flights to any destination around the world, hotel reservation. Request airport pick-up at any destination of the world.
+        </p>
+      </div>
+    </div>
+    <!-- MOBILE END-->
     <!-- FOOTER -->
     {% include "latest/components/_footer.html" %}
     <!-- FOOTER -->
