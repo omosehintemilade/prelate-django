@@ -59,16 +59,23 @@
             <li class="list-none">One Way</li>
             <li class="list-none">Multi-City</li>
           </nav>
-          <div class="my-5 font-medium">
-            <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
-              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
-              <span class="text-sm">Nnamdi Azikiwa Airport</span>
+          <div class="relative">
+            <div class="my-5 font-medium">
+              <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
+                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
+                <span class="text-sm">Nnamdi Azikiwa Airport</span>
+              </div>
+              <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
+                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
+                <span class="text-sm">Nnamdi Azikiwa Airport</span>
+              </div>
+              <div class="absolute bg-[#b2d4ef] rounded-full grid place-content-center w-12 h-12 top-8 right-0">
+                <div class=" bg-primary rounded-full w-8 h-8 grid place-content-center">
+                  <img src="{% static 'images/arrow-vertical.png' %}">
+                </div>
+              </div>
             </div>
-            <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
-              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
-              <span class="text-sm">Nnamdi Azikiwa Airport</span>
-            </div>
-            <div class="bg-white px-3 py-2.5 w-full grid grid-cols-2 mb-3 rounded-sm">
+            <div class="bg-white px-3 py-2.5 w-full grid grid-cols-2 mb-3 rounded-sm font-medium">
               <div class="flex flex-col">
                 <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
                 <span class="text-sm">Jan 2, 2023</span>
@@ -80,25 +87,25 @@
             </div>
             <div class="grid grid-cols-2 gap-3">
               <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
-                <select class="w-full rounded-sm text-sm h-full pl-4 border-none">
+                <select class="w-full rounded-sm text-sm font-medium h-full pl-4 border-none">
                   <option value="Round Trip">1 Passenger</option>
                   <option value="BAR">BAR</option>
                   <option value="THREE">THREE</option>
                   <option value="FOUR">FOUR</option>
                 </select>
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%] tablet:!block"
                      alt="" />
               </div>
-              <div class="relative rounded-sm bg-white text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-full">
-                <select class="w-full rounded-sm h-full pl-4 border-none">
+              <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
+                <select class="w-full rounded-sm h-full text-sm font-medium pl-4 border-none">
                   <option value="Round Trip">Economy</option>
                   <option value="BAR">BAR</option>
                   <option value="THREE">THREE</option>
                   <option value="FOUR">FOUR</option>
                 </select>
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%] tablet:!block"
                      alt="" />
               </div>
             </div>
