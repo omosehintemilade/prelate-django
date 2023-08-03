@@ -8,33 +8,12 @@
     <!-- HEADER -->
     {% include "latest/components/_header.html" %}
     <!-- HEADER -->
-    <!-- HTML structure for the side drawer component -->
-    <div id="side-drawer" class="side-drawer">
-      <div class="drawer-content">
-        <!-- Place your content here -->
-        <i class="fa fa-bars" aria-hidden="true"></i>
-        <ul>
-          <li>
-            <a href="./reservations.html">Reservations</a>
-          </li>
-          <li>
-            <a href="./travel-help.html">Travel Help</a>
-          </li>
-          <li>
-            <a href="./travel-insurance.html">Travel Insurance</a>
-          </li>
-          <li>
-            <a href="./travel-visa.html">Visa</a>
-          </li>
-          <li>
-            <a href="./Tour-deals.html">Tour</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
     <!-- SLIDER SECTION -->
     <!-- Main screen Carousel -->
-    <section class="main-slider">
+    <section class="main-slider tablet:hidden">
       <div id="default-carousel" class="relative w-full" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class="relative h-[80vh] overflow-hidden">
@@ -57,12 +36,12 @@
         <!-- Slider indicators -->
         <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
           <button type="button"
-                  class="indicator w-12 h-1"
+                  class="indicator w-16 h-0.5"
                   aria-current="true"
                   aria-label="Slide 1"
                   data-carousel-slide-to="0"></button>
           <button type="button"
-                  class="indicator w-12 h-1"
+                  class="indicator w-16 h-0.5"
                   aria-current="false"
                   aria-label="Slide 2"
                   data-carousel-slide-to="1"></button>
@@ -70,287 +49,149 @@
       </div>
     </section>
     <!-- SLIDER SECTION -->
-    <section class="w-full">
+    <section class="w-full container__inner_layout ">
       <!-- MOBILE -->
-      <div class="mobile-template">
-        <div class="bg-[#b2d4ef] w-full px-5 py-5 mt-5">
-          <div class="">
-            <button class="py-3 px-8 pr-10 bg-primary text-white rounded-[7px]">
-              Booking/Reservations
+      <div class="hidden tablet:block text-xs">
+        <div class="bg-[#b2d4ef] w-full px-5 py-5 mt-5 text-primary">
+          <div class="p-3 bg-primary text-white rounded-sm text-sm">Booking/Reservations</div>
+          <nav class="flight-menu uppercase flex gap-5  font-medium mt-8">
+            <li class="border border-x-0 border-t-0 border-primary border-b-2 font-semibold list-none">Rounded Trip</li>
+            <li class="list-none">One Way</li>
+            <li class="list-none">Multi-City</li>
+          </nav>
+          <div class="my-5 font-medium">
+            <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
+              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
+              <span class="text-sm">Nnamdi Azikiwa Airport</span>
             </div>
-            <nav class="flight-menu uppercase flex gap-5 text-primary text-sm font-medium mt-8">
-              <li class="border border-x-0 border-t-0 border-primary border-b-2 font-semibold list-none">Rounded Trip</li>
-              <li class="list-none">One Way</li>
-              <li class="list-none">Multi-City</li>
-            </nav>
-            <div class="my-5 text-primary text-sm font-medium">
-              <div class="bg-white px-5 py-5 w-full flex flex-col mb-3 rounded-[7px]">
-                <span class="text-[#A9A9A9] text-[9px]">Depature</span>
-                <span class="">Nnamdi Azikiwa Airport</span>
-              </div>
-              <div class="bg-white px-5 py-5 w-full flex flex-col mb-3 rounded-[7px]">
-                <span class="text-[#A9A9A9] text-[9px]">Depature</span>
-                <span class="text-sm">Nnamdi Azikiwa Airport</span>
-              </div>
-              <div class="bg-white px-5 py-5 w-full grid grid-cols-2 mb-3 rounded-[7px]">
-                <div class="flex flex-col">
-                  <span class="text-[#A9A9A9] text-[9px]">Depature Date</span>
-                  <span class="">Jan 2, 2023</span>
-                </div>
-                <div class="flex-col flex">
-                  <span class="text-[#A9A9A9] text-[9px]">Depature Date</span>
-                  <span class="">Jan 2, 2023</span>
-                </div>
-              </div>
-              <div class="grid grid-cols-2 gap-3">
-                <div class="relative" data-te-dropdown-ref>
-                  <button class="flex items-center whitespace-nowrap rounded-[7px] bg-white px-5 py-2 text-sm font-bold uppercase leading-normal text-primary shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-te-dropdown-toggle-ref
-                          aria-expanded="false"
-                          data-te-ripple-init
-                          data-te-ripple-color="light">
-                    1 Passenger
-                    <span class="ml-5 w-2">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           viewBox="0 0 20 20"
-                           fill="currentColor"
-                           class="h-5 w-5">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                  <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                      aria-labelledby="dropdownMenuButton1"
-                      data-te-dropdown-menu-ref>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Another action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="relative" data-te-dropdown-ref>
-                  <button class="flex items-center whitespace-nowrap rounded-[7px] bg-white px-5 py-2 text-sm font-bold uppercase leading-normal text-primary shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-te-dropdown-toggle-ref
-                          aria-expanded="false"
-                          data-te-ripple-init
-                          data-te-ripple-color="light">
-                    1 Passenger
-                    <span class="ml-5 w-2">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           viewBox="0 0 20 20"
-                           fill="currentColor"
-                           class="h-5 w-5">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                  <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                      aria-labelledby="dropdownMenuButton1"
-                      data-te-dropdown-menu-ref>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Another action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <button class="bg-[#CA0000] mt-10 text-[#ffff] text-sm rounded-[7px] px-5 py-5">Book now!</button>
+            <div class="bg-white px-3 py-2.5 w-full flex flex-col mb-3 rounded-sm">
+              <span class="text-[#A9A9A9] text-xxs -mb-1">Depature</span>
+              <span class="text-sm">Nnamdi Azikiwa Airport</span>
             </div>
-          </div>
-          <div class="px-5 py-5">
-            <p class="text-[#6A6A6A] text-[12px]">
-              Book available flights to any destination around the world, hotel reservation. Request airport pick-up at any destination of the world.
-            </p>
+            <div class="bg-white px-3 py-2.5 w-full grid grid-cols-2 mb-3 rounded-sm">
+              <div class="flex flex-col">
+                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
+                <span class="text-sm">Jan 2, 2023</span>
+              </div>
+              <div class="flex-col flex">
+                <span class="text-[#A9A9A9] text-xxs -mb-1">Depature Date</span>
+                <span class="text-sm">Jan 2, 2023</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="relative rounded-sm bg-white shadow-[0_4px_9px_-4px_#3b71ca] w-full">
+                <select class="w-full rounded-sm text-sm h-full pl-4 border-none">
+                  <option value="Round Trip">1 Passenger</option>
+                  <option value="BAR">BAR</option>
+                  <option value="THREE">THREE</option>
+                  <option value="FOUR">FOUR</option>
+                </select>
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     alt="" />
+              </div>
+              <div class="relative rounded-sm bg-white text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-full">
+                <select class="w-full rounded-sm h-full pl-4 border-none">
+                  <option value="Round Trip">Economy</option>
+                  <option value="BAR">BAR</option>
+                  <option value="THREE">THREE</option>
+                  <option value="FOUR">FOUR</option>
+                </select>
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     alt="" />
+              </div>
+            </div>
+            <button class="bg-[#CA0000] mt-6 text-[#ffff] text-sm rounded-sm px-8 py-4">Book now!</button>
           </div>
         </div>
-        <!-- MOBILE -->
-        <!-- DESKTOP -->
-        <div class="container__inner_layout py-10 template">
-          <h3 class="font-semibold text-[46px] mb-8">Book Flight</h3>
-          <div>
-            <div class="bg-[#B2D4EF] w-full max-w-[950px] h-[250px] rounded-[7px] px-5 py-10">
-              <!-- Dropdown menu -->
-              <div class="flex gap-5 pb-5">
-                <div class="relative" data-te-dropdown-ref>
-                  <button class="flex items-center whitespace-nowrap rounded-[7px] bg-white px-6 pb-2 pt-2.5 text-15px font-bold  leading-normal text-primary shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-te-dropdown-toggle-ref
-                          aria-expanded="false"
-                          data-te-ripple-init
-                          data-te-ripple-color="light">
-                    Round Trip
-                    <span class="ml-5 w-2">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           viewBox="0 0 20 20"
-                           fill="currentColor"
-                           class="h-5 w-5">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                  <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                      aria-labelledby="dropdownMenuButton1"
-                      data-te-dropdown-menu-ref>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Another action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="relative" data-te-dropdown-ref>
-                  <button class="flex items-center whitespace-nowrap rounded-[7px] bg-white px-6 pb-2 pt-2.5 text-15px font-bold  leading-normal text-primary shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-te-dropdown-toggle-ref
-                          aria-expanded="false"
-                          data-te-ripple-init
-                          data-te-ripple-color="light">
-                    1 Passenger
-                    <span class="ml-5 w-2">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           viewBox="0 0 20 20"
-                           fill="currentColor"
-                           class="h-5 w-5">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                  <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                      aria-labelledby="dropdownMenuButton1"
-                      data-te-dropdown-menu-ref>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Another action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="relative" data-te-dropdown-ref>
-                  <button class="flex items-center whitespace-nowrap rounded-[7px] bg-white px-6 pb-2 pt-2.5 text-15px font-bold  leading-normal text-primary shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] motion-reduce:transition-none dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-                          type="button"
-                          id="dropdownMenuButton1"
-                          data-te-dropdown-toggle-ref
-                          aria-expanded="false"
-                          data-te-ripple-init
-                          data-te-ripple-color="light">
-                    Economy
-                    <span class="ml-5 w-2">
-                      <svg xmlns="http://www.w3.org/2000/svg"
-                           viewBox="0 0 20 20"
-                           fill="currentColor"
-                           class="h-5 w-5">
-                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-                      </svg>
-                    </span>
-                  </button>
-                  <ul class="absolute z-[1000] float-left m-0 hidden min-w-max list-none overflow-hidden rounded-lg border-none bg-white bg-clip-padding text-left text-base shadow-lg dark:bg-neutral-700 [&[data-te-dropdown-show]]:block"
-                      aria-labelledby="dropdownMenuButton1"
-                      data-te-dropdown-menu-ref>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Another action</a>
-                    </li>
-                    <li>
-                      <a class="block w-full whitespace-nowrap bg-transparent px-4 py-2 text-sm font-normal text-neutral-700 hover:bg-neutral-100 active:text-neutral-800 active:no-underline disabled:pointer-events-none disabled:bg-transparent disabled:text-neutral-400 dark:text-neutral-200 dark:hover:bg-neutral-600"
-                         href="#"
-                         data-te-dropdown-item-ref>Something else here</a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!-- Book Card menu -->
-              <div class="flex">
-                <div class="card bg-[#fff] w-[220.79px] text-[#A9A9A9] px-3 py-5 rounded-[7px]">
-                  <p class="text-[13px]">Departure?</p>
-                  <h3 class="text-[20px]">City or Airport</h3>
-                </div>
-                <div class="card bg-[#fff] w-[220.79px] mx-5 text-[#A9A9A9] px-3 py-5 rounded-[7px]">
-                  <p class="text-[13px]">Departure?</p>
-                  <h3 class="text-[20px]">City or Airport</h3>
-                </div>
-                <div class="flex bg-[#fff] w-[324.93px] text-[#A9A9A9] px-3 py-5 rounded-[7px]">
-                  <div class="pr-7">
-                    <p class="text-[13px]">Departure Date</p>
-                    <h3 class="text-[20px] text-primary">Jan 2, 2023</h3>
-                  </div>
-                  <div class="pl-7 return-card">
-                    <p class="text-[13px]">Return Date</p>
-                    <h3 class="text-[20px] text-primary">Feb 2, 2023</h3>
-                  </div>
-                </div>
-                <button class="bg-[#CA0000] rounded-[7px] text-white ml-5 px-5 hover:bg-red-700">Book!</button>
-              </div>
-            </div>
-            <!-- Reservation card -->
-            <p class="text-[#6A6A6A] text-lg leading-[34px] my-10 w-[964px]">
-              Book available flights to any destination around the world, hotel
-              reservation.
-              <br>
-              Request airport pick-up at any destination of the
-              world.
-            </p>
-          </div>
+        <div class="pt-5">
+          <p class="text-textPrimary">
+            Book available flights to any destination around the world, hotel reservation. Request airport pick-up at any destination of the world.
+          </p>
         </div>
-      </section>
+      </div>
+      <!-- MOBILE END-->
       <!-- DESKTOP -->
-      <!-- FOOTER -->
-      {% include "latest/components/_footer.html" %}
-      <!-- FOOTER -->
-      <!-- SCRIPTS -->
-      {% include "latest/partials/_scripts.html" %}
-    </body>
-  </html>
+      <div class="py-10 text-primary block tablet:hidden">
+        <h3 class="font-semibold text-[46px] mb-8 ">Book Flight</h3>
+        <div>
+          <div class="bg-[#B2D4EF] w-full max-w-[950px] h-[250px] rounded-lg px-5 py-10">
+            <!-- Dropdown menu -->
+            <div class="flex gap-5 pb-5">
+              <div class="relative rounded-lg bg-white  text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-44">
+                <select class="w-full rounded-lg font-bold h-full pl-4 border-none">
+                  <option value="Round Trip">Round Trip</option>
+                  <option value="BAR">BAR</option>
+                  <option value="THREE">THREE</option>
+                  <option value="FOUR">FOUR</option>
+                </select>
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     alt="" />
+              </div>
+              <div class="relative rounded-lg bg-white  text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-44">
+                <select class="w-full rounded-lg font-bold h-full pl-4 border-none">
+                  <option value="1 Passenger">1 Passenger</option>
+                  <option value="BAR">BAR</option>
+                  <option value="THREE">THREE</option>
+                  <option value="FOUR">FOUR</option>
+                </select>
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     alt="" />
+              </div>
+              <div class="relative rounded-lg bg-white  text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-44">
+                <select class="w-full rounded-lg font-bold h-full pl-4 border-none">
+                  <option value="Economy">Economy</option>
+                  <option value="BAR">BAR</option>
+                  <option value="THREE">THREE</option>
+                  <option value="FOUR">FOUR</option>
+                </select>
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                     alt="" />
+              </div>
+            </div>
+            <!-- Book Card menu -->
+            <div class="flex">
+              <div class="card bg-[#fff] w-[220.79px] text-[#A9A9A9] px-3 py-5 rounded-lg">
+                <p class="text-[13px]">Departure?</p>
+                <h3 class="text-[20px]">City or Airport</h3>
+              </div>
+              <div class="card bg-[#fff] w-[220.79px] mx-5 text-[#A9A9A9] px-3 py-5 rounded-lg">
+                <p class="text-[13px]">Departure?</p>
+                <h3 class="text-[20px]">City or Airport</h3>
+              </div>
+              <div class="flex bg-[#fff] w-[324.93px] text-[#A9A9A9] px-3 py-5 rounded-lg">
+                <div class="pr-7">
+                  <p class="text-[13px]">Departure Date</p>
+                  <h3 class="text-[20px] text-primary">Jan 2, 2023</h3>
+                </div>
+                <div class="pl-7 return-card">
+                  <p class="text-[13px]">Return Date</p>
+                  <h3 class="text-[20px] text-primary">Feb 2, 2023</h3>
+                </div>
+              </div>
+              <button class="text-lg bg-[#CA0000] rounded-lg text-white ml-5 px-5 hover:bg-red-700">Book!</button>
+            </div>
+          </div>
+          <!-- Reservation card -->
+          <p class="text-textPrimary text-lg leading-[34px] my-10">
+            Book available flights to any destination around the world, hotel
+            reservation.
+            <br>
+            Request airport pick-up at any destination of the
+            world.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- DESKTOP -->
+    <!-- FOOTER -->
+    {% include "latest/components/_footer.html" %}
+    <!-- FOOTER -->
+    <!-- SCRIPTS -->
+    {% include "latest/partials/_scripts.html" %}
+  </body>
+</html>

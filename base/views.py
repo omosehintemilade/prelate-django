@@ -1,7 +1,7 @@
 import os
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance
+from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
 from .models import CustomerReferralRecord
 from django.http import JsonResponse
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
@@ -208,7 +208,7 @@ def travel_insuranceOld(request):
         insurance_type = request.POST.get("insuranceType")
 
         # Create Record in Table
-        TravelInsurace.objects.create(
+        TravelInsurance.objects.create(
             country_of_origin=CoveredCountry.objects.get(country_name=origin),
             country_of_destination=CoveredCountry.objects.get(
                 country_name=destination),

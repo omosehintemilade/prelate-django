@@ -423,9 +423,7 @@ hr.f-border {
 .study-services {
   display: block;
 }
-.mobile-template {
-  display: none;
-}
+
 .prelate-travels {
   display: block;
 }
@@ -498,10 +496,7 @@ hr.f-border {
   .mobile-slider {
     display: block;
   }
-  .mobile-template {
-    display: block;
-    width: 100%;
-  }
+
   .study-services {
     display: none;
   }

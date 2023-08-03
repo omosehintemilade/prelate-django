@@ -986,10 +986,6 @@ input:checked + .toggle-bg {
   }
 }
 
-.pointer-events-none {
-  pointer-events: none;
-}
-
 .visible {
   visibility: visible;
 }
@@ -1031,11 +1027,6 @@ input:checked + .toggle-bg {
   right: 15%;
 }
 
-.inset-y-0 {
-  top: 0px;
-  bottom: 0px;
-}
-
 .bottom-0 {
   bottom: 0px;
 }
@@ -1064,14 +1055,6 @@ input:checked + .toggle-bg {
   right: 0px;
 }
 
-.right-2 {
-  right: 0.5rem;
-}
-
-.right-2\.5 {
-  right: 0.625rem;
-}
-
 .right-5 {
   right: 1.25rem;
 }
@@ -1084,12 +1067,16 @@ input:checked + .toggle-bg {
   top: 0px;
 }
 
-.top-3 {
-  top: 0.75rem;
-}
-
 .top-\[170px\] {
   top: 170px;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.top-\[40\%\] {
+  top: 40%;
 }
 
 .z-10 {
@@ -1142,6 +1129,10 @@ input:checked + .toggle-bg {
 
 .m-0 {
   margin: 0px;
+}
+
+.\!m-0 {
+  margin: 0px !important;
 }
 
 .mx-0 {
@@ -1302,6 +1293,10 @@ input:checked + .toggle-bg {
   margin-right: 0.5rem;
 }
 
+.mr-2\.5 {
+  margin-right: 0.625rem;
+}
+
 .mr-3 {
   margin-right: 0.75rem;
 }
@@ -1312,6 +1307,10 @@ input:checked + .toggle-bg {
 
 .mr-auto {
   margin-right: auto;
+}
+
+.mt-0 {
+  margin-top: 0px;
 }
 
 .mt-1 {
@@ -1358,8 +1357,8 @@ input:checked + .toggle-bg {
   margin-top: 2rem;
 }
 
-.mr-2\.5 {
-  margin-right: 0.625rem;
+.-mb-1 {
+  margin-bottom: -0.25rem;
 }
 
 .box-content {
@@ -1400,6 +1399,14 @@ input:checked + .toggle-bg {
 
 .\!h-px {
   height: 1px !important;
+}
+
+.h-0 {
+  height: 0px;
+}
+
+.h-0\.5 {
+  height: 0.125rem;
 }
 
 .h-1 {
@@ -1508,6 +1515,10 @@ input:checked + .toggle-bg {
 
 .w-12 {
   width: 3rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .w-2 {
@@ -1877,6 +1888,10 @@ input:checked + .toggle-bg {
   border-radius: 0.375rem;
 }
 
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
 .rounded-l-lg {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -2208,6 +2223,11 @@ input:checked + .toggle-bg {
   padding-bottom: 2rem;
 }
 
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .pb-1 {
   padding-bottom: 0.25rem;
 }
@@ -2226,14 +2246,6 @@ input:checked + .toggle-bg {
 
 .pl-0 {
   padding-left: 0px;
-}
-
-.pl-3 {
-  padding-left: 0.75rem;
-}
-
-.pl-3\.5 {
-  padding-left: 0.875rem;
 }
 
 .pl-4 {
@@ -2396,6 +2408,10 @@ input:checked + .toggle-bg {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-xxs {
+  font-size: 10px;
 }
 
 .font-\[600\] {
