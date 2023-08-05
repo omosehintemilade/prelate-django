@@ -485,6 +485,13 @@ hr.f-border {
 }
 /* CUSTOM GRADIENTS */
 
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled {
+  opacity: 0.35 !important;
+  cursor: auto;
+  pointer-events: none;
+}
+
 @media screen and (max-width: 768px) {
   .template {
     padding: 0;

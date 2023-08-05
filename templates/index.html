@@ -71,12 +71,13 @@
     </section>
     <!-- SERVICES DESKTOP START -->
     <section>
-      <div class="custom_container overflow-hidden text-primary text-sm relative">
-        <div class="swiper-container flex">
-          <div class="swiper-wrapper my-10 flex gap-10 w-full py-5">
-            <div class="w-[33%] swiper-slide cursor-grab">
+      <div class="custom_container text-sm tablet:hidden">
+        <div class="swiper">
+          <div class="swiper-wrapper my-10 py-5 pl-20 mx-auto">
+            <!-- Slides -->
+            <div class="swiper-slide">
               <div class="flex justify-between mb-5 mr-4">
-                <h3 class="font-bold text-[20px] leading-[30px] text-primary">Reservation</h3>
+                <h3 class="font-bold text-xl leading-[30px] text-primary">Reservation</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
               <p class="text-textPrimary">
@@ -84,9 +85,9 @@
                 frustrating most times, Our visa experts can guide you through the procedures of each step correctly.
               </p>
             </div>
-            <div class="w-[33%] swiper-slide cursor-grab">
+            <div class="swiper-slide">
               <div class="flex justify-between mb-5 mr-4">
-                <h3 class="font-bold text-[20px] leading-[30px] text-primary">Visa Assistance</h3>
+                <h3 class="font-bold text-xl leading-[30px] text-primary">Visa Assistance</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
               <p class="text-textPrimary">
@@ -94,18 +95,18 @@
                 frustrating most times, Our visa experts can guide you through the procedures of each step correctly.
               </p>
             </div>
-            <div class="w-[33%] swiper-slide cursor-grab">
+            <div class="swiper-slide">
               <div class="flex justify-between mb-5 mr-4">
-                <h3 class="font-bold text-[20px] leading-[30px] text-primary">Tour</h3>
+                <h3 class="font-bold text-xl leading-[30px] text-primary">Tour</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
               <p class="text-textPrimary">
                 We offer several top notch affordable tour packages ranging from recreational, luxury, cultural, adventure, religious tours that meets and satisfy our client’s demands.
               </p>
             </div>
-            <div class="w-[33%] swiper-slide cursor-grab">
-              <div class="flex justify-between mb-5 mr-4">
-                <h3 class="font-bold text-[20px] leading-[30px] text-primary">Reservation</h3>
+            <div class="swiper-slide">
+              <div class="flex justify-between mb-5 mr-20">
+                <h3 class="font-bold text-xl leading-[30px] text-primary">Reservation</h3>
                 <img src="{% static "/images/arrow-right.svg" %}" class="border bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
               </div>
               <p class="text-textPrimary">
@@ -115,6 +116,8 @@
               </p>
             </div>
           </div>
+          <div class="swiper-button-prev swipper-nav-btn"></div>
+          <div class="swiper-button-next swipper-nav-btn"></div>
         </div>
       </div>
     </section>
@@ -122,31 +125,31 @@
     <!-- STUDY SERVICES START -->
     <section class="bg-[#EEEEEE] py-10 w-full study-services">
       <div class="container__inner_layout">
-        <div class="flex justify-between">
-          <h2 class="text-[34px] text-primary font-bold">Study Services</h2>
+        <div class="flex justify-between items-center">
+          <h2 class="text-3xl text-primary font-bold">Study Services</h2>
           <p class="text-textPrimary text-base">Apply to study in any country of your choice</p>
         </div>
         <div class="grid grid-cols-4 gap-5 my-10 w-full">
           <div class="cursor-pointer">
             <img src="{% static "/images/australia.png" %}" alt="" />
-            <p class="text-[#3A3A3A] text-[20px] font-bold mt-2">Australia</p>
+            <p class="text-[#3A3A3A] text-xl font-bold mt-2">Australia</p>
           </div>
           <div class="cursor-pointer">
             <img src="{% static "/images/canada.png" %}" alt="" />
-            <p class="text-[#3A3A3A] text-[20px] font-bold mt-2">Canada</p>
+            <p class="text-[#3A3A3A] text-xl font-bold mt-2">Canada</p>
           </div>
           <div class="cursor-pointer">
             <img src="{% static "/images/england.png" %}" alt="" />
-            <p class="text-[#3A3A3A] text-[20px] font-bold mt-2">England</p>
+            <p class="text-[#3A3A3A] text-xl font-bold mt-2">England</p>
           </div>
           <div class="cursor-pointer">
             <img src="{% static "/images/ukraine.png" %}" alt="" />
-            <p class="text-[#3A3A3A] text-[20px] font-bold mt-2">Ukraine</p>
+            <p class="text-[#3A3A3A] text-xl font-bold mt-2">Ukraine</p>
           </div>
         </div>
         <div class="flex justify-between w-full">
           <p></p>
-          <p class="text-[20px] text-primary flex font-[600]">
+          <p class="text-xl text-primary flex font-[600]">
             <a href="/" class="mt-1">View More Nations</a>
             <img src="{% static "/images/arrow-right.svg" %}" class="border mx-5 bg-primary rounded-full px-2 py-2 w-[35px] h-[35px]" alt="" />
           </p>
@@ -184,30 +187,15 @@
     <!-- SCRIPTS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script>
-  new Swiper(".swiper-container", {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    }
-    // autoplay: {
-    //   delay: 3000,
-    //   disableOnInteraction: false
-    // }
-
-
-      // Responsive breakpoints
-  breakpoints: {
-
-    // when window width is >= 768px
-    768: {
-      slidesPerView: 3,
-      spaceBetween: 20,
-    }
-  }
-  });
-
+      new Swiper(".swiper", {
+        slidesPerView: 3,
+        spaceBetween: 80       
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
+        grabCursor: true
+      });
     </script>
   </body>
 </html>

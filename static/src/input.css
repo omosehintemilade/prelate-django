@@ -39,4 +39,10 @@
   .page-title {
     @apply text-[40px] mb-5 font-bold text-buttonPrimary mobile:text-white mobile:text-lg mobile:leading-normal mobile:font-semibold;
   }
+
+  /* SWIPER */
+  .swipper-nav-btn {
+    @apply !opacity-100 !w-12 !h-12 !rounded-full !text-white !bg-[#D9D9D9] after:!text-3xl after:content-["prev"];
+  }
+  /* SWIPER END */
 }
