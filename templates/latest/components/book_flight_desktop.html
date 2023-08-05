@@ -1,0 +1,61 @@
+{% load static %}
+<div class="bg-[#B2D4EF] w-full max-w-[950px] h-[250px] rounded-lg px-5 py-10">
+    <!-- Dropdown menu -->
+    <div class="flex gap-5 pb-5">
+        <div class="relative rounded-lg bg-white  text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-44">
+            <select class="w-full rounded-lg font-bold h-full pl-4 border-none">
+                <option value="Round Trip">Round Trip</option>
+                <option value="BAR">BAR</option>
+                <option value="THREE">THREE</option>
+                <option value="FOUR">FOUR</option>
+            </select>
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                 alt="" />
+        </div>
+        <div class="relative rounded-lg bg-white  text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-44">
+            <select class="w-full rounded-lg font-bold h-full pl-4 border-none">
+                <option value="1 Passenger">1 Passenger</option>
+                <option value="BAR">BAR</option>
+                <option value="THREE">THREE</option>
+                <option value="FOUR">FOUR</option>
+            </select>
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                 alt="" />
+        </div>
+        <div class="relative rounded-lg bg-white  text-sm shadow-[0_4px_9px_-4px_#3b71ca] w-44">
+            <select class="w-full rounded-lg font-bold h-full pl-4 border-none">
+                <option value="Economy">Economy</option>
+                <option value="BAR">BAR</option>
+                <option value="THREE">THREE</option>
+                <option value="FOUR">FOUR</option>
+            </select>
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow absolute !m-0 right-4 top-[40%]"
+                 alt="" />
+        </div>
+    </div>
+    <!-- Book Card menu -->
+    <div class="flex">
+        <div class="card bg-[#fff] w-[220.79px] text-[#A9A9A9] px-3 py-5 rounded-lg">
+            <p class="text-[13px]">Departure?</p>
+            <h3 class="text-[20px]">City or Airport</h3>
+        </div>
+        <div class="card bg-[#fff] w-[220.79px] mx-5 text-[#A9A9A9] px-3 py-5 rounded-lg">
+            <p class="text-[13px]">Departure?</p>
+            <h3 class="text-[20px]">City or Airport</h3>
+        </div>
+        <div class="flex bg-[#fff] w-[324.93px] text-[#A9A9A9] px-3 py-5 rounded-lg">
+            <div class="pr-7">
+                <p class="text-[13px]">Departure Date</p>
+                <h3 class="text-[20px] text-primary">Jan 2, 2023</h3>
+            </div>
+            <div class="pl-7 return-card">
+                <p class="text-[13px]">Return Date</p>
+                <h3 class="text-[20px] text-primary">Feb 2, 2023</h3>
+            </div>
+        </div>
+        <button class="text-lg bg-[#CA0000] rounded-lg text-white ml-5 px-5 hover:bg-red-700">Book!</button>
+    </div>
+</div>

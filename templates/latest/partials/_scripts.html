@@ -1,43 +1,12 @@
 {% load static %}
-
-
 <!-- FB Chat Plugin code -->
-<div
-  class="fb-customerchat"
-  attribution="setup_tool"
-  page_id="1751707854920348"
-></div>
+<div class="fb-customerchat"
+     attribution="setup_tool"
+     page_id="1751707854920348"></div>
 <!-- End Chat Plugin code -->
 <script src="{% static 'javascripts/jquery.js' %}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
 {% comment %} <script src="./node_modules/flowbite/dist/js/flowbite.min.js"></script> {% endcomment %}
-
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-<script>
-  new Swiper(".swiper-container", {
-    slidesPerView: 3,
-    spaceBetween: 20,
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev"
-    }
-    // autoplay: {
-    //   delay: 3000,
-    //   disableOnInteraction: false
-    // }
-  });
-
-  // JavaScript code to handle mobile menu
-  const drawer = document.getElementById("side-drawer");
-  const hamburgers = document.querySelectorAll(".fa-bars");
-
-  hamburgers.forEach((hamburger) => {
-    hamburger.addEventListener("click", () => {
-      drawer.classList.toggle("drawer-open");
-    });
-  });
-</script>
-
 <script>
   function getCookie(name) {
     var cookieValue = null;
@@ -67,7 +36,6 @@
     }
   });
 </script>
-
 <!-- Load Facebook SDK for JavaScript -->
 {% comment %} <div id="fb-root"></div>
 <script>

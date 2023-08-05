@@ -1,0 +1,36 @@
+{% load static %}
+<section class="main-slider tablet:hidden">
+    <div id="default-carousel" class="relative w-full" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-[80vh] overflow-hidden">
+            <!-- Item 1 -->
+            <div class="hidden duration-700 ease-in-out slider-1" data-carousel-item>
+                <div class="absolute bottom-0 right-0 left-0 h-28 gradient-black"></div>
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700 ease-in-out slider-2" data-carousel-item>
+                <div class="absolute bottom-0 right-0 left-0 h-[50%] gradient-blue">
+                    <div class="custom_container h-full flex items-end mb-5">
+                        <h3 class="text-[56px] leading-[84px] font-bold text-white">
+                            Explore .
+                            <span class="text-[56px] leading-[84px] text-buttonPrimary">Asia</span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Slider indicators -->
+        <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+            <button type="button"
+                    class="indicator w-16 h-0.5"
+                    aria-current="true"
+                    aria-label="Slide 1"
+                    data-carousel-slide-to="0"></button>
+            <button type="button"
+                    class="indicator w-16 h-0.5"
+                    aria-current="false"
+                    aria-label="Slide 2"
+                    data-carousel-slide-to="1"></button>
+        </div>
+    </div>
+</section>
