@@ -50,5 +50,7 @@ urlpatterns = [
     path('term-of-service', views.term_of_service, name="term-of-service"),
     path('privacy-policy', views.privacy_policy, name="privacy-policy"),
     path('privacy-policy-old', views.privacy_policy_old, name="privacy-policy-old"),
-    path('referrals', views.referral, name="referral")
+    path('referrals', views.referral, name="referral"),
+    path('newsletters', views.subscribe_to_newsletter, name="newsletters")
+
 ]

@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 <!-- FOOTER -->
 <section class="mt-16">
   <div class="custom_container affiliates_container">
@@ -83,11 +84,21 @@
     <div class="f-form_wrapper">
       <ul class="f-form">
         <h6>Join our News letter</h6>
-        <div class="newsletter-input_wr">
-          <input type="text" placeholder="Enter your full name" class="input" />
-          <input type="text" placeholder="Enter your email" class="input" />
-        </div>
-        <button class="button">Join</button>
+        {% comment %} <form method="post" action="{% url 'newsletters' %}">
+          <div class="newsletter-input_wr">
+            <input type="text" placeholder="Enter your full name" class="input" />
+            <input type="text" placeholder="Enter your email" class="input" />
+          </div>
+          <button class="button">Join</button>
+        </form> {% endcomment %}
+        <form method="post" action="{% url 'newsletters' %}">
+          <div class="newsletter-input_wr">
+            {% csrf_token %}
+            {% render_field subscribe_form.fullname class="input" placeholder="Enter your full name" %}
+            {% render_field subscribe_form.email class="input" placeholder="Enter your email address" type="email" %}
+          </div>
+          <button class="button">Join</button>
+        </form>
       </ul>
     </div>
   </nav>

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
 from .models import CustomerReferralRecord
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
 from acctmang.forms import EditProfileInformation
@@ -13,7 +13,7 @@ import decimal
 from django.db.models import Sum, Q
 import requests
 from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
-from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm
+from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm
 
 
 def home(request):
@@ -140,6 +140,15 @@ def travel_info(request):
             form.save(commit=True)
 
             return redirect("/travel-help#submitted")
+
+
+def subscribe_to_newsletter(request):
+    if request.method == "POST":
+        form = NewsletterSubscriberForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            redirect_url = request.META.get('HTTP_REFERER', '/')
+            return HttpResponseRedirect(redirect_url + "#submitted?action=subscribe")
 
 
 def travel_assistance(request):

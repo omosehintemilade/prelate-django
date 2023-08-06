@@ -1,6 +1,6 @@
 from django import forms
 from .models import TravelInformation, TravelAssistance, TravelBudget, PostArrivalService, CustomerService
-from .models import UsersCustomTourRequest, TourDealInterest, RequestChange, TravelInsurance
+from .models import UsersCustomTourRequest, TourDealInterest, RequestChange, TravelInsurance, NewsletterSubscriber
 from allauth.account.forms import SignupForm
 
 PROFILE_TYPE = (
@@ -48,6 +48,15 @@ class PostArrivalServiceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(PostArrivalServiceForm, self).__init__(*args, **kwargs)
+
+
+class NewsletterSubscriberForm(forms.ModelForm):
+    class Meta:
+        model = NewsletterSubscriber
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super(NewsletterSubscriberForm, self).__init__(*args, **kwargs)
 
 
 class TravelInsuranceForm(forms.ModelForm):

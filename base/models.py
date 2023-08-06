@@ -23,6 +23,19 @@ class CoveredCountry(models.Model):
         return str(self.country_name)
 
 
+class NewsletterSubscriber(models.Model):
+    class Meta:
+        verbose_name = "Newsletter Subscriber"
+        verbose_name_plural = "Newsletter Subscribers"
+
+    fullname = models.CharField(max_length=200)
+    email = models.EmailField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+
 class TravelInformation(models.Model):
     class Meta:
         verbose_name = "Travel Information"
