@@ -1,24 +1,21 @@
-new Swiper(".desktop-swiper", {
-  slidesPerView: 3,
-  spaceBetween: 80,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
-  //   navigation: true,
-  grabCursor: true,
-  loop: true // to use this option effectively, total slides must be >= slidesPerView * 2
+// JavaScript code to handle side drawer toggle
+const drawer = document.getElementById("side-drawer");
+const hamburgers = document.querySelectorAll(".fa-bars");
+
+hamburgers.forEach((hamburger) => {
+  // console.log({ hamburger });
+  hamburger.addEventListener("click", () => {
+    drawer.classList.toggle("drawer-open");
+  });
 });
+// JavaScript code to handle side drawer toggle end
 
-// MOBILE SWIPER
-
-new Swiper(".mobile-swiper", {
-  slidesPerView: 1,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev"
-  },
-  loop: true
-});
-
-// MOBILE END
+// Format Figure
+document
+  .querySelectorAll(".figure")
+  .forEach(
+    (figureEl) =>
+      (figureEl.textContent = Number(figureEl.textContent).toLocaleString(
+        "en-US"
+      ))
+  );

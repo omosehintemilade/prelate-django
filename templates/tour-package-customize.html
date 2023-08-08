@@ -8,33 +8,36 @@
   <body>
     <!-- HEADER -->
     {% include "latest/components/_header.html" %}
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
     <!-- HERO SECTION DESKTOP -->
-    <section class="customize-tour-deals-hero">
+    <section class="customize-tour-deals-hero w-full bg-no-repeat h-[60vh] bg-cover bg-bottom">
       <div class="flex items-end h-full">
         <div class="h-[70%] flex items-end gradient-black w-full">
           <div class="w-4/5 mx-auto">
-            <h2 class="text-[40px] mb-5 font-bold text-buttonPrimary block">Customize Tour Deals</h2>
+            <h2 class="page-title">Customize Tour Deals</h2>
           </div>
         </div>
       </div>
     </section>
     <!-- HERO SECTION DESKTOP -->
-    <section class="container__inner_layout py-10">
+    <section class="container__inner_layout">
       <!-- CUSTOMIZE TOUR DEAL FORM -->
-      <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5">Prelate Travel Package</h2>
-      <p class="text-[#6A6A6A] text-sm text-justify leading-[27px]">
+      <h2 class="font-bold text-[30px] leading-[45px] text-primary my-5 tablet:font-semibold tablet:text-lg tablet:mb-1">
+        Prelate Travel Package
+      </h2>
+      <p class="text-textPrimary text-sm text-justify leading-7 tablet:text-xs tablet:leading-6">
         Lorem ipsum dolor sit, amet consectetur adipisicing elit.
         Unde reiciendis fugit distinctio molestiae ipsum autem,
         atque nisi voluptatem recusandae officia nesciunt dolores itaque quis?
         Quaerat enim cupiditate consequatur consequuntur quia.
       </p>
       <div class="desktop:mt-10">
-        <div class="bg-primary rounded-[7px] w-full max-w-[775px] p-3 text-white travel-info-content { display:block ; }">
-          Customize Tour Deal Form
-        </div>
-        <form class="text-primary w-full max-w-[775px] pt-10"
-              method="post"
-              action="{% url 'travel-info' %}">
+        <div class="form-title">Customize Tour Deal Form</div>
+        <form class="text-primary w-full pt-10 mobile:pt-6" method="post">
+          {{ form.errors }} {{ form.non_field_errors }}
+          {% csrf_token %}
           <div class="flex flex-col mb-5">
             <label for="" class="input-label">First Name</label>
             {% render_field form.first_name class="input-style" placeholder="----------" %}
@@ -63,7 +66,7 @@
             <label for="" class="input-label flex justify-between">
               Category
               <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                   class="w-[10.39px] h-[9.75px]"
+                   class="shaded-down-arrow"
                    alt="" />
             </label>
             {% render_field form.tour_category class="input-style" placeholder="----------" %}
@@ -76,28 +79,14 @@
             <label for="" class="input-label">Message</label>
             {% render_field form.message class="text-area" placeholder="Write your extra messages here" %}
           </div>
-          <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Submit Form</button>
+          <button class="submit-btn">Submit Form</button>
         </form>
       </div>
     </section>
     <!-- CUSTOMIZE TOUR DEAL FORM -->
-    <hr />
     <!-- FOOTER -->
     {% include "latest/components/_footer.html" %}
     <!-- FOOTER -->
-    <!-- SCRIPTS -->
     {% include "latest/partials/_scripts.html" %}
-    <!--Sweet Alert-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <!--End Sweet Alert-->
-    <script>
-      const url = window.location.href;
-      const splittedUrl = url.split("#");
-      if (splittedUrl[1] == "submitted") {
-        Swal.fire({
-          html: "<h5>Your Custom Tour Request has been submitted successfully!. <br /><b>We will reach out to you soonest.</b></h5>",
-        });
-      }
-    </script>
   </body>
 </html>

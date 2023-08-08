@@ -7,112 +7,51 @@
   <body>
     <!-- HEADER -->
     {% include "latest/components/_header.html" %}
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
     <!-- Hero Section -->
-    <section class="tour-hero">
+    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
       <div class="flex items-end h-full">
         <div class="h-2/4 flex items-end gradient-blue w-full">
-          <div class="w-4/5 mx-auto">
-            <h3 class="text-[40px] leading-[84px] font-bold text-buttonPrimary">Tour Deals</h3>
+          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
+            <h3 class="page-title">Tour Deals</h3>
           </div>
-        </div>
-      </div>
-      <div class="pt-28 px-10 tour-hero-mobile">
-        <div>
-          <h3 class="text-[17px] leading-[26px] font-semibold text-[#F6F6F6]">Tour</h3>
         </div>
       </div>
     </section>
     <!--  Tour card Section Bgig Screen-->
-    <section class="px-48 tour-card-main">
-      <div class="mt-20">
-        <div class="grid grid-cols-4 gap-x-10 gap-y-5">
-          <a href="{% url 'tour-deal' %}">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+    <section class="container__inner_layout">
+      <div class="mt-20 tablet:mt-6">
+        <div class="grid grid-cols-3 gap-x-10 gap-y-5 mobile:grid-cols-1">
+          {% for deal in deals %}
+            <a href="{{ deal.get_absolute_url }}">
+              <div class="h-80 w-full flex items-end rounded-t-[4px] mobile:h-40"
+                   style="background: url({{ deal.deal_image }})">
+                <div class="h-2/3 w-full bg-no-repeat bg-cover max-w-sm flex items-end gradient-black">
+                  <p class="mb-5 ml-2.5 text-white font-bold text-lg">{{ deal.deal_name }}</p>
+                </div>
               </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </a>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
+              <div class="flex justify-between items-center">
+                <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold mobile:text-sm mobile:font-medium">
+                  <span class="figure">{{ deal.amount }}</span> <span>
+                    {% if deal.currency == "USD" %}
+                      US Dollars
+                    {% else %}
+                      Naira
+                    {% endif %}
+                  </span>
+                </p>
+                <small class="text-gray-500 mobile:text-xxs">for 2 persons</small>
               </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
-          <div class="cursor-pointer">
-            <div class="card__tour flex items-end rounded-t-[4px]">
-              <div class="h-2/3 flex items-end w-full gradient-black">
-                <p class="mb-5 ml-2.5 text-white font-bold text-lg">Seychelles</p>
-              </div>
-            </div>
-            <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold">500,000 naira</p>
-          </div>
+            </a>
+          {% endfor %}
         </div>
-        <div class="mt-10 text-base">
+        <div class="mt-10 text-base mobile:text-sm">
           <span class="text-primary font-semibold">Can't find a suitable deal?</span> <a href="{% url 'customize-tour' %}"
     class="!underline text-[#007bff] font-normal">Customize one for yourself</a>
         </div>
       </div>
-    </section>
-    <!-- Tour card mobile -->
-    <section class="tour-card-mobile">
-      <img src="../images/tour-mobile 1.png" class="" alt="" />
-      <img src="../images/tour-mobile 2.png" class="" alt="" />
-      <img src="../images/Group 45 (2).png" class="" alt="" />
-      <img src="../images/tour-mobile 4.png" class="" alt="" />
-      <img src="../images/tour-mobile 5.png" class="" alt="" />
-      <img src="../images/Group 48 (1).png" class="" alt="" />
     </section>
     <!-- Footer segments starts from here -->
     <!-- FOOTER -->

@@ -416,7 +416,7 @@ def customize_tour(request):
         if form.is_valid():
             form.save(commit=True)
 
-        return redirect("/tour-package-customize#submitted")
+        return redirect("/tour/customize#submitted")
 
 
 def customize_tourOld(request):

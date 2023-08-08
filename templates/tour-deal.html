@@ -7,35 +7,49 @@
   </head>
   <body>
     {% include "latest/components/_header.html" %}
-    <section class="tour-hero">
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
+    <!-- Hero Section -->
+    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
       <div class="flex items-end h-full">
         <div class="h-2/4 flex items-end gradient-blue w-full">
-          <div class="w-4/5 mx-auto">
-            <h3 class="text-[40px] leading-[84px] font-bold text-buttonPrimary">Tour Deals</h3>
+          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
+            <h3 class="page-title">Tour Deals</h3>
           </div>
         </div>
       </div>
     </section>
-    <section class="desktop:px-40 py-10 flex items-start gap-x-5">
-      <div class="text-textPrimary">
-        <p class="text-xl font-bold text-primary my-5">Deal information</p>
-        <img src="{% static 'images/tour-deal.png' %}"
-             alt="{{ package.country }}"
-             class="block max-w-xs mb-6 p-1.5 rounded-[4px]"
-             style="box-shadow: 0 0 10px #333" />
-        <p class="mb-2 capitalize">
-          <span class="text-primary font-bold">Country/City:</span> Nigeria {{ package.country }}
-        </p>
-        <p class="mb-2 capitalize">
-          <span class="text-primary font-bold">Price:</span> NGN 500,000{{ package.currency }} {{ package.amount }}
-        </p>
-        <p>
-          <span class="text-primary font-bold">Other Information:</span> <span class="text-justify">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Culpa, provident unde? Facilis. {{ package.information|safe }}</span>
-        </p>
+    <section class="container__inner_layout mobile:text-xs">
+      <p class="text-xl font-bold text-primary mt-5 mb-7 capitalize cursor-pointer">
+        {{ package.deal_name }} > Deal Information
+      </p>
+      <div class="text-textPrimary flex items-start gap-x-5 mobile:flex-col mobile:gap-y-3">
+        <div class="basis-2/5">
+          <img src="/{{ package.deal_image }}"
+               alt="{{ package.country }}"
+               class="block max-w-xs mb-6 p-1.5 rounded-[4px] mobile:w-full"
+               style="box-shadow: 0 0 10px #333" />
+        </div>
+        <div class="basis-3/5">
+          <div class="mb-2 capitalize">
+            <p class="text-primary font-bold">Country/City</p>
+            <p class="ml-2.5 mobile:ml-0">{{ package.country }}</p>
+          </div>
+          <div class="mb-2 capitalize">
+            <p class="text-primary font-bold">Price</p>
+            <p class="ml-2.5 mobile:ml-0">
+              {{ package.currency }}
+              <span class="figure">{{ package.amount }}</span>
+            </p>
+          </div>
+          <p class="text-primary font-bold">Other Information</p>
+          <div class="ml-2.5 text-justify mobile:ml-0">{{ package.information|safe }}</div>
+        </div>
       </div>
-      <form class="text-primary w-full max-w-[775px]"
-            method="post"
-            action="{% url 'travel-info' %}">
+      <form class="text-primary w-full pt-10 mobile:pt-6" method="post">
+        {{ form.errors }} {{ form.non_field_errors }}
+        {% csrf_token %}
         <div class="flex flex-col mb-5">
           <label for="" class="input-label">Full Name</label>
           {% render_field form.fullname class="input-style" placeholder="----------" %}
@@ -50,9 +64,9 @@
         </div>
         <div class="flex flex-col mb-5">
           <label for="" class="input-label">Number Of Travellers</label>
-          {% render_field form.number_of_travellers class="input-style" placeholder="----------" %}
+          {% render_field form.number_of_travellers class="input-style" placeholder="e.g 5" %}
         </div>
-        <button class="py-3 px-2 bg-buttonPrimary rounded-[7px] mt-5 w-[155px]">Buy Deal</button>
+        <button class="submit-btn">Buy Deal</button>
       </form>
     </section>
     {% include 'latest/components/_footer.html' %}
