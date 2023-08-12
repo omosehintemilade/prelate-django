@@ -1,4 +1,3 @@
-const url = window.location.href;
 const desktopTabs = document.querySelectorAll(".travel-info .tab");
 const mobileTabs = document.querySelectorAll(".travel-mobile-nav .tab");
 const tabPanes = document.querySelectorAll(".tab-pane");
