@@ -13,7 +13,7 @@ class CoveredCountry(models.Model):
 
     country_name = models.CharField(max_length=100)
     image_url = models.ImageField(
-        blank=True, upload_to="static/uploads/countries")
+        blank=True, upload_to="countries/")
     capital_city = models.CharField(max_length=100, blank=True)
     currency = models.CharField(max_length=100, blank=True)
     temperature = models.CharField(max_length=100, blank=True)
@@ -86,7 +86,7 @@ class TravelAssistance(models.Model):
     email = models.EmailField()
     enquiry = models.TextField()
     document = models.ImageField(
-        upload_to="static/uploads/travels", null=True, blank=True)
+        upload_to="travels/", null=True, blank=True)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -212,7 +212,7 @@ class TourDeal(models.Model):
     country = models.CharField(max_length=50,  null=True)
     currency = models.CharField(max_length=3, choices=CURRENCY, null=True)
     amount = models.IntegerField(null=True)
-    deal_image = models.ImageField(upload_to="static/uploads/tours")
+    deal_image = models.ImageField(upload_to="tours/")
     slug = AutoSlugField(populate_from="deal_name")
     information = RichTextField(blank=True)
 
