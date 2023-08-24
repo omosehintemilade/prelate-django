@@ -12,7 +12,7 @@
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
     <!-- Hero Section  -->
-    <section class="travel-insurance-hero">
+    <section class="travel-insurance-hero h-[50vh] bg-no-repeat bg-cover bg-left-bottom tablet:h-[30vh]">
       <div class="flex items-end h-full">
         <div class="h-2/4 flex items-end gradient-blue w-full mobile:h-2/4">
           <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
@@ -80,6 +80,24 @@
           <label for="" class="input-label">Type of insurance</label>
           {% render_field form.insurance_type class="input-style" placeholder="----------" %}
         </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Date of Arrival</label>
+          <div class="relative w-full">
+            <div class="calendar">
+              <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            {% render_field form.date_of_arrival class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
+          </div>
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Date of Departure</label>
+          <div class="relative w-full">
+            <div class="calendar">
+              <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            {% render_field form.date_of_departure class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
+          </div>
+        </div>
         <button class="submit-btn">Submit Form</button>
       </form>
     </section>
@@ -89,7 +107,5 @@
     <!-- SCRIPTS -->
     {% include "latest/partials/_scripts.html" %}
     <script src="{% static 'javascripts/datepicker.js' %}"></script>
-    <script src="{% static 'javascripts/sweetAlert.js' %}"></script>
-    <script src="{% static 'javascripts/notification.js' %}"></script>
   </body>
 </html>

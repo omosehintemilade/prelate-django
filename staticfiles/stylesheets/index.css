@@ -469,13 +469,9 @@ hr.f-border {
   background: url(/static/images/slider-3.png);
   background-repeat: no-repeat;
 }
-.travel-insurance-hero {
-  width: 100%;
-  height: 50vh;
-  background: url(/static/images/insurance-hero.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: left bottom;
+
+.travel-insurance-hero-bg {
+  background-image: url(/static/images/insurance-hero.png);
 }
 
 .visa-hero {
@@ -522,12 +518,6 @@ hr.f-border {
     /* background here */
     background-repeat: no-repeat;
   }
-  .travel-insurance-hero {
-    width: 100%;
-    height: 149px;
-    /* background here */
-    background-repeat: no-repeat;
-  }
 
   .reservation-hero {
     display: none;
@@ -554,9 +544,7 @@ hr.f-border {
     display: block;
   }
 }
-.travel-insurance-hero h2 {
-  display: block;
-}
+
 .post-arrival-hero {
   width: 100%;
   height: 60vh;
@@ -588,9 +576,6 @@ hr.f-border {
     top: 50px;
     left: 8px;
     position: relative;
-  }
-  .travel-insurance-hero h2 {
-    display: none;
   }
 }
 .tour-hero {

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    {% load static %}
+    {% include "partials/_head.html" with add_title="Become An Affiliate| Prelate Travels & Tours" %}
+  </head>
+  <body>
+    {% include "partials/components/_header.html" %}
+    <style>
+      img{
+        width: 100%;
+      }
+    </style>
+    <div class="faq-header">
+      <div class="container">
+        Become An Affiliate
+        <br />
+        <a href="{% url 'affliate_dashboard' %}" class="btn btn-primary">Go to Affliate Dashboard</a>
+      </div>
+    </div>
+    <section class="become-an-affiliate">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <h2 class="text-heading">Why become a Prelate Travel Affiliate?</h2>
+            <p>
+              If you are a travel agent, social and network marketer or a side hustler looking to earn a living or to make extra stipends to foot your bills, liaising to become a
+              Prelate Travel affiliate is the right step for you. We grant our affiliates access to subsidized rates of our services, as we highly recognize and regard them as part
+              of our staffs. We give more commitment to our affiliates; apt responses and assign them to an affiliate manager, who they can keep in touch with at anytime of the day
+              and to respond to their inquiry and attend to their needs.
+            </p>
+          </div>
+        </div>
+        <div class="row mt-5 mb-4">
+          <div class="col-md-6">
+            <div class="flex-center-content"
+                 style="padding: 0px 25px;
+                        box-shadow: 0px 2px 3px rgba(41, 124, 222, 0.15);
+                        flex-direction: column;
+                        align-items: flex-start">
+              <h2 class="text-heading">Who are we?</h2>
+              <p>
+                We are one-stop travel and tourism tech shop. At Prelate Travel, we work with experienced travel experts to provide our clients with essential travel information,
+                assist and guide them through their travel application processes. We also provide our clients with essential travel services and exclusive deals at affordable rates
+                that meet their travel taste and demands. We make provisions for one on one engagement with one of our travel experts; to meet with our clients who will listen to
+                your travel plans and offer a professional advice that will assist you to achieve and get maximum satisfaction of your travel plans, manage travel cost to afford
+                topnotch quality travel services that suits your choice of preference and demand and a follow up with your travel applications.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img class="rounded-2" src="{% static 'images/affiliate_1.jpg' %}" alt="" />
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <img class="rounded-2" src="{% static 'images/affiliate_2.png' %}" alt="" />
+          </div>
+          <div class="col-md-6">
+            <div class="flex-center-content"
+                 style="padding: 0px 25px;
+                        box-shadow: 0px 2px 3px rgba(41, 124, 222, 0.15);
+                        flex-direction: column;
+                        align-items: flex-start">
+              <h2 class="text-heading">Why Become An Affiliate?</h2>
+              <p>
+                We grant our affiliates access to subsidized rates of our services, as we highly recognize and regard them as part of our staffs. We give more commitment to our
+                affiliates; apt responses and assign them to an affiliate manager, who they can keep in touch with at anytime of the day and to respond to their inquiry and attend
+                to their needs.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5 mb-4">
+          <div class="col-md-6">
+            <div class="flex-center-content"
+                 style="padding: 0px 25px;
+                        box-shadow: 0px 2px 3px rgba(41, 124, 222, 0.15);
+                        flex-direction: column;
+                        align-items: flex-start">
+              <h2 class="text-heading">What we offer?</h2>
+              <p>
+                Reasons why becoming a Prelate Travel affiliate is the right option for you:
+                <ul style="list-style: none;">
+                  <li>• You can earn up to 25% of the airline commission and other paid services rendered.</li>
+                  <li>• You can stand as our representative to sell our services using our portal.</li>
+                </ul>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <img class="rounded-2" src="{% static 'images/affiliate_3.jpg' %}" alt="" />
+          </div>
+        </div>
+        <br />
+        <div class="d-block">
+          <h3>Need Help</h3>
+          <p>Contact us on any queries on info@prelatetravel.ng or 08027849667</p>
+          <br />
+          <p class="text-center">
+            <a href="{% url 'affliate_dashboard' %}" class="btn btn-primary">Go to Affliate Dashboard</a>
+          </p>
+        </div>
+        <br />
+        <hr />
+      </div>
+    </section>
+    {% comment %} {% include 'partials/components/_footer.html' %} {% endcomment %}
+    {% include 'partials/_bottom.html' %}
+  </body>
+</html>

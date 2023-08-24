@@ -199,6 +199,8 @@ class TravelInsurance(models.Model):
     email = models.EmailField()
     insurance_type = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
+    date_of_arrival = models.DateField()
+    date_of_departure = models.DateField()
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

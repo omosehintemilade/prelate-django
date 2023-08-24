@@ -439,7 +439,17 @@ def customize_tourOld(request):
 def business_travel(request):
     return render(
         request,
-        "business-travel.html"
+        "business-travel.html",
+        context={
+            "form": TravelInsuranceForm()
+        }
+    )
+
+
+def business_travel_old(request):
+    return render(
+        request,
+        "business-travel-old.html"
     )
 
 
@@ -447,6 +457,13 @@ def become_affiliate(request):
     return render(
         request,
         "become-affiliate.html"
+    )
+
+
+def become_affiliate_old(request):
+    return render(
+        request,
+        "become-affiliate-old.html"
     )
 
 

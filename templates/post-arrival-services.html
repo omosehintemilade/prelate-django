@@ -13,7 +13,7 @@
         <!-- Hero Sectio  -->
         <section class="w-full h-[60vh] bg-cover bg-no-repeat post-arrival-hero relative tablet:h-[30vh]">
             {% comment %} <h2 class="text-[40px] leading-[60px] font-bold text-primary px-20 pt-12 mobile:px-5 mobile:pt-8 mobile:text-lg mobile:leading-normal mobile:font-semibold"> {% endcomment %}
-            <h2 class="page-title text-primary px-20 pt-12 mobile:px-5 mobile:pt-8 mobile:text-primary">Post Arrival Services</h2>
+            <h2 class="page-title !text-primary px-20 pt-12 mobile:px-5 mobile:pt-8">Post Arrival Services</h2>
             <div class="flex justify-center item-center">
                 <img src="{% static 'images/mercedes-benz.png' %}"
                      class="absolute top-[170px] right-9 w-[750px]"
@@ -31,9 +31,9 @@
             </div>
             <div>
                 <div class="form-title">Book Postal Arrival Services</div>
-                <h3 class="text-red-700 text-2xl font-semibold my-5 mobile:text-base mobile:my-2.5">
+                {% comment %} <h3 class="text-red-700 text-2xl font-semibold my-5 mobile:text-base mobile:my-2.5">
                     All payment includes a 13% HST tax
-                </h3>
+                </h3> {% endcomment %}
                 <form class="text-primary w-full mobile:pt-2.5"
                       method="POST"
                       action=""
@@ -111,7 +111,5 @@
         <!-- SCRIPTS -->
         {% include "latest/partials/_scripts.html" %}
         <script src="{% static 'javascripts/datepicker.js' %}"></script>
-        <script src="{% static 'javascripts/sweetAlert.js' %}"></script>
-        <script src="{% static 'javascripts/notification.js' %}"></script>
     </body>
 </html>

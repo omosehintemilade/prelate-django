@@ -3,30 +3,43 @@
   <div class="container">
     <div class="float-left">
       <a href="/">
-        <img class="site-logo" src="{% static 'images/prelate_logo.png' %}" alt="Prelate Travels" />
+        <img class="site-logo"
+             src="{% static 'images/prelate_logo.png' %}"
+             alt="Prelate Travels" />
       </a>
     </div>
     <div class="float-right">
       <ul class="nav-links">
-        <li><a href="{% url 'home' %}" class="nav-link">Reservations</a></li>
+        <li>
+          <a href="{% url 'home' %}" class="nav-link">Reservations</a>
+        </li>
         <li>
           <div href="{% url 'travel-help' %}" class="nav-link dropbtn-service">
-              Travel Help
-              <div class="service-dropdown-content">
-                <p>
-                  <a href="{% url 'travel-help' %}">Travel Info</a>
-                  <a href="{% url 'travel-help' %}">Travel Budget</a>
-                  <a href="{% url 'travel-help' %}">Travel Assist</a>
-                </p>
+            Travel Help
+            <div class="service-dropdown-content">
+              <p>
+                <a href="{% url 'travel-help' %}">Travel Info</a>
+                <a href="{% url 'travel-help' %}">Travel Budget</a>
+                <a href="{% url 'travel-help' %}">Travel Assist</a>
+              </p>
             </div>
-            </div>
-          </a>
+          </div>
         </li>
-        <li><a href="{% url 'travel-insurance' %}" class="nav-link">Travel Insurance</a></li>
-        <li><a href="{% url 'visa-assistance' %}" class="nav-link">Visa</a></li>
-        <li><a href="{% url 'tour' %}" class="nav-link">Tour</a></li>
-        <li><a href="{% url 'referral' %}" class="nav-link nav-sign-in">Referral Form</a></li>
-        <li><a href="{% url 'become-affiliate' %}" class="nav-link nav-sign-up">Become an Affiliate</a></li>
+        <li>
+          <a href="{% url 'travel-insurance' %}" class="nav-link">Travel Insurance</a>
+        </li>
+        <li>
+          <a href="{% url 'visa-assistance' %}" class="nav-link">Visa</a>
+        </li>
+        <li>
+          <a href="{% url 'tour' %}" class="nav-link">Tour</a>
+        </li>
+        <li>
+          <a href="{% url 'referral' %}" class="nav-link nav-sign-in">Referral Form</a>
+        </li>
+        <li>
+          <a href="{% url 'become-affiliate' %}" class="nav-link nav-sign-up">Become an Affiliate</a>
+        </li>
       </ul>
       <button class="mobile-menu-toggle" onclick="openNav()">
         <span></span>
@@ -43,6 +56,12 @@
   <a href="{% url 'travel-insurance' %}" class="nav-link">Travel Insurance</a>
   <a href="{% url 'visa-assistance' %}" class="nav-link">Visa</a>
   <a href="{% url 'tour' %}" class="nav-link">Tour</a>
-  <a style="width: 80%; margin: 10px auto;" href="{% url 'referral' %}" class="nav-link nav-sign-in">Referral Form</a>
-  <a style="width: 80%; margin: 10px auto;" href="{% url 'become-affiliate' %}" class="nav-link nav-sign-up">Become an Affiliate</a>
+  <a style="width: 80%;
+            margin: 10px auto"
+     href="{% url 'referral' %}"
+     class="nav-link nav-sign-in">Referral Form</a>
+  <a style="width: 80%;
+            margin: 10px auto"
+     href="{% url 'become-affiliate' %}"
+     class="nav-link nav-sign-up">Become an Affiliate</a>
 </div>

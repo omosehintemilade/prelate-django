@@ -56,6 +56,16 @@
     fjs.parentNode.insertBefore(js, fjs);
   })(document, "script", "facebook-jssdk");
 </script> {% endcomment %}
+<script src="{% static 'javascripts/jquery.js' %}"></script>
+<script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+</script>
 <script src="{% static 'javascripts/sweetAlert.js' %}"></script>
 <script src="{% static 'javascripts/notification.js' %}"></script>
 <script src="{% static 'javascripts/index.js' %}"></script>
