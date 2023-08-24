@@ -257,7 +257,6 @@ def visa_assistance(request):
                 context={
                     "countries": countries,
                     "travel_assistance_form": TravelAssistanceForm(),
-
                 }
             )
 

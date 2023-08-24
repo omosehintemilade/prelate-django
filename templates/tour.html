@@ -27,7 +27,7 @@
           {% for deal in deals %}
             <a href="{{ deal.get_absolute_url }}">
               <div class="h-80 w-full flex items-end rounded-t-[4px] mobile:h-40"
-                   style="background: url({{ deal.deal_image }})">
+                   style="background: url({{ deal.deal_image.url }})">
                 <div class="h-2/3 w-full bg-no-repeat bg-cover max-w-sm flex items-end gradient-black">
                   <p class="mb-5 ml-2.5 text-white font-bold text-lg">{{ deal.deal_name }}</p>
                 </div>

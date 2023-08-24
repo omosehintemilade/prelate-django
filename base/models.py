@@ -220,6 +220,7 @@ class TourDeal(models.Model):
         return self.deal_name
 
     def get_absolute_url(self):
+        print(self)
         return reverse('tour-deal', args=[self.id, self.slug])
 
 
