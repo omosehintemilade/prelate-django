@@ -39,7 +39,7 @@ class NewsletterSubscriber(models.Model):
 class TravelInformation(models.Model):
     class Meta:
         verbose_name = "Travel Information"
-        verbose_name_plural = "Travel Information"
+        verbose_name_plural = "Travel Informations"
 
     country_of_origin = models.ForeignKey(
         CoveredCountry, on_delete=models.PROTECT, related_name="origin")
@@ -65,6 +65,22 @@ class CustomerService(models.Model):
     phonenumber = models.CharField(max_length=100)
     email = models.EmailField()
     enquiry = models.TextField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+
+class Consultation(models.Model):
+    class Meta:
+        verbose_name = "Consultation"
+        verbose_name_plural = "Consultations"
+
+    fullname = models.CharField(max_length=200)
+    email = models.EmailField()
+    phonenumber = models.CharField(max_length=100)
+    session_date = models.DateField()
+    session_time = models.TimeField()
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -160,7 +176,7 @@ CURRENCY = (
 class TravelBudget(models.Model):
     class Meta:
         verbose_name = "Travel Budget"
-        verbose_name_plural = "Travel Budget"
+        verbose_name_plural = "Travel Budgets"
 
     country_of_origin = models.ForeignKey(
         CoveredCountry, on_delete=models.PROTECT, related_name="travel_budget_origin")

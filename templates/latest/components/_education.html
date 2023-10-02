@@ -1,0 +1,39 @@
+{% load static %}
+{% load widget_tweaks %}
+<li>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label flex justify-between">
+            Educational Level
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow"
+                 alt="" />
+        </label>
+        {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Name Of Institution</label>
+        {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Date Attended</label>
+        <div class="relative w-full">
+            <div class="calendar">
+                <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+        </div>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Date Graduated</label>
+        <div class="relative w-full">
+            <div class="calendar">
+                <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+        </div>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Institution Address</label>
+        {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+    </div>
+</li>

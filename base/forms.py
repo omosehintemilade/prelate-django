@@ -1,5 +1,5 @@
 from django import forms
-from .models import TravelInformation, TravelAssistance, TravelBudget, PostArrivalService, CustomerService
+from .models import TravelInformation, TravelAssistance, TravelBudget, PostArrivalService, CustomerService, Consultation
 from .models import UsersCustomTourRequest, TourDealInterest, RequestChange, TravelInsurance, NewsletterSubscriber
 from allauth.account.forms import SignupForm
 
@@ -75,6 +75,12 @@ class CustomerServiceForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomerServiceForm, self).__init__(*args, **kwargs)
+
+
+class ConsultationForm(forms.ModelForm):
+    class Meta:
+        model = Consultation
+        fields = "__all__"
 
 
 class TravelBudgetForm(forms.ModelForm):

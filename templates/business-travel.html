@@ -58,7 +58,7 @@
               <div class="calendar">
                 <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
               </div>
-              {% render_field form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
+              {% render_field form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
             </div>
           </div>
           <div class="flex flex-col mb-5">
@@ -83,7 +83,7 @@
               <div class="calendar">
                 <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
               </div>
-              {% render_field form.date_of_arrival class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
+              {% render_field form.date_of_arrival class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
             </div>
           </div>
           <div class="flex flex-col mb-5">
@@ -92,7 +92,7 @@
               <div class="calendar">
                 <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
               </div>
-              {% render_field form.date_of_departure class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" %}
+              {% render_field form.date_of_departure class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
             </div>
           </div>
           <button class="submit-btn">Submit Form</button>

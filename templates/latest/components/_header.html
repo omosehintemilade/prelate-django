@@ -1,11 +1,11 @@
 {% load static %}
 <!-- HEADER -->
 <header class="px-10 py-5 mx-auto w-full tablet:pr-5 tablet:pl-4 tablet:py-2.5">
-  <div class="flex justify-between items-center w-full">
+  <div class="flex flex-wrap justify-between items-center w-full">
     <a href="{% url 'home' %}">
       <img src="{% static 'images/logo.png' %}" alt="Prelate Travels Logo" />
     </a>
-    <div class="flex justify-between">
+    <div class="ml-auto flex justify-between">
       <nav class="">
         <ul class="menu-desktop w-full">
           <li>
@@ -35,6 +35,10 @@
                 <li class="mr-0">
                   <a href="{% url 'visa-assistance' %}"
                      class="block px-4 py-2 hover:bg-gray-100">Visa Assistance</a>
+                </li>
+                <li class="mr-0">
+                  <a href="{% url 'book-consultation' %}"
+                     class="block px-4 py-2 hover:bg-gray-100">Talk to an Expert</a>
                 </li>
               </ul>
             </div>

@@ -2,7 +2,7 @@ import os
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
-from .models import CustomerReferralRecord
+from .models import CustomerReferralRecord, Consultation
 from django.http import JsonResponse, HttpResponseRedirect
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
@@ -12,7 +12,7 @@ import calendar
 import decimal
 from django.db.models import Sum, Q
 import requests
-from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
+from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm, ConsultationForm
 from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm
 
 
@@ -487,6 +487,32 @@ def contact_us_old(request):
         request,
         "contact-us-old.html"
     )
+
+
+def book_consultation(request):
+    if request.method == "POST":
+        form = ConsultationForm(request.POST)
+
+        if form.is_valid():
+            # VALIDATE DATE
+            session_date = form.cleaned_data['session_date']
+            session_time = form.cleaned_data['session_time']
+            
+            # Check if a session with the same datetime exists
+            if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
+                return redirect("/book-consultation#error?type=duplicate_event")
+            else:
+                form.save(commit=True)
+                return redirect("/book-consultation#submitted")
+
+    else:
+        return render(
+            request,
+            "consultation.html",
+            context={
+                "form": ConsultationForm()
+            }
+        )
 
 
 def faq(request):

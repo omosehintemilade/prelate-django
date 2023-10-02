@@ -1,0 +1,51 @@
+{% load static %}
+{% load widget_tweaks %}
+<li>
+  <label for="" class="input-label">{{ title }}</label>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Full Name</label>
+    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label flex justify-between">
+      Gender
+      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+           class="shaded-down-arrow"
+           alt="" />
+    </label>
+    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label flex justify-between">
+      Marital Status
+      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+           class="shaded-down-arrow"
+           alt="" />
+    </label>
+    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Current Employment</label>
+    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Date of Birth</label>
+    <div class="relative w-full">
+      <div class="calendar">
+        <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+      </div>
+      {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+    </div>
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Email Address</label>
+    {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g john@example.com" type="email" %}
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Permanent Address</label>
+    {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+    {% if last_el %}
+      <span class="font-semibold italic text-xs mt-2.5">(if you have more siblings, kindly notify)</span>
+    {% endif %}
+  </div>
+</li>

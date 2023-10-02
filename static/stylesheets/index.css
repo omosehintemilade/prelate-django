@@ -597,6 +597,10 @@ hr.f-border {
   background: url(/static/images/tour-hero.png);
 }
 
+.consultation-hero-bg {
+  background: url(/static/images/black_american_customer_care.jpg);
+}
+
 .tour-hero-header {
   display: block;
 }
