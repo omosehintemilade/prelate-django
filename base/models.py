@@ -1,3 +1,4 @@
+import re
 from django.db import models
 from autoslug import AutoSlugField
 from ckeditor.fields import RichTextField
@@ -5,6 +6,68 @@ from django.urls import reverse
 
 
 # Create your models here.
+
+# TYPES
+VISA_TYPE = (
+    ("VISA ONE", "VISA ONE"),
+    ("VISA TWO", "VISA TWO"),
+    ("VISA THREE", "VISA THREE"),
+    ("VISA FOUR", "VISA FOUR")
+)
+
+GENDER_TYPE = (
+    ("MALE", "MALE"),
+    ("FEMALE", "FEMALE"),
+)
+
+
+ACCOMODATION_TYPE = (
+    ("ACCOMODATION ONE", "ACCOMODATION ONE"),
+    ("ACCOMODATION TWO", "ACCOMODATION TWO"),
+    ("ACCOMODATION THREE", "ACCOMODATION THREE"),
+    ("ACCOMODATION FOUR", "ACCOMODATION FOUR")
+)
+
+TICKET_TYPE = (
+    ("ONE WAY", "ONE WAY"),
+    ("RETURN TICKET", "RETURN TICKET")
+)
+
+TICKET_CLASS = (
+    ("FIRST CLASS", "FIRST CLASS"),
+    ("BUSINESS", "BUSINESS"),
+    ("ECONOMY", "ECONOMY")
+)
+
+AIRPORT_PICKUP = (
+    ("YES", "YES"),
+    ("NO", "NO")
+)
+
+HOTEL_RESERVATION = (
+    ("YES", "YES"),
+    ("NO", "NO")
+)
+
+CURRENCY = (
+    ("USD", "USD"),
+    ("NGN", "NGN")
+)
+
+MARITAL_STATUS_TYPE = (
+    ("SINGLE", "SINGLE"),
+    ("ENGAGED", "ENGAGED"),
+    ("MARRIED", "MARRIED"),
+    ("DIVORCED", "DIVORCED")
+)
+
+EDUCATIONAL_LEVEL_TYPE = (
+    ("PRIMARY", "PRIMARY"),
+    ("SECONDARY", "SECONDARY"),
+    ("TERTIARY", "TERTIARY"),
+)
+
+
 class CoveredCountry(models.Model):
     class Meta:
         verbose_name = "Covered Country"
@@ -108,20 +171,81 @@ class TravelAssistance(models.Model):
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
 
+# VISA ASSISTANCE DEF
 
-VISA_TYPE = (
-    ("VISA ONE", "VISA ONE"),
-    ("VISA TWO", "VISA TWO"),
-    ("VISA THREE", "VISA THREE"),
-    ("VISA FOUR", "VISA FOUR")
-)
 
-ACCOMODATION_TYPE = (
-    ("ACCOMODATION ONE", "ACCOMODATION ONE"),
-    ("ACCOMODATION TWO", "ACCOMODATION TWO"),
-    ("ACCOMODATION THREE", "ACCOMODATION THREE"),
-    ("ACCOMODATION FOUR", "ACCOMODATION FOUR")
-)
+class VisaAssistance(models.Model):
+    class Meta:
+        verbose_name = "Visa Assistance"
+        verbose_name_plural = "Visa Assistance"
+    title = models.CharField(max_length=5)
+    firstname = models.CharField(max_length=100)
+    middlename = models.CharField(max_length=100)
+    surname = models.CharField(max_length=100)
+    gender = models.CharField(
+        max_length=10, choices=GENDER_TYPE)
+    nationality = models.CharField(max_length=100)
+    marital_status = models.CharField(
+        max_length=20, choices=MARITAL_STATUS_TYPE)
+    dob = models.DateField()
+    tribe = models.CharField(max_length=100)
+    email = models.EmailField()
+    phone_number = models.CharField(max_length=100)
+    permanent_address = models.CharField(max_length=200)
+    postal_address = models.CharField(max_length=200)
+    alt_phone_number = models.CharField(max_length=100)
+# paassport data
+    passport_number = models.CharField(max_length=100)
+    date_of_issue = models.DateField()
+    date_of_expiry = models.DateField()
+    travel_history = models.TextField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
+
+    def get_travel_history_list(self):
+        if self.travel_history:
+            # Split the stored string into a list, considering both commas and newlines
+            return [entry.strip() for entry in re.split(r'[\n,]+', self.travel_history)]
+        else:
+            return []
+
+    def set_travel_history_list(self, travel_history_list):
+        # Join the list of travel history entries into a single string, separated by commas
+        self.travel_history = ', '.join(travel_history_list)
+
+
+class Relationship(models.Model):
+    class Meta:
+        verbose_name = "Relationship"
+        verbose_name_plural = "Relationships"
+
+    country_of_origin = models.ForeignKey(
+        CoveredCountry, on_delete=models.PROTECT, related_name="visa_assistance_origin")
+    country_of_destination = models.ForeignKey(
+        CoveredCountry, on_delete=models.PROTECT, related_name="visa_assistance_destination")
+    fullname = models.CharField(max_length=200)
+    dob = models.DateField()
+    phonenumber = models.CharField(max_length=100)
+    email = models.EmailField()
+    enquiry = models.TextField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+
+class Education(models.Model):
+    class Meta:
+        verbose_name = "Education"
+        verbose_name_plural = "Education"
+    applicant = models.ForeignKey(VisaAssistance, on_delete=models.CASCADE)
+    name_of_institution = models.CharField(max_length=200)
+    educational_level = models.CharField(
+        max_length=200, choices=EDUCATIONAL_LEVEL_TYPE)
+    date_attended = models.DateField()
+    date_graduated = models.DateField()
+    institution_address = models.CharField(max_length=200, )
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+# VISA ASSISTANCE DEF
 
 
 class PostArrivalService(models.Model):
@@ -144,33 +268,6 @@ class PostArrivalService(models.Model):
 
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
-
-
-TICKET_TYPE = (
-    ("ONE WAY", "ONE WAY"),
-    ("RETURN TICKET", "RETURN TICKET")
-)
-
-TICKET_CLASS = (
-    ("FIRST CLASS", "FIRST CLASS"),
-    ("BUSINESS", "BUSINESS"),
-    ("ECONOMY", "ECONOMY")
-)
-
-AIRPORT_PICKUP = (
-    ("YES", "YES"),
-    ("NO", "NO")
-)
-
-HOTEL_RESERVATION = (
-    ("YES", "YES"),
-    ("NO", "NO")
-)
-
-CURRENCY = (
-    ("USD", "USD"),
-    ("NGN", "NGN")
-)
 
 
 class TravelBudget(models.Model):

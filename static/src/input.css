@@ -10,7 +10,7 @@
   }
 
   .input-style {
-    @apply border border-x-0 border-t-0 border-primary pt-3 pb-1 px-0 text-textPrimary text-sm mobile:text-xs mobile:p-0;
+    @apply border-0 border-b border-primary pt-3 pb-1 px-0 text-textPrimary text-sm mobile:text-xs mobile:p-0;
   }
 
   .input-label {

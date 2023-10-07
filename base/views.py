@@ -1,8 +1,9 @@
 import os
+import json
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
-from .models import CustomerReferralRecord, Consultation
+from .models import CustomerReferralRecord, Consultation, VisaAssistance, Education
 from django.http import JsonResponse, HttpResponseRedirect
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
@@ -13,7 +14,7 @@ import decimal
 from django.db.models import Sum, Q
 import requests
 from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm, ConsultationForm
-from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm
+from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm, VisaAssistanceForm
 
 
 def home(request):
@@ -233,32 +234,53 @@ def travel_insuranceOld(request):
 
 
 def visa_assistance(request):
-    if request.method == "GET":
+    if request.method == "POST":
+        # Assuming the data is in UTF-8 encoding
+        # raw_data = request.body.decode('utf-8')
+        # print(raw_data)
+        # name = request.POST.get("name")
+        # siblings = request.POST.get("siblings")
+        # print(request.POST)
+        json_data = json.loads(request.body)
+        applicant_info = json_data.get('applicant_info')
+        education_history = json_data.get('education_history')
+        siblings = json_data.get('siblings')
+        print("SIBILINGS ==>", siblings)
+        print("APPLICANT ==>", applicant_info)
+
+        # Create a visa assistance instance
+        applicant_data = VisaAssistance(**applicant_info)
+        # stringify Travel history - in my opinion, it's not worth creating a new table for
+        print("applicant_info.travel_history ==>",
+              applicant_info.get("travel_history"))
+        applicant_data.set_travel_history_list(
+            applicant_info.get("travel_history"))
+        applicant_data.save()
+
+        # Check if education_history is a valid list
+        if isinstance(education_history, list):
+            # Iterate over the list
+            for ed in education_history:
+                ed["applicant"] = applicant_data
+                print(ed)
+                Education.objects.create(**ed)
+
+        if isinstance(siblings, list):
+            # Iterate over the list
+            for sibling in siblings:
+                # Replace print with your processing logic
+                print("sibling in loop =>", sibling)
+
+        return JsonResponse({"status": "success"}, safe=False)
+    else:
         countries = CoveredCountry.objects.all().order_by("country_name")
         return render(
             request,
             "visa-assistance.html",
             context={
                 "countries": countries,
-                "travel_assistance_form": TravelAssistanceForm(),
             }
         )
-    elif request.method == "POST":
-        countries = CoveredCountry.objects.all().order_by("country_name")
-        form = TravelAssistanceForm(request.POST, request.FILES)
-        if form.is_valid():
-            print(form)
-            form.save(commit=True)
-            return redirect("/visa-assistance#submitted")
-        else:
-            return render(
-                request,
-                "visa-assistance.html",
-                context={
-                    "countries": countries,
-                    "travel_assistance_form": TravelAssistanceForm(),
-                }
-            )
 
 
 def visa_assistance_old(request):
@@ -273,7 +295,6 @@ def visa_assistance_old(request):
                 context={
                     "countries": countries,
                     "travel_assistance_form": TravelAssistanceForm(),
-
                 }
             )
         else:
@@ -497,7 +518,7 @@ def book_consultation(request):
             # VALIDATE DATE
             session_date = form.cleaned_data['session_date']
             session_time = form.cleaned_data['session_time']
-            
+
             # Check if a session with the same datetime exists
             if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
                 return redirect("/book-consultation#error?type=duplicate_event")
