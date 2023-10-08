@@ -220,16 +220,24 @@ class Relationship(models.Model):
     class Meta:
         verbose_name = "Relationship"
         verbose_name_plural = "Relationships"
-
-    country_of_origin = models.ForeignKey(
-        CoveredCountry, on_delete=models.PROTECT, related_name="visa_assistance_origin")
-    country_of_destination = models.ForeignKey(
-        CoveredCountry, on_delete=models.PROTECT, related_name="visa_assistance_destination")
+    applicant = models.ForeignKey(VisaAssistance, on_delete=models.CASCADE)
     fullname = models.CharField(max_length=200)
-    dob = models.DateField()
-    phonenumber = models.CharField(max_length=100)
-    email = models.EmailField()
-    enquiry = models.TextField()
+    gender = models.CharField(
+        max_length=10, choices=GENDER_TYPE)
+    relationship = models.CharField(max_length=200)
+    date_of_birth = models.DateField()
+    phone_number = models.CharField(max_length=100, null=True)
+    email_address = models.EmailField(null=True)
+    permanent_address = models.CharField(max_length=200, null=True)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200)
+    country = models.CharField(max_length=200)
+    marital_status = models.CharField(
+        max_length=20, choices=MARITAL_STATUS_TYPE, null=True)
+    current_employment = models.CharField(max_length=200, null=True)
+    date_of_marriage = models.DateField(null=True)
+    current_relationship_status = models.CharField(
+        max_length=20, choices=MARITAL_STATUS_TYPE, null=True)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
 
@@ -244,6 +252,20 @@ class Education(models.Model):
     date_attended = models.DateField()
     date_graduated = models.DateField()
     institution_address = models.CharField(max_length=200, )
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+
+class ApplicationInformation(models.Model):
+    class Meta:
+        verbose_name = "Application Information"
+        verbose_name_plural = "Application Information"
+    applicant = models.ForeignKey(VisaAssistance, on_delete=models.CASCADE)
+    country = models.ForeignKey(
+        CoveredCountry, on_delete=models.PROTECT, related_name="applicant_country_of_choice")
+    country_not_listed = models.CharField(max_length=200)
+    course = models.CharField(max_length=200)
+    alternative_course = models.CharField(max_length=200)
+    province = models.CharField(max_length=200)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 # VISA ASSISTANCE DEF
 

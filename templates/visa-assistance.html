@@ -327,12 +327,7 @@
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                {% comment %} <select name="country_of_choice" class="input-style country_of_choice">
-                  <option value="">----------</option>
-                  <option value="FOO">FOO</option>
-                  <option value="BAR">BAR</option>
-                </select> {% endcomment %}
-                <select name="country_of_choice" class="country_of_choice">
+                <select name="country" class="countries">
                   <option value="">--Select Country--</option>
                   {% for country in countries %}
                     <option value="{{ country.country_name }}">{{ country.country_name }}</option>
@@ -344,29 +339,280 @@
                 <input type="text"
                        class="input-style"
                        placeholder="----------"
-                       name="country_of_choice_not_listed">
+                       name="country_not_listed">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Course Of Choice</label>
                 <input type="text"
                        class="input-style"
                        placeholder="----------"
-                       name="course_of_choice">
+                       name="course">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Alternative Course</label>
                 <input type="text"
                        class="input-style"
                        placeholder="----------"
-                       name="alternative_choice">
+                       name="alternative_course">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Province of Choice (If none, kindly ignore)</label>
                 <input type="text"
                        class="input-style"
                        placeholder="----------"
-                       name="province_of_choice">
+                       name="province">
               </div>
+            </div>
+          </div>
+          {% comment %} EMERGENCY CONTACT INFORMATION {% endcomment %}
+          <h2 id="emergency-contact-heading">
+            <button type="button"
+                    class="flex items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 focus:ring-1 focus:ring-gray-200  hover:bg-gray-100"
+                    data-accordion-target="#emergency-contact-body"
+                    aria-expanded="false"
+                    aria-controls="emergency-contact-body">
+              <p class="text-primary font-semibold text-base tablet:text-sm">
+                D. <span class="inline-block ml-3 mobile:ml-2">Emergency Contact</span>
+              </p>
+              <svg data-accordion-icon
+                   class="w-3 h-3 rotate-180 shrink-0 text-primary"
+                   aria-hidden="true"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="none"
+                   viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+              </svg>
+            </button>
+          </h2>
+          <div id="emergency-contact-body"
+               class="hidden"
+               aria-labelledby="emergency-contact-heading">
+            <div class="p-5 border border-b-0 border-gray-200">
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Full Name</label>
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="fullname">
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label flex justify-between">
+                  Gender
+                  <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                       class="shaded-down-arrow"
+                       alt="" />
+                </label>
+                <select name="gender" id="" class="input-style">
+                  <option value="">----------</option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                </select>
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Relationship</label>
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="relationship">
+              </div>
+              <div class="flex flex-col mb-10">
+                <label for="" class="input-label">Date of Birth</label>
+                <div class="relative w-full">
+                  <div class="calendar">
+                    <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+                  </div>
+                  <input type="date"
+                         name="date_of_birth"
+                         class="input-style w-full"
+                         placeholder="dd/mm/yyyy"
+                         datepicker
+                         datepicker-format="yyyy-mm-dd"
+                         datepicker-autohide>
+                </div>
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Email Address</label>
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="email_address">
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Phone Number</label>
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="phone_number">
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Permanent Address</label>
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="permanent_address">
+              </div>
+            </div>
+          </div>
+          {% comment %} PARENT/GUARDIAN INFORMATION {% endcomment %}
+          <h2 id="guardian-info-heading">
+            <button type="button"
+                    class="flex items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 focus:ring-1 focus:ring-gray-200  hover:bg-gray-100"
+                    data-accordion-target="#guardian-info-body"
+                    aria-expanded="false"
+                    aria-controls="guardian-info-body">
+              <p class="text-primary font-semibold text-base tablet:text-sm">
+                E. <span class="inline-block ml-3 mobile:ml-2">Parent/Guardian Details</span>
+              </p>
+              <svg data-accordion-icon
+                   class="w-3 h-3 rotate-180 shrink-0 text-primary"
+                   aria-hidden="true"
+                   xmlns="http://www.w3.org/2000/svg"
+                   fill="none"
+                   viewBox="0 0 10 6">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5" />
+              </svg>
+            </button>
+          </h2>
+          <div id="guardian-info-body"
+               class="hidden"
+               aria-labelledby="guardian-info-heading">
+            <div class="p-5 border border-b-0 border-gray-200">
+              <ul class="pl-7 list-upper-alpha text-primary">
+                <li>
+                  <label for="" class="input-label">FATHER</label>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Full Name</label>
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="fullname">
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label flex justify-between">
+                      Gender
+                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                           class="shaded-down-arrow"
+                           alt="" />
+                    </label>
+                    <select name="gender" id="" class="input-style">
+                      <option value="">----------</option>
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label flex justify-between">
+                      Marital Status
+                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                           class="shaded-down-arrow"
+                           alt="" />
+                    </label>
+                    <select name="marital_status" id="" class="input-style">
+                      <option value="">----------</option>
+                      <option value="SINGLE">Single</option>
+                      <option value="ENGAGED">Engaged</option>
+                      <option value="MARRIED">Married</option>
+                      <option value="DIVORCED">Divorced</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Date of Birth</label>
+                    <div class="relative w-full">
+                      <div class="calendar">
+                        <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+                      </div>
+                      <input type="date"
+                             name="date_of_birth"
+                             class="input-style w-full"
+                             placeholder="dd/mm/yyyy"
+                             datepicker
+                             datepicker-format="yyyy-mm-dd"
+                             datepicker-autohide>
+                    </div>
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Current Employment</label>
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="current_employment">
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Permanent Address</label>
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="permanent_address">
+                  </div>
+                </li>
+                <li>
+                  <label for="" class="input-label">MOTHER</label>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Full Name</label>
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="fullname">
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label flex justify-between">
+                      Gender
+                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                           class="shaded-down-arrow"
+                           alt="" />
+                    </label>
+                    <select name="gender" id="" class="input-style">
+                      <option value="">----------</option>
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label flex justify-between">
+                      Marital Status
+                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                           class="shaded-down-arrow"
+                           alt="" />
+                    </label>
+                    <select name="marital_status" id="" class="input-style">
+                      <option value="">----------</option>
+                      <option value="SINGLE">Single</option>
+                      <option value="ENGAGED">Engaged</option>
+                      <option value="MARRIED">Married</option>
+                      <option value="DIVORCED">Divorced</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Date of Birth</label>
+                    <div class="relative w-full">
+                      <div class="calendar">
+                        <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+                      </div>
+                      <input type="date"
+                             name="date_of_birth"
+                             class="input-style w-full"
+                             placeholder="dd/mm/yyyy"
+                             datepicker
+                             datepicker-format="yyyy-mm-dd"
+                             datepicker-autohide>
+                    </div>
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Current Employment</label>
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="current_employment">
+                  </div>
+                  <div class="flex flex-col mb-5">
+                    <label for="" class="input-label">Permanent Address</label>
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="permanent_address">
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
           <div class="text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-5 mb-5 mt-4 ">

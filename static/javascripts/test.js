@@ -1,32 +1,81 @@
-console.log("helllo world from xx.js");
+$(document).ready(function () {
+  console.log("helllo world from xx.js");
 
-const form = document.querySelector("form");
-const checkbox = document.querySelector("#checkbox");
+  // REGISTER SELECT ELEMENT
+  $(".countries").select2();
 
-form.addEventListener("submit", async (e) => {
-  const button = form.querySelector(".submit-btn");
-  try {
-    e.preventDefault();
+  const form = document.querySelector("form");
+  const checkbox = document.querySelector("#checkbox");
 
-    // change submit button text
-    button.innerText = "Submitting...";
-    button.disabled = true;
-    if (!checkbox.checked) {
+  form.addEventListener("submit", async (e) => {
+    const button = form.querySelector(".submit-btn");
+    try {
+      e.preventDefault();
+
+      // change submit button text
+      button.innerText = "Submitting...";
+      button.disabled = true;
+      if (!checkbox.checked) {
+        button.innerText = "Submit Form";
+        button.disabled = false;
+
+        let html = `Oops! <br /><b>We need your consent to be able to process your application on your behalf</b>`;
+
+        Swal.fire({
+          icon: "error",
+          html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
+        });
+        return;
+      }
+
+      // CONSTRUCT APPLICANT DATA
+      const applicant_info = getApplicantInfo();
+      // CONSTRUCT APPLICANT EDUCATION DATA
+      const education_history = getEducationHistory();
+      // CONSTRUCT APPLICANT APPLICATION INFO
+      const application_info = getApplicationInfo();
+      // CONSTRUCT EMERGENCY CONTACT INFO
+      const emergency_contact = getEmergencyContactInfo();
+      // CONSTRUCT PARENT/GUARDIAN INFO
+      const guardians_info = getGuardiansInfo();
+      // return;
+      const req = await fetch("", {
+        method: "POST",
+        body: JSON.stringify({
+          applicant_info,
+          education_history,
+          application_info,
+          relationships: [emergency_contact, ...guardians_info]
+        }),
+
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+          "X-CSRFToken": getCookie("csrftoken")
+        }
+      });
+
+      const data = await req.json();
+
+      console.log({ data });
+      // Update Button
       button.innerText = "Submit Form";
       button.disabled = false;
 
-      let html = `Oops! <br /><b>We need your consent to be able to process your application on your behalf</b>`;
-
       Swal.fire({
-        icon: "error",
-        html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
+        html: `<h5 class='text-base mobile:text-sm'>🎉🎉🎉 <br /> Thank you for trusting us with your visa application process<br /><b>We will reach out to you as soonest.</b></h5>`
       });
-      return;
+      form.reset();
+      // Trigger
+    } catch (error) {
+      button.innerText = "Submit Form";
+      button.disabled = false;
     }
+  });
 
-    // CONSTRUCT APPLICANT DATA
-    const applicantInfoSection = document.querySelector("#applicant-info-body");
-    const applicant_info = {
+  // APPLICANT INFO
+  const getApplicantInfo = () => {
+    const applicantInfoSection = form.querySelector("#applicant-info-body");
+    const data = {
       travel_history: []
     };
 
@@ -38,21 +87,20 @@ form.addEventListener("submit", async (e) => {
     console.log({ selectEls });
 
     inputEls.forEach((el) => {
-      // finetune applicants data to match the format the model is expecting
+      // finetune applicants travel history format to match the format the model is expecting
       const pattern = /^travel_history_info_\[\d+\]$/;
 
-      if (pattern.test(e.name)) {
+      if (pattern.test(el.name)) {
         // push into travel history array
-        applicant_info.travel_history.push(el.value);
+        data.travel_history.push(el.value);
       } else {
-        applicant_info[el.name] = el.value;
+        data[el.name] = el.value;
       }
     });
-    selectEls.forEach((el) => {
-      applicant_info[el.name] = el.value;
-    });
 
-    console.log({ applicant_info });
+    selectEls.forEach((el) => {
+      data[el.name] = el.value;
+    });
 
     const applicant_info_hardcoded = {
       travel_history: [],
@@ -82,12 +130,17 @@ form.addEventListener("submit", async (e) => {
       gender: "MALE",
       marital_status: "ENGAGED"
     };
+    console.log({ applicant_info: data });
+    // return data;
+    return applicant_info_hardcoded;
+  };
 
-    // CONSTRUCT APPLICANT EDUCATION DATA
-    const educationHistorySection = document.querySelector(
+  // EDUCATION HISTORY
+  const getEducationHistory = () => {
+    const educationHistorySection = form.querySelector(
       "#educational-history-body"
     );
-    const education_history = [];
+    const data = [];
 
     // Grab the li's
     const educationHistoryList = educationHistorySection.querySelectorAll("li");
@@ -103,9 +156,9 @@ form.addEventListener("submit", async (e) => {
       inputEls.forEach((el) => (education[el.name] = el.value));
       education.educational_level = li.querySelector("select").value;
       console.log({ education });
-      education_history.push(education);
+      data.push(education);
     });
-    console.log({ education_history });
+    console.log({ education_history: data });
 
     const education_history_hardcoded = [
       {
@@ -130,36 +183,114 @@ form.addEventListener("submit", async (e) => {
         educational_level: "TERTIARY"
       }
     ];
-    // return;
-    const req = await fetch("", {
-      method: "POST",
-      body: JSON.stringify({
-        applicant_info: applicant_info_hardcoded,
-        education_history: education_history_hardcoded
-      }),
 
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        "X-CSRFToken": getCookie("csrftoken")
+    // return data
+    return education_history_hardcoded;
+  };
+
+  // APPLICATION INFO
+  const getApplicationInfo = () => {
+    const applicationInfoSection = form.querySelector("#application-info-body");
+    const data = {};
+    // Grab all input elements
+    const inputEls = applicationInfoSection.querySelectorAll("input");
+    console.log({ inputEls });
+    // Grab select elements
+    const selectEl = applicationInfoSection.querySelector("select");
+    console.log({ selectEl });
+
+    [...inputEls, selectEl].forEach((el) => {
+      data[el.name] = el.value;
+    });
+
+    const hardcoded_data = {
+      country_not_listed: "Nicaragua",
+      course: "Main Course",
+      alternative_course: "Alternative Course",
+      province: "Province Of Choice",
+      country: "Nigeria"
+    };
+    console.log({ application_info: data });
+    // return data;
+
+    return hardcoded_data;
+  };
+
+  // EMERGENCY CONTACT INFO
+  const getEmergencyContactInfo = () => {
+    const section = form.querySelector("#emergency-contact-body");
+    const data = {};
+    // Grab all input elements
+    const inputEls = section.querySelectorAll("input");
+    // Grab select elements
+    const selectEl = section.querySelector("select");
+
+    [...inputEls, selectEl].forEach((el) => {
+      data[el.name] = el.value;
+    });
+
+    const hardcoded_data = {
+      fullname: "Omosehin Ifeoluwa O",
+      relationship: "Brother",
+      date_of_birth: "2023-10-31",
+      email_address: "olayinka.omosehin@charisol.io",
+      phone_number: "+2341234567890",
+      permanent_address: "Lagos Mainland",
+      gender: "MALE"
+    };
+    console.log({ getEmergencyContactInfo: data });
+    // return data;
+
+    return hardcoded_data;
+  };
+
+  // EDUCATION HISTORY
+  const getGuardiansInfo = () => {
+    const section = form.querySelector("#guardian-info-body");
+    const data = [];
+
+    // Grab the li's
+    const li = section.querySelectorAll("li");
+
+    console.log({ li });
+
+    li.forEach((li, index) => {
+      const guardian = {};
+      // Grab all input elements
+      const inputEls = li.querySelectorAll("input");
+      const selectEls = li.querySelectorAll("select");
+      const relationships = ["FATHER", "MOTHER"];
+      console.log({ index });
+      [...inputEls, ...selectEls].forEach(
+        (el) => (guardian[el.name] = el.value)
+      );
+      guardian.relationship = relationships[index];
+      data.push(guardian);
+    });
+    console.log({ getGuardiansInfo: data });
+
+    const hardcoded_data = [
+      {
+        fullname: "Omosehin Ifeoluwa O",
+        date_of_birth: "2023-10-22",
+        current_employment: "Doctor",
+        permanent_address: "Lagos Mainland",
+        gender: "MALE",
+        marital_status: "ENGAGED",
+        relationship: "FATHER"
+      },
+      {
+        fullname: "Oluchi Osuagwu",
+        date_of_birth: "2023-10-04",
+        current_employment: "Trader",
+        permanent_address: "No 58 Mbano street, Aladinma IMO state",
+        gender: "FEMALE",
+        marital_status: "DIVORCED",
+        relationship: "MOTHER"
       }
-    });
+    ];
 
-    const data = await req.json();
-
-    console.log({ data });
-    button.innerText = "Submit Form";
-    button.disabled = false;
-
-    Swal.fire({
-      html: `<h5 class='text-base mobile:text-sm'>🎉🎉🎉 <br /> Thank you for trusting us with your visa application process<br /><b>We will reach out to you as soonest.</b></h5>`
-    });
-    // Trigger
-  } catch (error) {
-    button.innerText = "Submit Form";
-    button.disabled = false;
-  }
-});
-
-$(document).ready(function () {
-  $(".country_of_choice").select2();
+    // return data
+    return hardcoded_data;
+  };
 });

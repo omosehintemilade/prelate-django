@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
 from .models import CustomerReferralRecord, Consultation, VisaAssistance, Education
+from .models import ApplicationInformation, Relationship
 from django.http import JsonResponse, HttpResponseRedirect
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
@@ -244,32 +245,44 @@ def visa_assistance(request):
         json_data = json.loads(request.body)
         applicant_info = json_data.get('applicant_info')
         education_history = json_data.get('education_history')
+        application_info = json_data.get('application_info')
+        relationships = json_data.get('relationships')
+
         siblings = json_data.get('siblings')
         print("SIBILINGS ==>", siblings)
         print("APPLICANT ==>", applicant_info)
 
         # Create a visa assistance instance
-        applicant_data = VisaAssistance(**applicant_info)
+        applicant = VisaAssistance(**applicant_info)
         # stringify Travel history - in my opinion, it's not worth creating a new table for
         print("applicant_info.travel_history ==>",
               applicant_info.get("travel_history"))
-        applicant_data.set_travel_history_list(
+        applicant.set_travel_history_list(
             applicant_info.get("travel_history"))
-        applicant_data.save()
+        applicant.save()
 
         # Check if education_history is a valid list
         if isinstance(education_history, list):
             # Iterate over the list
             for ed in education_history:
-                ed["applicant"] = applicant_data
+                ed["applicant"] = applicant
                 print(ed)
                 Education.objects.create(**ed)
 
-        if isinstance(siblings, list):
-            # Iterate over the list
-            for sibling in siblings:
-                # Replace print with your processing logic
-                print("sibling in loop =>", sibling)
+        # Application Information
+        application_info["applicant"] = applicant
+        application_info["country"] = CoveredCountry.objects.get(
+            country_name=application_info.get("country"))
+        ApplicationInformation.objects.create(**application_info)
+
+        # Create Relationships
+        # Check if relationships is a valid list
+        if isinstance(relationships, list):
+            # Iterate over the list and create relationship
+            for relationship in relationships:
+                relationship["applicant"] = applicant
+                print(relationship)
+                Relationship.objects.create(**relationship)
 
         return JsonResponse({"status": "success"}, safe=False)
     else:
