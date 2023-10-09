@@ -35,6 +35,7 @@ urlpatterns = [
          name="become-affiliate-old"),
     path("contact-us", views.contact_us, name="contact-us"),
     path("contact-us-old", views.contact_us_old, name="contact-us-old"),
+    path("book-consultation", views.book_consultation, name="book-consultation"),
     path("faq", views.faq, name="faq"),
     path("faq-old", views.faq_old, name="faq-old"),
     path("affiliate/dashboard", views.affliate_dashboard,

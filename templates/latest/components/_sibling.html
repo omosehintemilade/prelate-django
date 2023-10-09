@@ -1,0 +1,79 @@
+{% load static %}
+{% load widget_tweaks %}
+<li relationship="sibling">
+  <label for="" class="input-label">{{ title }}</label>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Full Name</label>
+    <input type="text"
+           class="input-style"
+           placeholder="----------"
+           name="fullname">
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label flex justify-between">
+      Gender
+      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+           class="shaded-down-arrow"
+           alt="" />
+    </label>
+    <select name="gender" id="" class="input-style">
+      <option value="">--Select Gender--</option>
+      <option value="MALE">Male</option>
+      <option value="FEMALE">Female</option>
+    </select>
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label flex justify-between">
+      Marital Status
+      <img src="{% static 'images/shaded-down-arrow.svg' %}"
+           class="shaded-down-arrow"
+           alt="" />
+    </label>
+    <select name="marital_status" id="" class="input-style">
+      <option value="">----------</option>
+      <option value="SINGLE">Single</option>
+      <option value="ENGAGED">Engaged</option>
+      <option value="MARRIED">Married</option>
+      <option value="DIVORCED">Divorced</option>
+    </select>
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Current Employment</label>
+    <input type="text"
+           class="input-style"
+           placeholder="----------"
+           name="current_employment">
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Date of Birth</label>
+    <div class="relative w-full">
+      <div class="calendar">
+        <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+      </div>
+      <input type="date"
+             name="date_of_birth"
+             class="input-style w-full"
+             placeholder="dd/mm/yyyy"
+             datepicker
+             datepicker-format="yyyy-mm-dd"
+             datepicker-autohide>
+    </div>
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Email Address</label>
+    <input type="text"
+           class="input-style"
+           placeholder="----------"
+           name="email_address">
+  </div>
+  <div class="flex flex-col mb-5">
+    <label for="" class="input-label">Permanent Address</label>
+    <input type="text"
+           class="input-style"
+           placeholder="----------"
+           name="permanent_address">
+    {% if last_el %}
+      <span class="font-semibold italic text-xs mt-2.5">(if you have more siblings, kindly notify)</span>
+    {% endif %}
+  </div>
+</li>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    {% load widget_tweaks %}
+    {% include "latest/partials/_head.html" with add_title="Visa Assistance | Prelate Travels & Tours" %}
+  </head>
+  <body>
+    <!-- HEADER SECTION -->
+    {% include "latest/components/_header.html" %}
+    <!-- HEADER SECTION END -->
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
+    <!-- HERO SECTION DESKTOP -->
+    <section class="bg-no-repeat h-[60vh] bg-cover bg-bottom visa-hero tablet:h-[30vh]">
+      <div class="flex items-end h-full">
+        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
+          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
+            <h2 class="page-title">Visa</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- HERO SECTION DESKTOP -->
+    <!-- Travel insurance form -->
+    <section class="container__inner_layout pb-16">
+      <div class="my-10 mobile:mt-5 mobile:mb-6">
+        <h2 class="font-bold text-[30px] text-primary mb-5 mobile:hidden">Visa Assistance</h2>
+        <p class="text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-5">
+          <span class="">If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always
+          more than happy to help you achieve your desire destination.</span>
+          <span class="mobile:hidden">
+            Here you will find the perfect starting point for booking any continental travel journey. Whether you are a
+            novice or a more experienced traveller, research on your destination is always an essential part of planning
+            your trip.So that is why Prelate Travel is here to hold your hand through the process of finding a perfect
+            country to travel to.
+            Simply fill the form provided below with the required details, in other for Prelate Travel to help you get to
+          your interested destination.</span>
+        </p>
+      </div>
+      <div class="form-title">Visa Assistance Form</div>
+      <form class="w-full pt-10 mobile:pt-6"
+            method="POST"
+            action=""
+            enctype="multipart/form-data">
+        {{ form.errors }} {{ form.non_field_errors }}
+        {% csrf_token %}
+        <h4 class="text-primary font-semibold">
+          A. <span class="inline-block ml-3">Applicant information</span>
+        </h4>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label flex justify-between">
+            Country of origin
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow"
+                 alt="" />
+          </label>
+          {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label flex justify-between">
+            Country of Destination
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow"
+                 alt="" />
+          </label>
+          {% render_field travel_assistance_form.country_of_destination class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Full Name</label>
+          {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Date of Birth</label>
+          <div class="relative w-full">
+            <div class="calendar">
+              <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+          </div>
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Phone Number</label>
+          {% render_field travel_assistance_form.phonenumber class="input-style" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Email Address</label>
+          {% render_field travel_assistance_form.email class="input-style" placeholder="----------"  type="email" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">How can we assist you? Indicate visa category in your enquiry</label>
+          {% render_field travel_assistance_form.enquiry class="text-area" placeholder="----------" %}
+        </div>
+        <div class="flex flex-col mb-5">
+          <label for="" class="input-label">Upload Document</label>
+          {% render_field travel_assistance_form.document class="input-style mobile:!border mobile:rounded-md" %}
+        </div>
+        <button class="submit-btn">Submit Form</button>
+      </form>
+    </section>
+    <!-- FOOTER -->
+    {% include "latest/components/_footer.html" %}
+    <!-- FOOTER -->
+    <!-- SCRIPTS -->
+    {% include "latest/partials/_scripts.html" %}
+    <script src="{% static 'javascripts/datepicker.js' %}"></script>
+  </body>
+</html>

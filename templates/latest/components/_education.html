@@ -1,0 +1,62 @@
+{% load static %}
+{% load widget_tweaks %}
+<li>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label flex justify-between">
+            Educational Level
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow"
+                 alt="" />
+        </label>
+        <select name="educational_level" class="input-style">
+            <option value="">----------</option>
+            <option value="PRIMARY">Primary</option>
+            <option value="SECONDARY">Secondary</option>
+            <option value="TERTIARY">Tertiary</option>
+        </select>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Name Of Institution</label>
+        <input type="text"
+               class="input-style"
+               placeholder="----------"
+               name="name_of_institution">
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Date Attended</label>
+        <div class="relative w-full">
+            <div class="calendar">
+                <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            <input type="date"
+                   name="date_attended"
+                   class="input-style w-full"
+                   placeholder="dd/mm/yyyy"
+                   datepicker
+                   datepicker-format="yyyy-mm-dd"
+                   datepicker-autohide>
+        </div>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Date Graduated</label>
+        <div class="relative w-full">
+            <div class="calendar">
+                <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
+            </div>
+            <input type="date"
+                   name="date_graduated"
+                   class="input-style w-full"
+                   placeholder="dd/mm/yyyy"
+                   datepicker
+                   datepicker-format="yyyy-mm-dd"
+                   datepicker-autohide>
+        </div>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label">Institution Address</label>
+        <input type="text"
+               class="input-style"
+               placeholder="----------"
+               name="institution_address">
+    </div>
+</li>

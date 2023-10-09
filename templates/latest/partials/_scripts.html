@@ -5,8 +5,8 @@
      page_id="1751707854920348"></div>
 <!-- End Chat Plugin code -->
 <script src="{% static 'javascripts/jquery.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script>
-{% comment %} <script src="./node_modules/flowbite/dist/js/flowbite.min.js"></script> {% endcomment %}
+<script src="{% static 'javascripts/flowbite.min.js' %}"></script>
+{% comment %} <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.6/flowbite.min.js"></script> {% endcomment %}
 <script>
   function getCookie(name) {
     var cookieValue = null;
@@ -67,5 +67,7 @@
   }
 </script>
 <script src="{% static 'javascripts/sweetAlert.js' %}"></script>
-<script src="{% static 'javascripts/notification.js' %}"></script>
+{% if not exclude_notification_script %}
+  <script src="{% static 'javascripts/notification.js' %}"></script>
+{% endif %}
 <script src="{% static 'javascripts/index.js' %}"></script>

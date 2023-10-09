@@ -16,7 +16,9 @@ module.exports = {
         buttonPrimary: "#FFC702"
       },
       listStyleType: {
-        disclosureClosed: "disclosure-closed"
+        disclosureClosed: "disclosure-closed",
+        "lower-alpha": "lower-alpha",
+        "upper-alpha": "upper-alpha"
       },
       fontSize: {
         xxs: "10px"
