@@ -42,7 +42,6 @@
       </div>
       <div class="form-title">Visa Assistance Form</div>
       <form class="w-full pt-10 mobile:pt-6" method="POST" action="">
-        {{ form.errors }} {{ form.non_field_errors }}
         {% csrf_token %}
         <div id="accordion-collapse" data-accordion="collapse">
           {% comment %} APPLICANT INFORMATION {% endcomment %}
@@ -71,12 +70,12 @@
             <div class="p-5 border border-b-0 border-gray-200">
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                  Title
+                <span> Title<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                <select name="title" class="input-style">
+                <select name="title" class="input-style" isrequired="true">
                   <option value="">----------</option>
                   <option value="Mr">Mr</option>
                   <option value="Mrs">Mrs</option>
@@ -86,29 +85,30 @@
                 </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">First Name</label>
+                <label for="" class="input-label">First Name<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="firstname"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Middle Name</label>
+                <label for="" class="input-label">Middle Name<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="middlename"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Surname</label>
+                <label for="" class="input-label">Surname<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="surname"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                  Gender
+                                    <span>Gender<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
@@ -120,21 +120,21 @@
                 </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Nationality</label>
+                <label for="" class="input-label">Nationality<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="nationality"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                  Marital Status
+                  <span>Marital Status<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                <select name="marital_status" id="" class="input-style">
-                  <option value="">----------</option>
+                <select name="marital_status" class="input-style">
+                  <option value="">--Select Option--</option>
                   <option value="SINGLE">Single</option>
                   <option value="ENGAGED">Engaged</option>
                   <option value="MARRIED">Married</option>
@@ -142,7 +142,7 @@
                 </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Birth</label>
+                <label for="" class="input-label">Date of Birth<span class="text-red-500">*</span></label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
@@ -153,57 +153,58 @@
                          placeholder="dd/mm/yyyy"
                          datepicker
                          datepicker-format="yyyy-mm-dd"
-                         datepicker-autohide>
+                         datepicker-autohide
+                         isrequired="true">
                 </div>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Tribe</label>
-                <input type="text" name="tribe" class="input-style" placeholder="----------">
+                <label for="" class="input-label">Tribe<span class="text-red-500">*</span></label>
+                <input type="text" name="tribe" class="input-style" placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Email</label>
+                <label for="" class="input-label">Email<span class="text-red-500">*</span></label>
                 <input type="email"
                        name="email"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Phone Number</label>
+                <label for="" class="input-label">Phone Number<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="phone_number"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Permanent Address</label>
+                <label for="" class="input-label">Permanent Address<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="permanent_address"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Postal Address</label>
+                <label for="" class="input-label">Postal Address<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="postal_address"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Alternative Phone Number</label>
+                <label for="" class="input-label">Alternative Phone Number<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="alt_phone_number"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Passport Number</label>
+                <label for="" class="input-label">Passport Number<span class="text-red-500">*</span></label>
                 <input type="text"
                        name="passport_number"
                        class="input-style"
-                       placeholder="----------">
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Issue</label>
+                <label for="" class="input-label">Date of Issue<span class="text-red-500">*</span></label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
@@ -214,11 +215,12 @@
                          placeholder="dd/mm/yyyy"
                          datepicker
                          datepicker-format="yyyy-mm-dd"
-                         datepicker-autohide>
+                         datepicker-autohide
+                         isrequired="true">
                 </div>
               </div>
               <div class="flex flex-col mb-10">
-                <label for="" class="input-label">Expiry Date</label>
+                <label for="" class="input-label">Expiry Date<span class="text-red-500">*</span></label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
@@ -229,7 +231,9 @@
                          placeholder="dd/mm/yyyy"
                          datepicker
                          datepicker-format="yyyy-mm-dd"
-                         datepicker-autohide>
+                         datepicker-autohide
+                         isrequired="true"
+                         >
                 </div>
               </div>
               <div>
@@ -290,7 +294,7 @@
                aria-labelledby="educational-history-heading">
             <div class="p-5 border border-b-0 border-gray-200">
               <ul class="pl-7 list-upper-alpha text-primary">
-                {% include "latest/components/_education.html" %}
+                {% include "latest/components/_education.html"  with isRequired=true %}
                 {% include "latest/components/_education.html" %}
                 {% include "latest/components/_education.html" %}
               </ul>
@@ -701,7 +705,7 @@
         </div>
         <div class="text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-5 mb-5 mt-4 ">
           <div class="flex gap-x-2.5">
-            <input type="checkbox" class="inline-block mt-1.5" id="checkbox" checked>
+            <input type="checkbox" class="inline-block mt-1.5" id="checkbox">
             <div>
               <p class="mb-2">
                 I hereby declare that the information provided above and all documents sent is totally correct and should any negative outcome arise as a result of false information given by me, Prelate Travel Services Ltd is not liable and exempted from that.

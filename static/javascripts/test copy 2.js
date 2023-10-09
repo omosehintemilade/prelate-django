@@ -27,7 +27,7 @@ $(document).ready(function () {
     }
 
     // CONSTRUCT APPLICANT DATA
-    // const applicant_info = getApplicantInfo();
+    const applicant_info = getApplicantInfo();
     // CONSTRUCT APPLICANT EDUCATION DATA
     const education_history = getEducationHistory();
     // CONSTRUCT APPLICANT APPLICATION INFO
@@ -45,7 +45,7 @@ $(document).ready(function () {
       const req = await fetch("", {
         method: "POST",
         body: JSON.stringify({
-          // applicant_info,
+          applicant_info,
           education_history,
           application_info,
           relationships: [
@@ -82,6 +82,13 @@ $(document).ready(function () {
         icon: "error",
         html: `<h5 class='text-base mobile:text-sm'><b>Oops!</b> <br />Sorry an error occured while processing your request</h5>`
       });
+
+      // Swal.fire({
+      //   icon: "error",
+      //   html: `<h5 class='text-base mobile:text-sm'><b>Oops!</b> <br />${
+      //     error || "Sorry an error occured while processing your request"
+      //   }</h5>`
+      // });
     }
   });
 
@@ -94,11 +101,30 @@ $(document).ready(function () {
 
     // Grab all input elements
     const inputEls = section.querySelectorAll("input");
+    console.log({ inputEls });
     // Grab all select elements
     const selectEls = section.querySelectorAll("select");
+    console.log({ selectEls });
 
     [...inputEls, ...selectEls].forEach((el) => {
-      validateInput(el, section);
+      // check if el is required - we're using this format because using the collapsible component removes the input from the dom hence the "required" attribute is useless
+      const isRequired = Boolean(el.getAttribute("isrequired"));
+      // console.log(el.name, isRequired, el.getAttribute("isRequired"));
+
+      console.log("required field", isRequired, el.value, !el.value);
+      if (isRequired && !el.value) {
+        console.log(section.parentElement.querySelector("h2 button"));
+        section.parentElement
+          .querySelector("h2 button")
+          .setAttribute("aria-expanded", "true");
+        section.classList.remove("hidden");
+        el.focus();
+        Swal.fire({
+          icon: "error",
+          html: `<h5 class='text-base mobile:text-sm'><b>Error!</b> <br />Please fill in all required fields</h5>`
+        });
+        throw Error("field is required");
+      }
       // finetune applicants travel history format to match the format the model is expecting
       const pattern = /^travel_info_\[\d+\]$/;
       if (pattern.test(el.name)) {
@@ -115,6 +141,7 @@ $(document).ready(function () {
     return data;
   };
 
+  function validateInput(params) {}
   // EDUCATION HISTORY
   const getEducationHistory = () => {
     const educationHistorySection = form.querySelector(
@@ -269,32 +296,5 @@ $(document).ready(function () {
     console.log({ obj });
     for (const value of Object.values(obj)) if (value !== "") return false;
     return true;
-  }
-
-  function validateInput(el, section) {
-    // check if el is required - we're using this format because using the collapsible component removes the input from the dom hence the "required" attribute is useless
-    const isRequired = el.getAttribute("isrequired") === "true";
-    // console.log(el.name, isRequired, el.getAttribute("isRequired"));
-    console.log("required field", isRequired, el.value, !el.value);
-    if (isRequired && !el.value) {
-      console.log(section.parentElement.querySelector("h2 button"));
-      section.parentElement
-        .querySelector("h2 button")
-        .setAttribute("aria-expanded", "true");
-      section.classList.remove("hidden");
-      el.focus();
-      SwalAlert(
-        "error",
-        `<b>Error!</b> <br />Please fill in all required fields`
-      );
-      throw Error("field is required");
-    }
-  }
-
-  function SwalAlert(icon = "success", html) {
-    Swal.fire({
-      icon: icon,
-      html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
-    });
   }
 });
