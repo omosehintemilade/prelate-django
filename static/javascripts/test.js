@@ -38,6 +38,10 @@ $(document).ready(function () {
       const emergency_contact = getEmergencyContactInfo();
       // CONSTRUCT PARENT/GUARDIAN INFO
       const guardians_info = getGuardiansInfo();
+      // CONSTRUCT PARENT/GUARDIAN INFO
+      const relationships_info = getRelationshipsInfo();
+
+      const other_info = getOtherInfo();
       // return;
       const req = await fetch("", {
         method: "POST",
@@ -45,7 +49,12 @@ $(document).ready(function () {
           applicant_info,
           education_history,
           application_info,
-          relationships: [emergency_contact, ...guardians_info]
+          relationships: [
+            emergency_contact,
+            ...guardians_info,
+            ...relationships_info
+          ],
+          other_info
         }),
 
         headers: {
@@ -244,7 +253,7 @@ $(document).ready(function () {
     return hardcoded_data;
   };
 
-  // EDUCATION HISTORY
+  // GUARDIAN HISTORY
   const getGuardiansInfo = () => {
     const section = form.querySelector("#guardian-info-body");
     const data = [];
@@ -254,17 +263,15 @@ $(document).ready(function () {
 
     console.log({ li });
 
-    li.forEach((li, index) => {
+    li.forEach((li) => {
       const guardian = {};
       // Grab all input elements
       const inputEls = li.querySelectorAll("input");
       const selectEls = li.querySelectorAll("select");
-      const relationships = ["FATHER", "MOTHER"];
-      console.log({ index });
       [...inputEls, ...selectEls].forEach(
         (el) => (guardian[el.name] = el.value)
       );
-      guardian.relationship = relationships[index];
+      guardian.relationship = li.getAttribute("relationship");
       data.push(guardian);
     });
     console.log({ getGuardiansInfo: data });
@@ -293,4 +300,113 @@ $(document).ready(function () {
     // return data
     return hardcoded_data;
   };
+
+  // GUARDIAN HISTORY
+  const getRelationshipsInfo = () => {
+    const section = form.querySelector("#relationship-info-body");
+    const data = [];
+
+    // Grab the li's
+    const li = section.querySelectorAll("li");
+    console.log({ li });
+    li.forEach((li) => {
+      // Get the type of the relationship
+      const relation = {};
+      console.log({ relation });
+      // Grab all input elements
+      const inputEls = li.querySelectorAll("input");
+      const selectEls = li.querySelectorAll("select");
+      [...inputEls, ...selectEls].forEach(
+        (el) => (relation[el.name] = el.value)
+      );
+      // If Relationship wasn't filled
+      if (!areAllObjectValuesEmpty(relation)) {
+        data.push({
+          ...relation,
+          relationship: li.getAttribute("relationship").toUpperCase()
+        });
+      }
+    });
+    console.log({ getRelationshipsInfo: data });
+
+    const hardcoded_data = [
+      {
+        fullname: "Omosehin Ifeoluwa O",
+        current_employment: "Doctor",
+        date_of_birth: "2023-10-02",
+        email_address: "olayinka.omosehin@charisol.io",
+        permanent_address: "Lagos Mainland",
+        gender: "MALE",
+        marital_status: "ENGAGED",
+        relationship: "SIBLING"
+      },
+      {
+        fullname: "Omosehin Ifeoluwa O",
+        date_of_birth: "2023-10-31",
+        email_address: "olayinka.omosehin@charisol.io",
+        permanent_address: "Lagos Mainland",
+        gender: "MALE",
+        relationship: "CHILD"
+      },
+      {
+        fullname: "Omosehin Ifeoluwa O",
+        current_employment: "Doctor",
+        date_of_marriage: "2023-10-24",
+        date_of_birth: "2023-10-03",
+        email_address: "olayinka.omosehin@charisol.io",
+        permanent_address: "Lagos Mainland",
+        gender: "MALE",
+        marital_status: "MARRIED",
+        relationship: "SPOUSE"
+      }
+    ];
+
+    // return data
+    return hardcoded_data;
+  };
+
+  // APPLICANT INFO
+  const getOtherInfo = () => {
+    const section = form.querySelector("#other-info-body");
+    const data = {
+      extra_curicular_activities: []
+    };
+
+    // Grab all input elements
+    const inputEls = section.querySelectorAll("input");
+
+    const textAreas = section.querySelectorAll("textarea");
+
+    [...inputEls, ...textAreas].forEach((el) => {
+      // finetune applicants travel history format to match the format the model is expecting
+      const pattern = /^extra_curicular_activity_\[\d+\]$/;
+
+      if (pattern.test(el.name)) {
+        // push into extra_curicular_activities array
+        data.extra_curicular_activities.push(el.value);
+      } else {
+        data[el.name] = el.value;
+      }
+    });
+
+    console.log({ getOtherInfo: data });
+
+    const hardcoded_data = {
+      extra_curicular_activities: ["Reading", "Coding", "Eating"],
+      sponsor: "Omosehin Ifeoluwa O",
+      disablility: "No",
+      past_visa_refusal:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, ligula ut taciti himenaeos suscipit inceptos lectus mauris, sociosqu mi nascetur gravida eros tempor. Risus convallis ornare aptent blandit scelerisque, diam cras porta sociis, nascetur inceptos sem ante. Ridiculus integer morbi congue montes eleifend auctor, nulla accumsan senectus odio aptent posuere ornare, cursus lectus curae bibendum fames. Et tristique erat pretium porta viverra tempor aliquam sed etiam odio justo, praesent mollis tempus sollicitudin convallis metus luctus sem ultrices. Tristique dictum porta ornare fermentum imperdiet enim mollis primis cursus parturient etiam vulputate nam natoque cum non, est curae auctor sociis a ultricies taciti pharetra class dignissim rutrum mus diam nunc lobortis. Molestie inceptos taciti augue pulvinar mauris imperdiet vestibulum praesent sociosqu ac, primis ligula eleifend euismod tortor purus nisi class urna eget, auctor laoreet libero vulputate nascetur odio ultrices congue justo. Sodales dui torquent velit posuere risus ut lacinia senectus class, mollis non at purus fames tempus nulla dis proin auctor, dignissim volutpat faucibus ante nullam vivamus scelerisque accumsan.",
+      other_important_information:
+        "Lorem ipsum dolor sit amet consectetur adipiscing elit, ligula ut taciti himenaeos suscipit inceptos lectus mauris, sociosqu mi nascetur gravida eros tempor. Risus convallis ornare aptent blandit scelerisque, diam cras porta sociis, nascetur inceptos sem ante. Ridiculus integer morbi congue montes eleifend auctor, nulla accumsan senectus odio aptent posuere ornare, cursus lectus curae bibendum fames. Et tristique erat pretium porta viverra tempor aliquam sed etiam odio justo, praesent mollis tempus sollicitudin convallis metus luctus sem ultrices. Tristique dictum porta ornare fermentum imperdiet enim mollis primis cursus parturient etiam vulputate nam natoque cum non, est curae auctor sociis a ultricies taciti pharetra class dignissim rutrum mus diam nunc lobortis. Molestie inceptos taciti augue pulvinar mauris imperdiet vestibulum praesent sociosqu ac, primis ligula eleifend euismod tortor purus nisi class urna eget, auctor laoreet libero vulputate nascetur odio ultrices congue justo. Sodales dui torquent velit posuere risus ut lacinia senectus class, mollis non at purus fames tempus nulla dis proin auctor, dignissim volutpat faucibus ante nullam vivamus scelerisque accumsan."
+    };
+    // return data;
+    return hardcoded_data;
+  };
+
+  function areAllObjectValuesEmpty(obj) {
+    console.log({ obj });
+    for (const value of Object.values(obj)) if (value !== "") return false;
+    return true;
+  }
 });

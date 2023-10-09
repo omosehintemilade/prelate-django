@@ -251,8 +251,25 @@ class Education(models.Model):
         max_length=200, choices=EDUCATIONAL_LEVEL_TYPE)
     date_attended = models.DateField()
     date_graduated = models.DateField()
-    institution_address = models.CharField(max_length=200, )
+    institution_address = models.CharField(max_length=200)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+
+class OtherInformation(models.Model):
+    class Meta:
+        verbose_name = "Other Information"
+        verbose_name_plural = "Other Information"
+    applicant = models.ForeignKey(VisaAssistance, on_delete=models.CASCADE)
+    sponsor = models.CharField(max_length=200)
+    disablility = models.CharField(max_length=200)
+    past_visa_refusal = models.TextField(null=True)
+    other_important_information = models.TextField(null=True)
+    extra_curicular_activities = models.TextField(null=True)
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def set_extra_curicular_activities_list(self, list):
+        # Join the list ofextra curicular activities entries into a single string, separated by commas
+        self.extra_curicular_activity = ', '.join(list)
 
 
 class ApplicationInformation(models.Model):

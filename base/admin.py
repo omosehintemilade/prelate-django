@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import CoveredCountry, TravelInformation, TravelAssistance, TravelInsurance, PostArrivalService, CustomerService
 from .models import TourDeal, TravelBudget, UsersCustomTourRequest, TourDealInterest, NewsletterSubscriber
 from .models import RequestChange, CustomerReferralRecord, Consultation, VisaAssistance, Education
-from .models import ApplicationInformation, Relationship
+from .models import ApplicationInformation, Relationship, OtherInformation
 
 admin.site.register(CoveredCountry)
 admin.site.register(TravelInformation)
@@ -35,16 +35,23 @@ class ApplicationInformationInline(admin.TabularInline):
 class RelationshipInline(admin.TabularInline):
     model = Relationship
     # fieldsets = [
-    #     ('Personal Information', {'fields': ['name', 'date_of_birth', 'passport_number']}),
-    #     ('Contact Information', {'fields': ['email', 'phone_number']}),
+    #     ('Personal Information', {'fields': ['fullname', 'date_of_birth', 'gender', "marital_status",
+    #      "date_of_marriage", "current_relationship_status", "current_employment"]}),
+    #     ('Contact Information', {'fields': [
+    #      'phone_number', 'email_address', "permanent_address", "", "state"]}),
     #     ('Visa Details', {'fields': ['visa_type', 'visa_expiry_date']}),
     # ]
     extra = 0
 
 
+class OtherInformationInline(admin.TabularInline):
+    model = OtherInformation
+    extra = 0
+
+
 class VisaAssistanceAdmin(admin.ModelAdmin):
     inlines = [EducationInline,
-               ApplicationInformationInline, RelationshipInline]
+               ApplicationInformationInline, RelationshipInline, OtherInformationInline]
 
 
 admin.site.register(VisaAssistance, VisaAssistanceAdmin)

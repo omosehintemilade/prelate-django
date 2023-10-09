@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
 from .models import CustomerReferralRecord, Consultation, VisaAssistance, Education
-from .models import ApplicationInformation, Relationship
+from .models import ApplicationInformation, Relationship, OtherInformation
 from django.http import JsonResponse, HttpResponseRedirect
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
@@ -236,21 +236,12 @@ def travel_insuranceOld(request):
 
 def visa_assistance(request):
     if request.method == "POST":
-        # Assuming the data is in UTF-8 encoding
-        # raw_data = request.body.decode('utf-8')
-        # print(raw_data)
-        # name = request.POST.get("name")
-        # siblings = request.POST.get("siblings")
-        # print(request.POST)
         json_data = json.loads(request.body)
         applicant_info = json_data.get('applicant_info')
         education_history = json_data.get('education_history')
         application_info = json_data.get('application_info')
         relationships = json_data.get('relationships')
-
-        siblings = json_data.get('siblings')
-        print("SIBILINGS ==>", siblings)
-        print("APPLICANT ==>", applicant_info)
+        other_info = json_data.get('other_info')
 
         # Create a visa assistance instance
         applicant = VisaAssistance(**applicant_info)
@@ -283,6 +274,13 @@ def visa_assistance(request):
                 relationship["applicant"] = applicant
                 print(relationship)
                 Relationship.objects.create(**relationship)
+
+        # Other Information
+        other_info_doc = OtherInformation(**other_info)
+        other_info_doc.applicant = applicant
+        other_info_doc.set_extra_curicular_activities_list(
+            other_info.get("extra_curicular_activities"))
+        other_info_doc.save()
 
         return JsonResponse({"status": "success"}, safe=False)
     else:
