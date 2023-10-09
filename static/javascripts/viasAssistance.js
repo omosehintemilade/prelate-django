@@ -27,7 +27,7 @@ $(document).ready(function () {
     }
 
     // CONSTRUCT APPLICANT DATA
-    // const applicant_info = getApplicantInfo();
+    const applicant_info = getApplicantInfo();
     // CONSTRUCT APPLICANT EDUCATION DATA
     const education_history = getEducationHistory();
     // CONSTRUCT APPLICANT APPLICATION INFO
@@ -45,7 +45,7 @@ $(document).ready(function () {
       const req = await fetch("", {
         method: "POST",
         body: JSON.stringify({
-          // applicant_info,
+          applicant_info,
           education_history,
           application_info,
           relationships: [
