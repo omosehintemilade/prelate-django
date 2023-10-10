@@ -14,7 +14,7 @@ import calendar
 import decimal
 from django.db.models import Sum, Q
 import requests
-from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm, ConsultationForm
+from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
 from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm, VisaAssistanceForm
 
 
