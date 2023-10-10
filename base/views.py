@@ -19,10 +19,11 @@ from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChan
 
 
 def home(request):
-    return render(
-        request,
-        "index.html"
-    )
+    # return render(
+    #     request,
+    #     "index.html"
+    # )
+    return redirect(os.environ["PRELATE_FLIGHT_APP"])
     # return redirect("https://flights.prelatetravel.com/index.php")
 
 
@@ -34,10 +35,11 @@ def homeOld(request):
 
 
 def reservations(request):
-    return render(
-        request,
-        "reservations.html"
-    )
+    # return render(
+    #     request,
+    #     "reservations.html"
+    # )
+    return redirect(os.environ["PRELATE_FLIGHT_APP"]+"/reservations.php")
 
 
 def travel_helpOld(request):
@@ -523,27 +525,22 @@ def contact_us_old(request):
 
 def book_consultation(request):
     if request.method == "POST":
-        form = ConsultationForm(request.POST)
+        json_data = json.loads(request.body)
+        print(json_data)
+        # VALIDATE DATE
+        session_date = json_data.get("session_date")
+        session_time = json_data.get("session_time")
 
-        if form.is_valid():
-            # VALIDATE DATE
-            session_date = form.cleaned_data['session_date']
-            session_time = form.cleaned_data['session_time']
+        if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
+            return JsonResponse({"status": "failed", "type": "duplicate_event", "message": "We're booked for that time already, try selecting another time"}, safe=False)
 
-            # Check if a session with the same datetime exists
-            if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
-                return redirect("/book-consultation#error?type=duplicate_event")
-            else:
-                form.save(commit=True)
-                return redirect("/book-consultation#submitted")
-
+        # Create consultation
+        Consultation.objects.create(**json_data)
+        return JsonResponse({"status": "success"}, safe=False)
     else:
         return render(
             request,
             "consultation.html",
-            context={
-                "form": ConsultationForm()
-            }
         )
 
 

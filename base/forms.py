@@ -86,12 +86,6 @@ class CustomerServiceForm(forms.ModelForm):
         super(CustomerServiceForm, self).__init__(*args, **kwargs)
 
 
-class ConsultationForm(forms.ModelForm):
-    class Meta:
-        model = Consultation
-        fields = "__all__"
-
-
 class TravelBudgetForm(forms.ModelForm):
     class Meta:
         model = TravelBudget
