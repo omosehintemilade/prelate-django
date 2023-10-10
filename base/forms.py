@@ -1,5 +1,5 @@
 from django import forms
-from .models import TravelInformation, TravelAssistance, TravelBudget, PostArrivalService, CustomerService, Consultation
+from .models import TravelInformation, TravelAssistance, TravelBudget, PostArrivalService, CustomerService
 from .models import UsersCustomTourRequest, TourDealInterest, RequestChange, TravelInsurance, NewsletterSubscriber, VisaAssistance
 from allauth.account.forms import SignupForm
 
