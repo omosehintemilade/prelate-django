@@ -1182,6 +1182,10 @@ input:checked + .toggle-bg {
   margin-bottom: 0px;
 }
 
+.mb-0\.5 {
+  margin-bottom: 0.125rem;
+}
+
 .mb-1 {
   margin-bottom: 0.25rem;
 }
@@ -1530,6 +1534,10 @@ input:checked + .toggle-bg {
   width: 11rem;
 }
 
+.w-52 {
+  width: 13rem;
+}
+
 .w-64 {
   width: 16rem;
 }
@@ -1558,10 +1566,6 @@ input:checked + .toggle-bg {
   width: 750px;
 }
 
-.w-\[965px\] {
-  width: 965px;
-}
-
 .w-\[calc\(100\%_-_100px\)\] {
   width: calc(100% - 100px);
 }
@@ -1572,6 +1576,10 @@ input:checked + .toggle-bg {
 
 .max-w-5xl {
   max-width: 64rem;
+}
+
+.max-w-\[965px\] {
+  max-width: 965px;
 }
 
 .max-w-sm {
@@ -1679,10 +1687,6 @@ input:checked + .toggle-bg {
 
 .resize {
   resize: both;
-}
-
-.list-decimal {
-  list-style-type: decimal;
 }
 
 .list-disclosureClosed {
@@ -2698,7 +2702,7 @@ input:checked + .toggle-bg {
 
 @media (max-width: 500px) {
   .calendar {
-    top: 0px;
+    top: -3px;
   }
 }
 

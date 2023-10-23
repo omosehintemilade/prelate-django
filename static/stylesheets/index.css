@@ -159,13 +159,15 @@ header .button {
   font-weight: 300;
 }
 
-.sub-menu-first {
-  padding-left: 20px !important;
-}
-
-.sub-menu-last {
+.sub-menu {
   margin-left: 20px;
-  width: 120px !important;
+  width: 130px !important;
+  width: 150px;
+}
+.sub-menu.first {
+  padding-left: 20px !important;
+  margin-left: 0;
+  width: 150px !important;
 }
 
 .drawer-open {

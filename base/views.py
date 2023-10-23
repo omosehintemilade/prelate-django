@@ -1,4 +1,5 @@
 import os
+import environ
 import json
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -18,13 +19,15 @@ from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm
 from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm, VisaAssistanceForm
 
 
+env = environ.Env()
+FLIGHT_APP_URL = env.str("FLIGHT_APP_URL")
+
 def home(request):
     # return render(
     #     request,
     #     "index.html"
     # )
-    return redirect(os.environ["PRELATE_FLIGHT_APP"])
-    # return redirect("https://flights.prelatetravel.com/index.php")
+    return redirect(FLIGHT_APP_URL)
 
 
 def homeOld(request):
@@ -39,7 +42,7 @@ def reservations(request):
     #     request,
     #     "reservations.html"
     # )
-    return redirect(os.environ["PRELATE_FLIGHT_APP"]+"/reservations.php")
+    return redirect(FLIGHT_APP_URL+"/reservations.php")
 
 
 def travel_helpOld(request):
@@ -72,7 +75,6 @@ def travel_helpOld(request):
                         "travel_assistance_form": TravelAssistanceForm(),
                         "travel_budget_form": TravelBudgetForm(),
                         "request_change_form": RequestChangeForm()
-
                     }
                 )
             else:
@@ -85,7 +87,6 @@ def travel_helpOld(request):
                         "travel_assistance_form": TravelAssistanceForm(),
                         "travel_budget_form": TravelBudgetForm(),
                         "request_change_form": RequestChangeForm()
-
                     }
                 )
 

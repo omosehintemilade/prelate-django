@@ -74,6 +74,10 @@
                         </div>
                     </div>
                     <div class="flex flex-col mb-5">
+                        <label for="" class="input-label">Proposed Time of Arrival</label>
+                        {% render_field form.time_of_arrival class="input-style" type="time" value="12:00" %}
+                    </div>
+                    <div class="flex flex-col mb-5">
                         <label for="" class="input-label flex justify-between">
                             Final Drop off Location for
                             Airport Pickup
@@ -93,7 +97,7 @@
                         {% render_field form.accomodation_type class="input-style" placeholder="----------" %}
                     </div>
                     <div class="flex flex-col mb-5">
-                        <label for="" class="input-label">Upload Document</label>
+                        <label for="" class="input-label">Upload Itinerary Document</label>
                         {% comment %} <input type="file"
         class="input-style mobile:!border mobile:rounded-md"
         multiple

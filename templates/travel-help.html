@@ -18,7 +18,7 @@
             Where would you like
             <span class="text-buttonPrimary mobile:text-white">to travel to?</span>
           </h3>
-          <div class="flex items-center rounded-lg bg-white w-[965px] shadow-md mobile:rounded-sm mobile:w-11/12">
+          <div class="flex items-center rounded-lg bg-white w-4/5 max-w-[965px] shadow-md mobile:rounded-sm mobile:w-11/12">
             <select id="countries"
                     class="flex-1 rounded-l-lg text-xl p-3 font-bold border-none text-textPrimary mobile:px-2 mobile:py-1.5 mobile:text-xs mobile:font-medium mobile:rounded-sm">
               {% if main_country %}
@@ -79,6 +79,7 @@
             you get to your interested destination.
           </span>
         </p>
+        {% include "latest/components/_travel_help_country.html" with country=main_country %}
         <div class="mt-20 tablet:mt-6">
           <div class="form-title">Travel Info</div>
           <form class="text-primary w-full pt-10 tablet:pt-6"
@@ -87,7 +88,7 @@
             {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label for="" class="input-label flex justify-between">
-                Country of origin
+                Country of Origin
                 <img src="{% static 'images/shaded-down-arrow.svg' %}"
                      class="shaded-down-arrow"
                      alt="" />
@@ -130,6 +131,7 @@
         <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
           Simply fill the form provided below with the required details.
         </p>
+        {% include "latest/components/_travel_help_country.html" with country=main_country %}
         <div class="mt-20 tablet:mt-6">
           <div class="form-title">Travel Budget</div>
           <form class="text-primary w-full pt-10 tablet:pt-6"

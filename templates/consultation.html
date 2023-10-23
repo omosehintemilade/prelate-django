@@ -12,7 +12,7 @@
       <div class="flex items-end h-full">
         <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
           <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Talk To An Expert</h2>
+            <h2 class="page-title">Speak To A Consultant</h2>
           </div>
         </div>
       </div>
@@ -47,43 +47,61 @@
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Email</label>
-              <input type="email" class="input-style" placeholder="----------" name="email"
-              </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Choose Date Of Appointment</label>
-                <div class="relative w-full">
-                  <div class="calendar">
-                    <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
-                  </div>
-                  <input type="date"
-                         name="session_date"
-                         class="input-style w-full"
-                         placeholder="dd/mm/yyyy"
-                         datepicker
-                         datepicker-format="yyyy-mm-dd"
-                         datepicker-autohide>
-                  <span id="session_date_error" class="text-red-500 block"></span>
+              <input type="email"
+                     class="input-style"
+                     placeholder="----------"
+                     name="email"
+                     required>
+            </div>
+            <div class="flex flex-col mb-5">
+              <label for="" class="input-label">Choose Date Of Appointment</label>
+              <div class="relative w-full">
+                <div class="calendar">
+                  <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                 </div>
+                <input type="date"
+                       name="session_date"
+                       class="input-style w-full"
+                       placeholder="dd/mm/yyyy"
+                       datepicker
+                       datepicker-format="yyyy-mm-dd"
+                       datepicker-autohide
+                       required>
+                <span id="session_date_error" class="text-red-500 block"></span>
               </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Choose Time Of Appointment</label>
-                <input type="time"
-                       value="12:00"
-                       class="input-style"
-                       placeholder="----------"
-                       name="session_time">
-                <span id="session_time_error" class="text-red-500 block"></span>
-              </div>
-              <button class="submit-btn">Submit Form</button>
-            </form>
-          </div>
+            </div>
+            <div class="flex flex-col mb-5">
+              <label for="" class="input-label">Choose Time Of Appointment</label>
+              <input type="time"
+                     value="12:00"
+                     class="input-style"
+                     name="session_time"
+                     required>
+              <span id="session_time_error" class="text-red-500 block"></span>
+            </div>
+            <div class="flex flex-col mb-5">
+              <label for="" class="input-label flex justify-between">
+                Select Meeting Type
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow"
+                     alt="" />
+              </label>
+              <select name="meeting_type" class="input-style" required>
+                <option value="">----------</option>
+                <option value="PHYSICAL">PHYSICAL</option>
+                <option value="VIRTUAL">VIRTUAL</option>
+              </select>
+            </div>
+            <button class="submit-btn">Submit Form</button>
+          </form>
         </div>
-      </section>
-      {% include 'latest/components/_footer.html' %}
-      <script src="{% static 'javascripts/datepicker.js' %}"></script>
-      {% include 'latest/partials/_scripts.html' with exclude_notification_script=True %}
-      {% comment %} INPUT VALIDATION {% endcomment %}
-      <script>
+      </div>
+    </section>
+    {% include 'latest/components/_footer.html' %}
+    <script src="{% static 'javascripts/datepicker.js' %}"></script>
+    {% include 'latest/partials/_scripts.html' with exclude_notification_script=True %}
+    {% comment %} INPUT VALIDATION {% endcomment %}
+    <script>
         const datePicker = document.querySelector("[name='session_date']");
 const datePickerErrorEl = document.getElementById("session_date_error");
 const timePicker = document.querySelector("[name='session_time']");
@@ -103,7 +121,9 @@ timePicker.addEventListener("change", ({ target }) => {
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
   handleSubmitBtnState(submitBtn);
-  if (new Date(datePicker.value) < new Date()) {
+  const date = `${datePicker.value}T${timePicker.value}:00.000Z`
+  // add time selected to date
+  if (new Date(date) < new Date()) {
     datePickerErrorEl.textContent = "You cannot select a past date";
     datePicker.value = ""; // Reset the input
     handleSubmitBtnState(submitBtn, false);
@@ -112,35 +132,45 @@ form.addEventListener("submit", async (e) => {
     const payload = {};
     const inputEls = form.querySelectorAll("input");
     inputEls.forEach((el) => (payload[el.name] = el.value));
+    payload.meeting_type = form.querySelector("select").value;
 
     //return
-    const req = await fetch("", {
-      method: "POST",
-      body: JSON.stringify(payload),
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        "X-CSRFToken": getCookie("csrftoken")
-      }
-    });
-
-    const res = await req.json();
-
-    handleSubmitBtnState(submitBtn, false);
-    // SUCCESS
-    if (res.status === "success") {
-      let html = `🎉🎉🎉<br />Your meeting with one of our Experts has been scheduled successfully! <br /> <strong>Don't forget to add the date to your calendar</strong> `;
-      Swal.fire({
-        html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
-      });
-    } else if (res.status === "failed" && res.type === "duplicate_event") {
-      let html = `<b>😪Oops</b><br />${res.message}`;
-      Swal.fire({
-        html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`,
-        icon: "error"
-      });
+try{
+  const req = await fetch("", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "X-CSRFToken": getCookie("csrftoken")
     }
+  });
+
+  const res = await req.json();
+
+  handleSubmitBtnState(submitBtn, false);
+  // SUCCESS
+  if (res.status === "success") {
+    let html = `🎉🎉🎉<br />Your meeting with one of our consultants has been scheduled successfully! <br /> <strong>Don't forget to add the date to your calendar</strong> `;
+    Swal.fire({
+      html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
+    });
+    form.reset()
+  } else if (res.status === "failed" && res.type === "duplicate_event") {
+    let html = `<b>😪Oops</b><br />${res.message}`;
+    Swal.fire({
+      html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`,
+      icon: "error"
+    });
+  }
+}catch(err){
+  console.log(err)
+  Swal.fire({
+    html: `<h5 class='text-base mobile:text-sm'><b>Oops!</b> <br />An error occured! Please try again</h5>`,
+    icon: "error"
+  });
+}
   }
 });
-      </script>
-    </body>
-  </html>
+    </script>
+  </body>
+</html>
