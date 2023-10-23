@@ -10,7 +10,7 @@
   }
 
   .input-style {
-    @apply border border-x-0 border-t-0 border-primary pt-3 pb-1 px-0 text-textPrimary text-sm mobile:text-xs mobile:p-0;
+    @apply border-0 border-b border-primary pt-3 pb-1 px-0 text-textPrimary text-sm mobile:text-xs mobile:p-0;
   }
 
   .input-label {
@@ -33,7 +33,7 @@
     @apply w-3 mt-2 mobile:hidden;
   }
   .submit-btn {
-    @apply py-3 px-2 text-primary bg-buttonPrimary rounded-lg mt-5 font-medium w-[155px] mobile:text-sm mobile:w-[130px] mobile:px-2.5 mobile:py-3 mobile:mt-0 mobile:text-primary;
+    @apply py-3 px-2 text-primary bg-buttonPrimary rounded-lg mt-5 font-medium w-[155px] mobile:text-sm mobile:w-[130px] mobile:px-2.5 mobile:py-3 mobile:mt-0 mobile:text-primary disabled:cursor-not-allowed disabled:opacity-70;
   }
 
   .page-title {

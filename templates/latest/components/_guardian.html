@@ -1,5 +1,5 @@
 {% load static %}
-<li relationship='child'>
+<li relationship={{ title }}>
     <label for="" class="input-label">{{ title }}</label>
     <div class="flex flex-col mb-5">
         <label for="" class="input-label">Full Name</label>
@@ -16,9 +16,24 @@
                  alt="" />
         </label>
         <select name="gender" id="" class="input-style">
-            <option value="">--Select Gender--</option>
+            <option value="">----------</option>
             <option value="MALE">Male</option>
             <option value="FEMALE">Female</option>
+        </select>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label for="" class="input-label flex justify-between">
+            Marital Status
+            <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                 class="shaded-down-arrow"
+                 alt="" />
+        </label>
+        <select name="marital_status" id="" class="input-style">
+            <option value="">----------</option>
+            <option value="SINGLE">Single</option>
+            <option value="ENGAGED">Engaged</option>
+            <option value="MARRIED">Married</option>
+            <option value="DIVORCED">Divorced</option>
         </select>
     </div>
     <div class="flex flex-col mb-5">
@@ -37,11 +52,11 @@
         </div>
     </div>
     <div class="flex flex-col mb-5">
-        <label for="" class="input-label">Email Address</label>
+        <label for="" class="input-label">Current Employment</label>
         <input type="text"
                class="input-style"
                placeholder="----------"
-               name="email_address">
+               name="current_employment">
     </div>
     <div class="flex flex-col mb-5">
         <label for="" class="input-label">Permanent Address</label>
@@ -49,8 +64,5 @@
                class="input-style"
                placeholder="----------"
                name="permanent_address">
-        {% if last_el %}
-            <span class="font-semibold italic text-xs mt-2.5">(kindly notify, if you have more than five (5) children)</span>
-        {% endif %}
     </div>
 </li>

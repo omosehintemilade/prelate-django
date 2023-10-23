@@ -19,3 +19,15 @@ document
         "en-US"
       ))
   );
+
+function handleSubmitBtnState(button, isSubmitting = true) {
+  if (isSubmitting) {
+    // change submit button text
+    button.innerText = "Submitting...";
+    button.disabled = true;
+  } else {
+    // change submit button text
+    button.innerText = "Submit Form";
+    button.disabled = false;
+  }
+}

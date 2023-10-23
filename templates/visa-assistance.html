@@ -4,6 +4,7 @@
     {% load static %}
     {% load widget_tweaks %}
     {% include "latest/partials/_head.html" with add_title="Visa Assistance | Prelate Travels & Tours" %}
+    <link rel="stylesheet" href="{% static 'stylesheets/select2.min.css' %}" />
   </head>
   <body>
     <!-- HEADER SECTION -->
@@ -40,11 +41,7 @@
         </p>
       </div>
       <div class="form-title">Visa Assistance Form</div>
-      <form class="w-full pt-10 mobile:pt-6"
-            method="POST"
-            action=""
-            enctype="multipart/form-data">
-        {{ form.errors }} {{ form.non_field_errors }}
+      <form class="w-full pt-10 mobile:pt-6" method="POST" action="">
         {% csrf_token %}
         <div id="accordion-collapse" data-accordion="collapse">
           {% comment %} APPLICANT INFORMATION {% endcomment %}
@@ -73,93 +70,170 @@
             <div class="p-5 border border-b-0 border-gray-200">
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                  Title
+                <span> Title<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                <select name="title" class="input-style" isrequired="true">
+                  <option value="">----------</option>
+                  <option value="Mr">Mr</option>
+                  <option value="Mrs">Mrs</option>
+                  <option value="Miss">Miss</option>
+                  <option value="Dr">Dr</option>
+                  <option value="Chief">Chief</option>
+                </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">First Name</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">First Name<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="firstname"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Middle Name</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">Middle Name<span class="text-red-500">*</span>
+                </label>
+                <input type="text"
+                       name="middlename"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Surname</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">Surname<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="surname"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                  Gender
+                                    <span>Gender<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                <select name="gender" id="" class="input-style">
+                  <option value="">--Select Gender--</option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                </select>
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Nationality<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="nationality"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                  Nationality
+                  <span>Marital Status<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                <select name="marital_status" class="input-style">
+                  <option value="">--Select Option--</option>
+                  <option value="SINGLE">Single</option>
+                  <option value="ENGAGED">Engaged</option>
+                  <option value="MARRIED">Married</option>
+                  <option value="DIVORCED">Divorced</option>
+                </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label flex justify-between">
-                  Marital Status
-                  <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                       class="shaded-down-arrow"
-                       alt="" />
-                </label>
-                {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-              </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Birth</label>
+                <label for="" class="input-label">Date of Birth<span class="text-red-500">*</span></label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                   </div>
-                  {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+                  <input type="date"
+                         name="dob"
+                         class="input-style w-full"
+                         placeholder="dd/mm/yyyy"
+                         datepicker
+                         datepicker-format="yyyy-mm-dd"
+                         datepicker-autohide
+                         isrequired="true">
                 </div>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Permanent Address</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+                <label for="" class="input-label">Tribe<span class="text-red-500">*</span></label>
+                <input type="text" name="tribe" class="input-style" placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Postal Address</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">Email<span class="text-red-500">*</span></label>
+                <input type="email"
+                       name="email"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Alt. Phone Number</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">Phone Number<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="phone_number"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Passport Number</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">Permanent Address<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="permanent_address"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Issue</label>
+                <label for="" class="input-label">Postal Address<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="postal_address"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Alternative Phone Number<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="alt_phone_number"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Passport Number<span class="text-red-500">*</span></label>
+                <input type="text"
+                       name="passport_number"
+                       class="input-style"
+                       placeholder="----------" isrequired="true">
+              </div>
+              <div class="flex flex-col mb-5">
+                <label for="" class="input-label">Date of Issue<span class="text-red-500">*</span></label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                   </div>
-                  {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+                  <input type="date"
+                         name="date_of_issue"
+                         class="input-style w-full"
+                         placeholder="dd/mm/yyyy"
+                         datepicker
+                         datepicker-format="yyyy-mm-dd"
+                         datepicker-autohide
+                         isrequired="true">
                 </div>
               </div>
-              <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Expiry Date</label>
+              <div class="flex flex-col mb-10">
+                <label for="" class="input-label">Expiry Date<span class="text-red-500">*</span></label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                   </div>
-                  {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+                  <input type="date"
+                         name="date_of_expiry"
+                         class="input-style w-full"
+                         placeholder="dd/mm/yyyy"
+                         datepicker
+                         datepicker-format="yyyy-mm-dd"
+                         datepicker-autohide
+                         isrequired="true"
+                         >
                 </div>
               </div>
               <div>
@@ -169,17 +243,26 @@
                 <ul class="pl-7 list-lower-alpha text-primary">
                   <li>
                     <div class="flex flex-col mb-5">
-                      {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                      <input type="text"
+                             name="travel_info_[0]"
+                             class="input-style"
+                             placeholder="----------">
                     </div>
                   </li>
                   <li>
                     <div class="flex flex-col mb-5">
-                      {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                      <input type="text"
+                             name="travel_info_[1]"
+                             class="input-style"
+                             placeholder="----------">
                     </div>
                   </li>
                   <li>
                     <div class="flex flex-col mb-5">
-                      {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                      <input type="text"
+                             name="travel_info_[2]"
+                             class="input-style"
+                             placeholder="----------">
                     </div>
                   </li>
                 </ul>
@@ -211,9 +294,9 @@
                aria-labelledby="educational-history-heading">
             <div class="p-5 border border-b-0 border-gray-200">
               <ul class="pl-7 list-upper-alpha text-primary">
-                {% include "latest/components/_education.html" with title="Sibling 5" last_el=True %}
-                {% include "latest/components/_education.html" with title="Sibling 5" last_el=True %}
-                {% include "latest/components/_education.html" with title="Sibling 5" last_el=True %}
+                {% include "latest/components/_education.html"  with isRequired=true %}
+                {% include "latest/components/_education.html" %}
+                {% include "latest/components/_education.html" %}
               </ul>
             </div>
           </div>
@@ -248,23 +331,40 @@
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                <select name="country" class="countries">
+                  <option value="">--Select Country--</option>
+                  {% for country in countries %}
+                    <option value="{{ country.country_name }}">{{ country.country_name }}</option>
+                  {% endfor %}
+                </select>
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Others (If country of choice is not listed)</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="country_not_listed">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Course Of Choice</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="course">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Alternative Course</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="alternative_course">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Province of Choice (If none, kindly ignore)</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="province">
               </div>
             </div>
           </div>
@@ -294,7 +394,10 @@
             <div class="p-5 border border-b-0 border-gray-200">
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Full Name</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="fullname">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
@@ -303,32 +406,54 @@
                        class="shaded-down-arrow"
                        alt="" />
                 </label>
-                {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                <select name="gender" id="" class="input-style">
+                  <option value="">--Select Gender--</option>
+                  <option value="MALE">Male</option>
+                  <option value="FEMALE">Female</option>
+                </select>
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Relationship</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="relationship">
               </div>
-              <div class="flex flex-col mb-5">
+              <div class="flex flex-col mb-10">
                 <label for="" class="input-label">Date of Birth</label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                   </div>
-                  {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+                  <input type="date"
+                         name="date_of_birth"
+                         class="input-style w-full"
+                         placeholder="dd/mm/yyyy"
+                         datepicker
+                         datepicker-format="yyyy-mm-dd"
+                         datepicker-autohide>
                 </div>
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Email Address</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" type="email" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="email_address">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Phone Number</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="phone_number">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Permanent Address</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="permanent_address">
               </div>
             </div>
           </div>
@@ -357,100 +482,18 @@
                aria-labelledby="guardian-info-heading">
             <div class="p-5 border border-b-0 border-gray-200">
               <ul class="pl-7 list-upper-alpha text-primary">
-                <li>
-                  <label for="" class="input-label">FATHER</label>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Full Name</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label flex justify-between">
-                      Gender
-                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                           class="shaded-down-arrow"
-                           alt="" />
-                    </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label flex justify-between">
-                      Marital Status
-                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                           class="shaded-down-arrow"
-                           alt="" />
-                    </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Date of Birth</label>
-                    <div class="relative w-full">
-                      <div class="calendar">
-                        <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
-                      </div>
-                      {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
-                    </div>
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Current Employment</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Permanent Address</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
-                  </div>
-                </li>
-                <li>
-                  <label for="" class="input-label">MOTHER</label>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Full Name</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label flex justify-between">
-                      Gender
-                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                           class="shaded-down-arrow"
-                           alt="" />
-                    </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label flex justify-between">
-                      Marital Status
-                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                           class="shaded-down-arrow"
-                           alt="" />
-                    </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Date of Birth</label>
-                    <div class="relative w-full">
-                      <div class="calendar">
-                        <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
-                      </div>
-                      {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
-                    </div>
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Current Employment</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label">Permanent Address</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
-                  </div>
-                </li>
+                {% include "latest/components/_guardian.html" with title="FATHER" %}
+                {% include "latest/components/_guardian.html" with title="MOTHER" %}
               </ul>
             </div>
           </div>
           {% comment %} SIBLINGS AND/OR SPOUSE INFORMATION {% endcomment %}
-          <h2 id="spouse-info-heading">
+          <h2 id="relationship-info-heading">
             <button type="button"
                     class="flex items-center justify-between w-full p-5 font-medium text-left border border-b-0 border-gray-200 focus:ring-1 focus:ring-gray-200  hover:bg-gray-100"
-                    data-accordion-target="#spouse-info-body"
+                    data-accordion-target="#relationship-info-body"
                     aria-expanded="false"
-                    aria-controls="spouse-info-body">
+                    aria-controls="relationship-info-body">
               <p class="text-primary font-semibold text-base tablet:text-sm">
                 F. <span class="inline-block ml-3 mobile:ml-2">Siblings/Children & Spouse</span>
               </p>
@@ -464,9 +507,9 @@
               </svg>
             </button>
           </h2>
-          <div id="spouse-info-body"
+          <div id="relationship-info-body"
                class="hidden"
-               aria-labelledby="spouse-info-heading">
+               aria-labelledby="relationship-info-heading">
             <div class="p-5 border border-b-0 border-gray-200">
               <ul class="pl-7 list-upper-alpha text-primary">
                 {% comment %} SIBLINGS {% endcomment %}
@@ -481,11 +524,14 @@
                 {% include "latest/components/_child.html" with title="Child 3" %}
                 {% include "latest/components/_child.html" with title="Child 4" %}
                 {% include "latest/components/_child.html" with title="Child 5" last_el=True %}
-                <li>
+                <li relationship="spouse">
                   <label for="" class="input-label">CURRENT/EX-SPOUSE INFO</label>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label">Full Name</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="fullname">
                   </div>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label flex justify-between">
@@ -494,20 +540,18 @@
                            class="shaded-down-arrow"
                            alt="" />
                     </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
-                  </div>
-                  <div class="flex flex-col mb-5">
-                    <label for="" class="input-label flex justify-between">
-                      Marital Status
-                      <img src="{% static 'images/shaded-down-arrow.svg' %}"
-                           class="shaded-down-arrow"
-                           alt="" />
-                    </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                    <select name="gender" id="" class="input-style">
+                      <option value="">--Select Gender--</option>
+                      <option value="MALE">Male</option>
+                      <option value="FEMALE">Female</option>
+                    </select>
                   </div>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label">Current Employment</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="current_employment">
                   </div>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label">Date of Marriage</label>
@@ -515,7 +559,13 @@
                       <div class="calendar">
                         <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                       </div>
-                      {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+                      <input type="date"
+                             name="date_of_marriage"
+                             class="input-style w-full"
+                             placeholder="dd/mm/yyyy"
+                             datepicker
+                             datepicker-format="yyyy-mm-dd"
+                             datepicker-autohide>
                     </div>
                   </div>
                   <div class="flex flex-col mb-5">
@@ -525,7 +575,13 @@
                            class="shaded-down-arrow"
                            alt="" />
                     </label>
-                    {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+                    <select name="marital_status" id="" class="input-style">
+                      <option value="">----------</option>
+                      <option value="SINGLE">Single</option>
+                      <option value="ENGAGED">Engaged</option>
+                      <option value="MARRIED">Married</option>
+                      <option value="DIVORCED">Divorced</option>
+                    </select>
                   </div>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label">Date of Birth</label>
@@ -533,16 +589,28 @@
                       <div class="calendar">
                         <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                       </div>
-                      {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+                      <input type="date"
+                             name="date_of_birth"
+                             class="input-style w-full"
+                             placeholder="dd/mm/yyyy"
+                             datepicker
+                             datepicker-format="yyyy-mm-dd"
+                             datepicker-autohide>
                     </div>
                   </div>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label">Email Address</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g john@example.com" type="email" %}
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="email_address">
                   </div>
                   <div class="flex flex-col mb-5">
                     <label for="" class="input-label">Permanent Address</label>
-                    {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+                    <input type="text"
+                           class="input-style"
+                           placeholder="----------"
+                           name="permanent_address">
                   </div>
                 </li>
               </ul>
@@ -573,67 +641,93 @@
                aria-labelledby="other-info-heading">
             <div class="p-5 border border-gray-200">
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Who is sponsoring your study?</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <label for="" class="input-label">Who is sponsoring your study (full name of sponsor)?</label>
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="sponsor">
               </div>
               <div>
                 <label for="" class="input-label">What extra-curicular activities do you engage in?</label>
                 <ul class="pl-7 list-lower-alpha text-primary">
                   <li>
                     <div class="flex flex-col mb-5">
-                      {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                      <input type="text"
+                             class="input-style"
+                             placeholder="----------"
+                             name="extra_curicular_activity_[0]">
                     </div>
                   </li>
                   <li>
                     <div class="flex flex-col mb-5">
-                      {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                      <input type="text"
+                             class="input-style"
+                             placeholder="----------"
+                             name="extra_curicular_activity_[1]">
                     </div>
                   </li>
                   <li>
                     <div class="flex flex-col mb-5">
-                      {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                      <input type="text"
+                             class="input-style"
+                             placeholder="----------"
+                             name="extra_curicular_activity_[2]">
                     </div>
                   </li>
                 </ul>
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">What is your health status? Any disorder/disability?</label>
-                {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+                <input type="text"
+                       class="input-style"
+                       placeholder="----------"
+                       name="disablility">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">
                   State visa refusal to any country within the last 10 years (state the country and the reason for refusal below)
                 </label>
-                <textarea placeholder="Write your answer here" class="text-area" rows="10"></textarea>
+                <textarea name="past_visa_refusal"
+                          placeholder="Write your answer here"
+                          class="text-area"
+                          rows="10"></textarea>
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label">Any other important information</label>
-                <textarea placeholder="Write your answer here" class="text-area" rows="10"></textarea>
+                <textarea name="other_important_information"
+                          placeholder="Write your answer here"
+                          class="text-area"
+                          rows="10"></textarea>
               </div>
             </div>
           </div>
-          <div class="text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-5 mb-5 mt-4 ">
-            <div class="flex gap-x-2.5">
-              <input type="checkbox" class="inline-block mt-1.5">
-              <div>
-                <p class="mb-2">
-                  I hereby declare that the information provided above and all documents sent is totally correct and should any negative outcome arise as a result of false information given by me, Prelate Travel Services Ltd is not liable and exempted from that.
-                </p>
-                <p>
-                  I give Prelate Travel Services Ltd full consent to handle all my admission and visa process on my behalf and I undestand that Prelate Travels Services Ltd has no refund policies on all of it applications fees but has offered a reapplication policy in case of a negative outcome.
-                </p>
-              </div>
+          {% comment %} CLOSING ACCORDION TAG {% endcomment %}
+        </div>
+        <div class="text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-5 mb-5 mt-4 ">
+          <div class="flex gap-x-2.5">
+            <input type="checkbox" class="inline-block mt-1.5" id="checkbox">
+            <div>
+              <p class="mb-2">
+                I hereby declare that the information provided above and all documents sent is totally correct and should any negative outcome arise as a result of false information given by me, Prelate Travel Services Ltd is not liable and exempted from that.
+              </p>
+              <p>
+                I give Prelate Travel Services Ltd full consent to handle all my admission and visa process on my behalf and I undestand that Prelate Travels Services Ltd has no refund policies on all of it applications fees but has offered a reapplication policy in case of a negative outcome.
+              </p>
             </div>
-            <p class="font-bold mt-2.5 text-primary">Note: (All documents are to be made available immediately after deposit)</p>
           </div>
-          <button class="submit-btn">Submit Form</button>
-        </form>
-      </section>
-      <!-- FOOTER -->
-      {% include "latest/components/_footer.html" %}
-      <!-- FOOTER -->
-      <!-- SCRIPTS -->
-      {% include "latest/partials/_scripts.html" %}
-      <script src="{% static 'javascripts/datepicker.js' %}"></script>
-    </body>
-  </html>
+          <p class="font-bold mt-2.5 text-primary">Note: (All documents are to be made available immediately after deposit)</p>
+        </div>
+        <button class="submit-btn">Submit Form</button>
+      </form>
+    </section>
+    <!-- FOOTER -->
+    {% include "latest/components/_footer.html" %}
+    <!-- FOOTER -->
+    <!-- SCRIPTS -->
+    {% include "latest/partials/_scripts.html" %}
+    <script src="{% static 'javascripts/select2.full.min.js' %}"></script>
+    <script src="{% static 'javascripts/datepicker.js' %}"></script>
+    {% comment %} <script src="{% static 'javascripts/jquery.js' %}"></script> {% endcomment %}
+    <script src="{% static 'javascripts/viasAssistance.js' %}"></script>
+  </body>
+</html>

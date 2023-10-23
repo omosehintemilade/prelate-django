@@ -1,9 +1,11 @@
 import os
 import environ
+import json
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
-from .models import CustomerReferralRecord, Consultation
+from .models import CustomerReferralRecord, Consultation, VisaAssistance, Education
+from .models import ApplicationInformation, Relationship, OtherInformation
 from django.http import JsonResponse, HttpResponseRedirect
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
 from django.contrib.auth.decorators import login_required
@@ -13,11 +15,12 @@ import calendar
 import decimal
 from django.db.models import Sum, Q
 import requests
-from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm, ConsultationForm
-from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm
+from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
+from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm, VisaAssistanceForm
 
 
 env = environ.Env()
+
 
 def home(request):
     # return render(
@@ -36,10 +39,11 @@ def homeOld(request):
 
 
 def reservations(request):
-    return render(
-        request,
-        "reservations.html"
-    )
+    # return render(
+    #     request,
+    #     "reservations.html"
+    # )
+    return redirect(os.environ["PRELATE_FLIGHT_APP"]+"/reservations.php")
 
 
 def travel_helpOld(request):
@@ -237,32 +241,63 @@ def travel_insuranceOld(request):
 
 
 def visa_assistance(request):
-    if request.method == "GET":
+    if request.method == "POST":
+        json_data = json.loads(request.body)
+        applicant_info = json_data.get('applicant_info')
+        education_history = json_data.get('education_history')
+        application_info = json_data.get('application_info')
+        relationships = json_data.get('relationships')
+        other_info = json_data.get('other_info')
+
+        # Create a visa assistance instance
+        applicant = VisaAssistance(**applicant_info)
+        # stringify Travel history - in my opinion, it's not worth creating a new table for
+        print("applicant_info.travel_history ==>",
+              applicant_info.get("travel_history"))
+        applicant.set_travel_history_list(
+            applicant_info.get("travel_history"))
+        applicant.save()
+
+        # Check if education_history is a valid list
+        if isinstance(education_history, list):
+            # Iterate over the list
+            for ed in education_history:
+                ed["applicant"] = applicant
+                print(ed)
+                Education.objects.create(**ed)
+
+        # Application Information
+        application_info["applicant"] = applicant
+        application_info["country"] = CoveredCountry.objects.get(
+            country_name=application_info.get("country"))
+        ApplicationInformation.objects.create(**application_info)
+
+        # Create Relationships
+        # Check if relationships is a valid list
+        if isinstance(relationships, list):
+            # Iterate over the list and create relationship
+            for relationship in relationships:
+                relationship["applicant"] = applicant
+                print(relationship)
+                Relationship.objects.create(**relationship)
+
+        # Other Information
+        other_info_doc = OtherInformation(**other_info)
+        other_info_doc.applicant = applicant
+        other_info_doc.set_extra_curicular_activities_list(
+            other_info.get("extra_curicular_activities"))
+        other_info_doc.save()
+
+        return JsonResponse({"status": "success"}, safe=False)
+    else:
         countries = CoveredCountry.objects.all().order_by("country_name")
         return render(
             request,
             "visa-assistance.html",
             context={
                 "countries": countries,
-                "travel_assistance_form": TravelAssistanceForm(),
             }
         )
-    elif request.method == "POST":
-        countries = CoveredCountry.objects.all().order_by("country_name")
-        form = TravelAssistanceForm(request.POST, request.FILES)
-        if form.is_valid():
-            print(form)
-            form.save(commit=True)
-            return redirect("/visa-assistance#submitted")
-        else:
-            return render(
-                request,
-                "visa-assistance.html",
-                context={
-                    "countries": countries,
-                    "travel_assistance_form": TravelAssistanceForm(),
-                }
-            )
 
 
 def visa_assistance_old(request):
@@ -277,7 +312,6 @@ def visa_assistance_old(request):
                 context={
                     "countries": countries,
                     "travel_assistance_form": TravelAssistanceForm(),
-
                 }
             )
         else:
@@ -495,27 +529,22 @@ def contact_us_old(request):
 
 def book_consultation(request):
     if request.method == "POST":
-        form = ConsultationForm(request.POST)
+        json_data = json.loads(request.body)
+        print(json_data)
+        # VALIDATE DATE
+        session_date = json_data.get("session_date")
+        session_time = json_data.get("session_time")
 
-        if form.is_valid():
-            # VALIDATE DATE
-            session_date = form.cleaned_data['session_date']
-            session_time = form.cleaned_data['session_time']
+        if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
+            return JsonResponse({"status": "failed", "type": "duplicate_event", "message": "We're booked for that time already, try selecting another time"}, safe=False)
 
-            # Check if a session with the same datetime exists
-            if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
-                return redirect("/book-consultation#error?type=duplicate_event")
-            else:
-                form.save(commit=True)
-                return redirect("/book-consultation#submitted")
-
+        # Create consultation
+        Consultation.objects.create(**json_data)
+        return JsonResponse({"status": "success"}, safe=False)
     else:
         return render(
             request,
             "consultation.html",
-            context={
-                "form": ConsultationForm()
-            }
         )
 
 

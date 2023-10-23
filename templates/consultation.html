@@ -12,7 +12,7 @@
       <div class="flex items-end h-full">
         <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
           <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Talk To An Expert</h2>
+            <h2 class="page-title">Speak To A Consultant</h2>
           </div>
         </div>
       </div>
@@ -29,18 +29,29 @@
           <form class="text-primary w-full pt-10 tablet:pt-6"
                 method="POST"
                 action="{% url 'book-consultation' %}">
-            {% csrf_token %}
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Full Name</label>
-              {% render_field form.fullname class="input-style" placeholder="----------" %}
+              <input type="text"
+                     class="input-style"
+                     placeholder="----------"
+                     name="fullname"
+                     required>
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Phone Number</label>
-              {% render_field form.phonenumber class="input-style" placeholder="----------" %}
+              <input type="text"
+                     class="input-style"
+                     placeholder="----------"
+                     name="phonenumber"
+                     required>
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Email</label>
-              {% render_field form.email class="input-style" placeholder="----------" type="email" %}
+              <input type="email"
+                     class="input-style"
+                     placeholder="----------"
+                     name="email"
+                     required>
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Choose Date Of Appointment</label>
@@ -48,21 +59,27 @@
                 <div class="calendar">
                   <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
                 </div>
-                {% render_field form.session_date class="input-style w-full" id="session_date" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" datepicker-autohide="true" %}
+                <input type="date"
+                       name="session_date"
+                       class="input-style w-full"
+                       placeholder="dd/mm/yyyy"
+                       datepicker
+                       datepicker-format="yyyy-mm-dd"
+                       datepicker-autohide
+                       required>
                 <span id="session_date_error" class="text-red-500 block"></span>
               </div>
             </div>
             <div class="flex flex-col mb-5">
               <label for="" class="input-label">Choose Time Of Appointment</label>
-              {% render_field form.session_time  class="input-style w-full" id="session_time" value="12:00" type="time" %}
+              <input type="time"
+                     value="12:00"
+                     class="input-style"
+                     placeholder="----------"
+                     name="session_time"
+                     required>
               <span id="session_time_error" class="text-red-500 block"></span>
             </div>
-{% comment %} 
-            <div class="flex flex-col mb-5">
-              <label for="" class="input-label">Select meeting type</label>
-              {% render_field form.meeting_type  class="input-style w-full" %}
-            </div> {% endcomment %}
-
             <div class="flex flex-col mb-5">
               <label for="" class="input-label flex justify-between">
                 Select Meeting Type
@@ -70,7 +87,11 @@
                      class="shaded-down-arrow"
                      alt="" />
               </label>
-              {% render_field form.meeting_type class="input-style" placeholder="----------" %}
+              <select name="meeting_type" class="input-style" required>
+                <option value="">----------</option>
+                <option value="PHYSICAL">PHYSICAL</option>
+                <option value="VIRTUAL">VIRTUAL</option>
+              </select>
             </div>
             <button class="submit-btn">Submit Form</button>
           </form>
@@ -82,57 +103,75 @@
     {% include 'latest/partials/_scripts.html' with exclude_notification_script=True %}
     {% comment %} INPUT VALIDATION {% endcomment %}
     <script>
-        const datePicker = document.getElementById("session_date");
-        const datePickerErrorEl = document.getElementById("session_date_error");
-        const timePicker = document.getElementById("session_time");
-        const timePickerErrorEl = document.getElementById("session_time_error");
-        const form = document.querySelector("form");
-  
-        timePicker.addEventListener("change", ({target})=> {
-          console.log(target.value)
-          if (target.value < "08:00" || target.value > "17:00") {
-            errorText.textContent = "Office opening hours are 08:00 AM to 5:00 PM";
-            timeInput.value = "12:00"; // Reset the input
-          } else errorText.textContent = ""; 
-        })
-        
-        // FLOWBITE DATEPICKER DOES NOT SUPPORT ONCHANGE EVENT
-        form.addEventListener("submit", (e)=> {
-          e.preventDefault() 
-          if (new Date(datePicker.value) < new Date()) {
-            datePickerErrorEl.textContent = "You cannot select a past date";
-            datePicker.value = ""; // Reset the input
-          } else {
-            datePickerErrorEl.textContent = ""; 
-            form.submit(); // submit form
-          }
-        })
-  
-     // CUSTOM NOTIFICATION
-     const url = window.location.href;
-  
-     const splittedUrl = url.split("#");
-     console.log(splittedUrl, splittedUrl[1]?.includes("submitted"))
-     // SUCCESS
-     if (splittedUrl[1]?.includes("submitted")) {
-       let html = `🎉🎉🎉<br />Your meeting with one of our cnsultants has been scheduled successfully! <br /> <strong>Don't forget to add the date to your calendar</strong> `;
-       Swal.fire({
-        html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
-        });  
-      }
+        const datePicker = document.querySelector("[name='session_date']");
+const datePickerErrorEl = document.getElementById("session_date_error");
+const timePicker = document.querySelector("[name='session_time']");
+const timePickerErrorEl = document.getElementById("session_time_error");
+const form = document.querySelector("form");
+const submitBtn = form.querySelector(".submit-btn");
 
-      // DUPLICATE EVENT
-      const q = url.split("?")?.[1]?.split("=")[1];
+timePicker.addEventListener("change", ({ target }) => {
+  console.log(target.value);
+  if (target.value < "08:00" || target.value > "17:00") {
+    errorText.textContent = "Office opening hours are 08:00 AM to 5:00 PM";
+    timeInput.value = "12:00"; // Reset the input
+  } else errorText.textContent = "";
+});
 
-      if (q ===  "duplicate_event") {
-        let html = `😪<br /> Oops, someone chose that time already. Try selecting another time`;
-        Swal.fire({
-         html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`,
-         icon: "error"
-         });  
-       } 
-  
-  
+// FLOWBITE DATEPICKER DOES NOT SUPPORT ONCHANGE EVENT
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  handleSubmitBtnState(submitBtn);
+  const date = `${datePicker.value}T${timePicker.value}:00.000Z`
+  // add time selected to date
+  if (new Date(date) < new Date()) {
+    datePickerErrorEl.textContent = "You cannot select a past date";
+    datePicker.value = ""; // Reset the input
+    handleSubmitBtnState(submitBtn, false);
+  } else {
+    datePickerErrorEl.textContent = "";
+    const payload = {};
+    const inputEls = form.querySelectorAll("input");
+    inputEls.forEach((el) => (payload[el.name] = el.value));
+    payload.meeting_type = form.querySelector("select").value;
+
+    //return
+try{
+  const req = await fetch("", {
+    method: "POST",
+    body: JSON.stringify(payload),
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+      "X-CSRFToken": getCookie("csrftoken")
+    }
+  });
+
+  const res = await req.json();
+
+  handleSubmitBtnState(submitBtn, false);
+  // SUCCESS
+  if (res.status === "success") {
+    let html = `🎉🎉🎉<br />Your meeting with one of our consultants has been scheduled successfully! <br /> <strong>Don't forget to add the date to your calendar</strong> `;
+    Swal.fire({
+      html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
+    });
+    form.reset()
+  } else if (res.status === "failed" && res.type === "duplicate_event") {
+    let html = `<b>😪Oops</b><br />${res.message}`;
+    Swal.fire({
+      html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`,
+      icon: "error"
+    });
+  }
+}catch(err){
+  console.log(err)
+  Swal.fire({
+    html: `<h5 class='text-base mobile:text-sm'><b>Oops!</b> <br />An error occured! Please try again</h5>`,
+    icon: "error"
+  });
+}
+  }
+});
     </script>
   </body>
 </html>

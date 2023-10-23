@@ -8,11 +8,19 @@
                  class="shaded-down-arrow"
                  alt="" />
         </label>
-        {% render_field travel_assistance_form.country_of_origin class="input-style" placeholder="----------" %}
+        <select name="educational_level" class="input-style">
+            <option value="">----------</option>
+            <option value="PRIMARY">Primary</option>
+            <option value="SECONDARY">Secondary</option>
+            <option value="TERTIARY">Tertiary</option>
+        </select>
     </div>
     <div class="flex flex-col mb-5">
         <label for="" class="input-label">Name Of Institution</label>
-        {% render_field travel_assistance_form.fullname class="input-style" placeholder="----------" %}
+        <input type="text"
+               class="input-style"
+               placeholder="----------"
+               name="name_of_institution">
     </div>
     <div class="flex flex-col mb-5">
         <label for="" class="input-label">Date Attended</label>
@@ -20,7 +28,13 @@
             <div class="calendar">
                 <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
             </div>
-            {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+            <input type="date"
+                   name="date_attended"
+                   class="input-style w-full"
+                   placeholder="dd/mm/yyyy"
+                   datepicker
+                   datepicker-format="yyyy-mm-dd"
+                   datepicker-autohide>
         </div>
     </div>
     <div class="flex flex-col mb-5">
@@ -29,11 +43,20 @@
             <div class="calendar">
                 <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
             </div>
-            {% render_field travel_assistance_form.dob class="input-style w-full" placeholder="mm/dd/yyyy" datepicker="true" datepicker-autohide="true" %}
+            <input type="date"
+                   name="date_graduated"
+                   class="input-style w-full"
+                   placeholder="dd/mm/yyyy"
+                   datepicker
+                   datepicker-format="yyyy-mm-dd"
+                   datepicker-autohide>
         </div>
     </div>
     <div class="flex flex-col mb-5">
         <label for="" class="input-label">Institution Address</label>
-        {% render_field travel_assistance_form.fullname class="input-style" placeholder="e.g No. 54, Sule Abuka Opebi Ikeja, Lagos State" %}
+        <input type="text"
+               class="input-style"
+               placeholder="----------"
+               name="institution_address">
     </div>
 </li>
