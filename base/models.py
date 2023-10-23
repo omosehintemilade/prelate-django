@@ -4,7 +4,59 @@ from ckeditor.fields import RichTextField
 from django.urls import reverse
 
 
+TICKET_TYPE = (
+    ("ONE WAY", "ONE WAY"),
+    ("RETURN TICKET", "RETURN TICKET")
+)
+
+TICKET_CLASS = (
+    ("FIRST CLASS", "FIRST CLASS"),
+    ("BUSINESS", "BUSINESS"),
+    ("ECONOMY", "ECONOMY")
+)
+
+AIRPORT_PICKUP = (
+    ("YES", "YES"),
+    ("NO", "NO")
+)
+
+HOTEL_RESERVATION = (
+    ("YES", "YES"),
+    ("NO", "NO")
+)
+
+CURRENCY = (
+    ("USD", "USD"),
+    ("NGN", "NGN")
+)
+
+VISA_TYPE = (
+    ("STUDENT VISA", "Student Visa"),
+    ("WORK VISA", "Work Visa"),
+    ("TOURIST VISA", "Tourist Visa"),
+    ("BUSINESS VISA", "Business Visa")
+)
+
+ACCOMODATION_TYPE = (
+    ("SHARED", "Shared Apartment"),
+    ("STUDIO", "Studio Apartment"),
+    ("2 BEDROOM", "2 Bedroom Apartment")
+)
+
+TOUR_CATEGORY = (
+    ("INDIVIDUAL", "INDIVIDUAL"),
+    ("COUPLE", "COUPLE"),
+    ("FAMILY", "FAMILY"),
+    ("CORPORATE", "CORPORATE")
+)
+
+MEETING_TYPE = (
+    ("PHYSICAL", "PHYSICAL"),
+    ("VIRTUAL", "VIRTUAL")
+)
 # Create your models here.
+
+
 class CoveredCountry(models.Model):
     class Meta:
         verbose_name = "Covered Country"
@@ -81,6 +133,7 @@ class Consultation(models.Model):
     phonenumber = models.CharField(max_length=100)
     session_date = models.DateField()
     session_time = models.TimeField()
+    meeting_type = models.CharField(max_length=100, choices=MEETING_TYPE)
     datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -109,21 +162,6 @@ class TravelAssistance(models.Model):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
 
 
-VISA_TYPE = (
-    ("VISA ONE", "VISA ONE"),
-    ("VISA TWO", "VISA TWO"),
-    ("VISA THREE", "VISA THREE"),
-    ("VISA FOUR", "VISA FOUR")
-)
-
-ACCOMODATION_TYPE = (
-    ("ACCOMODATION ONE", "ACCOMODATION ONE"),
-    ("ACCOMODATION TWO", "ACCOMODATION TWO"),
-    ("ACCOMODATION THREE", "ACCOMODATION THREE"),
-    ("ACCOMODATION FOUR", "ACCOMODATION FOUR")
-)
-
-
 class PostArrivalService(models.Model):
     class Meta:
         verbose_name = "Post Arrival Service"
@@ -144,33 +182,6 @@ class PostArrivalService(models.Model):
 
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
-
-
-TICKET_TYPE = (
-    ("ONE WAY", "ONE WAY"),
-    ("RETURN TICKET", "RETURN TICKET")
-)
-
-TICKET_CLASS = (
-    ("FIRST CLASS", "FIRST CLASS"),
-    ("BUSINESS", "BUSINESS"),
-    ("ECONOMY", "ECONOMY")
-)
-
-AIRPORT_PICKUP = (
-    ("YES", "YES"),
-    ("NO", "NO")
-)
-
-HOTEL_RESERVATION = (
-    ("YES", "YES"),
-    ("NO", "NO")
-)
-
-CURRENCY = (
-    ("USD", "USD"),
-    ("NGN", "NGN")
-)
 
 
 class TravelBudget(models.Model):
@@ -249,14 +260,6 @@ class TourDealInterest(models.Model):
 
     def __str__(self):
         return "{} requests {}".format(self.fullname, self.deal)
-
-
-TOUR_CATEGORY = (
-    ("INDIVIDUAL", "INDIVIDUAL"),
-    ("COUPLE", "COUPLE"),
-    ("FAMILY", "FAMILY"),
-    ("CORPORATE", "CORPORATE")
-)
 
 
 class UsersCustomTourRequest(models.Model):

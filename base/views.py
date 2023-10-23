@@ -1,4 +1,5 @@
 import os
+import environ
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
@@ -16,12 +17,15 @@ from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm
 from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm
 
 
+env = environ.Env()
+
 def home(request):
-    return render(
-        request,
-        "index.html"
-    )
-    # return redirect("https://flights.prelatetravel.com/index.php")
+    # return render(
+    #     request,
+    #     "index.html"
+    # )
+    FLIGHT_APP_URL = env.str("FLIGHT_APP_URL")
+    return redirect(FLIGHT_APP_URL)
 
 
 def homeOld(request):
@@ -497,7 +501,7 @@ def book_consultation(request):
             # VALIDATE DATE
             session_date = form.cleaned_data['session_date']
             session_time = form.cleaned_data['session_time']
-            
+
             # Check if a session with the same datetime exists
             if Consultation.objects.filter(session_date=session_date, session_time=session_time).exists():
                 return redirect("/book-consultation#error?type=duplicate_event")

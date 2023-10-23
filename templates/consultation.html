@@ -57,6 +57,21 @@
               {% render_field form.session_time  class="input-style w-full" id="session_time" value="12:00" type="time" %}
               <span id="session_time_error" class="text-red-500 block"></span>
             </div>
+{% comment %} 
+            <div class="flex flex-col mb-5">
+              <label for="" class="input-label">Select meeting type</label>
+              {% render_field form.meeting_type  class="input-style w-full" %}
+            </div> {% endcomment %}
+
+            <div class="flex flex-col mb-5">
+              <label for="" class="input-label flex justify-between">
+                Select Meeting Type
+                <img src="{% static 'images/shaded-down-arrow.svg' %}"
+                     class="shaded-down-arrow"
+                     alt="" />
+              </label>
+              {% render_field form.meeting_type class="input-style" placeholder="----------" %}
+            </div>
             <button class="submit-btn">Submit Form</button>
           </form>
         </div>
@@ -100,7 +115,7 @@
      console.log(splittedUrl, splittedUrl[1]?.includes("submitted"))
      // SUCCESS
      if (splittedUrl[1]?.includes("submitted")) {
-       let html = `🎉🎉🎉<br />Your meeting with one of our Experts has been scheduled successfully! <br /> <strong>Don't forget to add the date to your calendar</strong> `;
+       let html = `🎉🎉🎉<br />Your meeting with one of our cnsultants has been scheduled successfully! <br /> <strong>Don't forget to add the date to your calendar</strong> `;
        Swal.fire({
         html: `<h5 class='text-base mobile:text-sm'>${html}</h5>`
         });  
