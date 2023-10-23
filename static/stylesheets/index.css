@@ -143,7 +143,7 @@ header .button {
 }
 
 .drawer-content ul li {
-  width: 150px;
+  width: 190px;
   border-top: 1px solid #2a4295;
   padding: 15px 0;
 }
@@ -161,13 +161,12 @@ header .button {
 
 .sub-menu {
   margin-left: 20px;
-  width: 130px !important;
-  width: 150px;
+  width: 170px !important;
 }
 .sub-menu.first {
   padding-left: 20px !important;
   margin-left: 0;
-  width: 150px !important;
+  width: 190px !important;
 }
 
 .drawer-open {
