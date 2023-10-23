@@ -22,7 +22,7 @@
   }
 
   .calendar {
-    @apply absolute inset-y-0 top-3 right-0 flex items-center pl-3.5 pointer-events-none mobile:top-0;
+    @apply absolute inset-y-0 top-3 right-0 flex items-center pl-3.5 pointer-events-none mobile:-top-[3px];
   }
 
   .form-title {

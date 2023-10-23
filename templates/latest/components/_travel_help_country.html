@@ -1,0 +1,17 @@
+{% if country %}
+    <div class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
+        <h4 class="font-normal text-2xl text-primary mt-5 mb-0.5 block md:text-base">
+            A sneak peak of {{ country.country_name }}
+        </h4>
+        <p>{{ country.information|safe }}</p>
+        <p class="font-medium">
+            Capital: <span class="capitalize">{{ country.capital_city }}</span>
+        </p>
+        <p class="font-medium">
+            Currency: <span class="uppercase">{{ country.currency }}</span>
+        </p>
+        <p class="font-medium">
+            Temperature: <span class="capitalize">{{ country.temperature }}</span>
+        </p>
+    </div>
+{% endif %}

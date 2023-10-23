@@ -56,12 +56,10 @@ MEETING_TYPE = (
     ("VIRTUAL", "VIRTUAL")
 )
 
-
 GENDER_TYPE = (
     ("MALE", "MALE"),
     ("FEMALE", "FEMALE"),
 )
-
 
 MARITAL_STATUS_TYPE = (
     ("SINGLE", "SINGLE"),
@@ -75,6 +73,7 @@ EDUCATIONAL_LEVEL_TYPE = (
     ("SECONDARY", "SECONDARY"),
     ("TERTIARY", "TERTIARY"),
 )
+
 # Create your models here.
 
 
@@ -310,11 +309,12 @@ class PostArrivalService(models.Model):
     document = models.ImageField(
         upload_to="static/uploads/post-arrival-services", null=True, blank=True)
     arrival_date = models.DateField()
-    datetime_of_entry = models.DateTimeField(auto_now_add=True)
     final_destination = models.ForeignKey(
         CoveredCountry, on_delete=models.PROTECT, related_name="post_arrival_services_destination")
     accomodation_type = models.CharField(
         max_length=200, choices=ACCOMODATION_TYPE)
+    time_of_arrival = models.TimeField()
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return "{} | Time of Record:{}".format(self.email, str(self.datetime_of_entry)[:16])
