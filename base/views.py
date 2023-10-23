@@ -20,14 +20,13 @@ from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChan
 
 
 env = environ.Env()
-
+FLIGHT_APP_URL = env.str("FLIGHT_APP_URL")
 
 def home(request):
     # return render(
     #     request,
     #     "index.html"
     # )
-    FLIGHT_APP_URL = env.str("FLIGHT_APP_URL")
     return redirect(FLIGHT_APP_URL)
 
 
@@ -43,7 +42,7 @@ def reservations(request):
     #     request,
     #     "reservations.html"
     # )
-    return redirect(os.environ["PRELATE_FLIGHT_APP"]+"/reservations.php")
+    return redirect(FLIGHT_APP_URL+"/reservations.php")
 
 
 def travel_helpOld(request):
@@ -76,7 +75,6 @@ def travel_helpOld(request):
                         "travel_assistance_form": TravelAssistanceForm(),
                         "travel_budget_form": TravelBudgetForm(),
                         "request_change_form": RequestChangeForm()
-
                     }
                 )
             else:
@@ -89,7 +87,6 @@ def travel_helpOld(request):
                         "travel_assistance_form": TravelAssistanceForm(),
                         "travel_budget_form": TravelBudgetForm(),
                         "request_change_form": RequestChangeForm()
-
                     }
                 )
 
