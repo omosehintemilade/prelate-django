@@ -375,6 +375,7 @@ class TourDeal(models.Model):
     country = models.CharField(max_length=50,  null=True)
     currency = models.CharField(max_length=3, choices=CURRENCY, null=True)
     amount = models.IntegerField(null=True)
+    number_of_travellers = models.IntegerField(null=True, default=1)
     deal_image = models.ImageField(upload_to="tours/")
     slug = AutoSlugField(populate_from="deal_name")
     information = RichTextField(blank=True)
