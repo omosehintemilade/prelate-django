@@ -3,11 +3,15 @@
         <li>
             {% if data.has_previous %}
                 <a href="?page={{ data.previous_page_number }}"
-                   class="pagination-item ml-0 bg-white rounded-l-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
+                   class="pagination-item ml-0 bg-white rounded-l-lg hover:bg-gray-100 hover:text-gray-700">
+                    {% include "latest/components/_angle.html" %}
+                </a>
             {% else %}
                 {% comment %} SHOW DISABLED BUTTON {% endcomment %}
                 <button disabled
-                        class="pagination-item ml-0 rounded-l-lg bg-gray-100 cursor-not-allowed">Previous</button>
+                        class="pagination-item ml-0 rounded-l-lg bg-gray-100 cursor-not-allowed">
+                    {% include "latest/components/_angle.html" %}
+                </button>
             {% endif %}
         </li>
         {% for num in data.paginator.page_range %}
@@ -20,11 +24,15 @@
         <li>
             {% if data.has_next %}
                 <a href="?page={{ data.next_page_number }}"
-                   class="pagination-item bg-white rounded-r-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
+                   class="pagination-item bg-white rounded-r-lg hover:bg-gray-100 hover:text-gray-700">
+                    {% include "latest/components/_angle.html" with custom_class="rotate-180" %}
+                </a>
             {% else %}
                 {% comment %} SHOW DISABLED BUTTON {% endcomment %}
                 <button disabled
-                        class="pagination-item rounded-r-lg bg-gray-100 cursor-not-allowed">Next</button>
+                        class="pagination-item rounded-r-lg bg-gray-100 cursor-not-allowed">
+                    {% include "latest/components/_angle.html" with custom_class="rotate-180" %}
+                </button>
             {% endif %}
         </li>
     </ul>

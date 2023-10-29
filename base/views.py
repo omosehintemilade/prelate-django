@@ -373,11 +373,23 @@ def post_arrival_services(request):
 
 
 def tour(request):
+    deals = TourDeal.objects.all().order_by('datetime_of_entry')
+    paginator = Paginator(deals, 10)  # 10 posts per page
+    page = request.GET.get('page')
+
+    try:
+        deals = paginator.page(page)
+    except PageNotAnInteger:
+        deals = paginator.page(1)
+    except EmptyPage:
+        deals = paginator.page(1)
+
+    print(deals)
     return render(
         request,
         "tour.html",
         context={
-            "deals": TourDeal.objects.all()
+            "deals": deals
         }
     )
 
@@ -388,7 +400,6 @@ def tourOld(request):
         "tour-old.html",
         context={
             "deals": TourDeal.objects.all()
-
         }
     )
 
@@ -498,7 +509,7 @@ def become_affiliate(request):
 
 
 def blog(request):
-    posts = BlogPost.objects.all().order_by('datetime_of_entry')
+    posts = BlogPost.objects.filter(publish=True).order_by('datetime_of_entry')
     paginator = Paginator(posts, 10)  # 10 posts per page
     page = request.GET.get('page')
 

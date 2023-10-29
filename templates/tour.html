@@ -10,17 +10,9 @@
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <!-- Hero Section -->
-    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
-      <div class="flex items-end h-full">
-        <div class="h-2/4 flex items-end gradient-blue w-full">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h3 class="page-title">Tour Deals</h3>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--  Tour card Section Bgig Screen-->
+    {# djlint:off #}
+    {% include "latest/components/_page_banner.html" with title="Tour Deals" custom_class="h-[40vh] tour-hero-bg" gradient="blue" %}
+    {# djlint:on #}
     <section class="container__inner_layout">
       <div class="mt-20 tablet:mt-6">
         <div class="grid grid-cols-3 gap-x-10 gap-y-5 mobile:grid-cols-1">
@@ -41,6 +33,7 @@
             </a>
           {% endfor %}
         </div>
+        {% include "latest/components/_pagination.html" with data=deals %}
         <div class="mt-10 text-base mobile:text-sm">
           <span class="text-primary font-semibold">Can't find a suitable deal?</span>
           <a href="{% url 'customize-tour' %}"
