@@ -986,6 +986,18 @@ input:checked + .toggle-bg {
   }
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 .visible {
   visibility: visible;
 }
@@ -1600,10 +1612,6 @@ input:checked + .toggle-bg {
 
 .max-w-\[965px\] {
   max-width: 965px;
-}
-
-.max-w-sm {
-  max-width: 24rem;
 }
 
 .max-w-xs {
@@ -3186,12 +3194,28 @@ input:checked + .toggle-bg {
     height: 40vh;
   }
 
+  .mobile\:h-2 {
+    height: 0.5rem;
+  }
+
+  .mobile\:h-2\.5 {
+    height: 0.625rem;
+  }
+
   .mobile\:w-11\/12 {
     width: 91.666667%;
   }
 
   .mobile\:w-full {
     width: 100%;
+  }
+
+  .mobile\:w-2 {
+    width: 0.5rem;
+  }
+
+  .mobile\:w-2\.5 {
+    width: 0.625rem;
   }
 
   .mobile\:grid-cols-1 {
