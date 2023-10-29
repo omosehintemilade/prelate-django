@@ -551,14 +551,23 @@ hr.f-border {
 
 /* BLOG POST */
 .article > * {
-  margin: 13px 0;
+  margin: 16px 0;
+  font-size: 14px !important;
+  line-height: 27px !important;
 }
 
 .article > p,
 .article > div {
   text-align: justify;
 }
+
 @media screen and (max-width: 768px) {
+  /* BLOG POST */
+  .article > * {
+    font-size: 12px !important;
+    line-height: 24px !important;
+  }
+
   .hero-image {
     /* background here */
     height: 80px;
