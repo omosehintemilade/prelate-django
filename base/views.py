@@ -374,7 +374,7 @@ def post_arrival_services(request):
 
 def tour(request):
     deals = TourDeal.objects.all().order_by('datetime_of_entry')
-    paginator = Paginator(deals, 1)  # 10 posts per page
+    paginator = Paginator(deals, 10)  # 10 posts per page
     page = request.GET.get('page')
 
     try:
@@ -383,7 +383,7 @@ def tour(request):
         deals = paginator.page(1)
     except EmptyPage:
         deals = paginator.page(1)
-    
+
     print(deals)
     return render(
         request,
@@ -400,7 +400,6 @@ def tourOld(request):
         "tour-old.html",
         context={
             "deals": TourDeal.objects.all()
-
         }
     )
 
