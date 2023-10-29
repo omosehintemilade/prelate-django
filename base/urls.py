@@ -34,6 +34,8 @@ urlpatterns = [
     path('become-affiliate-old', views.become_affiliate_old,
          name="become-affiliate-old"),
     path("contact-us", views.contact_us, name="contact-us"),
+    path("blog", views.blog, name="blog"),
+    path('blog/<int:pk>/<slug:slug>', views.blog_post, name="post"),
     path("contact-us-old", views.contact_us_old, name="contact-us-old"),
     path("book-consultation", views.book_consultation, name="book-consultation"),
     path("faq", views.faq, name="faq"),

@@ -1,0 +1,31 @@
+<nav class="mt-10 flex justify-end">
+    <ul class="inline-flex -space-x-px text-base h-10">
+        <li>
+            {% if data.has_previous %}
+                <a href="?page={{ data.previous_page_number }}"
+                   class="pagination-item ml-0 bg-white rounded-l-lg hover:bg-gray-100 hover:text-gray-700">Previous</a>
+            {% else %}
+                {% comment %} SHOW DISABLED BUTTON {% endcomment %}
+                <button disabled
+                        class="pagination-item ml-0 rounded-l-lg bg-gray-100 cursor-not-allowed">Previous</button>
+            {% endif %}
+        </li>
+        {% for num in data.paginator.page_range %}
+            <li>
+                <a href="?page={{ num }}"
+                   {% if num == data.number %}aria-current="page"{% endif %}
+                   class="pagination-item  {% if num == data.number %} active {% else %} inactive {% endif %}">{{ num }}</a>
+            </li>
+        {% endfor %}
+        <li>
+            {% if data.has_next %}
+                <a href="?page={{ data.next_page_number }}"
+                   class="pagination-item bg-white rounded-r-lg hover:bg-gray-100 hover:text-gray-700">Next</a>
+            {% else %}
+                {% comment %} SHOW DISABLED BUTTON {% endcomment %}
+                <button disabled
+                        class="pagination-item rounded-r-lg bg-gray-100 cursor-not-allowed">Next</button>
+            {% endif %}
+        </li>
+    </ul>
+</nav>

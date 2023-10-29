@@ -548,6 +548,16 @@ hr.f-border {
 .travel-info-nav-mobile {
   display: none;
 }
+
+/* BLOG POST */
+.article > * {
+  margin: 13px 0;
+}
+
+.article > p,
+.article > div {
+  text-align: justify;
+}
 @media screen and (max-width: 768px) {
   .hero-image {
     /* background here */

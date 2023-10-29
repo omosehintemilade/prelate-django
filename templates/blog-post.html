@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    {% include "latest/partials/_head.html" with add_title="Blogs | Prelate Travels & Tours" %}
+  </head>
+  <body>
+    <!-- HEADER -->
+    {% include "latest/components/_header.html" %}
+    <!-- CAROUSEL SECTION MOBILE -->
+    {% include "latest/components/_mobile_carousel.html" %}
+    <!-- CAROUSEL SECTION MOBILE END-->
+    {# djlint:off #}
+    {% include "latest/components/_page_banner.html" with title=post.title custom_class="h-[60vh]" background_image_url=post.banner_image.url gradient="black" %}
+    {# djlint:on #}
+    <section class="container__inner_layout">
+      <div class="mt-8 tablet:mt-5 article">{{ post.article|safe }}</div>
+    </section>
+    {% include "latest/components/_footer.html" %}
+    {% include "latest/partials/_scripts.html" %}
+  </body>
+</html>

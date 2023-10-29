@@ -28,19 +28,13 @@
             <a href="{{ deal.get_absolute_url }}">
               <div class="h-80 w-full flex items-end rounded-t-[4px] mobile:h-40"
                    style="background: url({{ deal.deal_image.url }})">
-                <div class="h-2/3 w-full bg-no-repeat bg-cover max-w-sm flex items-end gradient-black">
+                <div class="h-2/3 w-full bg-no-repeat bg-cover flex items-end gradient-black">
                   <p class="mb-5 ml-2.5 text-white font-bold text-lg">{{ deal.deal_name }}</p>
                 </div>
               </div>
               <div class="flex justify-between items-center">
                 <p class="my-1.5 mx-0.5 text-[#2D3A6E] font-semibold mobile:text-sm mobile:font-medium">
-                  <span class="figure">{{ deal.amount }}</span> <span>
-                    {% if deal.currency == "USD" %}
-                      US Dollars
-                    {% else %}
-                      Naira
-                    {% endif %}
-                  </span>
+                  <span class="figure">{{ deal.amount }}</span> <span>{{ deal.currency }}</span>
                 </p>
                 <small class="text-gray-500 mobile:text-xxs">for {{ deal.number_of_travellers }} person(s)</small>
               </div>
