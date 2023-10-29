@@ -379,13 +379,29 @@ class TourDeal(models.Model):
     deal_image = models.ImageField(upload_to="tours/")
     slug = AutoSlugField(populate_from="deal_name")
     information = RichTextField(blank=True)
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.deal_name
 
     def get_absolute_url(self):
-        print(self)
         return reverse('tour-deal', args=[self.id, self.slug])
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200)
+    article = RichTextField(blank=True)
+    banner_image = models.ImageField(upload_to="posts/")
+    preview_image = models.ImageField(upload_to="posts/")
+    publish = models.BooleanField(default=False)
+    slug = AutoSlugField(populate_from="title")
+    datetime_of_entry = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return "{} | Time of Record:{}".format(self.title, str(self.datetime_of_entry)[:16])
+
+    def url(self):
+        return reverse('post', args=[self.id, self.slug])
 
 
 class TourDealInterest(models.Model):

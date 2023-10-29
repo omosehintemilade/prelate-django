@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% load static %}
+    {% include "latest/partials/_head.html" with add_title="Blogs | Prelate Travels & Tours" %}
+  </head>
+  <body>
+    <!-- HEADER -->
+    {% include "latest/components/_header.html" %}
+    {% include "latest/components/_mobile_carousel.html" %}
+    {% include "latest/components/_page_banner.html" with title="Read and learn more about travels" custom_class="bg-primary bg-opacity-60" gradient="blue" %}
+    <section class="container__inner_layout ">
+      <div class="mt-5 tablet:mt-3">
+        <div class="grid grid-cols-2 gap-5 mobile:grid-cols-1">
+          {% for post in posts %}
+            <a href="{{ post.url }}">
+              <div class="h-96 w-full flex items-end rounded-lg mobile:h-48"
+                   style="background: url({{ post.preview_image.url }})">
+                <div class="h-2/3 w-full bg-no-repeat bg-cover flex items-end gradient-black rounded-b-lg">
+                  <p class="ml-5 mb-16 text-white font-bold text-lg mobile:mb-8">{{ post.title }}</p>
+                </div>
+              </div>
+            </a>
+          {% endfor %}
+        </div>
+        {% include "latest/components/_pagination.html" with data=posts %}
+      </div>
+    </section>
+    {% include "latest/components/_footer.html" %}
+    {% include "latest/partials/_scripts.html" %}
+  </body>
+</html>

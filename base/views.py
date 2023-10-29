@@ -3,17 +3,19 @@ import environ
 import json
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.http import JsonResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.db.models import Sum, Q
+
 from .models import CoveredCountry, TravelInformation, TourDeal, TravelAssistance, TravelInsurance
 from .models import CustomerReferralRecord, Consultation, VisaAssistance, Education
-from .models import ApplicationInformation, Relationship, OtherInformation
-from django.http import JsonResponse, HttpResponseRedirect
+from .models import ApplicationInformation, Relationship, OtherInformation, BlogPost
 from acctmang.models import User, Profile, UserTransactionRecord, UserEarnings
-from django.contrib.auth.decorators import login_required
 from acctmang.forms import EditProfileInformation
 import datetime
 import calendar
 import decimal
-from django.db.models import Sum, Q
 import requests
 from .forms import TravelInformationForm, TravelAssistanceForm, TravelBudgetForm, PostArrivalServiceForm, CustomerServiceForm
 from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChangeForm, TravelInsuranceForm, NewsletterSubscriberForm, VisaAssistanceForm
@@ -21,6 +23,7 @@ from .forms import UsersCustomTourRequestForm, TourDealInterestForm, RequestChan
 
 env = environ.Env()
 FLIGHT_APP_URL = env.str("FLIGHT_APP_URL")
+
 
 def home(request):
     # return render(
@@ -491,6 +494,35 @@ def become_affiliate(request):
     return render(
         request,
         "become-affiliate.html"
+    )
+
+
+def blog(request):
+    posts = BlogPost.objects.all().order_by('datetime_of_entry')
+    paginator = Paginator(posts, 10)  # 10 posts per page
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(1)
+
+    return render(
+        request,
+        "blog.html",
+        context={"posts": posts}
+    )
+
+
+def blog_post(request, pk, slug):
+    post = BlogPost.objects.filter(id=pk, slug=slug).first()
+    banner_image = post.banner_image.url
+    return render(
+        request,
+        "blog-post.html",
+        context={"post": post, "banner_image": banner_image}
     )
 
 

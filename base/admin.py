@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import CoveredCountry, TravelInformation, TravelAssistance, TravelInsurance, PostArrivalService, CustomerService
 from .models import TourDeal, TravelBudget, UsersCustomTourRequest, TourDealInterest, NewsletterSubscriber
 from .models import RequestChange, CustomerReferralRecord, Consultation, VisaAssistance, Education
-from .models import ApplicationInformation, Relationship, OtherInformation
+from .models import ApplicationInformation, Relationship, OtherInformation, BlogPost
 
 admin.site.register(CoveredCountry)
 admin.site.register(TravelInformation)
@@ -18,6 +18,7 @@ admin.site.register(PostArrivalService)
 admin.site.register(CustomerService)
 admin.site.register(NewsletterSubscriber)
 admin.site.register(Consultation)
+admin.site.register(BlogPost)
 
 # VISA ASSISTANCE
 

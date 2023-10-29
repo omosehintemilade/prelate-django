@@ -1198,6 +1198,10 @@ input:checked + .toggle-bg {
   margin-bottom: 3.5rem;
 }
 
+.mb-16 {
+  margin-bottom: 4rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -1370,6 +1374,10 @@ input:checked + .toggle-bg {
   display: flex;
 }
 
+.inline-flex {
+  display: inline-flex;
+}
+
 .table {
   display: table;
 }
@@ -1396,6 +1404,10 @@ input:checked + .toggle-bg {
 
 .h-1 {
   height: 0.25rem;
+}
+
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-12 {
@@ -1446,6 +1458,10 @@ input:checked + .toggle-bg {
   height: 20rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-\[15vh\] {
   height: 15vh;
 }
@@ -1484,6 +1500,10 @@ input:checked + .toggle-bg {
 
 .h-full {
   height: 100%;
+}
+
+.max-h-\[700px\] {
+  max-height: 700px;
 }
 
 .w-1 {
@@ -1816,6 +1836,12 @@ input:checked + .toggle-bg {
   row-gap: 1.25rem;
 }
 
+.-space-x-px > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(-1px * var(--tw-space-x-reverse));
+  margin-left: calc(-1px * calc(1 - var(--tw-space-x-reverse)));
+}
+
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
   margin-right: calc(0.5rem * var(--tw-space-x-reverse));
@@ -1865,6 +1891,11 @@ input:checked + .toggle-bg {
 
 .rounded-sm {
   border-radius: 0.125rem;
+}
+
+.rounded-b-lg {
+  border-bottom-right-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 
 .rounded-l-lg {
@@ -1992,6 +2023,11 @@ input:checked + .toggle-bg {
   background-color: #ffff;
 }
 
+.bg-blue-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 245 255 / var(--tw-bg-opacity));
+}
+
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(26 86 219 / var(--tw-bg-opacity));
@@ -2033,6 +2069,10 @@ input:checked + .toggle-bg {
 
 .bg-opacity-50 {
   --tw-bg-opacity: 0.5;
+}
+
+.bg-opacity-60 {
+  --tw-bg-opacity: 0.6;
 }
 
 .bg-cover {
@@ -2406,6 +2446,10 @@ input:checked + .toggle-bg {
 
 .leading-\[84px\] {
   line-height: 84px;
+}
+
+.leading-tight {
+  line-height: 1.25;
 }
 
 .\!text-primary {
@@ -2795,6 +2839,49 @@ input:checked + .toggle-bg {
   }
 }
 
+.pagination-item {
+  display: flex;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  padding-left: 1rem;
+  padding-right: 1rem;
+  line-height: 1.25;
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.pagination-item.inactive {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.pagination-item.inactive:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
+}
+
+.pagination-item.active {
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(235 245 255 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(28 100 242 / var(--tw-text-opacity));
+}
+
+.pagination-item.active:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 239 254 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(26 86 219 / var(--tw-text-opacity));
+}
+
 /* SWIPER */
 
 .swipper-nav-btn {
@@ -2847,6 +2934,11 @@ input:checked + .toggle-bg {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
+.hover\:bg-blue-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(225 239 254 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
@@ -2872,9 +2964,19 @@ input:checked + .toggle-bg {
   color: rgb(28 100 242 / var(--tw-text-opacity));
 }
 
+.hover\:text-blue-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(26 86 219 / var(--tw-text-opacity));
+}
+
 .hover\:text-gray-600:hover {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
+}
+
+.hover\:text-gray-700:hover {
+  --tw-text-opacity: 1;
+  color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-900:hover {
@@ -3044,6 +3146,10 @@ input:checked + .toggle-bg {
     margin-bottom: 1.5rem;
   }
 
+  .mobile\:mb-8 {
+    margin-bottom: 2rem;
+  }
+
   .mobile\:ml-0 {
     margin-left: 0px;
   }
@@ -3070,6 +3176,10 @@ input:checked + .toggle-bg {
 
   .mobile\:h-40 {
     height: 10rem;
+  }
+
+  .mobile\:h-48 {
+    height: 12rem;
   }
 
   .mobile\:h-\[40vh\] {
@@ -3233,6 +3343,10 @@ input:checked + .toggle-bg {
 
   .tablet\:mb-6 {
     margin-bottom: 1.5rem;
+  }
+
+  .tablet\:mt-3 {
+    margin-top: 0.75rem;
   }
 
   .tablet\:mt-5 {
