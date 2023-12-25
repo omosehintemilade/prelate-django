@@ -67,10 +67,12 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'acctmang.apps.AcctmangConfig',
-    'watchdog',
     'compressor',
-    'livereload',
 ]
+
+# Update INSTALLED_APPS list in development mode
+if DEBUG:
+    INSTALLED_APPS += ['watchdog', 'livereload']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
