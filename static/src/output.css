@@ -986,18 +986,6 @@ input:checked + .toggle-bg {
   }
 }
 
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
 .visible {
   visibility: visible;
 }
@@ -2031,11 +2019,6 @@ input:checked + .toggle-bg {
   background-color: #ffff;
 }
 
-.bg-blue-50 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(235 245 255 / var(--tw-bg-opacity));
-}
-
 .bg-blue-700 {
   --tw-bg-opacity: 1;
   background-color: rgb(26 86 219 / var(--tw-bg-opacity));
@@ -2454,10 +2437,6 @@ input:checked + .toggle-bg {
 
 .leading-\[84px\] {
   line-height: 84px;
-}
-
-.leading-tight {
-  line-height: 1.25;
 }
 
 .\!text-primary {
@@ -2942,11 +2921,6 @@ input:checked + .toggle-bg {
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
-.hover\:bg-blue-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(225 239 254 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-blue-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(30 66 159 / var(--tw-bg-opacity));
@@ -2970,11 +2944,6 @@ input:checked + .toggle-bg {
 .hover\:text-blue-600:hover {
   --tw-text-opacity: 1;
   color: rgb(28 100 242 / var(--tw-text-opacity));
-}
-
-.hover\:text-blue-700:hover {
-  --tw-text-opacity: 1;
-  color: rgb(26 86 219 / var(--tw-text-opacity));
 }
 
 .hover\:text-gray-600:hover {
@@ -3178,6 +3147,14 @@ input:checked + .toggle-bg {
     display: none;
   }
 
+  .mobile\:h-2 {
+    height: 0.5rem;
+  }
+
+  .mobile\:h-2\.5 {
+    height: 0.625rem;
+  }
+
   .mobile\:h-2\/4 {
     height: 50%;
   }
@@ -3194,20 +3171,8 @@ input:checked + .toggle-bg {
     height: 40vh;
   }
 
-  .mobile\:h-2 {
-    height: 0.5rem;
-  }
-
-  .mobile\:h-2\.5 {
-    height: 0.625rem;
-  }
-
   .mobile\:w-11\/12 {
     width: 91.666667%;
-  }
-
-  .mobile\:w-full {
-    width: 100%;
   }
 
   .mobile\:w-2 {
@@ -3216,6 +3181,10 @@ input:checked + .toggle-bg {
 
   .mobile\:w-2\.5 {
     width: 0.625rem;
+  }
+
+  .mobile\:w-full {
+    width: 100%;
   }
 
   .mobile\:grid-cols-1 {

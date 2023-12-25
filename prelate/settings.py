@@ -178,6 +178,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
+# COMPRESSOR CONFIG
 COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 COMPRESS_ENABLED = True
 
