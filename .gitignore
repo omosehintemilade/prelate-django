@@ -141,3 +141,6 @@ install-pyenv-win.ps1
 node_modules
 package-lock.json
 yarn.lock
+
+# staticfiles 
+staticfiles

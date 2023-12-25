@@ -14,7 +14,6 @@ import os
 import django_heroku
 import dj_database_url
 import environ
-from pathlib import Path
 
 env = environ.Env(
     ENV=(str, "production")
@@ -24,7 +23,6 @@ env = environ.Env(
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-print("ENV: ", env("ENV"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -34,18 +32,21 @@ CLOUDINARY_API_KEY = env('CLOUDINARY_API_KEY')
 CLOUDINARY_API_SECRET = env('CLOUDINARY_API_SECRET')
 CLOUDINARY_CLOUDNAME = env('CLOUDINARY_CLOUDNAME')
 
+
+ALLOWED_HOSTS = []
+
 # SECURITY WARNING: don't run with debug turned on in production!
 if env('ENV').lower() != 'production':
-    # DEBUG = False
     DEBUG = True
+    print("non-prod environment")
 else:
+    print("prod environment")
     DEBUG = False
-
-ALLOWED_HOSTS = ["*"]
-
+    RENDER_EXTERNAL_HOSTNAME = env('RENDER_EXTERNAL_HOSTNAME')
+    if RENDER_EXTERNAL_HOSTNAME:
+        ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -96,7 +97,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'base.context_processors.footer_form',
-
             ],
         },
     },
@@ -104,7 +104,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'prelate.wsgi.application'
 
-# CLOUDINARY_URL = f'cloudinary://{CLOUDINARY_API_KEY}:{CLOUDINARY_API_SECRET}@{CLOUDINARY_CLOUDNAME}'
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': CLOUDINARY_CLOUDNAME,
     'API_KEY': CLOUDINARY_API_KEY,
@@ -112,26 +111,6 @@ CLOUDINARY_STORAGE = {
 }
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-
-# if env('ENV').lower() != 'production':
-#     print("connecting to dev database...")
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'NAME': 'prelate',
-#             'USER': 'postgres',
-#             'PASSWORD': 'password',
-#             'HOST': '127.0.0.1',
-#             'PORT': '5432',
-#         }
-#     }
-# else:
-#    print("connecting to prod database...")
-#    DATABASES ={
-#        'default': dj_database_url.parse(env('DATABASE_URL'))
-#    }
-
 DATABASES = {
     'default': dj_database_url.parse(env('DATABASE_URL'))
 }
@@ -194,8 +173,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-
-print(STATIC_ROOT, STATICFILES_DIRS, STATIC_URL)
 COMPRESS_ROOT = os.path.join(BASE_DIR, 'static')
 COMPRESS_ENABLED = True
 
