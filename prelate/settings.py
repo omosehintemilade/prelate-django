@@ -35,7 +35,9 @@ CLOUDINARY_API_SECRET = env('CLOUDINARY_API_SECRET')
 CLOUDINARY_CLOUDNAME = env('CLOUDINARY_CLOUDNAME')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1"
+]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ENVIRONMENT != 'production':
@@ -80,6 +82,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 if DEBUG:
