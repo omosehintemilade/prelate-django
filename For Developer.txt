@@ -1,10 +1,14 @@
 Dear Developer! I'll try to leave all heads up that I can find in this project here
 
 The Tailwind Setup in this project is using desktop first setup. 
-Using any Python version > 3.8 will introduce breaking changes to the application
+
+Using any Python version > 3.8 will introduce breaking changes to the application; Proceed at your own peril
+
 Install Psql before setting your application on your system
+
 To save you from heart attack, JS files rarely throws error - exception being when 
  - it's a syntax error
  - if it's a selection error
 
- Why? I dunno
+Before pushing your application, make sure that you have your compresed css files ready in the codebase. 
+

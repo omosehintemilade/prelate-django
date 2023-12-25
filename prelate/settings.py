@@ -35,9 +35,7 @@ CLOUDINARY_API_SECRET = env('CLOUDINARY_API_SECRET')
 CLOUDINARY_CLOUDNAME = env('CLOUDINARY_CLOUDNAME')
 
 
-ALLOWED_HOSTS = [
-    "127.0.0.1"
-]
+ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ENVIRONMENT != 'production':
@@ -45,7 +43,9 @@ if ENVIRONMENT != 'production':
     print("non-prod environment")
 else:
     print("prod environment")
+    ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
     DEBUG = False
+    # FROM RENDER
     RENDER_EXTERNAL_HOSTNAME = env('RENDER_EXTERNAL_HOSTNAME')
     if RENDER_EXTERNAL_HOSTNAME:
         ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -198,9 +198,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.zoho.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "sales@prelatetravel.com"
+EMAIL_HOST_USER = env.str("EMAIL_HOST_USER")
 DEFAULT_FROM_EMAIL = "sales@prelatetravel.com"
-EMAIL_HOST_PASSWORD = "Stop@now1"
+EMAIL_HOST_PASSWORD = env.str("EMAIL_HOST_PASSWORD")
 
 SITE_ID = 1
 # django-allauth registration settings
