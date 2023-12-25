@@ -4,7 +4,8 @@ import json
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.http import JsonResponse, HttpResponseRedirect
+from django.http import JsonResponse, HttpResponseRedirect, HttpResponse
+
 from django.contrib.auth.decorators import login_required
 from django.db.models import Sum, Q
 
@@ -854,3 +855,17 @@ def referral(request):
         request,
         "referral-form.html"
     )
+
+
+def read_file(request):
+    # Assuming the file is in the same directory as the views.py file
+    file_full_path = os.path.join(os.path.dirname(
+        os.path.dirname(__file__)), env.str("ENV") + ".log")
+    print(file_full_path)
+
+    try:
+        with open(file_full_path, 'r') as file:
+            file_content = file.read()
+            return HttpResponse(file_content, content_type='text/plain')
+    except FileNotFoundError:
+        return HttpResponse("File not found", status=404)

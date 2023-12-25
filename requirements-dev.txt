@@ -1,4 +1,4 @@
-# pip install -r requirements.txt -r requirements-dev.txt
+# pip install -r requirements-dev.txt
 
 -r requirements.txt
 autopep8==2.0.2

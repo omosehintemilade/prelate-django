@@ -19,6 +19,8 @@ env = environ.Env(
     ENV=(str, "production")
 )
 
+ENVIRONMENT = env('ENV').lower()
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,7 +39,7 @@ CLOUDINARY_CLOUDNAME = env('CLOUDINARY_CLOUDNAME')
 ALLOWED_HOSTS = []
 
 # SECURITY WARNING: don't run with debug turned on in production!
-if env('ENV').lower() != 'production':
+if ENVIRONMENT != 'production':
     DEBUG = True
     print("non-prod environment")
 else:
@@ -232,10 +234,7 @@ django_heroku.settings(locals())
 
 
 # LOGGER
-if DEBUG:
-    LOGGER_FILE = "local.log"
-else:
-    LOGGER_FILE = "production.log"
+LOGGER_FILE = f"{ENVIRONMENT}.log"
 
 LOGGING = {
     'version': 1,
