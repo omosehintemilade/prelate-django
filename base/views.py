@@ -869,3 +869,25 @@ def read_file(request):
             return HttpResponse(file_content, content_type='text/plain')
     except FileNotFoundError:
         return HttpResponse("File not found", status=404)
+
+
+def health_check(request):
+    try:
+        # Count the number of users in the database - This is to test db connection
+        User.objects.count()
+
+        # Return a success response with the user count
+        response_data = {
+            'status': 'success',
+            'message': 'Health check passed',
+        }
+        return JsonResponse(response_data, status=200)
+
+    except Exception as e:
+        # Return an error response if an exception occurs
+
+        response_data = {
+            'status': 'error',
+            'message': 'Health check failed',
+        }
+        return JsonResponse(response_data, status=500)

@@ -59,5 +59,6 @@ urlpatterns = [
     path('privacy-policy-old', views.privacy_policy_old, name="privacy-policy-old"),
     path('referrals', views.referral, name="referral"),
     path('newsletters', views.subscribe_to_newsletter, name="newsletters"),
-    path('logs/', views.read_file, name='read-log-file'),
+    path('logs/', views.read_file, name='read-log-files'),
+    path('health-check/', views.health_check, name='health-check')
 ]

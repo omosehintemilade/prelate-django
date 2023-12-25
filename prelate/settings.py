@@ -14,16 +14,15 @@ import os
 import dj_database_url
 import environ
 
-env = environ.Env(
-    ENV=(str, "production")
-)
+env = environ.Env()
 
-ENVIRONMENT = env('ENV').lower()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+ENVIRONMENT = env('ENV').lower()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
