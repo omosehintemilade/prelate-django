@@ -71,9 +71,6 @@ INSTALLED_APPS = [
     'compressor',
 ]
 
-# Update INSTALLED_APPS list in development mode
-if DEBUG:
-    INSTALLED_APPS += ['watchdog', 'livereload']
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -83,9 +80,14 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'livereload.middleware.LiveReloadScript',
-
 ]
+
+if DEBUG:
+    # Update INSTALLED_APPS list in development mode
+    INSTALLED_APPS += ['watchdog', 'livereload']
+
+    # Update MIDDLEWARE list in development mode
+    MIDDLEWARE += ['livereload.middleware.LiveReloadScript']
 
 ROOT_URLCONF = 'prelate.urls'
 
