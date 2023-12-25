@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import django_heroku
 import dj_database_url
 import environ
 
@@ -230,9 +229,6 @@ ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_FORMS = {'signup': 'base.forms.MyCustomSignupForm'}
-
-django_heroku.settings(locals())
-
 
 # LOGGER
 LOGGER_FILE = f"{ENVIRONMENT}.log"
