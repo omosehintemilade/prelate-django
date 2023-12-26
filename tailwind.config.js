@@ -22,6 +22,9 @@ module.exports = {
       },
       fontSize: {
         xxs: "10px"
+      },
+      backgroundPosition: {
+        "bottom-center": "bottom center"
       }
     }
   },

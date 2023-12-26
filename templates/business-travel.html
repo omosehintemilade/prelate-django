@@ -3,22 +3,17 @@
   <head>
     {% load static %}
     {% load widget_tweaks %}
-    {% include "latest/partials/_head.html" with add_title="Customize Your Tour Package | Prelate Travels & Tours" %}
+    {% include "latest/partials/_head.html" with add_title="Business Travels | Prelate Travels & Tours" %}
   </head>
   <body>
     {% include "latest/components/_header.html" %}
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <section class="travel-insurance-hero h-[50vh] bg-no-repeat bg-cover bg-left-bottom tablet:h-[30vh]">
-      <div class="flex items-end h-full">
-        <div class="h-2/4 flex items-end gradient-blue w-full mobile:h-2/4">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Business Travel</h2>
-          </div>
-        </div>
-      </div>
-    </section>
+    
+    {# djlint:off #}
+    {% include "latest/components/_page_banner.html" with title="Business Travels" custom_class="h-[50vh] business-travel-hero" gradient="blue" %}
+    {# djlint:on #}
     <section class="container__inner_layout text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-6">
       <div class="my-10 mobile:mt-5 mobile:mb-6">
         <p class="">

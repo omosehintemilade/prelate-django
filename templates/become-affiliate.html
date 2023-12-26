@@ -2,22 +2,16 @@
 <html>
   <head>
     {% load static %}
-    {% include "latest/partials/_head.html" with add_title="Become An Affiliate| Prelate Travels & Tours" %}
+    {% include "latest/partials/_head.html" with add_title="Become An Affiliate | Prelate Travels & Tours" %}
   </head>
   <body>
     {% include "latest/components/_header.html" %}
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
-      <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Become An Affiliate</h2>
-          </div>
-        </div>
-      </div>
-    </section>
+    {# djlint:off #}
+    {% include "latest/components/_page_banner.html" with title="Become An Affiliate" custom_class="h-[70vh] become-affiliate-hero" gradient="blue" %}
+    {# djlint:on #}
     <section class="container__inner_layout text-textPrimary text-sm leading-7 text-justify tablet:text-xs tablet:leading-6">
       <div class="my-10 mobile:mt-5 mobile:mb-6">
         <p>
@@ -26,18 +20,14 @@
       </div>
       <div class="mb-10 mobile:mb-6">
         <div class="form-title mb-5 tablet:mb-3">WHO ARE WE?</div>
-        <img class="rounded-sm"
-             src="{% static 'images/affiliate_1.jpg' %}"
-             class="mb-2.5 mobile:mb-1.5" />
+        {% comment %} <img class="rounded-sm" src="{% static 'images/affiliate_1.jpg' %}" class="mb-2.5 mobile:mb-1.5" /> {% endcomment %}
         <p>
           We are one-stop travel and tourism tech shop. At Prelate Travel, we work with experienced travel experts to provide our clients with essential travel information, assist and guide them through their travel application processes. We also provide our clients with essential travel services and exclusive deals at affordable rates that meet their travel taste and demands. We make provisions for one on one engagement with one of our travel experts; to meet with our clients who will listen to your travel plans and offer a professional advice that will assist you to achieve and get maximum satisfaction of your travel plans, manage travel cost to afford topnotch quality travel services that suits your choice of preference and demand and a follow up with your travel applications.
         </p>
       </div>
       <div class="mb-10 mobile:mb-6">
         <div class="form-title mb-5 tablet:mb-3">WHY BECOME AN AFFILIATE?</div>
-        <img class="rounded-sm"
-             src="{% static 'images/affiliate_2.png' %}"
-             class="mb-2.5 mobile:mb-1.5" />
+        {% comment %} <img class="rounded-sm" src="{% static 'images/affiliate_2.png' %}" class="mb-2.5 mobile:mb-1.5" /> {% endcomment %}
         <p>
           We grant our affiliates access to subsidized rates of our services, as we highly recognize and regard them as part of our staffs. We give more commitment to our
           affiliates; apt responses and assign them to an affiliate manager, who they can keep in touch with at anytime of the day and to respond to their inquiry and attend
@@ -45,10 +35,8 @@
         </p>
       </div>
       <div class="mb-10 mobile:mb-6">
-        <div class="form-title mb-5 tablet:mb-3">WHY BECOME AN AFFILIATE?</div>
-        <img class="rounded-sm"
-             src="{% static 'images/affiliate_3.jpg' %}"
-             class="mb-2.5 mobile:mb-1.5" />
+        <div class="form-title mb-5 tablet:mb-3">WHAT WE OFFER?</div>
+        {% comment %} <img class="rounded-sm" src="{% static 'images/affiliate_3.jpg' %}" class="mb-2.5 mobile:mb-1.5" /> {% endcomment %}
         <p>Reasons why becoming a Prelate Travel affiliate is the right option for you:</p>
         <ul class="pl-7 list-disclosureClosed">
           <li>You can earn up to 25% of the airline commission and other paid services rendered.</li>

@@ -2074,6 +2074,10 @@ input:checked + .toggle-bg {
   background-position: bottom;
 }
 
+.bg-bottom-center {
+  background-position: bottom center;
+}
+
 .bg-center {
   background-position: center;
 }
