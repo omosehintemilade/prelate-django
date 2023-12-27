@@ -11,7 +11,7 @@
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE -->
     <!-- HERO SECTION DESKTOP -->
-    <section class="travel-info-hero bg-no-repeat w-full h-[70vh] p-0 mobile:h-[40vh] mobile:bg-cover">
+    <section class="travel-info-hero-section travel-info-hero bg-no-repeat w-full h-[70vh] p-0 mobile:h-[40vh] mobile:bg-cover">
       <div class="flex items-end h-full">
         <div class="h-2/4 flex justify-center flex-col items-center gradient-blue w-full mobile:justify-end mobile:items-start mobile:p-5">
           <h3 class="text-[40px] leading-[84px] font-bold text-white mobile:text-lg mobile:leading-normal mobile:font-semibold mobile:mb-1.5">
@@ -60,14 +60,14 @@
       </nav>
     </section>
     <!-- MOBILE TRAVEL NAVIGATION END -->
-    <section class="container__inner_layout">
+    <section class="container__inner_layout text-textPrimary text-sm leading-7 text-justify tablet:text-xs tablet:leading-6">
       <!-- TRAVEL INFO FORM -->
       <div class="tab-pane active">
-        <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5 block tablet:hidden">Travel Info</h2>
-        <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
-          <span class="">If you're are looking to travel internationally but do not know where
-            to begin, we at Prelate Travel are always more than happy to help you
-          achieve your desire destination.</span>
+        <h2 class="font-bold text-3xl text-primary mb-5 block tablet:hidden">Travel Info</h2>
+        <p>
+          If you're are looking to travel internationally but do not know where
+          to begin, we at Prelate Travel are always more than happy to help you
+          achieve your desire destination.
           <span class="mobile:hidden">
             Here you will find the perfect
             starting point for booking any continental travel journey. Whether you
@@ -127,10 +127,8 @@
       <!-- TRAVEL INFO FORM -->
       <!-- TRAVEL BUDGET FORM -->
       <div class="tab-pane hidden">
-        <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5 block tablet:hidden">Travel Budget</h2>
-        <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
-          Simply fill the form provided below with the required details.
-        </p>
+        <h2 class="font-bold text-3xl text-primary mb-5 block tablet:hidden">Travel Budget</h2>
+        <p>Simply fill the form provided below with the required details.</p>
         {% include "latest/components/_travel_help_country.html" with country=main_country %}
         <div class="mt-20 tablet:mt-6">
           <div class="form-title">Travel Budget</div>
@@ -203,8 +201,8 @@
       <!-- TRAVEL BUDGET FORM END -->
       <!-- REQUEST CHANGE FORM -->
       <div class="tab-pane hidden">
-        <h2 class="font-bold text-[30px] leading-[45px] text-primary mb-5 block tablet:hidden">Request Changes</h2>
-        <p class="text-textPrimary text-sm text-justify tablet:text-xs tablet:leading-5">
+        <h2 class="font-bold text-3xl text-primary mb-5 block tablet:hidden">Request Changes</h2>
+        <p>
           Is there any mistake you noticed in the services we've offered you? please reach out to us for corrections. Please always make sure to reach out to us earlier at least 72hrs before your travel date.
         </p>
         <div class="mt-20 tablet:mt-6">

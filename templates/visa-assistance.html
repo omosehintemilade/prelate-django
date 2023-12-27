@@ -27,7 +27,7 @@
     <!-- Travel insurance form -->
     <section class="container__inner_layout pb-16">
       <div class="my-10 mobile:mt-5 mobile:mb-6">
-        <h2 class="font-bold text-[30px] text-primary mb-5 mobile:hidden">Visa Assistance</h2>
+        <h2 class="font-bold text-3xl text-primary mb-5 mobile:hidden">Visa Assistance</h2>
         <p class="text-textPrimary text-sm leading-[27px] text-justify tablet:text-xs tablet:leading-5">
           <span class="">If you're are looking to travel internationally but do not know where to begin, we at Prelate Travel are always
           more than happy to help you achieve your desire destination.</span>
@@ -70,7 +70,7 @@
             <div class="p-5 border border-b-0 border-gray-200">
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                <span> Title<span class="text-red-500">*</span></span>
+                  <span> Title<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
@@ -85,30 +85,38 @@
                 </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">First Name<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  First Name<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="firstname"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Middle Name<span class="text-red-500">*</span>
+                <label for="" class="input-label">
+                  Middle Name<span class="text-red-500">*</span>
                 </label>
                 <input type="text"
                        name="middlename"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Surname<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Surname<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="surname"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
-                                    <span>Gender<span class="text-red-500">*</span></span>
+                  <span>Gender<span class="text-red-500">*</span></span>
                   <img src="{% static 'images/shaded-down-arrow.svg' %}"
                        class="shaded-down-arrow"
                        alt="" />
@@ -120,11 +128,14 @@
                 </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Nationality<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Nationality<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="nationality"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
                 <label for="" class="input-label flex justify-between">
@@ -142,7 +153,9 @@
                 </select>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Birth<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Date of Birth<span class="text-red-500">*</span>
+                </label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
@@ -158,53 +171,79 @@
                 </div>
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Tribe<span class="text-red-500">*</span></label>
-                <input type="text" name="tribe" class="input-style" placeholder="----------" isrequired="true">
+                <label for="" class="input-label">
+                  Tribe<span class="text-red-500">*</span>
+                </label>
+                <input type="text"
+                       name="tribe"
+                       class="input-style"
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Email<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Email<span class="text-red-500">*</span>
+                </label>
                 <input type="email"
                        name="email"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Phone Number<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Phone Number<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="phone_number"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Permanent Address<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Permanent Address<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="permanent_address"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Postal Address<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Postal Address<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="postal_address"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Alternative Phone Number<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Alternative Phone Number<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="alt_phone_number"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Passport Number<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Passport Number<span class="text-red-500">*</span>
+                </label>
                 <input type="text"
                        name="passport_number"
                        class="input-style"
-                       placeholder="----------" isrequired="true">
+                       placeholder="----------"
+                       isrequired="true">
               </div>
               <div class="flex flex-col mb-5">
-                <label for="" class="input-label">Date of Issue<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Date of Issue<span class="text-red-500">*</span>
+                </label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
@@ -220,7 +259,9 @@
                 </div>
               </div>
               <div class="flex flex-col mb-10">
-                <label for="" class="input-label">Expiry Date<span class="text-red-500">*</span></label>
+                <label for="" class="input-label">
+                  Expiry Date<span class="text-red-500">*</span>
+                </label>
                 <div class="relative w-full">
                   <div class="calendar">
                     <img src="{% static 'images/calendar-icon.png' %}" class="h-4">
@@ -232,8 +273,7 @@
                          datepicker
                          datepicker-format="yyyy-mm-dd"
                          datepicker-autohide
-                         isrequired="true"
-                         >
+                         isrequired="true">
                 </div>
               </div>
               <div>

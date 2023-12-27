@@ -1,14 +1,28 @@
 const desktopTabs = document.querySelectorAll(".travel-info .tab");
 const mobileTabs = document.querySelectorAll(".travel-mobile-nav .tab");
 const tabPanes = document.querySelectorAll(".tab-pane");
-
-console.log({ desktopTabs, mobileTabs });
+const pageHeroSection = document.querySelector(".travel-info-hero-section");
 
 const EnumRedirectParams = {
   travelInfo: "travel-info",
   travelBudget: "travel-budget",
   requestChanges: "request-changes"
 };
+
+const heroSections = [
+  {
+    className: "travel-info-hero",
+    documentTitle: "Travel Info | Prelate Travels & Tours"
+  },
+  {
+    className: "travel-budget-hero",
+    documentTitle: "Travel Budget | Prelate Travels & Tours"
+  },
+  {
+    className: "change-request-hero",
+    documentTitle: "Request Changes | Prelate Travels & Tours"
+  }
+]; //Arranged in order which the tabs are arranged
 
 // select tab panes based on redirect urls params
 const redirectParam = url.split("?")?.[1]?.split("=")[1];
@@ -30,8 +44,8 @@ mobileTabs?.forEach((tab, index) =>
 );
 
 // FUNCTIONS
-function activateTab(currentTabIndex) {
-  console.log({ currentTabIndex });
+function activateTab(index) {
+  console.log({ index });
 
   const mobileActiveTab = document.querySelector(".travel-mobile-nav .active");
   const desktopActiveTab = document.querySelector(".travel-info .active");
@@ -39,12 +53,23 @@ function activateTab(currentTabIndex) {
   mobileActiveTab.classList.remove("active");
   desktopActiveTab.classList.remove("active");
 
-  desktopTabs?.[currentTabIndex].classList.add("active");
-  mobileTabs?.[currentTabIndex].classList.add("active");
+  desktopTabs?.[index].classList.add("active");
+  mobileTabs?.[index].classList.add("active");
+
+  // Update page to use tab specific configuration
+  const section = heroSections[index];
+  if (section) {
+    // update document title
+    document.title = section.documentTitle;
+    // remove all existing heroSection classes on pageHeroSection
+    heroSections.forEach((i) => pageHeroSection.classList.remove(i.className));
+    // add class to pageHeroSection
+    pageHeroSection.classList.add(section.className);
+  }
 
   // remove all tab panes and display clicked tab pane
   tabPanes.forEach((pane, paneIndex) => {
-    if (paneIndex === currentTabIndex) pane.style.display = "block";
+    if (paneIndex === index) pane.style.display = "block";
     else pane.style.display = "none";
   });
 }

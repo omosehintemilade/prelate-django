@@ -386,6 +386,14 @@ hr.f-border {
   background: url(/static/images/slider-3.png);
 }
 
+.travel-budget-hero {
+  background: url(/static/images/slider-2.png);
+}
+
+.change-request-hero {
+  background: url(/static/images/request-visa-changes.png);
+}
+
 .travel-insurance-hero {
   background: url(/static/images/insurance-hero.png);
 }

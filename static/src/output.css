@@ -3496,6 +3496,10 @@ input:checked + .toggle-bg {
   .tablet\:leading-6 {
     line-height: 1.5rem;
   }
+
+  .tablet\:leading-7 {
+    line-height: 1.75rem;
+  }
 }
 
 @media (max-width: 1280px) {
