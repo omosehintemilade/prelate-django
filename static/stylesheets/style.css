@@ -9,7 +9,9 @@
 }
 
 [type="date"] {
-  background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+  background: #fff
+    url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)
+    97% 50% no-repeat;
 }
 [type="date"]::-webkit-inner-spin-button {
   display: none;
@@ -247,7 +249,12 @@ button {
   min-height: 435px;
   padding-top: 20px;
   padding-bottom: 20px;
-  background-image: linear-gradient(to bottom, rgba(44, 89, 156, 0.5), rgba(44, 89, 156, 0.5)), url("/static/images/home_info.png");
+  background-image: linear-gradient(
+      to bottom,
+      rgba(44, 89, 156, 0.5),
+      rgba(44, 89, 156, 0.5)
+    ),
+    url("/static/images/home_info.png");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -413,7 +420,13 @@ footer {
 .visa-where-would {
   width: 100%;
   min-height: calc(80vh - 78px);
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.37), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4)), url("/static/images/where-would-you.png");
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.37),
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url("/static/images/where-would-you.png");
   background-position: center;
   background-size: cover;
   display: flex;
@@ -468,7 +481,11 @@ footer {
   font-size: 28px;
   color: #222222;
   padding: 20px 0;
-  background: linear-gradient(180deg, rgba(41, 124, 222, 0.68) 0%, rgba(41, 124, 222, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(41, 124, 222, 0.68) 0%,
+    rgba(41, 124, 222, 0) 100%
+  );
 }
 
 .generic-form--body {
@@ -706,6 +723,64 @@ span.required {
   }
 }
 
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #ffffff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  /**font-size: 25px; */
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.dropbtn-service {
+  cursor: pointer;
+  color: #000 !important;
+}
+
+.service-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.service-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropbtn-service:hover .service-dropdown-content {
+  display: block;
+}
+
 @media screen and (max-width: 992px) {
   .service-card {
     margin-bottom: 50px;
@@ -747,7 +822,14 @@ span.required {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+
   .welcome-to-prelate-travels h1 {
     font-size: 2.4rem;
   }
@@ -767,71 +849,4 @@ span.required {
   .dowload-application-section p {
     font-size: 26px;
   }
-}
-
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  background-color: #ffffff;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  /**font-size: 25px; */
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
-  }
-}
-
-.dropbtn-service {
-  cursor: pointer;
-  color: #000 !important;
-}
-
-.service-dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-.service-dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropbtn-service:hover .service-dropdown-content {
-  display: block;
 }

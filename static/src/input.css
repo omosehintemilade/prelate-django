@@ -37,7 +37,7 @@
   }
 
   .page-title {
-    @apply text-[40px] mb-5 font-bold text-buttonPrimary mobile:text-white mobile:text-lg mobile:leading-normal mobile:font-semibold;
+    @apply text-[40px] mb-5 font-bold text-buttonPrimary tablet:text-3xl mobile:text-white mobile:text-lg mobile:leading-normal mobile:font-semibold;
   }
   .pagination-item {
     @apply flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300;

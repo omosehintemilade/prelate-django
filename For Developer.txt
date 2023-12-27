@@ -12,3 +12,5 @@ To save you from heart attack, JS files rarely throws error - exception being wh
 
 Before pushing your application, make sure that you have your compresed css files ready in the codebase. 
 
+When we're using "components/_page_banner.html", sometimes, turning djlint off before the line and turning it back on after is a life saver. This will prevent djlint from wrapping that line
+N.B wrapping a component import will throw djlint errors

@@ -8,15 +8,9 @@
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
-      <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Contact Us</h2>
-          </div>
-        </div>
-      </div>
-    </section>
+    {# djlint:off #}
+        {% include "latest/components/_page_banner.html" with title="Contact Us" custom_class="contact-hero h-[50vh]" gradient="blue" %}
+    {# djlint:on #}
     <section class="px-40 py-10 tablet:px-5 tablet:mt-5">
       <div class="shadow-xl mb-20 tablet:mb-10">
         <div class="border-b border-[#0000001a] border-solid text-textPrimary text-sm flex items-center px-8 py-5">
@@ -103,7 +97,6 @@
     <!-- FOOTER -->
     <!-- SCRIPTS -->
     {% include "latest/partials/_scripts.html" %}
-
     <!-- SCRIPTS -->
   </body>
 </html>

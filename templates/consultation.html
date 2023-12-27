@@ -8,15 +8,9 @@
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <section class="consultation-hero-bg bg-center bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
-      <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Speak To A Consultant</h2>
-          </div>
-        </div>
-      </div>
-    </section>
+    {# djlint:off #}
+        {% include "latest/components/_page_banner.html" with title="Speak To A Consultant" custom_class="consultation-hero-bg bg-center" gradient="blue" %}
+    {# djlint:on #}
     <!-- HERO SECTION DESKTOP -->
     <!-- Travel insurance form -->
     <section class="container__inner_layout  text-textPrimary text-justify text-sm leading-7 tablet:text-xs tablet:leading-6">

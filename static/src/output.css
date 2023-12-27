@@ -1502,8 +1502,16 @@ input:checked + .toggle-bg {
   height: 100%;
 }
 
+.h-\[45vh\] {
+  height: 45vh;
+}
+
 .max-h-\[700px\] {
   max-height: 700px;
+}
+
+.max-h-\[300px\] {
+  max-height: 300px;
 }
 
 .w-1 {
@@ -2830,6 +2838,13 @@ input:checked + .toggle-bg {
   }
 }
 
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
 .pagination-item {
   display: flex;
   height: 2.5rem;
@@ -3225,6 +3240,10 @@ input:checked + .toggle-bg {
 
   .mobile\:bg-cover {
     background-size: cover;
+  }
+
+  .mobile\:bg-top {
+    background-position: top;
   }
 
   .mobile\:p-5 {

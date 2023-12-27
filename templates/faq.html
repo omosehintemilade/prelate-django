@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    {% include "latest/partials/_head.html" with add_title="Frequently Asked Questions | Prelate Travels & Tours" %}
-  </head>
+  <head>{% include "latest/partials/_head.html" with add_title="FAQ | Prelate Travels & Tours" %}</head>
   <body>
     {% include "latest/components/_header.html" %}
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
-      <div class="flex items-end h-full">
-        <div class="h-[70%] flex items-end gradient-blue w-full mobile:h-2/4">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h2 class="page-title">Frequently Asked Questions</h2>
-          </div>
-        </div>
-      </div>
-    </section>
+    {# djlint:off #}
+        {% include "latest/components/_page_banner.html" with title="Frequently Asked Questions" custom_class="faq-hero h-[50vh]" gradient="blue" %}
+    {# djlint:on #}
     <!-- FAQ -->
     <section class="container__inner_layout text-textPrimary text-sm leading-7 text-justify tablet:text-xs tablet:leading-6">
       <div class="py-12">

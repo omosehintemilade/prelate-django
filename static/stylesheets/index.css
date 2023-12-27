@@ -301,101 +301,6 @@ hr.f-border {
   height: 60px;
   background: #1c2e6a;
 }
-@media screen and (max-width: 768px) {
-  .affiliates_container {
-    margin-bottom: 30px;
-  }
-
-  .affiliates_container img {
-    width: 80%;
-    /* margin: 0px 20px; */
-    margin-left: 5px;
-  }
-
-  .section-footer_banner {
-    margin-bottom: 20px;
-  }
-  .section-footer_banner img {
-    width: 50%;
-  }
-
-  .footer_banner-pr_tr_ap {
-    font-size: 18px;
-    font-weight: 500;
-  }
-
-  .footer_banner-co_so {
-    font-size: 14px;
-    font-weight: 400;
-    margin-bottom: 12px;
-  }
-  .footer_banner-container .text {
-    margin-left: 10px;
-  }
-
-  footer {
-    margin-bottom: 0px;
-  }
-  footer nav {
-    width: 100%;
-    flex-direction: column-reverse;
-  }
-  footer h6 {
-    font-size: 12px;
-    margin-bottom: 0px;
-    font-weight: 700;
-  }
-  footer a {
-    font-size: 12px;
-  }
-
-  .f-links_wrapper {
-    width: 100%;
-    background-color: #f1f1f1;
-    padding: 40px 20px 120px 20px;
-  }
-
-  .f-form_wrapper {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 28px 20px 32px 20px;
-  }
-
-  .f-form {
-    width: 100%;
-  }
-
-  .f-form h6 {
-    margin-bottom: 10px;
-  }
-
-  .newsletter-input_wr {
-    display: flex;
-    gap: 5px;
-  }
-
-  footer input.input {
-    width: 50%;
-    padding: 10px 8px 4px;
-    font-size: 12px;
-    height: 50px;
-    font-weight: 500;
-    margin-bottom: 0px;
-  }
-
-  footer button {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-
-  hr.f-border {
-    display: none;
-  }
-
-  .icons_container {
-    display: none;
-  }
-}
 
 /* FOOTER SECTION */
 
@@ -501,7 +406,7 @@ hr.f-border {
   background: url(/static/images/privacy-policy-hero.jpg);
 }
 
-.tour-hero-bg {
+.tour-hero {
   background: url(/static/images/tour-hero.jpg);
 }
 
@@ -516,6 +421,31 @@ hr.f-border {
 
 .post-arrival-hero {
   background: url(/static/images/post-arrival-hero.png);
+}
+
+.faq-hero {
+  background: url(/static/images/FAQ.jpg);
+  background-position-y: -12rem;
+}
+
+.blog-hero {
+  background: url(/static/images/blog-hero.jpg);
+  background-position-y: -8rem;
+}
+
+.tos-hero {
+  background: url(/static/images/tos-hero.jpg);
+  background-position-y: -8rem;
+}
+
+.contact-hero {
+  background: url(/static/images/contact-us.jpg);
+  background-position-y: -11rem;
+}
+
+.about-us-hero {
+  background: url(/static/images/about-hero.jpg);
+  background-position-y: -11rem;
 }
 
 .travel-help-mobile-slider {
@@ -718,6 +648,100 @@ hr.f-border {
     width: 95%;
   }
 
+  .affiliates_container {
+    margin-bottom: 30px;
+  }
+
+  .affiliates_container img {
+    width: 80%;
+    /* margin: 0px 20px; */
+    margin-left: 5px;
+  }
+
+  .section-footer_banner {
+    margin-bottom: 20px;
+  }
+  .section-footer_banner img {
+    width: 50%;
+  }
+
+  .footer_banner-pr_tr_ap {
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .footer_banner-co_so {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 12px;
+  }
+  .footer_banner-container .text {
+    margin-left: 10px;
+  }
+
+  footer {
+    margin-bottom: 0px;
+  }
+  footer nav {
+    width: 100%;
+    flex-direction: column-reverse;
+  }
+  footer h6 {
+    font-size: 12px;
+    margin-bottom: 0px;
+    font-weight: 700;
+  }
+  footer a {
+    font-size: 12px;
+  }
+
+  .f-links_wrapper {
+    width: 100%;
+    background-color: #f1f1f1;
+    padding: 40px 20px 120px 20px;
+  }
+
+  .f-form_wrapper {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 28px 20px 32px 20px;
+  }
+
+  .f-form {
+    width: 100%;
+  }
+
+  .f-form h6 {
+    margin-bottom: 10px;
+  }
+
+  .newsletter-input_wr {
+    display: flex;
+    gap: 5px;
+  }
+
+  footer input.input {
+    width: 50%;
+    padding: 10px 8px 4px;
+    font-size: 12px;
+    height: 50px;
+    font-weight: 500;
+    margin-bottom: 0px;
+  }
+
+  footer button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  hr.f-border {
+    display: none;
+  }
+
+  .icons_container {
+    display: none;
+  }
+
   /* BLOG POST */
   .article > * {
     font-size: 12px !important;
@@ -779,7 +803,7 @@ hr.f-border {
     background-position-y: -2rem !important;
   }
 
-  /* .tour-hero-bg {
+  /* .tour-hero {
     background: url(/static/images/tour-hero-mobile.png);
   } */
   .tour-hero-header {
@@ -881,7 +905,18 @@ hr.f-border {
     width: 100%;
     height: 149px;
   }
+
+  .blog-hero,
+  .tos-hero,
+  .faq-hero {
+    background-position-y: 0rem;
+  }
+
+  .contact-hero {
+    background-position-y: -8rem !important;
+  }
 }
+
 /* SWET ALERT */
 /* MOBILE */
 @media screen and (max-width: 500px) {
@@ -893,5 +928,9 @@ hr.f-border {
   }
   .swal2-actions {
     margin-top: 10px;
+  }
+
+  .contact-hero {
+    background-position-y: top !important;
   }
 }

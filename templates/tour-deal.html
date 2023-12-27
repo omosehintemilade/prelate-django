@@ -3,73 +3,68 @@
   <head>
     {% load static %}
     {% load widget_tweaks %}
-    {% include "latest/partials/_head.html" with add_title="Tour Deals | Prelate Travels & Tours" %}
+    {% load custom_tags %}
+    {# djlint:off #}
+    {% deal_page_title as title %}
+   {% include "latest/partials/_head.html" with add_title=title %}
+
   </head>
   <body>
     {% include "latest/components/_header.html" %}
     <!-- CAROUSEL SECTION MOBILE -->
     {% include "latest/components/_mobile_carousel.html" %}
     <!-- CAROUSEL SECTION MOBILE END-->
-    <!-- Hero Section -->
-    <section class="tour-hero-bg bg-no-repeat h-[40vh] bg-cover tablet:h-[30vh] tablet:bg-right">
-      <div class="flex items-end h-full">
-        <div class="h-2/4 flex items-end gradient-blue w-full">
-          <div class="w-4/5 mx-auto mobile:w-full mobile:px-5">
-            <h3 class="page-title">Tour Deals</h3>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="container__inner_layout mobile:text-xs">
-      <p class="text-xl font-bold text-primary mt-5 mb-7 capitalize cursor-pointer">
-        {{ package.deal_name }} > Deal Information
-      </p>
-      <div class="text-textPrimary flex items-start gap-x-5 mobile:flex-col mobile:gap-y-3">
-        <div class="basis-2/5">
-          <img src="{{ package.deal_image.url }}"
-               alt="{{ package.country }}"
-               class="block max-w-xs mb-6 p-1.5 rounded-[4px] mobile:w-full"
-               style="box-shadow: 0 0 10px #333" />
-        </div>
-        <div class="basis-3/5">
-          <div class="mb-2 capitalize">
-            <p class="text-primary font-bold">Country/City</p>
-            <p class="ml-2.5 mobile:ml-0">{{ package.country }}</p>
-          </div>
-          <div class="mb-2 capitalize">
-            <p class="text-primary font-bold">Price</p>
-            <p class="ml-2.5 mobile:ml-0">
-              {{ package.currency }}
-              <span class="figure">{{ package.amount }}</span>
-            </p>
-          </div>
-          <p class="text-primary font-bold">Other Information</p>
-          <div class="ml-2.5 text-justify mobile:ml-0">{{ package.information|safe }}</div>
-        </div>
-      </div>
-      <form class="text-primary w-full pt-10 mobile:pt-6" method="post">
-        {{ form.errors }} {{ form.non_field_errors }}
-        {% csrf_token %}
-        <div class="flex flex-col mb-5">
-          <label for="" class="input-label">Full Name</label>
-          {% render_field form.fullname class="input-style" placeholder="----------" %}
-        </div>
-        <div class="flex flex-col mb-5">
-          <label for="" class="input-label">Email Address</label>
-          {% render_field form.email class="input-style" placeholder="----------" %}
-        </div>
-        <div class="flex flex-col mb-5">
-          <label for="" class="input-label">Phone Number</label>
-          {% render_field form.phonenumber class="input-style" placeholder="----------" %}
-        </div>
-        <div class="flex flex-col mb-5">
-          <label for="" class="input-label">Number Of Travellers</label>
-          {% render_field form.number_of_travellers class="input-style" placeholder="e.g 5" %}
-        </div>
-        <button class="submit-btn">Buy Deal</button>
-      </form>
-    </section>
-    {% include 'latest/components/_footer.html' %}
-    {% include 'latest/partials/_scripts.html' %}
-  </body>
+
+    {# djlint:off #}
+        {% include "latest/components/_page_banner.html" with title="Tour Deals" custom_class="tour-hero bg-center" gradient="blue" %}
+    {# djlint:on #}
+<section class="container__inner_layout mobile:text-xs">
+<p class="text-xl font-bold text-primary mt-5 mb-7 capitalize cursor-pointer">
+{{ package.deal_name }} > Deal Information
+</p>
+<div class="text-textPrimary flex items-start gap-x-5 mobile:flex-col mobile:gap-y-3">
+<div class="basis-2/5">
+<img src="{{ package.deal_image.url }}" alt="{{ package.country }}" class="block max-w-xs mb-6 p-1.5 rounded-[4px] mobile:w-full" style="box-shadow: 0 0 10px #333" />
+</div>
+<div class="basis-3/5">
+<div class="mb-2 capitalize">
+<p class="text-primary font-bold">Country/City</p>
+<p class="ml-2.5 mobile:ml-0">{{ package.country }}</p>
+</div>
+<div class="mb-2 capitalize">
+<p class="text-primary font-bold">Price</p>
+<p class="ml-2.5 mobile:ml-0">
+{{ package.currency }}
+<span class="figure">{{ package.amount }}</span>
+</p>
+</div>
+<p class="text-primary font-bold">Other Information</p>
+<div class="ml-2.5 text-justify mobile:ml-0">{{ package.information|safe }}</div>
+</div>
+</div>
+<form class="text-primary w-full pt-10 mobile:pt-6" method="post">
+{{ form.errors }} {{ form.non_field_errors }}
+{% csrf_token %}
+<div class="flex flex-col mb-5">
+<label for="" class="input-label">Full Name</label>
+{% render_field form.fullname class="input-style" placeholder="----------" %}
+</div>
+<div class="flex flex-col mb-5">
+<label for="" class="input-label">Email Address</label>
+{% render_field form.email class="input-style" placeholder="----------" %}
+</div>
+<div class="flex flex-col mb-5">
+<label for="" class="input-label">Phone Number</label>
+{% render_field form.phonenumber class="input-style" placeholder="----------" %}
+</div>
+<div class="flex flex-col mb-5">
+<label for="" class="input-label">Number Of Travellers</label>
+{% render_field form.number_of_travellers class="input-style" placeholder="e.g 5" %}
+</div>
+<button class="submit-btn">Buy Deal</button>
+</form>
+</section>
+{% include 'latest/components/_footer.html' %}
+{% include 'latest/partials/_scripts.html' %}
+</body>
 </html>
