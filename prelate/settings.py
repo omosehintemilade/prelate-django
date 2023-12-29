@@ -38,14 +38,15 @@ ALLOWED_HOSTS = ["prelatetravel.com"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ENVIRONMENT != 'production':
+    ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
     DEBUG = True
     print("non-prod environment")
 else:
     print("prod environment")
-    ALLOWED_HOSTS += ["127.0.0.1", "localhost"]
     DEBUG = False
     # FROM RENDER
-    RENDER_EXTERNAL_HOSTNAME = env('RENDER_EXTERNAL_HOSTNAME')
+    RENDER_EXTERNAL_HOSTNAME = env(
+        'RENDER_EXTERNAL_HOSTNAME')  # RENDER APP  HOSTNAME
     if RENDER_EXTERNAL_HOSTNAME:
         ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 

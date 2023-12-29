@@ -68,7 +68,6 @@ def travel_helpOld(request):
             )
         else:
             if country_requested != "":
-                print(country_requested)
                 return render(
                     request,
                     "travel-help-old.html",
@@ -114,7 +113,6 @@ def travel_help(request):
             )
         else:
             if country_requested != "":
-                print(country_requested)
                 return render(
                     request,
                     "travel-help.html",
@@ -197,10 +195,8 @@ def travel_insurance(request):
         )
     if request.method == "POST":
         form = TravelInsuranceForm(request.POST)
-        print("vaild from", form.is_valid())
         if form.is_valid():
             form.save(commit=True)
-            print("to redirect.....")
             return redirect("/travel-insurance#submitted")
 
 
@@ -253,8 +249,6 @@ def visa_assistance(request):
         # Create a visa assistance instance
         applicant = VisaAssistance(**applicant_info)
         # stringify Travel history - in my opinion, it's not worth creating a new table for
-        print("applicant_info.travel_history ==>",
-              applicant_info.get("travel_history"))
         applicant.set_travel_history_list(
             applicant_info.get("travel_history"))
         applicant.save()
@@ -264,7 +258,6 @@ def visa_assistance(request):
             # Iterate over the list
             for ed in education_history:
                 ed["applicant"] = applicant
-                print(ed)
                 Education.objects.create(**ed)
 
         # Application Information
@@ -279,7 +272,6 @@ def visa_assistance(request):
             # Iterate over the list and create relationship
             for relationship in relationships:
                 relationship["applicant"] = applicant
-                print(relationship)
                 Relationship.objects.create(**relationship)
 
         # Other Information
@@ -341,7 +333,6 @@ def visa_assistance_old(request):
         countries = CoveredCountry.objects.all().order_by("country_name")
         form = TravelAssistanceForm(request.POST, request.FILES)
         if form.is_valid():
-            print(form)
             form.save(commit=True)
             return redirect("/visa-assistance#submitted")
         else:
@@ -360,7 +351,6 @@ def post_arrival_services(request):
     if request.method == "POST":
         form = PostArrivalServiceForm(request.POST, request.FILES)
         if form.is_valid():
-            print(form)
             form.save(commit=True)
             return redirect("/post-arrival-services#submitted")
     else:
@@ -385,7 +375,6 @@ def tour(request):
     except EmptyPage:
         deals = paginator.page(1)
 
-    print(deals)
     return render(
         request,
         "tour.html",
@@ -571,7 +560,7 @@ def contact_us_old(request):
 def book_consultation(request):
     if request.method == "POST":
         json_data = json.loads(request.body)
-        print(json_data)
+
         # VALIDATE DATE
         session_date = json_data.get("session_date")
         session_time = json_data.get("session_time")
@@ -861,7 +850,6 @@ def read_file(request):
     # Assuming the file is in the same directory as the views.py file
     file_full_path = os.path.join(os.path.dirname(
         os.path.dirname(__file__)), env.str("ENV") + ".log")
-    print(file_full_path)
 
     try:
         with open(file_full_path, 'r') as file:
