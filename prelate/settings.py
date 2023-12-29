@@ -34,7 +34,7 @@ CLOUDINARY_API_SECRET = env('CLOUDINARY_API_SECRET')
 CLOUDINARY_CLOUDNAME = env('CLOUDINARY_CLOUDNAME')
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["prelatetravel.com"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if ENVIRONMENT != 'production':
